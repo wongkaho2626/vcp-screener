@@ -111,6 +111,19 @@ detections made while the ticker was not an index member.
 Outputs `vcp_trades_*.json/.md` with t-stats and bootstrap confidence
 intervals for both raw and SPY-excess returns.
 
+**Optional S&P 500 breadth gate (`--min-breadth`):** skips entries taken when
+market breadth (% of S&P 500 above their 200-day MA, `scripts/data/sp500_breadth_daily.csv`)
+on the entry date is below the given level. This is a **risk dial, not an alpha
+source** — the [breadth experiment](scripts/breadth_experiment.py) found it does
+not improve market-relative excess-over-SPY (any absolute-return effect was
+concentrated in two crisis-rebound years). Use it only to trim absolute-drawdown
+tail trades in weak tapes:
+
+```bash
+python3 scripts/trade_simulator.py backtests/vcp_backtest_<ts>.json \
+  --membership-csv scripts/data/sp500_membership.csv --min-breadth 40
+```
+
 ### Backtest caveats
 
 - Trades are close-based with no slippage/commissions and no

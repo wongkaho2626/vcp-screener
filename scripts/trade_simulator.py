@@ -34,6 +34,7 @@ from datetime import datetime
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
+from breadth_regime import DEFAULT_BREADTH_CSV, breadth_on_date, load_breadth  # noqa: E402
 from membership import is_member, load_membership  # noqa: E402
 from yf_client import YFClient  # noqa: E402
 
@@ -66,6 +67,20 @@ def parse_arguments() -> argparse.Namespace:
         help="Point-in-time membership CSV; drops detections made while the "
         "ticker was not an index member",
     )
+    parser.add_argument(
+        "--min-breadth",
+        type=float,
+        default=None,
+        help="Risk dial (NOT an alpha source): skip entries taken when S&P 500 "
+        "breadth (%% above 200-day MA) on the entry date is below this. Off by "
+        "default. See breadth_experiment.py — it does not add market-relative "
+        "alpha; use only to trim absolute-drawdown tail trades in weak tapes.",
+    )
+    parser.add_argument(
+        "--breadth-csv",
+        default=DEFAULT_BREADTH_CSV,
+        help="Breadth series CSV used by --min-breadth (default: bundled snapshot)",
+    )
     parser.add_argument("--output-dir", default="backtests/", help="Report directory")
     parser.add_argument(
         "--sleep-secs", type=float, default=0.3, help="Pause between fetches"
@@ -77,6 +92,8 @@ def parse_arguments() -> argparse.Namespace:
         parser.error("--max-risk-pct must be 1-50")
     if not (5 <= args.max_hold_bars <= 252):
         parser.error("--max-hold-bars must be 5-252")
+    if args.min_breadth is not None and not (0.0 <= args.min_breadth <= 100.0):
+        parser.error("--min-breadth must be 0-100")
     return args
 
 
@@ -113,21 +130,38 @@ def plan_trade(detection: dict, max_extension_pct: float, max_risk_pct: float) -
 
 
 def simulate_exit(
-    chrono_bars: list[dict], start_idx: int, stop_price: float, max_hold_bars: int
+    chrono_bars: list[dict], start_idx: int, stop_price: float, max_hold_bars: int,
+    trail_pct: float | None = None,
 ) -> dict | None:
     """Walk forward from ``start_idx`` and find the exit. Pure function.
 
     ``chrono_bars`` is oldest-first. Returns exit dict or None when there is
     not a single forward bar.
+
+    Exits, whichever triggers first:
+      - hard stop  : close < ``stop_price``
+      - trailing   : if ``trail_pct`` set, close < (high-water since entry) *
+                     (1 - trail_pct/100) — locks in gains, lets winners run
+      - timeout    : ``max_hold_bars`` reached (else last available bar = "open")
     """
     end = min(start_idx + 1 + max_hold_bars, len(chrono_bars))
+    high_water = chrono_bars[start_idx]["close"]
     for j in range(start_idx + 1, end):
-        if chrono_bars[j]["close"] < stop_price:
+        close = chrono_bars[j]["close"]
+        high_water = max(high_water, close)
+        if close < stop_price:
             return {
                 "exit_date": chrono_bars[j]["date"],
-                "exit_price": chrono_bars[j]["close"],
+                "exit_price": close,
                 "hold_bars": j - start_idx,
                 "exit_reason": "stop",
+            }
+        if trail_pct is not None and close < high_water * (1 - trail_pct / 100):
+            return {
+                "exit_date": chrono_bars[j]["date"],
+                "exit_price": close,
+                "hold_bars": j - start_idx,
+                "exit_reason": "trailing",
             }
     j = min(start_idx + max_hold_bars, len(chrono_bars) - 1)
     if j <= start_idx:
@@ -230,6 +264,8 @@ def _render_markdown(stats: dict, by_year: dict, metadata: dict) -> str:
         f"Stop: max(contraction low, entry −{metadata['max_risk_pct']}%) | "
         f"Max hold: {metadata['max_hold_bars']} bars",
         f"- Membership filter: {metadata['membership_filter']}",
+        f"- Min-breadth gate: {metadata.get('min_breadth') if metadata.get('min_breadth') is not None else 'off'}"
+        + (" (risk dial — not an alpha source)" if metadata.get('min_breadth') is not None else ""),
         "",
         "## Primary metric — excess over SPY (same holding windows)",
         "",
@@ -282,6 +318,7 @@ def run(args: argparse.Namespace) -> None:
         sys.exit(1)
 
     intervals = load_membership(args.membership_csv) if args.membership_csv else None
+    breadth_series = load_breadth(args.breadth_csv) if args.min_breadth is not None else None
     scan_days = (payload.get("metadata") or {}).get("scan_days", 2520)
     fetch_days = scan_days + 500
 
@@ -293,7 +330,8 @@ def run(args: argparse.Namespace) -> None:
     print(f"OK ({len(spy_chrono)} bars)")
 
     trades: list[dict] = []
-    skips = {"no_fill": 0, "extended": 0, "non_member": 0, "missing_fields": 0, "no_data": 0}
+    skips = {"no_fill": 0, "extended": 0, "non_member": 0, "low_breadth": 0,
+             "missing_fields": 0, "no_data": 0}
     active = {sym: dets for sym, dets in detections_by_ticker.items() if dets}
     for i, (sym, dets) in enumerate(sorted(active.items()), 1):
         print(f"[{i}/{len(active)}] {sym}...", end=" ", flush=True)
@@ -315,6 +353,11 @@ def run(args: argparse.Namespace) -> None:
             if plan["action"] == "skip":
                 skips = {**skips, plan["reason"]: skips[plan["reason"]] + 1}
                 continue
+            if breadth_series is not None:
+                b = breadth_on_date(breadth_series, plan["entry_date"])
+                if b is None or b < args.min_breadth:
+                    skips = {**skips, "low_breadth": skips["low_breadth"] + 1}
+                    continue
             start_idx = idx_map.get(plan["entry_date"])
             if start_idx is None:
                 skips = {**skips, "no_data": skips["no_data"] + 1}
@@ -360,6 +403,7 @@ def run(args: argparse.Namespace) -> None:
         "max_risk_pct": args.max_risk_pct,
         "max_hold_bars": args.max_hold_bars,
         "membership_filter": args.membership_csv or "none",
+        "min_breadth": args.min_breadth,
     }
 
     os.makedirs(args.output_dir, exist_ok=True)

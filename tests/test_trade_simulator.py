@@ -110,6 +110,25 @@ class TestComputeTradeStats:
         assert stats["primary_mean_excess_vs_spy_pct"] is None
 
 
+class TestMinBreadthArg:
+    def _parse(self, monkeypatch, argv):
+        import trade_simulator
+        monkeypatch.setattr(sys, "argv", ["trade_simulator.py", *argv])
+        return trade_simulator.parse_arguments()
+
+    def test_default_is_off(self, monkeypatch):
+        args = self._parse(monkeypatch, ["dummy.json"])
+        assert args.min_breadth is None
+
+    def test_valid_value_accepted(self, monkeypatch):
+        args = self._parse(monkeypatch, ["dummy.json", "--min-breadth", "40"])
+        assert args.min_breadth == 40.0
+
+    def test_out_of_range_rejected(self, monkeypatch):
+        with pytest.raises(SystemExit):
+            self._parse(monkeypatch, ["dummy.json", "--min-breadth", "150"])
+
+
 class TestMembership:
     @pytest.fixture
     def csv_path(self, tmp_path):
