@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.venv/
+venv/
+
+# Generated reports (timestamped output)
+reports/*.json
+reports/*.md
+backtests/*.json
+backtests/*.md
+
+# OS
+.DS_Store
