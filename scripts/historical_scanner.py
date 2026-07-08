@@ -98,6 +98,7 @@ def scan_history(
     stride_days: int = 5,
     outcome_days: int = 60,
     lookback_days: int = 120,
+    require_trend_pass: bool = False,
     analyzer_kwargs: dict | None = None,
 ) -> list[dict]:
     """Walk ``historical`` from oldest scannable bar to ``outcome_days`` ago,
@@ -112,6 +113,10 @@ def scan_history(
         stride_days: Step size for the as-of cursor in trading days (default 5).
         outcome_days: Forward window for outcome evaluation (default 60).
         lookback_days: Window passed to the VCP calculator (default 120).
+        require_trend_pass: If True, only emit detections whose full Minervini
+            trend template passes (``trend_template.passed``). Off by default so
+            existing runs are unchanged; the gate experiment showed the base
+            screen fires on many trend-failed names.
         analyzer_kwargs: Extra kwargs forwarded to ``analyze_stock`` (e.g.
             ``min_contractions``, ``t1_depth_min``, etc.).
 
@@ -157,6 +162,10 @@ def scan_history(
             **analyzer_kwargs,
         )
         if result is None or not result.get("valid_vcp"):
+            continue
+
+        # Hard trend gate (opt-in): require the full Minervini trend template.
+        if require_trend_pass and not (result.get("trend_template") or {}).get("passed"):
             continue
 
         contractions = result.get("vcp_pattern", {}).get("contractions") or []
