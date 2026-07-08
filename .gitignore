@@ -15,3 +15,6 @@ backtests/*.md
 # OS
 .DS_Store
 backtests/*.log
+
+# Grid-search history cache (large binary)
+backtests/*.pkl
