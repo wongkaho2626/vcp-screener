@@ -73,12 +73,51 @@ python3 scripts/backtest_vcp.py --years 10 --universe-file tickers.txt
 Outputs timestamped `vcp_backtest_*.json` (full detection timelines included)
 and `vcp_backtest_*.md` into `backtests/`.
 
+### Survivorship-aware universe (recommended)
+
+Backtesting today's index members over the past is survivorship bias. Build a
+point-in-time universe instead — every ticker that was an S&P 500 member at
+any point in the window, including departed/delisted names:
+
+```bash
+python3 scripts/fetch_historical_members.py \
+  --start 2016-07-08 --end 2026-07-08 \
+  --emit-universe backtests/universe_pit_2016_2026.txt
+
+python3 scripts/backtest_vcp.py --years 10 \
+  --universe-file backtests/universe_pit_2016_2026.txt
+```
+
+Note: Yahoo has no data for many delisted tickers — those are logged as
+failed/skipped, so residual survivorship bias remains (fully eliminating it
+requires a survivorship-bias-free dataset like CRSP or Norgate).
+
+## 4. Trade simulation (excess-over-SPY)
+
+Convert a backtest's detections into Minervini-style trades and report
+**excess return over SPY (same holding windows) as the primary metric**:
+
+```bash
+python3 scripts/trade_simulator.py backtests/vcp_backtest_<timestamp>.json \
+  --membership-csv scripts/data/sp500_membership.csv
+```
+
+Trade rules: enter on the first close above the pivot, **skip fills more than
+5% above the pivot** (`--max-extension-pct`), stop at
+**max(contraction low, entry − 8%)** (`--max-risk-pct`), exit on a close below
+the stop or after 60 bars (`--max-hold-bars`). The membership filter drops
+detections made while the ticker was not an index member.
+
+Outputs `vcp_trades_*.json/.md` with t-stats and bootstrap confidence
+intervals for both raw and SPY-excess returns.
+
 ### Backtest caveats
 
-- Outcomes are **pattern-level labels**, not a portfolio simulation — no
-  position sizing, slippage, commissions, or overlapping-signal handling.
-- Universe snapshots are **today's members applied backwards** →
-  survivorship bias; treat breakout rates as optimistic upper bounds.
+- Trades are close-based with no slippage/commissions and no
+  position-sizing/overlap handling — pattern-level evidence, not a full
+  portfolio simulation.
+- Delisted tickers without Yahoo data drop out of the universe (partial
+  survivorship bias; see above).
 - Historical `marketCap` and universe-relative RS aren't reconstructable from
   OHLCV, so per-detection RS is vs SPY only.
 
