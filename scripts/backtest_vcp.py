@@ -119,6 +119,13 @@ def parse_arguments() -> argparse.Namespace:
         help="Breakout volume ratio vs 50d avg (default: 1.5)",
     )
     parser.add_argument(
+        "--require-trend-pass",
+        action="store_true",
+        help="Only emit detections whose full Minervini trend template passes. "
+        "Off by default; use to regenerate a trend-compliant detection set for "
+        "a clean re-test (see scripts/gate_experiment.py).",
+    )
+    parser.add_argument(
         "--output-dir", default="backtests/", help="Output directory (default: backtests/)"
     )
     parser.add_argument(
@@ -247,6 +254,7 @@ def run_backtest(args: argparse.Namespace) -> None:
             stride_days=args.stride_days,
             outcome_days=args.outcome_days,
             lookback_days=args.lookback_days,
+            require_trend_pass=args.require_trend_pass,
             analyzer_kwargs=analyzer_kwargs,
         )
         per_ticker[sym] = detections
@@ -269,6 +277,7 @@ def run_backtest(args: argparse.Namespace) -> None:
         "stride_days": args.stride_days,
         "outcome_days": args.outcome_days,
         "lookback_days": args.lookback_days,
+        "require_trend_pass": args.require_trend_pass,
         "tuning_params": analyzer_kwargs,
         "failed_tickers": failures,
         "api_stats": client.get_api_stats(),
