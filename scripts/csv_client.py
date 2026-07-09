@@ -71,17 +71,23 @@ class CSVClient:
                 ao, ah, al, ac = _adjust_bar(o, h, low, c, adj)
                 raw[sym].append({"date": date, "open": ao, "high": ah, "low": al,
                                  "close": ac, "adjClose": ac, "volume": vol})
-                pa = prev_adj.get(sym)
-                if pa and pa > 0:
-                    ret_accum[date][0] += adj / pa - 1
-                    ret_accum[date][1] += 1
-                prev_adj[sym] = adj
+                # A real benchmark row in the CSV is preferred over the synthetic
+                # one, so exclude it from the equal-weight index it would replace.
+                if sym != BENCHMARK_SYMBOL:
+                    pa = prev_adj.get(sym)
+                    if pa and pa > 0:
+                        ret_accum[date][0] += adj / pa - 1
+                        ret_accum[date][1] += 1
+                    prev_adj[sym] = adj
 
         # Store most-recent-first (pipeline assumes descending).
         self._bars: dict[str, list[dict]] = {
             sym: list(reversed(bars)) for sym, bars in raw.items()
         }
-        self._bars[BENCHMARK_SYMBOL] = self._build_benchmark(ret_accum)
+        # Use a real benchmark if the CSV carries one; else synthesize equal-weight.
+        self.synthetic_benchmark = BENCHMARK_SYMBOL not in self._bars
+        if self.synthetic_benchmark:
+            self._bars[BENCHMARK_SYMBOL] = self._build_benchmark(ret_accum)
 
     def _build_benchmark(self, ret_accum: dict[str, list[float]]) -> list[dict]:
         """Equal-weight index from constituent daily returns, most-recent-first."""
@@ -115,6 +121,8 @@ class CSVClient:
             "api_calls_made": self.requests_made,
             "rate_limit_reached": False,
             "data_source": f"csv:{self._path}",
+            "benchmark": "synthetic-equal-weight" if self.synthetic_benchmark
+            else f"real-{BENCHMARK_SYMBOL}",
         }
 
 
