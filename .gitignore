@@ -18,3 +18,7 @@ backtests/*.log
 
 # Grid-search history cache (large binary)
 backtests/*.pkl
+
+# Large local price data (offline --price-csv source; not committed)
+SP500_Historical_Data.csv
+*_Historical_Data.csv

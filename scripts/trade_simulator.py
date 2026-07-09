@@ -81,6 +81,11 @@ def parse_arguments() -> argparse.Namespace:
         default=DEFAULT_BREADTH_CSV,
         help="Breadth series CSV used by --min-breadth (default: bundled snapshot)",
     )
+    parser.add_argument(
+        "--price-csv",
+        help="Read OHLCV from a local CSV via CSVClient instead of yfinance "
+        "(offline, no rate limits). Use the same CSV as the backtest.",
+    )
     parser.add_argument("--output-dir", default="backtests/", help="Report directory")
     parser.add_argument(
         "--sleep-secs", type=float, default=0.3, help="Pause between fetches"
@@ -322,7 +327,12 @@ def run(args: argparse.Namespace) -> None:
     scan_days = (payload.get("metadata") or {}).get("scan_days", 2520)
     fetch_days = scan_days + 500
 
-    client = YFClient()
+    if args.price_csv:
+        from csv_client import CSVClient  # noqa: PLC0415 — optional offline path
+
+        client = CSVClient(args.price_csv)
+    else:
+        client = YFClient()
     print("Fetching SPY history...", end=" ", flush=True)
     spy_chrono, spy_idx = _to_chrono(
         client.get_historical_prices("SPY", days=fetch_days)["historical"]

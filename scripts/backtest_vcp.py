@@ -126,6 +126,13 @@ def parse_arguments() -> argparse.Namespace:
         "a clean re-test (see scripts/gate_experiment.py).",
     )
     parser.add_argument(
+        "--price-csv",
+        help="Read OHLCV from a local CSV (Ticker,Date,Open,High,Low,Close,"
+        "Adj Close,Volume) via CSVClient instead of yfinance. Offline, no rate "
+        "limits; universe defaults to the CSV's tickers. Note: a constituents-"
+        "only file is survivorship-biased.",
+    )
+    parser.add_argument(
         "--output-dir", default="backtests/", help="Output directory (default: backtests/)"
     )
     parser.add_argument(
@@ -193,7 +200,14 @@ def validate_symbols(symbols: list[str]) -> list[str]:
 
 
 def run_backtest(args: argparse.Namespace) -> None:
-    client = YFClient()
+    if args.price_csv:
+        from csv_client import CSVClient  # noqa: PLC0415 — optional offline path
+
+        print(f"Loading price CSV: {args.price_csv} ...", end=" ", flush=True)
+        client = CSVClient(args.price_csv)
+        print(f"OK ({len(client.get_constituents())} tickers)")
+    else:
+        client = YFClient()
     symbols, universe_desc = resolve_universe(args, client)
     symbols = validate_symbols(symbols)
     if not symbols:
