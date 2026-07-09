@@ -9,12 +9,13 @@ venv/
 # Generated reports (timestamped output)
 reports/*.json
 reports/*.md
-backtests/*.json
-backtests/*.md
+backtests/**/*.json
+backtests/**/*.md
+backtests/**/*.csv
 
 # OS
 .DS_Store
-backtests/*.log
+backtests/**/*.log
 
 # Grid-search history cache (large binary)
 backtests/*.pkl
