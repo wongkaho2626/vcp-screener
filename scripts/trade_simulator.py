@@ -134,39 +134,80 @@ def plan_trade(detection: dict, max_extension_pct: float, max_risk_pct: float) -
     }
 
 
+def _true_range(bar: dict, prev_close: float) -> float:
+    """True range of one bar; falls back to |Δclose| when high/low missing."""
+    high = bar.get("high") or bar["close"]
+    low = bar.get("low") or bar["close"]
+    return max(high - low, abs(high - prev_close), abs(low - prev_close))
+
+
+def _seed_atr(chrono_bars: list[dict], start_idx: int, atr_period: int) -> float | None:
+    """Mean true range over the ``atr_period`` bars ending at entry.
+
+    Uses only bars up to ``start_idx`` (no lookahead). Returns None when
+    there is no pre-entry bar to compute a true range from.
+    """
+    first = max(1, start_idx - atr_period + 1)
+    trs = [
+        _true_range(chrono_bars[k], chrono_bars[k - 1]["close"])
+        for k in range(first, start_idx + 1)
+    ]
+    return statistics.fmean(trs) if trs else None
+
+
 def simulate_exit(
     chrono_bars: list[dict], start_idx: int, stop_price: float, max_hold_bars: int,
     trail_pct: float | None = None,
+    atr_trail_mult: float | None = None,
+    atr_period: int = 14,
+    profit_target_pct: float | None = None,
 ) -> dict | None:
     """Walk forward from ``start_idx`` and find the exit. Pure function.
 
     ``chrono_bars`` is oldest-first. Returns exit dict or None when there is
     not a single forward bar.
 
-    Exits, whichever triggers first:
+    Exits, whichever triggers first (checked in this order per bar):
       - hard stop  : close < ``stop_price``
+      - target     : if ``profit_target_pct`` set, close >= entry *
+                     (1 + pct/100) — profit-taking into strength
       - trailing   : if ``trail_pct`` set, close < (high-water since entry) *
                      (1 - trail_pct/100) — locks in gains, lets winners run
+      - atr_trail  : if ``atr_trail_mult`` set, close < high-water −
+                     mult × ATR(``atr_period``, Wilder) — chandelier-style;
+                     inert when there is no pre-entry bar to seed ATR
       - timeout    : ``max_hold_bars`` reached (else last available bar = "open")
     """
     end = min(start_idx + 1 + max_hold_bars, len(chrono_bars))
-    high_water = chrono_bars[start_idx]["close"]
+    entry_close = chrono_bars[start_idx]["close"]
+    high_water = entry_close
+    target = (
+        entry_close * (1 + profit_target_pct / 100)
+        if profit_target_pct is not None
+        else None
+    )
+    atr = _seed_atr(chrono_bars, start_idx, atr_period) if atr_trail_mult else None
     for j in range(start_idx + 1, end):
         close = chrono_bars[j]["close"]
         high_water = max(high_water, close)
+        if atr is not None:
+            tr = _true_range(chrono_bars[j], chrono_bars[j - 1]["close"])
+            atr = (atr * (atr_period - 1) + tr) / atr_period
+        reason = None
         if close < stop_price:
+            reason = "stop"
+        elif target is not None and close >= target:
+            reason = "target"
+        elif trail_pct is not None and close < high_water * (1 - trail_pct / 100):
+            reason = "trailing"
+        elif atr is not None and close < high_water - atr_trail_mult * atr:
+            reason = "atr_trail"
+        if reason:
             return {
                 "exit_date": chrono_bars[j]["date"],
                 "exit_price": close,
                 "hold_bars": j - start_idx,
-                "exit_reason": "stop",
-            }
-        if trail_pct is not None and close < high_water * (1 - trail_pct / 100):
-            return {
-                "exit_date": chrono_bars[j]["date"],
-                "exit_price": close,
-                "hold_bars": j - start_idx,
-                "exit_reason": "trailing",
+                "exit_reason": reason,
             }
     j = min(start_idx + max_hold_bars, len(chrono_bars) - 1)
     if j <= start_idx:
@@ -238,7 +279,7 @@ def compute_trade_stats(trades: list[dict], skips: dict[str, int]) -> dict:
         "avg_hold_bars": _mean([t["hold_bars"] for t in trades]),
         "exit_reasons": {
             r: sum(1 for t in trades if t["exit_reason"] == r)
-            for r in ("stop", "timeout", "open")
+            for r in ("stop", "target", "trailing", "atr_trail", "timeout", "open")
         },
     }
 

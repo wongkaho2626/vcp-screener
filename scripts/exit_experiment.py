@@ -29,13 +29,21 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from trade_simulator import _to_chrono, compute_trade_stats, simulate_exit  # noqa: E402
 from yf_client import YFClient  # noqa: E402
 
-# (label, trail_pct)  — None = baseline fixed-timeout exit
+# (label, simulate_exit kwargs) — {} = baseline fixed-timeout exit
 CONFIGS = [
-    ("timeout (baseline)", None),
-    ("trail 10%", 10.0),
-    ("trail 15%", 15.0),
-    ("trail 20%", 20.0),
-    ("trail 25%", 25.0),
+    ("timeout (baseline)", {}),
+    ("trail 25%", {"trail_pct": 25.0}),
+    ("trail 40%", {"trail_pct": 40.0}),
+    ("trail 45%", {"trail_pct": 45.0}),
+    ("ATR trail x2", {"atr_trail_mult": 2.0}),
+    ("ATR trail x3", {"atr_trail_mult": 3.0}),
+    ("ATR trail x4", {"atr_trail_mult": 4.0}),
+    ("ATR trail x5", {"atr_trail_mult": 5.0}),
+    ("PT 15%", {"profit_target_pct": 15.0}),
+    ("PT 20%", {"profit_target_pct": 20.0}),
+    ("PT 25%", {"profit_target_pct": 25.0}),
+    ("PT 20% + ATR x3", {"profit_target_pct": 20.0, "atr_trail_mult": 3.0}),
+    ("PT 20% + trail 40%", {"profit_target_pct": 20.0, "trail_pct": 40.0}),
 ]
 
 
@@ -49,7 +57,14 @@ def run(args) -> None:
     max_hold = (payload.get("metadata") or {}).get("max_hold_bars", 60)
     fetch_days = 2520 + 500
 
-    client = YFClient()
+    if args.price_csv:
+        from csv_client import CSVClient  # noqa: PLC0415 — optional offline path
+
+        client = CSVClient(args.price_csv)
+        sleep_secs = 0.0
+    else:
+        client = YFClient()
+        sleep_secs = args.sleep_secs
     print("Fetching SPY...", end=" ", flush=True)
     spy_chrono, spy_idx = _to_chrono(client.get_historical_prices("SPY", days=fetch_days)["historical"])
     print(f"OK ({len(spy_chrono)} bars)")
@@ -66,8 +81,8 @@ def run(args) -> None:
             bars[sym] = ([], {})
         if i % 6 == 0:
             print()
-        if args.sleep_secs > 0 and i < len(symbols):
-            time.sleep(args.sleep_secs)
+        if sleep_secs > 0 and i < len(symbols):
+            time.sleep(sleep_secs)
     print()
 
     def spy_ret(entry_date, exit_date):
@@ -76,14 +91,14 @@ def run(args) -> None:
             if si is not None and sj is not None and sj > si else None
 
     results = []
-    for label, trail in CONFIGS:
+    for label, exit_kwargs in CONFIGS:
         sim_trades = []
         for t in trades:
             chrono, idx_map = bars.get(t["symbol"], ([], {}))
             start = idx_map.get(t["entry_date"])
             if start is None:
                 continue
-            ex = simulate_exit(chrono, start, t["stop_price"], max_hold, trail_pct=trail)
+            ex = simulate_exit(chrono, start, t["stop_price"], max_hold, **exit_kwargs)
             if ex is None:
                 continue
             ret = (ex["exit_price"] / t["entry_price"] - 1) * 100
@@ -141,6 +156,11 @@ def main() -> None:
     ap.add_argument("trades_json")
     ap.add_argument("--output-dir", default="backtests/")
     ap.add_argument("--sleep-secs", type=float, default=0.25)
+    ap.add_argument(
+        "--price-csv",
+        help="Read OHLCV from a local CSV via CSVClient instead of yfinance "
+        "(offline). Use the same CSV as the backtest.",
+    )
     run(ap.parse_args())
 
 

@@ -92,6 +92,64 @@ class TestSimulateExit:
         assert simulate_exit(bars, 0, stop_price=92.0, max_hold_bars=60) is None
 
 
+class TestProfitTargetExit:
+    def test_target_exit_on_first_close_at_or_above_target(self):
+        # Entry 100, target +10% → first close >= 110 exits as "target".
+        bars = make_bars([100, 104, 111, 120])
+        result = simulate_exit(
+            bars, 0, stop_price=92.0, max_hold_bars=60, profit_target_pct=10.0
+        )
+        assert result["exit_reason"] == "target"
+        assert result["exit_price"] == 111
+        assert result["hold_bars"] == 2
+
+    def test_stop_still_wins_when_hit_first(self):
+        bars = make_bars([100, 91, 111])
+        result = simulate_exit(
+            bars, 0, stop_price=92.0, max_hold_bars=60, profit_target_pct=10.0
+        )
+        assert result["exit_reason"] == "stop"
+
+    def test_timeout_when_target_never_reached(self):
+        bars = make_bars([100] + [105] * 10)
+        result = simulate_exit(
+            bars, 0, stop_price=92.0, max_hold_bars=5, profit_target_pct=10.0
+        )
+        assert result["exit_reason"] == "timeout"
+
+
+class TestAtrTrailExit:
+    def test_atr_trail_exit_after_runup_reversal(self):
+        # Close-only bars: true range falls back to |Δclose|.
+        # 14 flat pre-entry bars (TR=1 each) seed ATR≈1; entry at 100,
+        # run to 110, then drop to 106 < 110 - 2*ATR → "atr_trail".
+        pre = [100 + (i % 2) for i in range(15)]  # alternating 100/101, TR=1
+        closes = pre + [100, 105, 110, 106]
+        bars = make_bars(closes)
+        result = simulate_exit(
+            bars, 15, stop_price=92.0, max_hold_bars=60, atr_trail_mult=2.0
+        )
+        assert result["exit_reason"] == "atr_trail"
+        assert result["exit_price"] == 106
+
+    def test_wide_atr_trail_does_not_fire_on_small_pullback(self):
+        pre = [100 + (i % 2) for i in range(15)]
+        closes = pre + [100, 105, 110, 108, 109]
+        bars = make_bars(closes)
+        result = simulate_exit(
+            bars, 15, stop_price=92.0, max_hold_bars=3, atr_trail_mult=5.0
+        )
+        assert result["exit_reason"] == "timeout"
+
+    def test_no_pre_entry_history_disables_atr_trail(self):
+        # start_idx 0 → no true-range history → ATR trail inert, timeout wins.
+        bars = make_bars([100, 110, 101, 102, 103, 104])
+        result = simulate_exit(
+            bars, 0, stop_price=92.0, max_hold_bars=4, atr_trail_mult=1.0
+        )
+        assert result["exit_reason"] == "timeout"
+
+
 class TestComputeTradeStats:
     def test_excess_is_primary(self):
         trades = [
