@@ -25,6 +25,7 @@ Output (timestamped, in --output-dir):
 from __future__ import annotations
 
 import argparse
+import csv
 import os
 import sys
 import time
@@ -38,6 +39,90 @@ from historical_scanner import sanitize_ticker, scan_history  # noqa: E402
 from yf_client import YFClient  # noqa: E402
 
 TRADING_DAYS_PER_YEAR = 252
+
+
+class CSVHistoricalClient:
+    """Historical-data client backed by a local long-format OHLCV CSV."""
+
+    REQUIRED_COLUMNS = {"Ticker", "Date", "Open", "High", "Low", "Close", "Volume"}
+
+    def __init__(self, path: str):
+        self.path = path
+        self.requests_made = 0
+        self._history_by_symbol = self._load_history(path)
+
+    def _load_history(self, path: str) -> dict[str, list[dict]]:
+        if not os.path.isfile(path):
+            print(f"ERROR: CSV data file not found: {path}", file=sys.stderr)
+            sys.exit(1)
+
+        history_by_symbol: dict[str, list[dict]] = {}
+        try:
+            with open(path, newline="") as f:
+                reader = csv.DictReader(f)
+                columns = set(reader.fieldnames or [])
+                missing = self.REQUIRED_COLUMNS - columns
+                if missing:
+                    print(
+                        f"ERROR: CSV is missing required columns: {', '.join(sorted(missing))}",
+                        file=sys.stderr,
+                    )
+                    sys.exit(1)
+
+                for row in reader:
+                    symbol = sanitize_ticker(row.get("Ticker", ""))
+                    close = _csv_float(row.get("Close"))
+                    adj_close = _csv_float(row.get("Adj Close")) or close
+                    bar = {
+                        "date": row.get("Date", ""),
+                        "open": _csv_float(row.get("Open")),
+                        "high": _csv_float(row.get("High")),
+                        "low": _csv_float(row.get("Low")),
+                        "close": close,
+                        "adjClose": adj_close,
+                        "volume": int(_csv_float(row.get("Volume"))),
+                    }
+                    history_by_symbol.setdefault(symbol, []).append(bar)
+        except (OSError, csv.Error, ValueError) as e:
+            print(f"ERROR: could not read CSV data file {path}: {e}", file=sys.stderr)
+            sys.exit(1)
+
+        for bars in history_by_symbol.values():
+            bars.sort(key=lambda b: b["date"], reverse=True)
+        return history_by_symbol
+
+    def list_symbols(self) -> list[str]:
+        return sorted(self._history_by_symbol)
+
+    def get_constituents(self, index: str = "sp500") -> list[dict]:
+        return [
+            {"symbol": sym, "name": sym, "sector": "Unknown", "subSector": "Unknown"}
+            for sym in self.list_symbols()
+            if sym != "SPY"
+        ]
+
+    def get_historical_prices(self, symbol: str, days: int = 365) -> dict | None:
+        sym = sanitize_ticker(symbol)
+        self.requests_made += 1
+        bars = self._history_by_symbol.get(sym)
+        if not bars:
+            return None
+        return {"symbol": sym, "historical": bars[:days]}
+
+    def get_api_stats(self) -> dict:
+        return {
+            "data_source": "csv",
+            "csv_path": self.path,
+            "requests_made": self.requests_made,
+            "symbols_loaded": len(self._history_by_symbol),
+        }
+
+
+def _csv_float(value) -> float:
+    try:
+        return float(value)
+    except (TypeError, ValueError):
+        return 0.0
 
 
 def parse_arguments() -> argparse.Namespace:
@@ -136,10 +221,17 @@ def parse_arguments() -> argparse.Namespace:
         "--output-dir", default="backtests/", help="Output directory (default: backtests/)"
     )
     parser.add_argument(
+        "--csv-data",
+        help=(
+            "Local long-format OHLCV CSV with Ticker,Date,Open,High,Low,Close,"
+            "Adj Close,Volume columns. Uses SPY from the CSV as benchmark."
+        ),
+    )
+    parser.add_argument(
         "--sleep-secs",
         type=float,
         default=0.5,
-        help="Pause between ticker fetches to be polite to Yahoo (default: 0.5)",
+        help="Pause between ticker fetches to be polite to Yahoo (default: 0.5; ignored for CSV)",
     )
 
     args = parser.parse_args()
@@ -200,7 +292,11 @@ def validate_symbols(symbols: list[str]) -> list[str]:
 
 
 def run_backtest(args: argparse.Namespace) -> None:
-    if args.price_csv:
+    if args.csv_data:
+        print(f"Loading historical CSV: {args.csv_data} ...", end=" ", flush=True)
+        client = CSVHistoricalClient(args.csv_data)
+        print(f"OK ({len(client.list_symbols())} symbols)")
+    elif args.price_csv:
         from csv_client import CSVClient  # noqa: PLC0415 — optional offline path
 
         print(f"Loading price CSV: {args.price_csv} ...", end=" ", flush=True)
@@ -222,6 +318,8 @@ def run_backtest(args: argparse.Namespace) -> None:
     print(f"VCP Historical Backtest — {len(symbols)} tickers, ~{args.years:g} years")
     print("=" * 70)
     print(f"Universe: {universe_desc}")
+    if args.csv_data:
+        print(f"Data source: local CSV ({args.csv_data})")
     print(f"Scan window: {scan_days} trading days | stride {args.stride_days}d | "
           f"outcome {args.outcome_days}d")
     print()
@@ -273,7 +371,7 @@ def run_backtest(args: argparse.Namespace) -> None:
         )
         per_ticker[sym] = detections
         print(f"{len(detections)} detections ({len(historical)} bars)")
-        if args.sleep_secs > 0 and i < len(symbols):
+        if not args.csv_data and args.sleep_secs > 0 and i < len(symbols):
             time.sleep(args.sleep_secs)
 
     if not per_ticker:
