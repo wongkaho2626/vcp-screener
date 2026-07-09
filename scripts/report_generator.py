@@ -93,8 +93,10 @@ def generate_markdown_report(
     if results:
         lines.append("## Quick Scan")
         lines.append("")
-        lines.append("| # | Symbol | Quality | State | Type | Price | Pivot Dist |")
-        lines.append("|---|--------|---------|-------|------|-------|------------|")
+        lines.append(
+            "| # | Symbol | Quality | State | Type | Price | Pivot Dist | Edge | Weight |"
+        )
+        lines.append("|---|--------|---------|-------|------|-------|------------|------|--------|")
         for i, stock in enumerate(results, 1):
             sym = stock.get("symbol", "?")
             q_rating = stock.get("quality_rating", stock.get("rating", "N/A"))
@@ -105,11 +107,22 @@ def generate_markdown_report(
             dist = stock.get("distance_from_pivot_pct")
             dist_str = f"{dist:+.1f}%" if dist is not None else "—"
             cap_marker = "★" if stock.get("state_cap_applied") else ""
+            edge = stock.get("edge_rank")
+            edge_str = f"{edge:.0f}" if edge is not None else "—"
+            wt = stock.get("suggested_weight_pct")
+            wt_str = f"{wt:.1f}%" if wt else "—"
             lines.append(
-                f"| {i} | {sym} | {quality}{cap_marker} | {state} | {ptype} | ${price:.2f} | {dist_str} |"
+                f"| {i} | {sym} | {quality}{cap_marker} | {state} | {ptype} | ${price:.2f} | "
+                f"{dist_str} | {edge_str} | {wt_str} |"
             )
         lines.append("")
         lines.append("★ = State Cap applied (rating downgraded from raw score)")
+        lines.append("")
+        lines.append(
+            "Edge = Edge Rank v2 (cross-sectional 12m-RS + inverse-extension percentile); "
+            "Weight = suggested sizing (skip Edge<30, linear, capped — validated as a "
+            "position-size tilt, not an entry signal)."
+        )
         lines.append("")
 
     lines.append("---")

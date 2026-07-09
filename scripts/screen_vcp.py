@@ -937,6 +937,13 @@ def main():
         print(f"  Strict mode filter: {total_before} -> {len(results)} candidates")
         print()
 
+    # Edge Rank v2 overlay: cross-sectional rank + deployable sizing weights.
+    # (Validated as a position-size tilt on the PIT backtest — see
+    # scripts/edge_rank.py; it does not change which candidates appear.)
+    from edge_rank import annotate_candidates  # noqa: PLC0415 — deferred, keeps CLI deps lazy
+
+    results = annotate_candidates(results)
+
     # ========================================================================
     # Generate Reports
     # ========================================================================

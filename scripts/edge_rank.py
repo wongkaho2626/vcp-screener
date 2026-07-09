@@ -139,6 +139,33 @@ def compute_edge_rank(
     return scores
 
 
+def annotate_candidates(results: list[dict], w_rs: float = DEFAULT_W_RS,
+                        w_ext: float = DEFAULT_W_EXT) -> list[dict]:
+    """Attach ``edge_rank`` and ``suggested_weight_pct`` to live screen results.
+
+    Edge Rank is ranked cross-sectionally *within the given candidate list*
+    (same-day data only, causal); weights follow the deployable sizing rule
+    (skip Edge<{min}, linear, capped — see ``suggested_weights``). Candidates
+    missing either signal get ``edge_rank=None`` and weight 0. Returns new
+    dicts; does not mutate inputs.
+    """
+    feats = [(rs_252d(s), sma50_dist(s)) for s in results]
+    scored_idx = [i for i, (rs, ext) in enumerate(feats) if rs is not None and ext is not None]
+    if len(scored_idx) < 2:
+        return [{**s, "edge_rank": None, "suggested_weight_pct": 0.0} for s in results]
+
+    rs_pct = _percentiles([(i, feats[i][0]) for i in scored_idx], ascending=True)
+    ext_pct = _percentiles([(i, feats[i][1]) for i in scored_idx], ascending=False)
+    total = w_rs + w_ext
+    edges = {i: round((w_rs * rs_pct[i] + w_ext * ext_pct[i]) / total, 1) for i in scored_idx}
+    weights = suggested_weights([edges[i] for i in scored_idx])
+    weight_by_idx = dict(zip(scored_idx, weights))
+    return [
+        {**s, "edge_rank": edges.get(i), "suggested_weight_pct": weight_by_idx.get(i, 0.0)}
+        for i, s in enumerate(results)
+    ]
+
+
 def spearman(pairs: list[tuple[float, float]]) -> float | None:
     """Spearman rank IC. Pure function."""
     if len(pairs) < 10:
@@ -229,15 +256,66 @@ def decile_table(rows: list[dict], field: str, buckets: int = 5) -> list[dict]:
 # Position-size tilt: weight each trade by edge_rank ** power. power 0 = equal.
 TILT_SCHEMES = (("equal", 0), ("linear", 1), ("convex", 2), ("cubic", 3))
 
+# Deployable sizing rule (validated on the PIT dataset): skip Edge<MIN, weight
+# linearly by Edge, cap any weight at CAP_MULT x the mean Edge (~55 in-sample).
+SIZING_MIN_EDGE = 30.0
+SIZING_CAP_MULT = 1.5
+_SIZING_CAP_ANCHOR = 55.0  # approx. mean edge of scored candidates
 
-def weighted_mean_excess(rows: list[dict], power: float) -> float | None:
-    """Capital-weighted mean excess where weight = edge_rank ** power. Pure."""
+
+def weighted_mean_fn(rows: list[dict], wfun) -> float | None:
+    """Capital-weighted mean excess for an arbitrary weight function. Pure."""
     num = den = 0.0
     for r in rows:
-        w = max(r["edge_rank"], 1e-9) ** power
+        w = wfun(r)
         num += w * r["excess"]
         den += w
     return num / den if den > 0 else None
+
+
+def weighted_mean_excess(rows: list[dict], power: float) -> float | None:
+    """Capital-weighted mean excess where weight = edge_rank ** power. Pure."""
+    return weighted_mean_fn(rows, lambda r: max(r["edge_rank"], 1e-9) ** power)
+
+
+def _w_capped_linear(cap_mult: float):
+    return lambda r: min(max(r["edge_rank"], 1e-9), cap_mult * _SIZING_CAP_ANCHOR)
+
+
+def _w_skip_low(min_edge: float):
+    return lambda r: max(r["edge_rank"], 1e-9) if r["edge_rank"] >= min_edge else 1e-9
+
+
+def _w_trend_boost(boost: float):
+    return lambda r: max(r["edge_rank"], 1e-9) * (boost if r.get("trend_passed") else 1.0)
+
+
+# Practical portfolio constraints — a real book can't run uncapped weights.
+PRACTICAL_SCHEMES = (
+    ("linear, cap 1.5x mean", _w_capped_linear(1.5)),
+    ("linear, cap 2x mean", _w_capped_linear(2.0)),
+    (f"linear + skip Edge<{SIZING_MIN_EDGE:g}", _w_skip_low(SIZING_MIN_EDGE)),
+    ("linear + trend-pass boost 1.5x", _w_trend_boost(1.5)),
+)
+
+
+def suggested_weights(edges: list[float], min_edge: float = SIZING_MIN_EDGE,
+                      cap_mult: float = SIZING_CAP_MULT) -> list[float]:
+    """Normalised position weights (%) for a candidate list's Edge Ranks.
+
+    The deployable rule: weight 0 below ``min_edge``; otherwise linear in Edge,
+    capped at ``cap_mult`` x the mean weight of included names; normalised to
+    sum to 100. Pure function.
+    """
+    raw = [e if e >= min_edge else 0.0 for e in edges]
+    included = [w for w in raw if w > 0]
+    if included:
+        cap = cap_mult * (sum(included) / len(included))
+        raw = [min(w, cap) for w in raw]
+    total = sum(raw)
+    if total <= 0:
+        return [0.0 for _ in raw]
+    return [round(w / total * 100, 2) for w in raw]
 
 
 def _bootstrap(rows: list[dict], stat_fn, n_iter: int = 10000, seed: int = 42):
@@ -309,6 +387,23 @@ def tilt_backtest(rows: list[dict], split_year: int, folds: int) -> dict:
             "gain_ci": gain_ci,
         })
 
+    practical = []
+    for name, wfun in PRACTICAL_SCHEMES:
+        wm = weighted_mean_fn(rows, wfun)
+        gain_ci = _bootstrap(
+            rows,
+            lambda s, f=wfun: (weighted_mean_fn(s, f) or 0) - (weighted_mean_fn(s, lambda r: 1.0) or 0),
+        )
+        ws = [wfun(r) for r in rows]
+        sw_ = sum(ws)
+        practical.append({
+            "scheme": name,
+            "w_mean_excess": round(wm, 2) if wm is not None else None,
+            "gain_vs_equal": round(wm - equal_mean, 2) if wm is not None else None,
+            "gain_ci": gain_ci,
+            "effective_n": round((sw_ ** 2) / sum(w * w for w in ws)) if sw_ > 0 else 0,
+        })
+
     weights = [max(r["edge_rank"], 1e-9) for r in rows]
     sw = sum(weights)
     eff_n = round((sw ** 2) / sum(w * w for w in weights)) if sw > 0 else 0
@@ -317,6 +412,7 @@ def tilt_backtest(rows: list[dict], split_year: int, folds: int) -> dict:
         "equal_weight_mean": round(equal_mean, 2) if equal_mean is not None else None,
         "n": len(rows),
         "schemes": schemes,
+        "practical_schemes": practical,
         "linear_stability": _tilt_stability(rows, 1, split_year, folds),
         "effective_n_linear": eff_n,
         "top_quintile_capital_pct": round(top_cap / sw * 100, 0) if sw > 0 else None,
@@ -341,6 +437,7 @@ def build_rows(detections: dict, trades: list[dict], scores: dict) -> list[dict]
             "excess": t["excess_vs_spy_pct"],
             "entry_date": t["entry_date"],
             "composite": t.get("composite_score"),
+            "trend_passed": bool((det.get("trend_template") or {}).get("passed")),
             **sc,
         })
     return rows
@@ -501,7 +598,20 @@ def _render_tilt(tilt: dict) -> list[str]:
     lines += ["", f"`*` = gain CI excludes 0 (significant). Linear-tilt effective "
               f"positions = {tilt['effective_n_linear']} of {tilt['n']}; "
               f"top-quintile (Edge≥80) holds {tilt['top_quintile_capital_pct']}% of "
-              "capital.", "",
+              "capital."]
+    if tilt.get("practical_schemes"):
+        lines += ["", "### Practical portfolio constraints", "",
+                  "Real books cap concentration; the tilt must survive that to be "
+                  "deployable.", "",
+                  "| Sizing rule | Weighted excess | Gain vs equal | Gain 95% CI | Eff. N |",
+                  "|---|---|---|---|---|"]
+        for s in tilt["practical_schemes"]:
+            sig = "*" if s["gain_ci"] and s["gain_ci"][0] > 0 else ""
+            lines.append(
+                f"| {s['scheme']} | {s['w_mean_excess']}% | {s['gain_vs_equal']}%{sig} | "
+                f"{_ci(s['gain_ci'])} | {s['effective_n']} |"
+            )
+    lines += ["",
               "### Linear tilt — stability (gain vs equal)", "",
               "| Segment | N | Equal | Tilt | Gain | Gain 95% CI |", "|---|---|---|---|---|---|"]
     for b in tilt["linear_stability"]:
