@@ -7,7 +7,50 @@ Identifies Stage 2 uptrend stocks forming tight bases with contracting
 volatility near breakout pivot points, and lets you study how those setups
 resolved historically (breakout / stop-hit / timeout) across a whole universe.
 
-Data source: Yahoo Finance via `yfinance` — **no API key required**.
+Data source: Yahoo Finance via `yfinance` — **no API key required** — or a
+local OHLCV CSV for fully offline runs (see [Offline mode](#offline-mode)).
+
+## Research findings (read this first)
+
+Roughly 1,500 simulated trades across S&P 500 and Russell 2000, 2016–2026,
+with fold splits, outlier trims, cost sweeps and cross-universe replication.
+The honest summary:
+
+**The pattern itself carries no market-relative alpha.** Mean excess vs SPY
+is statistically zero (or negative after costs) on every dataset — point-in-time
+S&P +0.04%/trade (t 0.05), offline-CSV S&P −0.53%, Russell 2000 −0.45%
+(−1.05%, t −2.11 at 30 bps costs). The headline raw-return significance is
+market beta, not stock selection. Rescue attempts that all failed: detection
+gates (trend/RS/score/volume), a 108-combo parameter grid, a hard
+trend-template prerequisite, switching to small caps, the M.E.T.A. multi-edge
+framework, and every exit family below. Treat the screener as a **candidate
+list generator, not a buy signal**.
+
+**Exits: the boring baseline wins.** Initial hard stop at
+max(final-contraction low, entry −8%) plus a 60-bar time exit was never
+robustly beaten: 8–45% trails, ATR×2–5 trails, profit targets (15–25%, 4R),
+MA10/20/50-break "sell into weakness" (significantly harmful on small caps),
+the strict 3-tier scale-out framework, laggard-culling and winner-riding all
+land at zero or worse ([`exit_experiment.py`](scripts/exit_experiment.py),
+[`exit_stress_experiments.py`](scripts/exit_stress_experiments.py)). Removing
+the time exit turns the ledger into a survivorship lottery.
+
+**Two execution-layer findings did survive validation** (both time folds,
+outlier trims, cross-universe direction):
+
+1. **MA20 pullback entry** — don't chase the breakout close; wait up to 15
+   bars for the first low-touches-MA20-and-close-holds bar. +1.36 pp paired
+   vs breakout entry on the same patterns (t 3.13, S&P; +2.18 pp, t 1.96 on
+   R2K). The parameter surface is a smooth gradient (deeper MAs stronger,
+   longer windows weaker), not a cliff
+   ([`pullback_experiment.py`](scripts/pullback_experiment.py),
+   [`pullback_sensitivity.py`](scripts/pullback_sensitivity.py)).
+2. **Edge Rank position sizing** — a validated RS+extension cross-sectional
+   score used as a size tilt (+1.01%/trade vs equal weight under practical
+   constraints on the PIT dataset; universe/benchmark-sensitive, so weaker
+   evidence than #1) ([`edge_rank.py`](scripts/edge_rank.py)).
+
+Both ship with every live screen — see the Quick Scan columns below.
 
 ## Install
 
@@ -39,6 +82,14 @@ Pipeline: **Pre-Filter** (price/volume/52w position) → **Trend Template**
 volume dry-up, pivot proximity, relative strength).
 
 Outputs timestamped `vcp_screener_*.json` and `vcp_screener_*.md` reports.
+
+Every candidate row carries the two validated execution overlays:
+
+| Quick Scan column | Meaning |
+|---|---|
+| **Edge** | Edge Rank v2 — cross-sectional 12m-RS + inverse-extension percentile within today's candidates |
+| **Weight** | Suggested position size (skip Edge<30, linear in Edge, capped at 1.5× mean) |
+| **Entry** | MA20 pullback-entry state: `await BO` → `wait PB n/15` → **`BUY ZONE`** (today is the touch-and-hold bar) → `PB done` / `missed` / `invalid` |
 
 ## 2. Historical scan (one ticker)
 
@@ -151,6 +202,44 @@ Both the screener and the backtest accept the same detection knobs:
 Backtest-specific: `--years` (default 10), `--stride-days` (as-of cursor step,
 default 5), `--outcome-days` (forward window, default 60), `--limit`
 (index-universe cap, default 50, `0` = all), `--sleep-secs` (fetch pacing).
+
+## Offline mode
+
+Backtest, trade-sim and every experiment can run without touching Yahoo by
+supplying a long-format OHLCV CSV (`Ticker,Date,Open,High,Low,Close,Adj
+Close,Volume`, ISO dates):
+
+```bash
+# Backtest from the local CSV (uses its SPY series as the benchmark)
+python3 scripts/backtest_vcp.py --csv-data SP500_Historical_Data.csv --limit 0 --years 10
+
+# Trade-sim / experiments take --price-csv
+python3 scripts/trade_simulator.py backtests/vcp_backtest_<ts>.json \
+  --price-csv SP500_Historical_Data.csv
+```
+
+Check `api_stats.data_source == "csv"` in the report metadata to confirm the
+run really was offline. CSV universes are current-member snapshots, i.e.
+survivorship-biased — results are an optimistic ceiling.
+
+## Experiments
+
+Each experiment is a standalone CLI over a `vcp_trades_*.json` (or
+`vcp_backtest_*.json`) report; all support `--price-csv` for offline runs and
+report excess-vs-SPY with t-stats and bootstrap CIs:
+
+| Script | Question it answers |
+|---|---|
+| [`gate_experiment.py`](scripts/gate_experiment.py) | Do trend/RS-rank/score/volume entry gates add OOS excess? *(No)* |
+| [`exit_experiment.py`](scripts/exit_experiment.py) | Do trailing/ATR/profit-target/MA-break exits beat stop+60d? *(No)* |
+| [`exit_stress_experiments.py`](scripts/exit_stress_experiments.py) | Stop-only, strict 3-tier scale-out, asymmetric cull/ride? *(No — see docstring)* |
+| [`meta_experiment.py`](scripts/meta_experiment.py) | Do M.E.T.A. multi-edge entry filters help? *(Regime luck, fails folds)* |
+| [`pullback_experiment.py`](scripts/pullback_experiment.py) | Breakout entry vs waiting for the pullback? *(MA20 touch wins, +1.36 pp paired)* |
+| [`pullback_sensitivity.py`](scripts/pullback_sensitivity.py) | Is the MA20 rule a cliff or a smooth surface? *(Smooth gradient; MA30 strongest)* |
+| [`edge_rank.py`](scripts/edge_rank.py) | Cross-sectional Edge Rank IC, tilt backtest, deployable sizing |
+| [`breadth_experiment.py`](scripts/breadth_experiment.py) | Does a market-breadth gate add alpha? *(Risk dial only)* |
+| [`grid_search.py`](scripts/grid_search.py) | Detection-parameter grid (108 combos; deflated Sharpe ≈ 0) |
+| [`build_trade_log_page.py`](scripts/build_trade_log_page.py) | Render trades JSONs into an interactive HTML ledger |
 
 ## Refreshing index constituents
 
