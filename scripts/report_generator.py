@@ -91,12 +91,29 @@ def generate_markdown_report(
 
     # Quick-scan summary table (all displayed candidates at a glance)
     if results:
+        def _pullback_entry_label(stock: dict) -> str:
+            """Compact Quick Scan label for the MA20 pullback-entry state.
+            Old-shape results (no pullback fields) render as em-dash."""
+            status = stock.get("pullback_entry_status")
+            since = stock.get("pullback_days_since_breakout")
+            ago = stock.get("pullback_days_ago")
+            return {
+                "awaiting_breakout": "await BO",
+                "awaiting_pullback": f"wait PB {since}/15" if since is not None else "wait PB",
+                "buy_zone_today": "**BUY ZONE**",
+                "pullback_done": f"PB {ago}d ago" if ago is not None else "PB done",
+                "window_expired": "missed",
+                "invalidated": "invalid",
+            }.get(status, "—")
+
         lines.append("## Quick Scan")
         lines.append("")
         lines.append(
-            "| # | Symbol | Quality | State | Type | Price | Pivot Dist | Edge | Weight |"
+            "| # | Symbol | Quality | State | Type | Price | Pivot Dist | Edge | Weight | Entry |"
         )
-        lines.append("|---|--------|---------|-------|------|-------|------------|------|--------|")
+        lines.append(
+            "|---|--------|---------|-------|------|-------|------------|------|--------|-------|"
+        )
         for i, stock in enumerate(results, 1):
             sym = stock.get("symbol", "?")
             q_rating = stock.get("quality_rating", stock.get("rating", "N/A"))
@@ -111,9 +128,10 @@ def generate_markdown_report(
             edge_str = f"{edge:.0f}" if edge is not None else "—"
             wt = stock.get("suggested_weight_pct")
             wt_str = f"{wt:.1f}%" if wt else "—"
+            entry_str = _pullback_entry_label(stock)
             lines.append(
                 f"| {i} | {sym} | {quality}{cap_marker} | {state} | {ptype} | ${price:.2f} | "
-                f"{dist_str} | {edge_str} | {wt_str} |"
+                f"{dist_str} | {edge_str} | {wt_str} | {entry_str} |"
             )
         lines.append("")
         lines.append("★ = State Cap applied (rating downgraded from raw score)")
@@ -122,6 +140,12 @@ def generate_markdown_report(
             "Edge = Edge Rank v2 (cross-sectional 12m-RS + inverse-extension percentile); "
             "Weight = suggested sizing (skip Edge<30, linear, capped — validated as a "
             "position-size tilt, not an entry signal)."
+        )
+        lines.append("")
+        lines.append(
+            "Entry = MA20 pullback-entry state (don't chase the breakout close; wait up "
+            "to 15 bars for the first MA20 touch-and-hold — validated +1.36pp paired vs "
+            "breakout entry). BUY ZONE = today is the touch-and-hold bar."
         )
         lines.append("")
 

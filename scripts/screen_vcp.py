@@ -944,6 +944,18 @@ def main():
 
     results = annotate_candidates(results)
 
+    # MA20 pullback-entry overlay: don't chase the breakout close — wait up to
+    # 15 bars for the first MA20 touch-and-hold (+1.36pp paired vs breakout
+    # entry, t 3.13; replicates on Russell 2000 — see
+    # scripts/pullback_experiment.py). Served from the session price cache;
+    # does not change which candidates appear.
+    from pullback_experiment import annotate_pullback_entry  # noqa: PLC0415 — deferred
+
+    results = annotate_pullback_entry(
+        results,
+        lambda sym: (client.get_historical_prices(sym, days=120) or {}).get("historical"),
+    )
+
     # ========================================================================
     # Generate Reports
     # ========================================================================

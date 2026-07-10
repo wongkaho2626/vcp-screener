@@ -77,6 +77,86 @@ VARIANTS = [
     ("MA20 touch 15d", {"window": 15, "ma_period": 20}),
 ]
 
+# Live-overlay defaults: the validated variant (MA20 touch-and-hold, 15-bar
+# window) and how far back to look for the breakout cross.
+LIVE_WINDOW = 15
+LIVE_MA_PERIOD = 20
+LIVE_SCAN_BARS = 40
+
+
+def pullback_entry_status(
+    chrono: list[dict], pivot: float | None,
+    window: int = LIVE_WINDOW, ma_period: int = LIVE_MA_PERIOD,
+    max_risk_pct: float = 8.0,
+) -> dict:
+    """Live state of the MA-touch pullback entry rule for one candidate. Pure.
+
+    ``chrono`` is oldest-first. Statuses:
+      awaiting_breakout : price still below the pivot — normal candidate
+      awaiting_pullback : broke out, no MA touch-and-hold yet, window open
+      buy_zone_today    : TODAY's bar touched the MA and held — actionable
+      pullback_done     : the touch-and-hold happened ``days_ago`` bars ago
+      window_expired    : breakout ran > ``window`` bars without a pullback — skip
+      invalidated       : closed below pivot − max_risk while waiting — dead
+      extended          : above pivot but no cross within the scan range
+      no_data           : missing pivot or insufficient history
+    """
+    if not pivot or len(chrono) < 2:
+        return {"status": "no_data"}
+    last = len(chrono) - 1
+    bo_idx = None
+    for j in range(last, max(0, last - LIVE_SCAN_BARS), -1):
+        if chrono[j]["close"] >= pivot and chrono[j - 1]["close"] < pivot:
+            bo_idx = j
+            break
+    if bo_idx is None:
+        if chrono[last]["close"] < pivot:
+            return {"status": "awaiting_breakout"}
+        return {"status": "extended"}
+
+    stop = pivot * (1 - max_risk_pct / 100)
+    for j in range(bo_idx + 1, min(bo_idx + window, last) + 1):
+        close = chrono[j]["close"]
+        if close < stop:
+            return {"status": "invalidated"}
+        if j + 1 < ma_period:
+            continue
+        ma = st.fmean(b["close"] for b in chrono[j - ma_period + 1 : j + 1])
+        low = chrono[j].get("low", close)
+        if low <= ma and close >= ma:
+            if j == last:
+                return {"status": "buy_zone_today", "days_since_breakout": last - bo_idx}
+            return {"status": "pullback_done", "days_ago": last - j,
+                    "days_since_breakout": last - bo_idx}
+    days_since = last - bo_idx
+    if days_since > window:
+        return {"status": "window_expired", "days_since_breakout": days_since}
+    return {"status": "awaiting_pullback", "days_since_breakout": days_since}
+
+
+def annotate_pullback_entry(results: list[dict], get_history,
+                            ma_period: int = LIVE_MA_PERIOD) -> list[dict]:
+    """Attach ``pullback_entry_status`` (+ day counters) to live screen results.
+
+    ``get_history(symbol)`` returns most-recent-first bars (YFClient shape);
+    the session cache makes this free after the screen itself. Returns new
+    dicts; does not mutate inputs. Validated rule: MA20 touch-and-hold within
+    15 bars of the breakout beats chasing the breakout close (+1.36pp paired,
+    t 3.13 S&P; +2.18pp R2K) — see pullback-entry experiment docstring above.
+    """
+    annotated = []
+    for s in results:
+        pivot = (s.get("pivot_proximity") or {}).get("pivot_price")
+        bars = get_history(s.get("symbol")) or []
+        status = pullback_entry_status(list(reversed(bars)), pivot, ma_period=ma_period)
+        annotated.append({
+            **s,
+            "pullback_entry_status": status["status"],
+            "pullback_days_since_breakout": status.get("days_since_breakout"),
+            "pullback_days_ago": status.get("days_ago"),
+        })
+    return annotated
+
 
 def summarize(exc: list[float]) -> dict | None:
     exc = [e for e in exc if e is not None]
