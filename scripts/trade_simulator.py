@@ -161,6 +161,7 @@ def simulate_exit(
     atr_trail_mult: float | None = None,
     atr_period: int = 14,
     profit_target_pct: float | None = None,
+    ma_exit_period: int | None = None,
 ) -> dict | None:
     """Walk forward from ``start_idx`` and find the exit. Pure function.
 
@@ -176,6 +177,9 @@ def simulate_exit(
       - atr_trail  : if ``atr_trail_mult`` set, close < high-water −
                      mult × ATR(``atr_period``, Wilder) — chandelier-style;
                      inert when there is no pre-entry bar to seed ATR
+      - ma_break   : if ``ma_exit_period`` set, close < SMA(period) of closes
+                     up to and including the current bar — sell into weakness;
+                     inert while there is not enough history for the SMA
       - timeout    : ``max_hold_bars`` reached (else last available bar = "open")
     """
     end = min(start_idx + 1 + max_hold_bars, len(chrono_bars))
@@ -202,6 +206,12 @@ def simulate_exit(
             reason = "trailing"
         elif atr is not None and close < high_water - atr_trail_mult * atr:
             reason = "atr_trail"
+        elif ma_exit_period is not None and j + 1 >= ma_exit_period:
+            ma = statistics.fmean(
+                b["close"] for b in chrono_bars[j - ma_exit_period + 1 : j + 1]
+            )
+            if close < ma:
+                reason = "ma_break"
         if reason:
             return {
                 "exit_date": chrono_bars[j]["date"],
@@ -279,7 +289,7 @@ def compute_trade_stats(trades: list[dict], skips: dict[str, int]) -> dict:
         "avg_hold_bars": _mean([t["hold_bars"] for t in trades]),
         "exit_reasons": {
             r: sum(1 for t in trades if t["exit_reason"] == r)
-            for r in ("stop", "target", "trailing", "atr_trail", "timeout", "open")
+            for r in ("stop", "target", "trailing", "atr_trail", "ma_break", "timeout", "open")
         },
     }
 

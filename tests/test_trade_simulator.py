@@ -150,6 +150,26 @@ class TestAtrTrailExit:
         assert result["exit_reason"] == "timeout"
 
 
+class TestMaBreakExit:
+    def test_ma_break_exit_on_close_below_sma(self):
+        # SMA3 incl. current bar: j=6 sma(11,12,9)=10.67 > close 9 → "ma_break".
+        bars = make_bars([10, 10, 10, 10, 11, 12, 9, 8])
+        result = simulate_exit(bars, 3, stop_price=5.0, max_hold_bars=60, ma_exit_period=3)
+        assert result["exit_reason"] == "ma_break"
+        assert result["exit_price"] == 9
+        assert result["hold_bars"] == 3
+
+    def test_insufficient_history_leaves_ma_exit_inert(self):
+        bars = make_bars([10, 11, 12, 11, 10, 9])
+        result = simulate_exit(bars, 0, stop_price=5.0, max_hold_bars=4, ma_exit_period=200)
+        assert result["exit_reason"] == "timeout"
+
+    def test_hard_stop_beats_ma_break_on_same_bar(self):
+        bars = make_bars([10, 10, 10, 10, 11, 4])
+        result = simulate_exit(bars, 3, stop_price=5.0, max_hold_bars=60, ma_exit_period=3)
+        assert result["exit_reason"] == "stop"
+
+
 class TestComputeTradeStats:
     def test_excess_is_primary(self):
         trades = [
