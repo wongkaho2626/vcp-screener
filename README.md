@@ -162,6 +162,28 @@ detections made while the ticker was not an index member.
 Outputs `vcp_trades_*.json/.md` with t-stats and bootstrap confidence
 intervals for both raw and SPY-excess returns.
 
+### Frozen portfolio validation
+
+The pattern-level trade simulator does not model overlapping positions or a
+daily-marked account. The frozen v1 validation adds conservative next-session
+fills, MA20 pullback entries, causal Edge Rank sizing, cash/capacity/sector/ADV
+constraints, and two-sided costs:
+
+```bash
+python3 scripts/portfolio_backtest.py backtests/csv_full/vcp_backtest_<ts>.json \
+  --price-csv SP500_Historical_Data.csv --output-dir backtests/improved
+
+python3 scripts/portfolio_robustness.py \
+  backtests/improved/vcp_portfolio_<ts>_daily.csv \
+  --return-column exposure_matched_excess_return --trials 180 \
+  --iterations 5000 --block-size 10
+```
+
+The portfolio command emits JSON and a daily CSV containing raw, full-SPY,
+and exposure-matched excess returns. Use `--commission-bps` and
+`--slippage-bps` for cost stress tests. The rules and OOS contract are frozen
+in [`references/frozen_strategy_v1.md`](references/frozen_strategy_v1.md).
+
 **Optional S&P 500 breadth gate (`--min-breadth`):** skips entries taken when
 market breadth (% of S&P 500 above their 200-day MA, `scripts/data/sp500_breadth_daily.csv`)
 on the entry date is below the given level. This is a **risk dial, not an alpha
