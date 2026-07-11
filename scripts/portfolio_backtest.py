@@ -28,6 +28,7 @@ from edge_rank import DEFAULT_W_EXT, DEFAULT_W_RS, SIZING_MIN_EDGE, compute_edge
 
 LIVE_MA_PERIOD = 20
 LIVE_WINDOW = 15
+REBREAK_WINDOW = 60
 
 
 def _plan_frozen_pullback(bars: list[dict], breakout_idx: int, stop: float) -> int | None:
@@ -39,6 +40,28 @@ def _plan_frozen_pullback(bars: list[dict], breakout_idx: int, stop: float) -> i
             continue
         ma = statistics.fmean(b["close"] for b in bars[i - LIVE_MA_PERIOD + 1:i + 1])
         if bars[i].get("low", bars[i]["close"]) <= ma <= bars[i]["close"]:
+            return i
+    return None
+
+
+def _plan_rebreak_after_pullback(
+    bars: list[dict], breakout_idx: int, stop: float, rebreak_window: int = REBREAK_WINDOW,
+) -> int | None:
+    """Close above the breakout-to-pullback high after a valid MA20 retest.
+
+    The reference high is frozen on the pullback bar.  A close below the
+    pattern stop invalidates the setup while waiting, and the rebreak must
+    occur within ``rebreak_window`` sessions after the pullback.
+    """
+    pullback_idx = _plan_frozen_pullback(bars, breakout_idx, stop)
+    if pullback_idx is None:
+        return None
+    prior_high = max(b.get("high", b["close"]) for b in bars[breakout_idx:pullback_idx + 1])
+    end = min(pullback_idx + 1 + rebreak_window, len(bars))
+    for i in range(pullback_idx + 1, end):
+        if bars[i]["close"] < stop:
+            return None
+        if bars[i]["close"] > prior_high:
             return i
     return None
 
@@ -58,7 +81,10 @@ class Config:
     edge_cap: float = 82.5
 
 
-def _candidate_signals(detections: dict, prices: dict[str, list[dict]], cfg: Config) -> list[dict]:
+def _candidate_signals(
+    detections: dict, prices: dict[str, list[dict]], cfg: Config,
+    entry_rule: str = "pullback",
+) -> list[dict]:
     """Build causal, next-bar-open orders from frozen MA20 pullback signals."""
     edges = compute_edge_rank(detections, DEFAULT_W_RS, DEFAULT_W_EXT)
     signals = []
@@ -79,13 +105,18 @@ def _candidate_signals(detections: dict, prices: dict[str, list[dict]], cfg: Con
             pattern_stop = fo.get("stop_price") or 0.0
             if not pivot:
                 continue
-            pullback_idx = _plan_frozen_pullback(bars, bo, pattern_stop)
-            if pullback_idx is None or pullback_idx + 1 >= len(bars):
+            if entry_rule == "pullback":
+                signal_idx = _plan_frozen_pullback(bars, bo, pattern_stop)
+            elif entry_rule == "rebreak":
+                signal_idx = _plan_rebreak_after_pullback(bars, bo, pattern_stop)
+            else:
+                raise ValueError(f"unknown entry rule: {entry_rule}")
+            if signal_idx is None or signal_idx + 1 >= len(bars):
                 continue
-            fill_idx = pullback_idx + 1
+            fill_idx = signal_idx + 1
             signals.append({
                 "symbol": sym, "sector": det.get("sector") or "Unknown",
-                "signal_date": bars[pullback_idx]["date"],
+                "signal_date": bars[signal_idx]["date"],
                 "fill_date": bars[fill_idx]["date"], "fill_idx": fill_idx,
                 "edge_rank": edge, "pattern_stop": pattern_stop,
             })
@@ -99,9 +130,12 @@ def _adv_dollars(bars: list[dict], i: int, lookback: int = 20) -> float:
     return statistics.fmean(b["close"] * b.get("volume", 0) for b in prior)
 
 
-def run_portfolio(detections: dict, prices: dict[str, list[dict]], cfg: Config = Config()) -> dict:
+def run_portfolio(
+    detections: dict, prices: dict[str, list[dict]], cfg: Config = Config(),
+    entry_rule: str = "pullback",
+) -> dict:
     """Run the portfolio. ``prices`` bars must be oldest-first."""
-    signals = _candidate_signals(detections, prices, cfg)
+    signals = _candidate_signals(detections, prices, cfg, entry_rule=entry_rule)
     by_date = collections.defaultdict(list)
     for s in signals:
         by_date[s["fill_date"]].append(s)

@@ -7,10 +7,32 @@ from unittest.mock import patch
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(__file__)), "scripts"))
 
-from portfolio_backtest import Config, _adv_dollars, run_portfolio
+from portfolio_backtest import Config, _adv_dollars, _plan_rebreak_after_pullback, run_portfolio
 
 
 class PortfolioBacktestTests(unittest.TestCase):
+    def test_rebreak_waits_for_close_above_frozen_prior_high(self):
+        bars = [{"date": f"d{i:02}", "open": c, "high": h, "low": lo,
+                 "close": c, "volume": 1_000_000}
+                for i, (c, h, lo) in enumerate([
+                    *[(90, 91, 89)] * 19, (100, 102, 99), (101, 103, 100),
+                    (100, 101, 90), (102, 103, 101), (104, 104.5, 103)])]
+        # idx 21 is MA20 touch-and-hold; frozen prior high is 103.  A close
+        # equal to 102 does not trigger; idx 23 closes above it.
+        self.assertEqual(_plan_rebreak_after_pullback(bars, 19, 92), 23)
+
+    def test_rebreak_invalidates_on_close_below_pattern_stop(self):
+        closes = [90] * 19 + [100, 101, 100, 91, 105]
+        bars = [{"date": f"d{i:02}", "open": c, "high": c + 1, "low": c - 1,
+                 "close": c, "volume": 1_000_000} for i, c in enumerate(closes)]
+        self.assertIsNone(_plan_rebreak_after_pullback(bars, 19, 92))
+
+    def test_rebreak_respects_wait_window(self):
+        closes = [90] * 19 + [100, 101, 100, 99, 105]
+        bars = [{"date": f"d{i:02}", "open": c, "high": c + 1, "low": c - 1,
+                 "close": c, "volume": 1_000_000} for i, c in enumerate(closes)]
+        self.assertIsNone(_plan_rebreak_after_pullback(bars, 19, 92, rebreak_window=1))
+
     def test_trailing_adv_excludes_fill_day(self):
         bars = [{"close": 10, "volume": v} for v in (100, 200, 10_000)]
         self.assertEqual(_adv_dollars(bars, 2), 1500)
