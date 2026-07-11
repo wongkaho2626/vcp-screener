@@ -168,6 +168,57 @@ scripts/exit_stress_experiments.py.
 </div>
 </details>
 
+<details class="exp">
+<summary>Signal-family experiments &mdash; is there any non-VCP signal in this tape? (2026-07-11)</summary>
+<div class="expbody">
+<div class="expnote">
+Three prespecified entry families (one parameterisation each, no grids) plus a
+five-part momentum validation suite. Numbers are monthly portfolio excess vs the
+stated benchmark (%/month) with monthly-clustered t; VCP baseline for reference:
+S&amp;P &minus;0.53%/trade (t &minus;0.86), R2K &minus;0.46 (t &minus;0.92).
+</div>
+<div class="expgrid">
+<div class="expcard">
+<h3>S&amp;P 500 &middot; 472 names &middot; offline CSV &middot; 173 months</h3>
+<table><thead><tr><th class="l">Config</th><th>Mean/mo</th><th>t(mo)</th><th>Fold&le;20</th><th>Fold&ge;21</th></tr></thead>
+<tbody>
+<tr><td class="l">xs-momentum 12-1 (gross)</td><td class="pos">+0.89</td><td>3.76</td><td>+0.89</td><td>+0.87</td></tr>
+<tr><td class="l">&nbsp;&nbsp;net @20bp round-trip</td><td class="pos">+0.83</td><td>3.52</td><td>&mdash;</td><td>&mdash;</td></tr>
+<tr class="base"><td class="l">&nbsp;&nbsp;<strong>PIT members only</strong></td><td>+0.35</td><td>1.79</td><td>&mdash;</td><td>&mdash;</td></tr>
+<tr><td class="l">52w-high proximity</td><td>+0.57</td><td>2.52</td><td>+0.80</td><td class="flag">+0.14 (t 0.7)</td></tr>
+<tr><td class="l">mean-rev RSI(2)&lt;10</td><td>+0.12</td><td>2.84</td><td>+0.15</td><td>+0.06</td></tr>
+</tbody></table>
+</div>
+<div class="expcard">
+<h3>Russell 2000 &middot; 1,980 names &middot; yfinance &middot; ~170 months</h3>
+<table><thead><tr><th class="l">Config</th><th>Mean/mo</th><th>t(mo)</th><th>Fold&le;20</th><th>Fold&ge;21</th></tr></thead>
+<tbody>
+<tr><td class="l">xs-momentum vs SPY</td><td class="pos">+1.00</td><td>2.55</td><td>+1.37</td><td>+0.43</td></tr>
+<tr><td class="l">xs-momentum vs R2K equal-weight</td><td class="pos">+0.81</td><td>3.13</td><td>+0.85</td><td>+0.75</td></tr>
+<tr class="base"><td class="l">&nbsp;&nbsp;<strong>+ PIT members only</strong></td><td>+0.31</td><td>1.23</td><td>+0.29</td><td>+0.34</td></tr>
+<tr><td class="l">52w-high proximity</td><td>+0.67</td><td>1.63</td><td>+1.59</td><td class="flag">&minus;0.46 (t &minus;1.9)</td></tr>
+<tr><td class="l">mean-rev RSI(2)&lt;10</td><td>+0.17</td><td>2.69</td><td>+0.17</td><td>+0.16</td></tr>
+</tbody></table>
+</div>
+</div>
+<div class="expnote">
+<strong>Verdicts.</strong>
+Gross momentum passed every classic check &mdash; fold-stable both universes,
+smooth 3-1&hellip;12-1 lookback surface, ~28%/month turnover that survives a
+50&nbsp;bp round-trip, mild volatility-scaling improvement (IR 0.99&rarr;1.03).
+Then point-in-time membership (r2k_membership.csv: 7,079 intervals from
+quarterly IWM holdings snapshots) cut it ~60% in <em>both</em> universes: most
+of the measured edge was the <strong>index-inclusion effect</strong> &mdash;
+ranking names on pre-inclusion run-ups you could not have bought from inside
+the index. PIT-clean momentum &asymp; +0.3%/mo, directionally positive,
+statistically insignificant, still survivor-priced. 52w-high dies post-2021 in
+both universes (third independent null for breakout-proximity entries);
+RSI(2) mean-rev is real but too thin for small-cap costs. Reproduce with
+scripts/signal_family_experiment.py + scripts/momentum_validation.py.
+</div>
+</div>
+</details>
+
 <div class="controls">
   <div class="seg" id="uniseg" role="group" aria-label="Universe">
     <button data-u="ALL" class="on">All</button>

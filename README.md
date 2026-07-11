@@ -52,6 +52,27 @@ outlier trims, cross-universe direction):
 
 Both ship with every live screen — see the Quick Scan columns below.
 
+**Beyond VCP: the signal-family test.** Three prespecified non-VCP entry
+families were run on the same infrastructure (one parameterisation each, no
+grids) to ask whether this tape contains any harvestable signal at all
+([`signal_family_experiment.py`](scripts/signal_family_experiment.py)).
+Gross of frictions, 12-1 cross-sectional momentum looked like the winner
+(S&P +0.89%/mo, monthly-clustered t 3.76, fold-stable; R2K +0.81%/mo vs an
+equal-weight small-cap benchmark, t 3.13); 52-week-high proximity dies
+post-2021 in both universes (a third independent null for breakout-style
+entries) and RSI(2) mean-reversion is too thin to survive costs. The
+validation suite ([`momentum_validation.py`](scripts/momentum_validation.py))
+then measured turnover (~28%/month replaced; survives a 50 bp round-trip
+easily), scanned lookbacks (smooth 3-1…12-1 surface) — and applied
+**point-in-time index membership, which cut the edge ~60% in both
+universes**: S&P +0.88 → +0.35%/mo (t 1.79), R2K +0.81 → +0.31%/mo (t 1.23),
+using `scripts/data/r2k_membership.csv` (7,079 intervals rebuilt from
+quarterly IWM holdings snapshots by
+[`fetch_r2k_membership.py`](scripts/fetch_r2k_membership.py)). Most of the
+measured "momentum edge" was the index-inclusion effect. PIT-clean momentum
+is directionally positive but statistically insignificant on survivor-only
+prices — **not deployable on this evidence either**.
+
 ## Install
 
 ```bash
@@ -261,7 +282,13 @@ report excess-vs-SPY with t-stats and bootstrap CIs:
 | [`edge_rank.py`](scripts/edge_rank.py) | Cross-sectional Edge Rank IC, tilt backtest, deployable sizing |
 | [`breadth_experiment.py`](scripts/breadth_experiment.py) | Does a market-breadth gate add alpha? *(Risk dial only)* |
 | [`grid_search.py`](scripts/grid_search.py) | Detection-parameter grid (108 combos; deflated Sharpe ≈ 0) |
+| [`signal_family_experiment.py`](scripts/signal_family_experiment.py) | Any non-VCP signal in this tape? 12-1 momentum / RSI(2) mean-rev / 52w-high *(momentum only — until PIT)* |
+| [`momentum_validation.py`](scripts/momentum_validation.py) | Momentum follow-ups: turnover+costs, PIT membership, lookbacks, vol scaling, R2K benchmark swap *(PIT cuts ~60% → +0.3%/mo, ns)* |
+| [`fetch_r2k_membership.py`](scripts/fetch_r2k_membership.py) | Rebuild R2K PIT membership intervals from quarterly IWM holdings snapshots |
 | [`build_trade_log_page.py`](scripts/build_trade_log_page.py) | Render trades JSONs into an interactive HTML ledger |
+
+(The signal-family and momentum CLIs run straight off price data —
+`--price-csv` or `--symbols-json` — rather than a trades JSON.)
 
 ## Refreshing index constituents
 
