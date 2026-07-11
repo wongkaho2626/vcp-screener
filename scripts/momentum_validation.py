@@ -301,17 +301,26 @@ def run_r2k(args: argparse.Namespace, md: list[str]) -> None:
            "(removes the size effect) vs the SPY benchmark used previously.", "",
            "| Benchmark | Months | Mean | t | IR | Ann | MDD | %>0 | Folds |",
            "|---|---|---|---|---|---|---|---|---|"]
-    for label, bench in (("vs SPY", spy), ("vs R2K equal-weight", ew)):
-        rows = momentum_monthly(bars, bench)
+    legs = [("vs SPY", spy, None), ("vs R2K equal-weight", ew, None)]
+    if args.pit_csv:
+        intervals = load_membership(args.pit_csv)
+        legs.append(("vs R2K EW, PIT members", ew,
+                     lambda sym, d: is_member(intervals, sym, d)))
+    for label, bench, eligible in legs:
+        rows = momentum_monthly(bars, bench, eligible=eligible)
         fa, fb = fold_means(rows)
+        n_avg = st.fmean(r["n"] for r in rows) if rows else 0
         stat_row(label, [r["exc"] for r in rows], md,
-                 extra=f"≤20: {fa} / ≥21: {fb}")
+                 extra=f"≤20: {fa} / ≥21: {fb} | {n_avg:.0f} picks/mo")
 
 
 def main() -> None:
     ap = argparse.ArgumentParser(description="xs-momentum validation suite")
     ap.add_argument("--price-csv", help="S&P mode: offline OHLCV CSV")
     ap.add_argument("--symbols-json", help="R2K mode: universe JSON (yfinance)")
+    ap.add_argument("--pit-csv",
+                    help="R2K mode: membership intervals CSV for a PIT leg "
+                         "(scripts/data/r2k_membership.csv)")
     ap.add_argument("--sleep-secs", type=float, default=0.25)
     ap.add_argument("--output-dir", default="backtests/")
     args = ap.parse_args()
