@@ -73,6 +73,21 @@ measured "momentum edge" was the index-inclusion effect. PIT-clean momentum
 is directionally positive but statistically insignificant on survivor-only
 prices — **not deployable on this evidence either**.
 
+**Close-out (2026-07-12).** Three final declared tests shut the remaining
+doors. (1) Market-regime conditioning of trade excess — SPY>200DMA and SPY
+20-day realized-vol splits — is null on both universes (|Welch t| ≤ 0.83),
+as the breadth gate already was; the excess-vs-SPY metric is market-neutral
+by construction, so regime gates structurally can't rescue it. (2) The two
+validated overlays **don't stack**: the pullback improvement does not
+concentrate in high-Edge names (Edge≥70 pooled t 1.09, outlier-driven;
+interaction sign flips across universes) — they repair overlapping
+weaknesses ([`edge_pullback_interaction.py`](scripts/edge_pullback_interaction.py)).
+(3) The frozen v1 realistic portfolio scored **20/100 — Reject** (CAGR
+−0.45%, exposure-matched excess t ≈ −1.8 to −2.7, OOS Sharpe collapse; see
+`backtests/improved/final_verification_report.md`). **The research programme
+is closed**: the execution findings are real, the alpha is not, and any v2
+requires new data and a new predeclared hypothesis.
+
 ## Install
 
 ```bash
@@ -281,6 +296,7 @@ report excess-vs-SPY with t-stats and bootstrap CIs:
 | [`pullback_sensitivity.py`](scripts/pullback_sensitivity.py) | Is the MA20 rule a cliff or a smooth surface? *(Smooth gradient; MA30 strongest)* |
 | [`edge_rank.py`](scripts/edge_rank.py) | Cross-sectional Edge Rank IC, tilt backtest, deployable sizing |
 | [`breadth_experiment.py`](scripts/breadth_experiment.py) | Does a market-breadth gate add alpha? *(Risk dial only)* |
+| [`edge_pullback_interaction.py`](scripts/edge_pullback_interaction.py) | Do the two shipped overlays compound — does pullback Δ concentrate in high-Edge names? *(No — substitutes, not complements)* |
 | [`grid_search.py`](scripts/grid_search.py) | Detection-parameter grid (108 combos; deflated Sharpe ≈ 0) |
 | [`signal_family_experiment.py`](scripts/signal_family_experiment.py) | Any non-VCP signal in this tape? 12-1 momentum / RSI(2) mean-rev / 52w-high *(momentum only — until PIT)* |
 | [`momentum_validation.py`](scripts/momentum_validation.py) | Momentum follow-ups: turnover+costs, PIT membership, lookbacks, vol scaling, R2K benchmark swap *(PIT cuts ~60% → +0.3%/mo, ns)* |
