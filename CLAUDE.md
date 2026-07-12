@@ -66,6 +66,23 @@ excess-vs-SPY → `vcp_trades_*.json`) → experiment CLIs (see README table).
 - **Validated and shipped**: MA20 pullback entry (+1.36 pp paired, t 3.13,
   replicates on R2K, smooth parameter surface) and Edge Rank sizing
   (+1.01%/trade, PIT-only — did not replicate on the CSV dataset).
+- **The two overlays don't stack.** Edge×pullback interaction
+  (`edge_pullback_interaction.py`, one-shot declared test): the pullback
+  improvement does NOT concentrate in high-Edge names (Edge≥70 pooled t 1.09,
+  trim-flips negative; interaction sign flips across universes; Spearman
+  −0.04). Substitutes, not complements — matches frozen v1 gaining nothing
+  from combining them.
+- **Market-regime gates are dead.** Breadth levels/rising
+  (`breadth_experiment.py`), SPY>200DMA and SPY 20d realized-vol conditioning:
+  all null on both universes (|Welch t| ≤ 0.83). Structural reason: the
+  excess-vs-SPY metric is market-neutral by construction.
+- **Frozen v1 portfolio verdict: Reject (20/100).** Realistic daily-marked
+  portfolio (next-open fills, costs, constraints) over 10.3y: CAGR −0.45%,
+  exposure-matched excess t ≈ −1.8 to −2.7, OOS Sharpe collapse. See
+  `backtests/improved/final_verification_report.md` and
+  `references/frozen_strategy_v1.md`. The programme is closed: no deployable
+  edge in this data; further work requires new data + a new predeclared
+  hypothesis.
 - **Data caveats**: CSV and R2K universes are survivorship-biased (R2K lost
   26% of names); close-based fills, no costs. All backtest numbers are
   optimistic ceilings.
