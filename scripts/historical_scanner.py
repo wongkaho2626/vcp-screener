@@ -98,6 +98,7 @@ def scan_history(
     stride_days: int = 5,
     outcome_days: int = 60,
     lookback_days: int = 120,
+    analysis_lookback_days: int | None = None,
     require_trend_pass: bool = False,
     analyzer_kwargs: dict | None = None,
 ) -> list[dict]:
@@ -113,6 +114,9 @@ def scan_history(
         stride_days: Step size for the as-of cursor in trading days (default 5).
         outcome_days: Forward window for outcome evaluation (default 60).
         lookback_days: Window passed to the VCP calculator (default 120).
+        analysis_lookback_days: Minimum history retained at the oldest as-of
+            cursor for additive calculators such as support/resistance. Defaults
+            to ``lookback_days`` so existing callers and scan ranges are unchanged.
         require_trend_pass: If True, only emit detections whose full Minervini
             trend template passes (``trend_template.passed``). Off by default so
             existing runs are unchanged; the gate experiment showed the base
@@ -125,17 +129,19 @@ def scan_history(
         ``analyze_stock`` return value plus ``as_of_date`` and
         ``forward_outcome`` fields.
     """
-    if not historical or len(historical) < lookback_days + 30:
+    analysis_lookback = max(lookback_days, analysis_lookback_days or lookback_days)
+    if not historical or len(historical) < analysis_lookback + 30:
         return []
 
     analyzer_kwargs = dict(analyzer_kwargs or {})
     analyzer_kwargs.pop("as_of_offset", None)  # caller cannot override the cursor
 
-    # Largest scannable offset is len(historical) - lookback_days; smaller
+    # Largest scannable offset retains enough bars for every requested analysis
+    # window. The VCP calculator still receives its independent lookback_days.
     # offsets get less forward data (outcomes resolve via timeout /
     # insufficient_data branches). range() with a negative step already
     # yields descending offsets — no extra sort needed.
-    max_offset = len(historical) - lookback_days
+    max_offset = len(historical) - analysis_lookback
     if max_offset <= 0:
         return []
     offsets = range(max_offset, -1, -stride_days)
