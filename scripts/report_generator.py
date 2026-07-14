@@ -109,10 +109,12 @@ def generate_markdown_report(
         lines.append("## Quick Scan")
         lines.append("")
         lines.append(
-            "| # | Symbol | Quality | State | Type | Price | Pivot Dist | Edge | Weight | Entry |"
+            "| # | Symbol | Quality | State | Type | Price | Pivot Dist | Edge | Weight | "
+            "Support | Resistance | R/R | Entry |"
         )
         lines.append(
-            "|---|--------|---------|-------|------|-------|------------|------|--------|-------|"
+            "|---|--------|---------|-------|------|-------|------------|------|--------|"
+            "---------|------------|-----|-------|"
         )
         for i, stock in enumerate(results, 1):
             sym = stock.get("symbol", "?")
@@ -128,10 +130,22 @@ def generate_markdown_report(
             edge_str = f"{edge:.0f}" if edge is not None else "—"
             wt = stock.get("suggested_weight_pct")
             wt_str = f"{wt:.1f}%" if wt else "—"
+            support_str = _format_quick_zone(
+                stock.get("nearest_support_lower"),
+                stock.get("nearest_support_upper"),
+                stock.get("support_distance_pct"),
+            )
+            resistance_str = _format_quick_zone(
+                stock.get("nearest_resistance_lower"),
+                stock.get("nearest_resistance_upper"),
+                stock.get("resistance_distance_pct"),
+            )
+            reward_risk_str = _format_ratio(stock.get("reward_risk_ratio"))
             entry_str = _pullback_entry_label(stock)
             lines.append(
                 f"| {i} | {sym} | {quality}{cap_marker} | {state} | {ptype} | ${price:.2f} | "
-                f"{dist_str} | {edge_str} | {wt_str} | {entry_str} |"
+                f"{dist_str} | {edge_str} | {wt_str} | {support_str} | {resistance_str} | "
+                f"{reward_risk_str} | {entry_str} |"
             )
         lines.append("")
         lines.append("★ = State Cap applied (rating downgraded from raw score)")
@@ -287,6 +301,43 @@ def _format_stock_entry(rank: int, stock: dict) -> list[str]:
     )
     lines.append("")
 
+    # Support and resistance context. These fields are optional so reports
+    # generated from pre-support/resistance result payloads remain readable.
+    lines.append("**Support / Resistance:**")
+    lines.append("")
+    lines.append("| Metric | Support | Resistance |")
+    lines.append("|--------|---------|------------|")
+    lines.append(
+        f"| Nearest zone | "
+        f"{_format_zone(stock.get('nearest_support_lower'), stock.get('nearest_support_upper'))} | "
+        f"{_format_zone(stock.get('nearest_resistance_lower'), stock.get('nearest_resistance_upper'))} |"
+    )
+    lines.append(
+        f"| Strength | {_format_optional(stock.get('nearest_support_strength'))} | "
+        f"{_format_optional(stock.get('nearest_resistance_strength'))} |"
+    )
+    lines.append(
+        f"| Distance | {_format_pct(stock.get('support_distance_pct'))} | "
+        f"{_format_pct(stock.get('resistance_distance_pct'))} |"
+    )
+    lines.append(
+        f"| Inside zone | {_format_flag(stock.get('inside_support_zone'))} | "
+        f"{_format_flag(stock.get('inside_resistance_zone'))} |"
+    )
+    lines.append(
+        f"| Level event | Breakdown: {_format_flag(stock.get('support_breakdown'))} | "
+        f"Breakout: {_format_flag(stock.get('resistance_breakout'))} |"
+    )
+    lines.append("")
+    lines.append(
+        f"- **Potential reward/risk:** {_format_ratio(stock.get('reward_risk_ratio'))}"
+    )
+    lines.append(
+        f"- **Role reversal detected:** "
+        f"{_format_flag(stock.get('role_reversal_detected'))}"
+    )
+    lines.append("")
+
     # Component breakdown table
     lines.append("| Component | Score | Details |")
     lines.append("|-----------|-------|---------|")
@@ -403,6 +454,59 @@ def _format_stock_entry(rank: int, stock: dict) -> list[str]:
     lines.append("")
 
     return lines
+
+
+def _format_optional(value: object) -> str:
+    """Render an optional report value, preserving zero and false values."""
+    return "—" if value is None else str(value)
+
+
+def _format_zone(lower: object, upper: object) -> str:
+    """Render optional zone bounds as a compact dollar range."""
+    if lower is None or upper is None:
+        return "—"
+    try:
+        return f"${float(lower):.2f}–${float(upper):.2f}"
+    except (TypeError, ValueError):
+        return "—"
+
+
+def _format_pct(value: object) -> str:
+    """Render an optional signed percentage."""
+    if value is None:
+        return "—"
+    try:
+        return f"{float(value):+.1f}%"
+    except (TypeError, ValueError):
+        return "—"
+
+
+def _format_ratio(value: object) -> str:
+    """Render an optional reward/risk ratio."""
+    if value is None:
+        return "—"
+    try:
+        return f"{float(value):.2f}"
+    except (TypeError, ValueError):
+        return "—"
+
+
+def _format_flag(value: object) -> str:
+    """Render optional booleans without treating a missing field as false."""
+    if value is True:
+        return "Yes"
+    if value is False:
+        return "No"
+    return "—"
+
+
+def _format_quick_zone(lower: object, upper: object, distance_pct: object) -> str:
+    """Render a zone and its distance compactly for the Quick Scan table."""
+    zone = _format_zone(lower, upper)
+    distance = _format_pct(distance_pct)
+    if zone == "—":
+        return "—"
+    return f"{zone} ({distance})" if distance != "—" else zone
 
 
 def _rating_indicator(score: float, valid_vcp: bool = True) -> str:

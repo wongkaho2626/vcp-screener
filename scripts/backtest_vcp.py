@@ -35,6 +35,11 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from backtest_aggregator import build_backtest_summary  # noqa: E402
 from backtest_report import write_backtest_reports  # noqa: E402
+from calculators.support_resistance_calculator import (  # noqa: E402
+    add_support_resistance_arguments,
+    support_resistance_config_from_args,
+    support_resistance_filters_from_args,
+)
 from historical_scanner import sanitize_ticker, scan_history  # noqa: E402
 from yf_client import YFClient  # noqa: E402
 
@@ -234,6 +239,8 @@ def parse_arguments() -> argparse.Namespace:
         help="Pause between ticker fetches to be polite to Yahoo (default: 0.5; ignored for CSV)",
     )
 
+    add_support_resistance_arguments(parser)
+
     args = parser.parse_args()
     if not (0.5 <= args.years <= 20):
         parser.error("--years must be between 0.5 and 20")
@@ -292,6 +299,8 @@ def validate_symbols(symbols: list[str]) -> list[str]:
 
 
 def run_backtest(args: argparse.Namespace) -> None:
+    sr_config = support_resistance_config_from_args(args)
+    sr_filters = support_resistance_filters_from_args(args)
     if args.csv_data:
         print(f"Loading historical CSV: {args.csv_data} ...", end=" ", flush=True)
         client = CSVHistoricalClient(args.csv_data)
@@ -311,8 +320,10 @@ def run_backtest(args: argparse.Namespace) -> None:
         sys.exit(1)
 
     scan_days = int(args.years * TRADING_DAYS_PER_YEAR)
+    sr_lookback_days = sr_config.lookback_period if sr_config.enabled else 0
+    analysis_lookback_days = max(args.lookback_days, sr_lookback_days)
     # Extra bars: lookback at the oldest offset + outcome window + safety buffer.
-    fetch_days = scan_days + args.lookback_days + args.outcome_days + 60
+    fetch_days = scan_days + analysis_lookback_days + args.outcome_days + 60
 
     print("=" * 70)
     print(f"VCP Historical Backtest — {len(symbols)} tickers, ~{args.years:g} years")
@@ -341,6 +352,8 @@ def run_backtest(args: argparse.Namespace) -> None:
         "atr_multiplier": args.atr_multiplier,
         "min_contraction_days": args.min_contraction_days,
         "breakout_volume_ratio": args.breakout_volume_ratio,
+        "support_resistance_config": sr_config,
+        "support_resistance_filters": sr_filters,
     }
 
     per_ticker: dict[str, list[dict]] = {}
@@ -366,6 +379,7 @@ def run_backtest(args: argparse.Namespace) -> None:
             stride_days=args.stride_days,
             outcome_days=args.outcome_days,
             lookback_days=args.lookback_days,
+            analysis_lookback_days=analysis_lookback_days,
             require_trend_pass=args.require_trend_pass,
             analyzer_kwargs=analyzer_kwargs,
         )
@@ -390,7 +404,15 @@ def run_backtest(args: argparse.Namespace) -> None:
         "outcome_days": args.outcome_days,
         "lookback_days": args.lookback_days,
         "require_trend_pass": args.require_trend_pass,
-        "tuning_params": analyzer_kwargs,
+        "tuning_params": {
+            **{
+                key: value
+                for key, value in analyzer_kwargs.items()
+                if key not in ("support_resistance_config", "support_resistance_filters")
+            },
+            "support_resistance": sr_config.as_dict(),
+            "support_resistance_filters": sr_filters.as_dict(),
+        },
         "failed_tickers": failures,
         "api_stats": client.get_api_stats(),
     }

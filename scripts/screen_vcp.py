@@ -44,6 +44,15 @@ from calculators.relative_strength_calculator import (
     calculate_relative_strength,
     rank_relative_strength_universe,
 )
+from calculators.support_resistance_calculator import (
+    SupportResistanceConfig,
+    SupportResistanceFilterConfig,
+    add_support_resistance_arguments,
+    enrich_vcp_result_with_zones,
+    passes_support_resistance_filters,
+    support_resistance_config_from_args,
+    support_resistance_filters_from_args,
+)
 from calculators.trend_template_calculator import calculate_trend_template
 from calculators.vcp_pattern_calculator import calculate_vcp_pattern
 from calculators.volume_pattern_calculator import calculate_volume_pattern
@@ -226,6 +235,8 @@ def parse_arguments():
         help="Forward window for outcome evaluation (default 60)",
     )
 
+    add_support_resistance_arguments(parser)
+
     args = parser.parse_args()
 
     # Lower bound is 2 by design: VCP requires successive contractions, and
@@ -336,6 +347,8 @@ def analyze_stock(
     max_sma200_extension: float = 50.0,
     wide_and_loose_threshold: float = 15.0,
     as_of_offset: int = 0,
+    support_resistance_config: Optional[SupportResistanceConfig] = None,
+    support_resistance_filters: Optional[SupportResistanceFilterConfig] = None,
 ) -> Optional[dict]:
     """
     Full VCP analysis for a single stock (Phase 3).
@@ -460,7 +473,7 @@ def analyze_stock(
         sma200_extension_pct=sma200_distance_pct,
     )
 
-    return {
+    result = {
         "symbol": symbol,
         "company_name": company_name,
         "sector": sector,
@@ -492,6 +505,21 @@ def analyze_stock(
         "pivot_proximity": piv_result,
         "relative_strength": rs_result,
     }
+
+    # Support/resistance is an additive overlay. It runs only after every VCP
+    # component and score has been finalized, so it cannot influence the base
+    # pattern score or ranking unless an explicit S/R filter is configured.
+    result = enrich_vcp_result_with_zones(
+        result,
+        historical,
+        config=support_resistance_config,
+        as_of_offset=0,
+    )
+    if support_resistance_filters is not None and not passes_support_resistance_filters(
+        result, support_resistance_filters
+    ):
+        return None
+    return result
 
 
 def is_stale_price(
@@ -584,11 +612,16 @@ def run_historical(args, client) -> None:
         print(f"ERROR: {e}", file=sys.stderr)
         sys.exit(1)
 
+    sr_config = support_resistance_config_from_args(args)
+    sr_filters = support_resistance_filters_from_args(args)
+    sr_lookback_days = sr_config.lookback_period if sr_config.enabled else 0
+    analysis_lookback_days = max(args.lookback_days, sr_lookback_days)
+
     # Required bars = scan window (args.history) + lookback at the oldest
     # offset + outcome window. A 60-bar buffer protects against yfinance
     # returning fewer bars than requested due to holidays/halts/recent listings.
     scan_days = args.history
-    required_days = scan_days + args.lookback_days + args.outcome_days
+    required_days = scan_days + analysis_lookback_days + args.outcome_days
     fetch_days = required_days + 60
     print()
     print(f"Historical VCP Scan — {ticker}")
@@ -627,6 +660,8 @@ def run_historical(args, client) -> None:
         "breakout_volume_ratio": args.breakout_volume_ratio,
         "max_sma200_extension": args.max_sma200_extension,
         "wide_and_loose_threshold": args.wide_and_loose_threshold,
+        "support_resistance_config": sr_config,
+        "support_resistance_filters": sr_filters,
     }
     detections = scan_history(
         ticker,
@@ -635,6 +670,7 @@ def run_historical(args, client) -> None:
         stride_days=args.stride_days,
         outcome_days=args.outcome_days,
         lookback_days=args.lookback_days,
+        analysis_lookback_days=analysis_lookback_days,
         analyzer_kwargs=analyzer_kwargs,
     )
     print(f"  Found {len(detections)} unique VCP detections")
@@ -658,7 +694,15 @@ def run_historical(args, client) -> None:
         "outcome_days": args.outcome_days,
         "bars_fetched": len(historical),
         "history_range": history_range,
-        "tuning_params": analyzer_kwargs,
+        "tuning_params": {
+            **{
+                key: value
+                for key, value in analyzer_kwargs.items()
+                if key not in ("support_resistance_config", "support_resistance_filters")
+            },
+            "support_resistance": sr_config.as_dict(),
+            "support_resistance_filters": sr_filters.as_dict(),
+        },
         "api_stats": client.get_api_stats(),
     }
     generate_historical_json_report(ticker, detections, metadata, json_file)
@@ -676,6 +720,8 @@ def run_historical(args, client) -> None:
 
 def main():
     args = parse_arguments()
+    sr_config = support_resistance_config_from_args(args)
+    sr_filters = support_resistance_filters_from_args(args)
 
     if not (0 < args.ext_threshold < 50):
         print("ERROR: --ext-threshold must be between 0 and 50 (exclusive)", file=sys.stderr)
@@ -780,8 +826,9 @@ def main():
     print("-" * 70)
 
     # Fetch SPY historical for RS calculation
-    print("  Fetching SPY 260-day history...", end=" ", flush=True)
-    spy_data = client.get_historical_prices("SPY", days=260)
+    history_days = max(260, sr_config.lookback_period) if sr_config.enabled else 260
+    print(f"  Fetching SPY {history_days}-day history...", end=" ", flush=True)
+    spy_data = client.get_historical_prices("SPY", days=history_days)
     sp500_history = spy_data.get("historical", []) if spy_data else []
     if sp500_history:
         print(f"OK ({len(sp500_history)} days)")
@@ -790,13 +837,16 @@ def main():
 
     # Fetch historical data for candidates
     candidate_symbols = [c[0] for c in candidates]
-    print(f"  Fetching 260-day histories for {len(candidate_symbols)} candidates...")
+    print(
+        f"  Fetching {history_days}-day histories for "
+        f"{len(candidate_symbols)} candidates..."
+    )
 
     candidate_histories = {}
     for i, sym in enumerate(candidate_symbols):
         if (i + 1) % 20 == 0 or i == len(candidate_symbols) - 1:
             print(f"    Progress: {i + 1}/{len(candidate_symbols)}", flush=True)
-        data = client.get_historical_prices(sym, days=260)
+        data = client.get_historical_prices(sym, days=history_days)
         if data and "historical" in data:
             candidate_histories[sym] = data["historical"]
 
@@ -863,6 +913,7 @@ def main():
             breakout_volume_ratio=args.breakout_volume_ratio,
             max_sma200_extension=args.max_sma200_extension,
             wide_and_loose_threshold=args.wide_and_loose_threshold,
+            support_resistance_config=sr_config,
         )
 
         if analysis:
@@ -937,6 +988,19 @@ def main():
         print(f"  Strict mode filter: {total_before} -> {len(results)} candidates")
         print()
 
+    # Apply optional S/R selection only after all VCP scoring and live-universe
+    # RS reranking are complete. This keeps every pre-existing score identical;
+    # the overlay can narrow the result set but never changes VCP arithmetic.
+    total_before = len(results)
+    results = [
+        result
+        for result in results
+        if passes_support_resistance_filters(result, sr_filters)
+    ]
+    if len(results) != total_before:
+        print(f"  Support/resistance filters: {total_before} -> {len(results)} candidates")
+        print()
+
     # Edge Rank v2 overlay: cross-sectional rank + deployable sizing weights.
     # (Validated as a position-size tilt on the PIT backtest — see
     # scripts/edge_rank.py; it does not change which candidates appear.)
@@ -986,6 +1050,8 @@ def main():
             "max_sma200_extension": args.max_sma200_extension,
             "wide_and_loose_threshold": args.wide_and_loose_threshold,
             "strict": args.strict,
+            "support_resistance": sr_config.as_dict(),
+            "support_resistance_filters": sr_filters.as_dict(),
         },
         "funnel": {
             "universe": len(symbols),
