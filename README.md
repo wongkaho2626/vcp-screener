@@ -88,6 +88,19 @@ weaknesses ([`edge_pullback_interaction.py`](scripts/edge_pullback_interaction.p
 is closed**: the execution findings are real, the alpha is not, and any v2
 requires new data and a new predeclared hypothesis.
 
+**Post-close-out declared test (2026-07-14): support-aware screening +
+industry momentum — also null.** One frozen hypothesis was run on top of the
+new support/resistance overlay: take only VCP detections within 3% of a
+strong support zone, then keep only names whose GICS industry is in the top
+30% by 6-1 momentum (t−126 → t−21, equal-weighted, thresholds hard-coded so
+the test couldn't be tuned;
+[`industry_momentum_vcp_experiment.py`](scripts/industry_momentum_vcp_experiment.py)).
+The gate cut trades 104 → 48 and both variants still lose in the 2021–2026
+fold; exposure-matched excess t −0.48 (gated) / −0.69 (support-only), OOS
+Sharpe negative for both. GICS classification is a current snapshot, not
+point-in-time, so even these numbers are optimistic. Conclusion unchanged:
+support/resistance zones are a **context overlay, not an alpha source**.
+
 ## Install
 
 ```bash
@@ -502,7 +515,15 @@ default 5), `--outcome-days` (forward window, default 60), `--limit`
 
 Backtest, trade-sim and every experiment can run without touching Yahoo by
 supplying a long-format OHLCV CSV (`Ticker,Date,Open,High,Low,Close,Adj
-Close,Volume`, ISO dates):
+Close,Volume`, ISO dates). Build one for the current S&P 500 snapshot with:
+
+```bash
+# Downloads max available daily history per ticker (batched, atomic replace)
+python3 scripts/download_sp500_history.py                 # → SP500_Historical_Data.csv
+python3 scripts/download_sp500_history.py --start 2016-01-01 --output data/sp500.csv
+```
+
+Then point the pipeline at it:
 
 ```bash
 # Backtest from the local CSV (uses its SPY series as the benchmark)
@@ -537,6 +558,7 @@ report excess-vs-SPY with t-stats and bootstrap CIs:
 | [`grid_search.py`](scripts/grid_search.py) | Detection-parameter grid (108 combos; deflated Sharpe ≈ 0) |
 | [`signal_family_experiment.py`](scripts/signal_family_experiment.py) | Any non-VCP signal in this tape? 12-1 momentum / RSI(2) mean-rev / 52w-high *(momentum only — until PIT)* |
 | [`momentum_validation.py`](scripts/momentum_validation.py) | Momentum follow-ups: turnover+costs, PIT membership, lookbacks, vol scaling, R2K benchmark swap *(PIT cuts ~60% → +0.3%/mo, ns)* |
+| [`industry_momentum_vcp_experiment.py`](scripts/industry_momentum_vcp_experiment.py) | Does a frozen 6-1 GICS industry-momentum gate rescue support-qualified VCPs? *(No — fewer trades, still negative OOS)* |
 | [`fetch_r2k_membership.py`](scripts/fetch_r2k_membership.py) | Rebuild R2K PIT membership intervals from quarterly IWM holdings snapshots |
 | [`build_trade_log_page.py`](scripts/build_trade_log_page.py) | Render trades JSONs into an interactive HTML ledger |
 
