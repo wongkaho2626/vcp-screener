@@ -12,6 +12,7 @@ python3 -m pytest tests/ -q                 # full suite, must stay green
 python3 scripts/screen_vcp.py               # live screen (yfinance)
 python3 scripts/backtest_vcp.py --csv-data SP500_Historical_Data.csv --limit 0 --years 10
 python3 scripts/trade_simulator.py <backtest.json> --price-csv SP500_Historical_Data.csv
+python3 scripts/download_sp500_history.py     # (re)build SP500_Historical_Data.csv from yfinance
 ```
 
 If `yfinance not found`: use `/opt/anaconda3/bin/python3` (system python3
@@ -27,6 +28,11 @@ excess-vs-SPY → `vcp_trades_*.json`) → experiment CLIs (see README table).
 - Live-screen overlays: `edge_rank.annotate_candidates` (Edge/Weight) and
   `pullback_experiment.annotate_pullback_entry` (Entry) — both non-mutating,
   called in `screen_vcp.py` before report generation.
+- Support/resistance zones: `calculators/support_resistance_calculator.py`
+  enriches live, historical and backtest scans by default (disable with
+  `--no-support-resistance`). Additive overlay — never changes VCP score or
+  ranking unless an explicit `--sr-*` filter is passed; causal by
+  construction (swings confirm N bars late, breaks on confirmed closes only).
 - Offline data: `--csv-data` (backtest, `CSVHistoricalClient`) / `--price-csv`
   (everything else, `csv_client.CSVClient`) read `SP500_Historical_Data.csv`
   (gitignored, ~145 MB). Always verify `api_stats.data_source == "csv"` in
@@ -76,6 +82,14 @@ excess-vs-SPY → `vcp_trades_*.json`) → experiment CLIs (see README table).
   (`breadth_experiment.py`), SPY>200DMA and SPY 20d realized-vol conditioning:
   all null on both universes (|Welch t| ≤ 0.83). Structural reason: the
   excess-vs-SPY metric is market-neutral by construction.
+- **Support-aware + industry-momentum gate: null (2026-07-14).** Declared
+  test (`industry_momentum_vcp_experiment.py`, frozen 6-1 GICS
+  industry-momentum top-30% gate on detections already within 3% of strong
+  support): gate cuts trades 104→48, both variants lose in the 2021–2026
+  fold, exposure-matched excess t −0.48 (gate) / −0.69 (support-only), OOS
+  Sharpe negative. GICS mapping is a current snapshot, not PIT. See
+  `backtests/industry_momentum_vcp/`. S/R zones remain a context overlay,
+  not an alpha source.
 - **Frozen v1 portfolio verdict: Reject (20/100).** Realistic daily-marked
   portfolio (next-open fills, costs, constraints) over 10.3y: CAGR −0.45%,
   exposure-matched excess t ≈ −1.8 to −2.7, OOS Sharpe collapse. See
