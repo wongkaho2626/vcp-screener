@@ -90,6 +90,14 @@ excess-vs-SPY → `vcp_trades_*.json`) → experiment CLIs (see README table).
   Sharpe negative. GICS mapping is a current snapshot, not PIT. See
   `backtests/industry_momentum_vcp/`. S/R zones remain a context overlay,
   not an alpha source.
+- **Pullback-then-rebreak entry: null (2026-07-14, 10/100 Reject).** Variant
+  (breakout → MA20 touch-and-hold ≤15 sessions → close above post-breakout
+  high, next-open entry): 145 trades, mean −0.11%/trade net (t −0.105), PF
+  0.945, PSR 46%. Fails the robustness bar on both prongs — fold sign-flip
+  (2016–2020 t +1.53 vs 2021–2026 t −1.81) and trim-fragile (drop-top-5 →
+  t −2.01, significantly negative). Spearman(Edge, ret) −0.06: overlays don't
+  stack, again. Raw returns, so excess vs SPY is worse. See
+  `backtests/rebreak/verification_report.md`.
 - **Frozen v1 portfolio verdict: Reject (20/100).** Realistic daily-marked
   portfolio (next-open fills, costs, constraints) over 10.3y: CAGR −0.45%,
   exposure-matched excess t ≈ −1.8 to −2.7, OOS Sharpe collapse. See
