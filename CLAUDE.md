@@ -145,6 +145,16 @@ excess-vs-SPY → `vcp_trades_*.json`) → experiment CLIs (see README table).
   distribution. Any future tightness test must measure the base itself
   (contraction depths), not the risk-capped stop distance. See
   `backtests/stop_width/verification_report.md`.
+- **Detection-to-entry latency conditioning: null (2026-07-17, 6/100
+  Reject).** Frozen rule (fresh = breakout triggers ≤7 calendar days after
+  `as_of_date`; declared direction fresh-better): S&P +0.23 pp (t 0.12, coin
+  flip), fold AND trim sign-flips; R2K +0.55 pp (t 0.50, ns).
+  Spearman(latency, excess) −0.04 / +0.01 — no gradient exists at any
+  threshold. Fourth entry-conditioning family closed (tape urgency, crowding,
+  stop width, latency — all null/reversed); the trade log's causal fields are
+  nearly exhausted, further cuts of the same 1,102 trades mostly re-measure
+  noise.
+  See `backtests/latency/verification_report.md`.
 - **Frozen v1 portfolio verdict: Reject (20/100).** Realistic daily-marked
   portfolio (next-open fills, costs, constraints) over 10.3y: CAGR −0.45%,
   exposure-matched excess t ≈ −1.8 to −2.7, OOS Sharpe collapse. See
