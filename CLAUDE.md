@@ -134,6 +134,17 @@ excess-vs-SPY → `vcp_trades_*.json`) → experiment CLIs (see README table).
   nominal t overstates independence. Give-up criteria fired round 1. First
   experiment where the cross-universe prong ran offline (trade-log-only
   feature). See `backtests/crowding/verification_report.md`.
+- **Initial stop-width (base tightness) conditioning: null, sign reversed
+  (2026-07-17, 7/100 Reject).** Frozen rule (tight = entry-to-stop risk ≤ 6%;
+  declared direction tight-better per the Minervini tightness thesis): S&P
+  tight trades are *worse* (−1.97 pp, t −1.13, ns; PF 0.53 vs 0.98) and the
+  predeclared confound explains it — tight stops exit on the stop 64.5% vs
+  45.1%, i.e. tagged out by noise. R2K null (+0.27 pp, t 0.21) with fold
+  sign-flips; cross-universe signs disagree. Structural finding: 52% (S&P) /
+  71% (R2K) of trades sit at the simulator's 8% risk cap, censoring the width
+  distribution. Any future tightness test must measure the base itself
+  (contraction depths), not the risk-capped stop distance. See
+  `backtests/stop_width/verification_report.md`.
 - **Frozen v1 portfolio verdict: Reject (20/100).** Realistic daily-marked
   portfolio (next-open fills, costs, constraints) over 10.3y: CAGR −0.45%,
   exposure-matched excess t ≈ −1.8 to −2.7, OOS Sharpe collapse. See
