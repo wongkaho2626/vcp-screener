@@ -126,6 +126,14 @@ excess-vs-SPY → `vcp_trades_*.json`) → experiment CLIs (see README table).
   entry fills deviate >1% from entry-day close (mixed fill convention in
   `trade_simulator.py`, unaudited). See
   `backtests/breakout_gap/verification_report.md`.
+- **Signal-crowding conditioning: null (2026-07-17, 7/100 Reject).** Frozen
+  rule (crowded = ≥2 co-detections within trailing 10 calendar days on
+  `as_of_date`; declared direction crowded-worse on excess vs SPY): S&P
+  −0.76 pp (t −0.42, ns), trim flips sign, sensitivity cells sign-unstable;
+  R2K −1.89 pp (t −1.27, ns) with 81% of trades cluster-overlapped so the
+  nominal t overstates independence. Give-up criteria fired round 1. First
+  experiment where the cross-universe prong ran offline (trade-log-only
+  feature). See `backtests/crowding/verification_report.md`.
 - **Frozen v1 portfolio verdict: Reject (20/100).** Realistic daily-marked
   portfolio (next-open fills, costs, constraints) over 10.3y: CAGR −0.45%,
   exposure-matched excess t ≈ −1.8 to −2.7, OOS Sharpe collapse. See
