@@ -155,6 +155,16 @@ excess-vs-SPY → `vcp_trades_*.json`) → experiment CLIs (see README table).
   nearly exhausted, further cuts of the same 1,102 trades mostly re-measure
   noise.
   See `backtests/latency/verification_report.md`.
+- **Contraction-tightening sequence: Reject, sign reversed (2026-07-17,
+  7/100).** First direct test of the Minervini halving claim, from detection
+  metadata (`vcp_pattern.contractions`, last/first depth ratio ≤ 0.5 =
+  "textbook"): textbook sequences are *worse* on S&P — −2.24% vs +0.94%
+  excess (t −1.90, bootstrap P 3.1%), PF 0.58 vs 1.23, and the gap widens
+  under trims (t −2.34). R2K same sign (−0.91 pp) but ns with sign-flipping
+  sensitivity cells; Spearman incoherent across universes — threshold-local,
+  not a gradient. Second independent hint (after stop-width) that textbook
+  tightness is adversely selected among detections; hypothesis-generating
+  only. See `backtests/contraction/verification_report.md`.
 - **Frozen v1 portfolio verdict: Reject (20/100).** Realistic daily-marked
   portfolio (next-open fills, costs, constraints) over 10.3y: CAGR −0.45%,
   exposure-matched excess t ≈ −1.8 to −2.7, OOS Sharpe collapse. See
