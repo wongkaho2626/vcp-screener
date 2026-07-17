@@ -135,13 +135,41 @@ Whatever the outcome:
    **Established results** section of CLAUDE.md, dated, so it enters the graveyard.
 3. Write a memory file summarising the null/finding (follow the existing pattern,
    e.g. `fib-pocket-pivot-null.md`) and index it in MEMORY.md.
-4. Commit with a conventional message (`feat:`/`docs:`) whose body records the
-   experimental result — `git log` doubles as the lab notebook here. Ask before
-   pushing.
+4. Commit, push, open a PR, and merge it (Step 7) — `git log` doubles as the
+   lab notebook here, so the commit body records the experimental result.
+
+### Step 7 — Ship: branch → commit → push → PR → merge
+
+Run the full delivery flow without waiting to be asked — the user has standing
+instructions that every finished experiment lands on main via a merged PR.
+Lessons from earlier runs are baked into the order:
+
+1. **Branch from the latest remote main**, never from a possibly-stale local
+   main: `git fetch origin && git checkout -b research/<name> origin/main`.
+   (Committing on stale main once caused a CLAUDE.md merge conflict that had
+   to be resolved by hand.)
+2. **Stage only experiment files**: the script, tests, CLAUDE.md, and the
+   `backtests/<name>/` markdown artifacts. Reports are gitignored by pattern,
+   so force-add them (`git add -f backtests/<name>/*.md`) — house precedent
+   since the rebreak report. Never stage `.omx/` harness state or large
+   generated JSON/CSV outputs.
+3. **Commit** with a conventional message (`feat:`/`docs:`) whose body is the
+   lab-notebook entry: hypothesis, frozen-spec one-liner, headline stats,
+   verdict, score.
+4. **Push** the branch (`git push -u origin research/<name>`).
+5. **Open the PR** with `gh pr create`: title = experiment + score/verdict;
+   body = summary of results, what died on the robustness bar, files changed,
+   and a test plan showing the suite is green.
+6. **Merge it** (`gh pr merge --merge --delete-branch`), then sync local main
+   (`git checkout main && git pull`). If the merge is blocked (checks,
+   conflicts, branch protections), stop and report the blocker instead of
+   forcing it.
+7. Report the PR URL in the final message.
 
 ### Final message to the user
 
 Lead with the verdict: score, band, and the one-sentence reason. Then: what was
-frozen, what survived/died on the robustness bar, which caps applied, and — if
-abandoned — what (if anything) would justify revisiting it. Never lead with a raw
-return number.
+frozen, what survived/died on the robustness bar, which caps applied, the PR
+URL (wrapped in a `<pr-created>` tag on its own line), and — if abandoned —
+what (if anything) would justify revisiting it. Never lead with a raw return
+number.
