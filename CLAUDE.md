@@ -165,6 +165,16 @@ excess-vs-SPY → `vcp_trades_*.json`) → experiment CLIs (see README table).
   not a gradient. Second independent hint (after stop-width) that textbook
   tightness is adversely selected among detections; hypothesis-generating
   only. See `backtests/contraction/verification_report.md`.
+- **Base-duration (five-week maturity) conditioning: null (2026-07-17, 6/100
+  Reject) — detection-metadata family CLOSED.** Frozen rule (mature =
+  `pattern_duration_days` ≥ 35; declared mature-better): S&P −0.19 pp
+  (t −0.11, bootstrap P 46% — coin flip), folds/trims/universes all
+  sign-flip, Spearman ≈ 0 both universes. With contraction (reversed) and
+  duration (null), the detection-metadata single-attribute family joins the
+  trade-log family as exhausted: six conditioning experiments, zero usable
+  gates. Further cuts of this history re-measure noise; the next legitimate
+  move is a survivorship-safe security master. See
+  `backtests/base_duration/verification_report.md`.
 - **Frozen v1 portfolio verdict: Reject (20/100).** Realistic daily-marked
   portfolio (next-open fills, costs, constraints) over 10.3y: CAGR −0.45%,
   exposure-matched excess t ≈ −1.8 to −2.7, OOS Sharpe collapse. See
