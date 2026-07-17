@@ -29,6 +29,11 @@ from edge_rank import DEFAULT_W_EXT, DEFAULT_W_RS, SIZING_MIN_EDGE, compute_edge
 LIVE_MA_PERIOD = 20
 LIVE_WINDOW = 15
 REBREAK_WINDOW = 60
+POCKET_PIVOT_WINDOW = 10
+POCKET_PIVOT_VOLUME_LOOKBACK = 10
+FIB_RETRACEMENT = 0.382
+FIB_WAIT_WINDOW = 10
+FIB_LEG_LOOKBACK = 10
 
 
 def _plan_frozen_pullback(bars: list[dict], breakout_idx: int, stop: float) -> int | None:
@@ -66,6 +71,115 @@ def _plan_rebreak_after_pullback(
     return None
 
 
+def _sma(bars: list[dict], index: int, period: int) -> float | None:
+    """Return the close SMA ending at ``index``, or ``None`` during warm-up."""
+    start = index - period + 1
+    if start < 0:
+        return None
+    return statistics.fmean(float(bar["close"]) for bar in bars[start:index + 1])
+
+
+def _plan_pocket_pivot(
+    bars: list[dict], as_of_idx: int, stop: float, pivot: float,
+    window: int = POCKET_PIVOT_WINDOW,
+    volume_lookback: int = POCKET_PIVOT_VOLUME_LOOKBACK,
+    max_ma_extension_pct: float = 3.0,
+    max_pivot_extension_pct: float = 3.0,
+) -> int | None:
+    """Find the first frozen Pocket Pivot signal at or after VCP detection.
+
+    The scan contains ``window`` sessions including the as-of bar.  Each
+    candidate uses only data available at that close: it must be an up day,
+    exceed every down-day volume in the preceding ten sessions, have bullish
+    SMA10/SMA50/SMA200 alignment, and close from SMA10 through the smaller of
+    3% above SMA10 or 3% above the as-of VCP pivot.  A close below the frozen
+    last-contraction low invalidates the setup immediately.
+    """
+    if (window <= 0 or volume_lookback <= 0 or as_of_idx < 0
+            or stop <= 0 or pivot <= 0 or max_ma_extension_pct < 0
+            or max_pivot_extension_pct < 0):
+        return None
+    end = min(as_of_idx + window, len(bars))
+    for i in range(as_of_idx, end):
+        close = float(bars[i].get("close") or 0)
+        if close < stop:
+            return None
+        if i < 1 or close <= float(bars[i - 1].get("close") or 0):
+            continue
+
+        down_volumes = [
+            float(bars[j].get("volume") or 0)
+            for j in range(max(1, i - volume_lookback), i)
+            if float(bars[j].get("close") or 0) < float(bars[j - 1].get("close") or 0)
+        ]
+        if not down_volumes or float(bars[i].get("volume") or 0) <= max(down_volumes):
+            continue
+
+        sma10, sma50, sma200 = (_sma(bars, i, period) for period in (10, 50, 200))
+        if sma10 is None or sma50 is None or sma200 is None:
+            continue
+        if not (sma10 > sma50 > sma200):
+            continue
+        if (close < sma10
+                or close > sma10 * (1 + max_ma_extension_pct / 100)
+                or close > pivot * (1 + max_pivot_extension_pct / 100)):
+            continue
+        return i
+    return None
+
+
+def _plan_pocket_pivot_fib(
+    bars: list[dict], as_of_idx: int, stop: float, pivot: float,
+    retracement: float = FIB_RETRACEMENT,
+    wait_window: int = FIB_WAIT_WINDOW,
+    leg_lookback: int = FIB_LEG_LOOKBACK,
+) -> int | None:
+    """Wait for a Fibonacci retracement after a frozen Pocket Pivot signal.
+
+    The retracement leg runs from the lowest low of the ``leg_lookback``
+    sessions ending at the signal bar up to the signal bar's high.  The first
+    bar within ``wait_window`` sessions whose low touches the retracement
+    level and whose close holds at or above it becomes the entry signal.  A
+    close below the frozen pattern stop invalidates while waiting; no touch
+    means no trade.
+    """
+    if not 0 < retracement < 1 or wait_window <= 0 or leg_lookback <= 0:
+        return None
+    signal_idx = _plan_pocket_pivot(bars, as_of_idx, stop, pivot)
+    if signal_idx is None:
+        return None
+    leg_start = max(0, signal_idx - leg_lookback + 1)
+    leg_low = min(
+        float(b.get("low", b["close"])) for b in bars[leg_start:signal_idx + 1]
+    )
+    leg_high = float(bars[signal_idx].get("high", bars[signal_idx]["close"]))
+    if leg_high <= leg_low:
+        return None
+    level = leg_high - retracement * (leg_high - leg_low)
+    end = min(signal_idx + 1 + wait_window, len(bars))
+    for i in range(signal_idx + 1, end):
+        close = float(bars[i]["close"])
+        if close < stop:
+            return None
+        if float(bars[i].get("low", close)) <= level <= close:
+            return i
+    return None
+
+
+def _as_of_pattern_levels(detection: dict) -> tuple[float, float] | None:
+    """Read the frozen pivot and stop from causal VCP detection fields."""
+    pattern = detection.get("vcp_pattern") or {}
+    contractions = pattern.get("contractions") or []
+    if not contractions:
+        return None
+    try:
+        pivot = float(pattern.get("pivot_price") or 0)
+        stop = float(contractions[-1].get("low_price") or 0)
+    except (TypeError, ValueError):
+        return None
+    return (pivot, stop) if pivot > 0 and stop > 0 else None
+
+
 @dataclass(frozen=True)
 class Config:
     initial_cash: float = 100_000.0
@@ -83,34 +197,49 @@ class Config:
 
 def _candidate_signals(
     detections: dict, prices: dict[str, list[dict]], cfg: Config,
-    entry_rule: str = "pullback",
+    entry_rule: str = "pullback", entry_params: dict | None = None,
 ) -> list[dict]:
-    """Build causal, next-bar-open orders from frozen MA20 pullback signals."""
+    """Build next-bar-open orders for a frozen entry-rule definition."""
     edges = compute_edge_rank(detections, DEFAULT_W_RS, DEFAULT_W_EXT)
     signals = []
     for sym, dets in detections.items():
         bars = prices.get(sym) or []
         idx = {b["date"]: i for i, b in enumerate(bars)}
         for det in dets:
-            fo = det.get("forward_outcome") or {}
-            if fo.get("outcome_type") != "breakout":
-                continue
             edge = (edges.get((sym, det.get("as_of_date"))) or {}).get("edge_rank")
             if edge is None or edge < cfg.min_edge:
                 continue
-            bo = idx.get(fo.get("exit_date"))
-            if bo is None or bo + 1 >= len(bars):
-                continue
-            pivot = fo.get("pivot_price")
-            pattern_stop = fo.get("stop_price") or 0.0
-            if not pivot:
-                continue
-            if entry_rule == "pullback":
-                signal_idx = _plan_frozen_pullback(bars, bo, pattern_stop)
-            elif entry_rule == "rebreak":
-                signal_idx = _plan_rebreak_after_pullback(bars, bo, pattern_stop)
+
+            if entry_rule in ("pocket_pivot", "pocket_pivot_fib"):
+                levels = _as_of_pattern_levels(det)
+                as_of_idx = idx.get(det.get("as_of_date"))
+                if levels is None or as_of_idx is None:
+                    continue
+                pivot, pattern_stop = levels
+                planner = (
+                    _plan_pocket_pivot if entry_rule == "pocket_pivot"
+                    else _plan_pocket_pivot_fib
+                )
+                signal_idx = planner(
+                    bars, as_of_idx, pattern_stop, pivot, **(entry_params or {}),
+                )
             else:
-                raise ValueError(f"unknown entry rule: {entry_rule}")
+                fo = det.get("forward_outcome") or {}
+                if fo.get("outcome_type") != "breakout":
+                    continue
+                bo = idx.get(fo.get("exit_date"))
+                if bo is None or bo + 1 >= len(bars):
+                    continue
+                pivot = fo.get("pivot_price")
+                pattern_stop = fo.get("stop_price") or 0.0
+                if not pivot:
+                    continue
+                if entry_rule == "pullback":
+                    signal_idx = _plan_frozen_pullback(bars, bo, pattern_stop)
+                elif entry_rule == "rebreak":
+                    signal_idx = _plan_rebreak_after_pullback(bars, bo, pattern_stop)
+                else:
+                    raise ValueError(f"unknown entry rule: {entry_rule}")
             if signal_idx is None or signal_idx + 1 >= len(bars):
                 continue
             fill_idx = signal_idx + 1
@@ -132,10 +261,12 @@ def _adv_dollars(bars: list[dict], i: int, lookback: int = 20) -> float:
 
 def run_portfolio(
     detections: dict, prices: dict[str, list[dict]], cfg: Config = Config(),
-    entry_rule: str = "pullback",
+    entry_rule: str = "pullback", entry_params: dict | None = None,
 ) -> dict:
     """Run the portfolio. ``prices`` bars must be oldest-first."""
-    signals = _candidate_signals(detections, prices, cfg, entry_rule=entry_rule)
+    signals = _candidate_signals(
+        detections, prices, cfg, entry_rule=entry_rule, entry_params=entry_params,
+    )
     by_date = collections.defaultdict(list)
     for s in signals:
         by_date[s["fill_date"]].append(s)

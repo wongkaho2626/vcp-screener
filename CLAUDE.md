@@ -98,6 +98,34 @@ excess-vs-SPY → `vcp_trades_*.json`) → experiment CLIs (see README table).
   t −2.01, significantly negative). Spearman(Edge, ret) −0.06: overlays don't
   stack, again. Raw returns, so excess vs SPY is worse. See
   `backtests/rebreak/verification_report.md`.
+- **Pocket Pivot entry: relative improvement but no edge (2026-07-16, 20/100 Reject).**
+  Causal v2 rule (up-day volume above every prior-10-session down-day volume,
+  SMA10>SMA50>SMA200, within 3% of SMA10/pivot, next-open fill) returned +8.53%
+  on 42 trades versus -5.41% for frozen pullback, with -3.74% MDD. The result
+  is development-period concentrated: 2022–2024 PF 0.80; 2025–2026 seven
+  trades, zero winners. Exposure-matched excess CAGR -0.08%, raw DSR 4.7%,
+  and OOS Sharpe -0.15. Keep as research-only; do not promote live. See
+  `backtests/pocket_pivot/verification_report.md`.
+- **Fibonacci-retracement fill on Pocket Pivot: harmful (2026-07-16, 15/100
+  Reject).** Frozen rule (v2 signal unchanged; wait ≤10 sessions for a 38.2%
+  retracement of the 10-session signal leg, touch-and-hold fill, next-open
+  entry): only 19 of 42 signals fill, PF 0.75, expectancy −0.93%/trade, lift
+  vs plain pocket pivot t −1.44. Structural adverse selection — 6 of the 7
+  >10% v2 winners never retraced, and the one that did (ALGN +62.9%) became a
+  −8.1% stop-out; deeper fib levels (50%/61.8%) are worse. Retrace-style fills
+  and momentum signals are substitutes, not complements (same lesson as
+  edge×pullback). See `backtests/pocket_pivot_fib/verification_report.md`.
+- **Breakout-day opening-gap conditioning: null, sign reversed (2026-07-17,
+  7/100 Reject).** Frozen rule (entry-day open ≥ +1.0% above prior close ⇒
+  "institutional demand" group, metric per-trade excess vs SPY, 173 classified
+  CSV trades): gap trades are *worse*, not better — mean −2.97% vs +0.10%
+  (Welch t −1.43, ns), PF 0.489 vs 1.024, negative at every threshold
+  (0.5/1/2%) and in both folds. Prespecified give-up criteria fired round 1.
+  Post-hoc reading (gap-ups = adverse selection, chasing extended opens) joins
+  the fib-fill lesson as hypothesis-generating only. Side finding: 43/173
+  entry fills deviate >1% from entry-day close (mixed fill convention in
+  `trade_simulator.py`, unaudited). See
+  `backtests/breakout_gap/verification_report.md`.
 - **Frozen v1 portfolio verdict: Reject (20/100).** Realistic daily-marked
   portfolio (next-open fills, costs, constraints) over 10.3y: CAGR −0.45%,
   exposure-matched excess t ≈ −1.8 to −2.7, OOS Sharpe collapse. See
