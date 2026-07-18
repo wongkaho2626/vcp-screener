@@ -1,11 +1,12 @@
 # Backtest Verification Report — pullback_oos (pre-2016 OOS replication of the MA20 pullback entry)
 
-Evaluated: 2026-07-18 · Analyst: backtest-analyst skill (round 1)
+Evaluated: 2026-07-18 · Analyst: backtest-analyst skill (round 2 re-run;
+round-1 numbers reproduced, three refinements folded in — see §2/§4 notes)
 Inputs: `frozen_spec.md` (predeclared), `pullback_oos_2026-07-18_214305.{md,json}`
 (196 paired records), `vcp_backtest_2026-07-18_214224.json` (915 detections,
 2006-2015, `data_source=csv:SP500_Pre2016_Data.csv`).
 
-## Backtest Score: 20 / 100 — Reject (capped) · **Pre-cap raw score: 72 / 100 — Promising**
+## Backtest Score: 20 / 100 — Reject (capped) · **Pre-cap raw score: 71 / 100 — Promising**
 
 The 20 is a **data cap, not a rule verdict**: the universe is the surviving
 2026 S&P constituent list applied to 2006-2015, a confirmed survivorship bias
@@ -16,11 +17,11 @@ replicates directionally on a decade it was never developed on.
 
 | Component | Score | Max |
 |---|---|---|
-| A. Statistical Validity & Significance | 24 | 30 |
+| A. Statistical Validity & Significance | 23 | 30 |
 | B. Risk-Adjusted Performance | n/a — redistributed | 25 |
 | C. Robustness & Out-of-Sample | 15 | 25 |
 | D. Trade Quality & Consistency | 15 | 20 |
-| **Raw total (reduced basis A+C+D = 75)** | **54/75 → 72/100** | |
+| **Raw total (reduced basis A+C+D = 75)** | **53/75 → 71/100** | |
 | Caps applied | survivorship-biased universe → **20** | |
 | **Final score** | **20** | 100 |
 
@@ -70,9 +71,15 @@ improves execution of a zero-edge signal; it does not create an edge.
 ## 2. Statistical Significance
 
 - **t = 2.50** on 196 pairs (one-sided p ≈ 0.007 vs the declared direction).
-- **Effective n ≈ 169** (lag-1 autocorrelation of chronologically ordered
-  deltas ρ = 0.08; max 7 pairs/month across 94 months — mild clustering,
-  t adjusted for n_eff still ≈ 2.3).
+- **Effective n ≈ 132** (3-lag autocorrelations ρ₁₋₃ = 0.08/0.11/0.06 of the
+  chronologically ordered deltas; Ljung-Box(3) = 4.23, below the 7.81
+  5% critical value; max 7 pairs/month across 94 months). t adjusted for
+  n_eff ≈ 2.05 — the declared t ≥ 2 bar survives the most conservative
+  independence adjustment, with no margin to spare.
+- **Jarque-Bera = 63.0** → non-normal (fat tails); PSR below already
+  corrects for skew/kurtosis.
+- **Kelly fraction (full) 0.25**; per-pair VaR95 −5.6 pp, CVaR95 −9.1 pp,
+  tail ratio 1.05.
 - **PSR (SR* = 0): 99.2%.**
 - **DSR by multiplicity framing** (the honest number depends on what counts
   as the trial family):
@@ -110,7 +117,7 @@ improves execution of a zero-edge signal; it does not create an edge.
   CSV, same code path) per-pair SR 0.461 (Δ +2.35, t 4.52, n 96); OOS per-pair
   SR 0.179 → **efficiency 0.39** — real but roughly half-strength signal,
   typical of honest replications, inside the 0.3-0.5 "reasonable" band.
-- **Regime stability**: positive mean in 8 of 11 calendar years; 2008 is the
+- **Regime stability**: positive mean in 7 of 11 calendar years (64%); 2008 is the
   worst year (−1.42, n 11, win 36%) but 2008-09 combined is flat (+0.25,
   n 22) — the overlay does not blow up in the bear, it merely stops helping.
 - **Trim fragility (the main statistical weakness)**: dropping the top 5/10
@@ -124,7 +131,9 @@ improves execution of a zero-edge signal; it does not create an edge.
   variants, and the median/win-rate stability across trims argues against a
   knife-edge artifact. Scored partial credit accordingly.
 - **Monte Carlo**: trade-level bootstrap and 50% subsampling above; observed
-  statistics sit well inside their resampled bands.
+  statistics sit inside their resampled bands. Cumulative-Δ max drawdown
+  −43 pp vs shuffled-order MC median −29 pp / 5th pct −47 pp — inside the
+  band but worse than typical, reflecting the flat 2006-2010 stretch.
 
 ## 5. Red Flags 🚩
 
