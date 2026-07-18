@@ -19,6 +19,7 @@ from pullback_oos_experiment import (
     aggregate_records,
     assign_fold,
     evaluate_detection,
+    filter_member_detections,
     summarize_values,
     trim_top,
 )
@@ -143,6 +144,33 @@ class TestEvaluateDetection:
                                  lambda e, x: 1.0,
                                  ma_period=2, window=15, max_hold_bars=3)
         assert rec["bo_exc"] == pytest.approx((106 / 101 - 1) * 100 - 1.0, abs=1e-6)
+
+
+class TestFilterMemberDetections:
+    INTERVALS = {"AAA": [("2006-01-01", "2010-06-30")],
+                 "BBB": [("2004-01-01", "9999-12-31")]}
+
+    def test_drops_detections_outside_membership(self):
+        dets = {
+            "AAA": [{"as_of_date": "2009-05-01"}, {"as_of_date": "2011-01-05"}],
+            "BBB": [{"as_of_date": "2012-03-01"}],
+            "CCC": [{"as_of_date": "2010-01-01"}],
+        }
+        kept, dropped = filter_member_detections(dets, self.INTERVALS)
+        assert [d["as_of_date"] for d in kept["AAA"]] == ["2009-05-01"]
+        assert len(kept["BBB"]) == 1
+        assert "CCC" not in kept
+        assert dropped == 2
+
+    def test_does_not_mutate_input(self):
+        dets = {"AAA": [{"as_of_date": "2011-01-05"}]}
+        filter_member_detections(dets, self.INTERVALS)
+        assert dets == {"AAA": [{"as_of_date": "2011-01-05"}]}
+
+    def test_none_intervals_passthrough(self):
+        dets = {"CCC": [{"as_of_date": "2010-01-01"}]}
+        kept, dropped = filter_member_detections(dets, None)
+        assert kept == dets and dropped == 0
 
 
 class TestSummarizeAndAggregate:

@@ -27,6 +27,7 @@ from datetime import datetime
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
+from membership import is_member, load_membership  # noqa: E402
 from pullback_experiment import plan_pullback_entry  # noqa: E402
 from trade_simulator import _bootstrap_ci, _t_stat, _to_chrono, simulate_exit  # noqa: E402
 
@@ -44,6 +45,26 @@ PULLBACK_WINDOW = 15
 PULLBACK_MA_PERIOD = 20
 TRIM_KS = (5, 10)
 COST_BPS_PER_SIDE = (10, 20, 50, 100)
+
+
+def filter_member_detections(
+    detections_by_ticker: dict[str, list[dict]],
+    intervals: dict[str, list[tuple[str, str]]] | None,
+) -> tuple[dict[str, list[dict]], int]:
+    """Keep only detections whose symbol was an index member on `as_of_date`
+    (PIT gate, see pit_addendum.md). Pure; returns (kept, dropped_count).
+    With `intervals` None the input passes through unchanged."""
+    if intervals is None:
+        return detections_by_ticker, 0
+    kept: dict[str, list[dict]] = {}
+    dropped = 0
+    for sym, dets in detections_by_ticker.items():
+        member = [d for d in dets
+                  if is_member(intervals, sym, d.get("as_of_date") or "")]
+        dropped += len(dets) - len(member)
+        if member:
+            kept[sym] = member
+    return kept, dropped
 
 
 def assign_fold(date_str: str | None) -> str | None:
@@ -295,6 +316,13 @@ def run(args: argparse.Namespace) -> None:
               "(silent yfinance fallback guard)", file=sys.stderr)
         sys.exit(1)
 
+    intervals = load_membership(args.membership_csv) if args.membership_csv else None
+    detections_by_ticker, dropped_non_member = filter_member_detections(
+        detections_by_ticker, intervals
+    )
+    if intervals is not None:
+        print(f"Membership gate: dropped {dropped_non_member} non-member detections")
+
     from csv_client import CSVClient  # noqa: PLC0415 — offline only by design
 
     client = CSVClient(args.price_csv)
@@ -332,6 +360,8 @@ def run(args: argparse.Namespace) -> None:
         "price_csv": args.price_csv,
         "data_source": data_source,
         "n_detections": n_detections,
+        "membership_filter": args.membership_csv or "none",
+        "dropped_non_member": dropped_non_member,
     }
     report = build_report(agg, meta)
     print(report)
@@ -354,6 +384,9 @@ def main() -> None:
                     help="pre-2016 vcp_backtest_*.json report(s)")
     ap.add_argument("--price-csv", required=True,
                     help="Offline OHLCV CSV (CSVClient; synthetic benchmark)")
+    ap.add_argument("--membership-csv",
+                    help="PIT membership intervals CSV; drops detections whose "
+                    "symbol was not an index member on as_of_date (pit_addendum.md)")
     ap.add_argument("--output-dir", default="backtests/pullback_oos")
     run(ap.parse_args())
 

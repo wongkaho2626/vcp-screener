@@ -1,176 +1,108 @@
 # Backtest Verification Report — pullback_oos (pre-2016 OOS replication of the MA20 pullback entry)
 
-Evaluated: 2026-07-18 · Analyst: backtest-analyst skill (round 2 re-run;
-round-1 numbers reproduced, three refinements folded in — see §2/§4 notes)
-Inputs: `frozen_spec.md` (predeclared), `pullback_oos_2026-07-18_214305.{md,json}`
-(196 paired records), `vcp_backtest_2026-07-18_214224.json` (915 detections,
-2006-2015, `data_source=csv:SP500_Pre2016_Data.csv`).
+Evaluated: 2026-07-18 · backtest-analyst · **Round 3 — PIT replay (final; supersedes rounds 1-2)**
+Chain: round 1 scored the survivor-only run; round 2 reproduced it with refinements
+(pre-cap 71); round 3 executed the predeclared PIT protocol (`pit_addendum.md`,
+frozen before any PIT result) on a delisted-inclusive universe. Per that
+addendum, **this round's verdict supersedes the survivor-only result.**
 
-## Backtest Score: 20 / 100 — Reject (capped) · **Pre-cap raw score: 71 / 100 — Promising**
+## Backtest Score: 12 / 100 — Reject. **Failure to replicate on delisted-inclusive data.**
 
-The 20 is a **data cap, not a rule verdict**: the universe is the surviving
-2026 S&P constituent list applied to 2006-2015, a confirmed survivorship bias
-that the house rubric hard-caps at 20 for any deployability claim. On the
-evidence the data *can* support, this is the first experiment in ~20 that
-**passes its own predeclared OOS bar**: the shipped MA20 pullback entry
-replicates directionally on a decade it was never developed on.
+The survivor-only "first OOS pass" (paired Δ +0.69, t 2.50, n 196) does **not**
+survive the PIT universe: Δ +0.22, t 0.58, fold sign-flip, trim sign-flips.
+The round-1 pass is attributed to survivorship bias, exactly as the round-1
+report's #1 red flag warned ("pullback entries buy weakness, and weakness in
+survivors recovers more often"). The experiment closes as a null.
 
 | Component | Score | Max |
 |---|---|---|
-| A. Statistical Validity & Significance | 23 | 30 |
+| A. Statistical Validity & Significance | 4 | 30 |
 | B. Risk-Adjusted Performance | n/a — redistributed | 25 |
-| C. Robustness & Out-of-Sample | 15 | 25 |
-| D. Trade Quality & Consistency | 15 | 20 |
-| **Raw total (reduced basis A+C+D = 75)** | **53/75 → 71/100** | |
-| Caps applied | survivorship-biased universe → **20** | |
-| **Final score** | **20** | 100 |
+| C. Robustness & Out-of-Sample | 2 | 25 |
+| D. Trade Quality & Consistency | 6 | 20 |
+| **Raw total (reduced basis A+C+D = 75)** | **12/75 → 16/100** | |
+| Caps applied | residual survivorship (coverage 69.7% < declared 70%) → 20 | |
+| **Final score** | **12** (raw already below cap) | 100 |
 
-Component B (Sharpe/Sortino/MDD) is not computable — the deliverable is a
-per-detection paired execution delta, not a portfolio equity curve — so its
-weight was redistributed per the rubric (Step 3), and that is stated here
-rather than treated as zero.
+## The PIT dataset (what changed vs rounds 1-2)
 
-## Executive Summary
+- Universe: 735 tickers with S&P 500 membership overlapping 2006-2015
+  (`scripts/data/sp500_membership.csv`, fja05680); 443 with usable prices.
+- Recovered 175+ missing members via Yahoo (incl. genuinely delisted names,
+  e.g. AET, TWX, ESRX-era) + 7 curated same-entity rename aliases (ANTM←ELV,
+  BLL←BALL, HRS←LHX, UTX←RTX, CTL←LUMN, TMK←GL, ABC←COR). One wrong alias
+  (CB = ACE Ltd, not old Chubb) caught and discarded. Stooq unusable
+  (JS anti-bot wall — not circumvented, by policy).
+- Quality gates (`scripts/build_pit_universe.py`, tested): per-interval trims
+  (membership −730d/+130d) expelled wrong-entity reused tickers (new
+  DELL/DOW/CEG, SUN LP…); ±150% scale-break screen dropped 8 corrupt series
+  (TIE, CFC, BMC, BOL, CBE, CITGQ, CPWR, MEE) which had poisoned a first PIT
+  attempt (equal-weight benchmark showed ±1900% days; that run was discarded
+  and detection re-run on clean data — benchmark now: worst −10.2%/best
+  +11.6%, plausible crisis extremes).
+- **Member-day coverage: 69.74%** (2006: 60.7% → 2015: 77.4%). Unrecovered
+  names concentrate in crisis-era corpses (LEH, WAMUQ, BSC, ABI…) and
+  Yahoo-purged names (BK, CMA, WBA, MMC, SEE — persistent 404s).
+- Detections membership-gated at `as_of_date`
+  (`pullback_oos_experiment.py --membership-csv`, tested); 38 non-member
+  detections dropped. Benchmark = equal-weight of the PIT universe
+  (delisted-inclusive — more honest than rounds 1-2).
 
-The one validated positive result of this research programme (MA20
-touch-and-hold pullback entry beats chasing the breakout close; +1.36 pp
-paired, t 3.13 on 2016-2026) was re-tested on 2006-2015 S&P data that no
-prior trial had touched, under a spec frozen before any result was computed.
-It replicates in direction and significance (paired Δ +0.69 pp, t 2.50,
-n 196, win 63.8%, PF 1.65), passes the predeclared fold-sign and trim-sign
-requirements, and stays flat rather than collapsing through the 2008-09 bear.
-The effect is roughly half its in-sample size, its mean (not its median) is
-outlier-fragile, and the gain is concentrated in 2011-2015. The universe's
-survivorship bias caps any deployability claim at 20; within that limit the
-honest reading is: **execution improvement confirmed out-of-sample, no
-standalone alpha — same conclusion as 2016-2026, now on independent data.**
+## Headline result (PIT, frozen rule unchanged)
 
-## 1. Performance Metrics (paired Δ = pullback excess − breakout excess, pp)
+| Metric | Survivor-only (r1-2) | **PIT (r3, final)** | Declared bar | Verdict |
+|---|---|---|---|---|
+| Paired Δ mean | +0.688 | **+0.224** | > 0 | sign ok |
+| t | 2.50 | **0.58** | ≥ 2 | **FAIL** |
+| Bootstrap P(mean≤0) | 0.6% | **27.5%** | — | no evidence |
+| Fold 2006-2010 | +0.23 | **−0.71 (t −1.05)** | same sign | **FAIL (flip)** |
+| Fold 2011-2015 | +1.08 | +0.96 (t 2.04) | same sign | ok |
+| Drop-top-5 / 10 | +0.41 / +0.22 | **−0.20 / −0.42** | sign holds | **FAIL (flip)** |
+| Δ profit factor | 1.65 | 1.16 | — | marginal |
+| Win% / median | 63.8 / +1.02 | 59.4 / +0.76 | — | positive but weak |
+| n pairs | 196 | 133 | ≥30 | ok |
 
-| Metric | Value | Threshold | Status |
-|---|---|---|---|
-| n pairs | 196 | ≥30 | ✅ |
-| Mean Δ | +0.688 | >0 declared | ✅ |
-| t-statistic | 2.50 | ≥2 declared | ✅ |
-| 95% bootstrap CI | [+0.14, +1.22] | excludes 0 | ✅ |
-| Median Δ | +1.02 | >0 | ✅ |
-| Win rate | 63.8% | >50% | ✅ |
-| Delta profit factor | 1.649 | >1.5 | ✅ |
-| Per-pair SR | 0.179 | — | context |
-| Skew / excess kurtosis | −0.25 / +2.73 | — | mildly fat-tailed |
-| Fold 2006-2010 | +0.23 (t 0.45, n 79) | same sign | ✅ (weak) |
-| Fold 2011-2015 | +1.08 (t 3.38, n 109) | same sign | ✅ |
-| Drop-top-5 / drop-top-10 mean | +0.41 (t 1.62) / +0.22 (t 0.90) | sign holds | ✅ sign, ⚠️ significance |
-| Context: breakout leg abs. excess | −1.15 (PF 0.73) | — | no standalone alpha |
-| Context: pullback leg abs. excess | −1.13 (PF 0.74) | — | no standalone alpha |
+## Attribution (why the effect died)
 
-Both absolute legs are *negative* vs the synthetic equal-weight benchmark —
-consistent with the established "entry alpha: none" result. The overlay
-improves execution of a zero-edge signal; it does not create an edge.
+Shared-detection decomposition (105 detections appear in both runs):
 
-## 2. Statistical Significance
+- On **shared** detections, Δ is nearly identical: +0.45 (survivor benchmark)
+  vs +0.40 (PIT benchmark) — benchmark choice is not the story.
+- The **28 new pairs on recovered/delisted names average ≈ −0.43** — the
+  adverse selection the paired design was supposed to be immune to shows up
+  exactly where the missing names return.
+- The **91 survivor-run pairs absent under PIT** construction (bars trimmed
+  to membership, detections shifted by delisted-inclusive RS) averaged
+  ≈ +0.96 — the survivor run's strongest pairs lived disproportionately in
+  data that PIT discipline removes.
 
-- **t = 2.50** on 196 pairs (one-sided p ≈ 0.007 vs the declared direction).
-- **Effective n ≈ 132** (3-lag autocorrelations ρ₁₋₃ = 0.08/0.11/0.06 of the
-  chronologically ordered deltas; Ljung-Box(3) = 4.23, below the 7.81
-  5% critical value; max 7 pairs/month across 94 months). t adjusted for
-  n_eff ≈ 2.05 — the declared t ≥ 2 bar survives the most conservative
-  independence adjustment, with no margin to spare.
-- **Jarque-Bera = 63.0** → non-normal (fat tails); PSR below already
-  corrects for skew/kurtosis.
-- **Kelly fraction (full) 0.25**; per-pair VaR95 −5.6 pp, CVaR95 −9.1 pp,
-  tail ratio 1.05.
-- **PSR (SR* = 0): 99.2%.**
-- **DSR by multiplicity framing** (the honest number depends on what counts
-  as the trial family):
+Yearly pattern persists in weaker form (2012-2014 positive, choppy/bear years
+negative) — consistent with rounds 1-2's fold asymmetry: whatever residual
+effect exists is regime-local (trending tape), not a general property.
 
-  | Framing | N trials | DSR |
-  |---|---|---|
-  | Predeclared single confirmation of the shipped rule | 1 | = PSR 99.2% |
-  | Winner of the original 4-variant pullback scan | 4 | **91.1%** |
-  | Broad in-repo entry-overlay family | 20 | 69.1% |
-  | Entire programme (~180 trials, different data & hypotheses) | 180 | 37.0% |
+## Bias assessment (delta vs rounds 1-2)
 
-  The 4-variant framing is the most defensible: the other ~176 trials were on
-  2016-2026 data and mostly unrelated hypotheses, while this test's rule and
-  direction were fixed by the shipped overlay before any pre-2016 bar was
-  read. Even the harshest framing leaves DSR positive (>0), i.e. the observed
-  SR exceeds the expected maximum of that many null trials.
-- **Bootstrap P(mean ≤ 0) = 0.63%**; 50% subsample resampling: P(mean < 0) =
-  0.9%, median subsample mean +0.69.
-
-## 3. Bias Assessment
-
-| Bias | Status | Evidence |
+| Bias | Status | Note |
 |---|---|---|
-| Lookahead | **Absent** | Signals use only bars at/after the breakout; pattern levels fixed at detection; pytest truncation-invariance test (`test_no_lookahead_truncation_invariance`) passes; `forward_outcome` consulted only to locate the breakout bar. |
-| Survivorship | **Present (confirmed)** | Universe = 2026 constituents held back to 2006; delisted names absent. Mitigated but not removed by the paired design (both legs trade the same surviving names). Residual risk is *directional*: pullback entries buy weakness, and weakness in survivors recovers more often than it would in delisted names — the paired Δ is therefore plausibly inflated, not just noisy. → hard cap 20. |
-| Overfitting / snooping | **Absent for this test** | Spec, folds, trims, success and give-up criteria frozen in `frozen_spec.md` before the first pre-2016 detection was computed; zero parameters tuned; the 3 losing 2016-2026 variants were not re-run. |
-| Costs | **Absent (by construction)** | Both legs are one round trip on the same name — per-side costs cancel exactly in Δ at 10/20/50/100 bps. Absolute legs shown with cost drag as context. |
-| Benchmark validity | **Caveat** | "SPY" is a synthetic equal-weight index of the surviving universe (labelled in report) — harsher than real SPY, common to both legs, so it cannot flip Δ's sign. |
-| Data-source fallback | **Absent** | `data_source=csv:SP500_Pre2016_Data.csv` verified in metadata; the CLI hard-errors on non-csv sources. |
-| Spec deviation | **Minor, disclosed** | 8 pairs carry Dec-2005 breakout dates (walk's earliest as-of), inside pooled but outside both folds. Excluding them *raises* the pooled mean to ≈ +0.72 — immaterial and adverse-to-claim, not favorable. |
+| Survivorship | **Partially resolved, and decisive** | Coverage 69.7% just misses the predeclared 70% "partially mitigated" line, so the residual-bias cap (20) formally stands — but the raw score (12) is below the cap anyway; the question answered itself. |
+| Lookahead | Absent | Unchanged (truncation-invariance test; membership gate uses only as-of-date public info). |
+| Data quality | **Handled, material** | First PIT attempt was invalidated by corrupt Yahoo series (TIE/CFC…); scale-break screen + rebuild + detection re-run fixed it. This failure mode is now codified in `build_pit_universe.py`. |
+| Snooping | Absent | PIT protocol frozen in `pit_addendum.md` before results; zero rule changes; supersession rule declared in advance. |
 
-## 4. Robustness
+## Verdict
 
-- **WFA / OOS efficiency**: this experiment *is* the OOS leg. IS (2016-2026
-  CSV, same code path) per-pair SR 0.461 (Δ +2.35, t 4.52, n 96); OOS per-pair
-  SR 0.179 → **efficiency 0.39** — real but roughly half-strength signal,
-  typical of honest replications, inside the 0.3-0.5 "reasonable" band.
-- **Regime stability**: positive mean in 7 of 11 calendar years (64%); 2008 is the
-  worst year (−1.42, n 11, win 36%) but 2008-09 combined is flat (+0.25,
-  n 22) — the overlay does not blow up in the bear, it merely stops helping.
-- **Trim fragility (the main statistical weakness)**: dropping the top 5/10
-  of 196 pairs keeps the sign (+0.41/+0.22) but kills significance (t 1.62 →
-  0.90). The median Δ is stable at ≈ +0.9-1.0 across all trims and the win
-  rate stays ≈ 62-64% — the *typical* pair benefits; the *mean* leans on a
-  handful of large winners. Declared bar required sign survival only: met.
-- **Parameter sensitivity**: deliberately not scanned here (frozen spec
-  forbids re-running the 4-variant family on new data — anti-snooping).
-  Indirect evidence: the 2016-2026 surface was smooth across MA10/MA20/pivot
-  variants, and the median/win-rate stability across trims argues against a
-  knife-edge artifact. Scored partial credit accordingly.
-- **Monte Carlo**: trade-level bootstrap and 50% subsampling above; observed
-  statistics sit inside their resampled bands. Cumulative-Δ max drawdown
-  −43 pp vs shuffled-order MC median −29 pp / 5th pct −47 pp — inside the
-  band but worse than typical, reflecting the flat 2006-2010 stretch.
+**12/100 — Reject. The pre-2016 replication of the MA20 pullback entry fails
+on delisted-inclusive data.** Per the predeclared addendum, this supersedes
+the survivor-only pass: the +0.69 pp / t 2.50 result was substantially a
+survivorship artifact, with the residual (+0.22, ns) too weak and too
+fold/trim-fragile to count as evidence. Programme implications:
 
-## 5. Red Flags 🚩
-
-1. **Survivorship bias with directional teeth** — buying pullbacks in a
-   survivors-only universe plausibly inflates Δ itself, not just absolute
-   returns. This is why the cap is warranted despite the paired design.
-2. **Mean is outlier-carried** — significance vanishes after drop-top-10;
-   only the median/win-rate story survives trimming.
-3. **Fold asymmetry** — 2006-2010 contributes +0.23 (t 0.45): the replication
-   is driven by 2011-2015. A regime in which the overlay is a coin flip
-   (choppy/bear tape) is documented, now in two independent decades.
-4. **Effect size halved OOS** (efficiency 0.39) — expect further shrinkage
-   live; at half of +0.69 pp the overlay remains useful but modest.
-5. **Selection-of-winner residue** — the rule is the best of 4 variants
-   chosen in-sample; the 4-trial DSR (91%) covers this, but it is the reason
-   the pooled t 2.50 should not be read as a fresh discovery-grade result.
-
-## 6. Improvement Recommendations 💡
-
-1. **Lift the cap, nothing else**: build a delisted-inclusive pre-2016
-   universe (PIT constituent lists + delisted OHLCV). This is the *only*
-   change that can move the score above 20; no amount of re-analysis on this
-   CSV can.
-2. If/when such data exists, re-run this exact frozen spec unchanged — the
-   experiment is designed to be replayed verbatim.
-3. Optional context (not score-moving): an R2K pre-2016 price CSV would
-   restore the cross-universe prong.
-4. Do **not** re-tune the overlay on this decade (window/MA scans) — that
-   would convert a clean confirmation into a new in-sample fit.
-
-## 7. Verdict
-
-**Final: 20/100 — Reject band, by survivorship cap. Pre-cap raw: 72/100 —
-Promising.** The predeclared replication bar (Δ > 0, t ≥ 2, fold signs, trim
-signs) was met in full — the first OOS pass in this programme. The correct
-reading is narrow: *the MA20 pullback overlay is a genuine execution
-improvement over breakout-chasing on this data family, confirmed on an
-independent decade; it is not standalone alpha (both legs remain negative
-vs benchmark), and no deployability claim survives the survivorship cap.*
-Good rule, bad data — the blocker is the security master, not the statistics.
+1. The 2006-2015 decade is closed as a confirmation set; result: null.
+2. The shipped overlay's 2016-2026 evidence (own-era validation, R2K
+   replication) stands on its own but should be read more cautiously — its
+   era's CSV is also survivors-only, though bias is smaller nearer the
+   snapshot date. A 2016-2026 PIT rebuild via `build_pit_universe.py` is the
+   natural follow-up if the user wants one.
+3. Positive residue: the repo now has reproducible PIT tooling
+   (`build_pit_universe.py`, membership gate in the experiment CLI, coverage
+   accounting) that any future experiment can use from day one.

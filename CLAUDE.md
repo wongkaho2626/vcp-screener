@@ -165,21 +165,26 @@ excess-vs-SPY → `vcp_trades_*.json`) → experiment CLIs (see README table).
   not a gradient. Second independent hint (after stop-width) that textbook
   tightness is adversely selected among detections; hypothesis-generating
   only. See `backtests/contraction/verification_report.md`.
-- **Pre-2016 OOS replication of MA20 pullback entry: PASSED its predeclared
-  bar — first OOS pass in the programme (2026-07-18, 20/100 capped, pre-cap
-  raw 72/100 Promising).** The CSV reaches back to 1999; 2006–2015 was
-  untouched by all prior trials. Frozen spec declared before any result
-  (`backtests/pullback_oos/frozen_spec.md`), shipped rule re-run verbatim via
-  `pullback_oos_experiment.py`: paired Δ +0.69 pp (t 2.50, n 196, win 63.8%,
-  PF 1.65, bootstrap P(≤0) 0.6%), both folds positive (2006–10 +0.23 ns;
-  2011–15 +1.08 t 3.38), trim signs hold (though trim t collapses — median
-  stays ≈ +1.0), flat not negative through 2008–09. Effect ≈ half in-sample
-  size (OOS/IS efficiency 0.39); both absolute legs still negative vs
-  benchmark — execution improvement confirmed, still no standalone alpha.
-  Score capped at 20 by survivorship (worse pre-2016: 2026 constituents held
-  back 20 y; directional risk — survivors' pullbacks recover more often).
-  Only a delisted-inclusive PIT universe can lift the cap; do NOT re-tune the
-  overlay on this decade. See `backtests/pullback_oos/verification_report.md`.
+- **Pre-2016 OOS replication of MA20 pullback entry: FAILED on
+  delisted-inclusive PIT data — survivor-only "pass" was a survivorship
+  artifact (2026-07-18, final 12/100 Reject).** Two-stage result. Stage 1
+  (survivors-only CSV): paired Δ +0.69 pp, t 2.50, n 196 — passed the frozen
+  bar, scored 20 capped / 71 pre-cap. Stage 2 (predeclared PIT protocol,
+  `backtests/pullback_oos/pit_addendum.md`, frozen before results): built a
+  delisted-inclusive universe (735 PIT members, 175+ recovered via Yahoo, 7
+  curated rename aliases, wrong-entity/scale-break screens, 69.7% member-day
+  coverage via `scripts/build_pit_universe.py`) and replayed the identical
+  rule with a membership gate — **Δ collapses to +0.22 (t 0.58), 2006–10
+  fold flips negative, trims flip negative**. Attribution: shared detections
+  keep their Δ (+0.40); the 28 new delisted-name pairs average −0.43 and the
+  91 pairs PIT discipline removes averaged +0.96. Lessons: (1) the paired
+  design does NOT immunize against survivorship — buying weakness in
+  survivors is adversely selected; (2) treat the shipped overlay's 2016–2026
+  survivors-only evidence more cautiously (a 2016–2026 PIT rebuild via
+  `build_pit_universe.py` is the natural follow-up); (3) Yahoo serves many
+  delisted names but with corrupt series (TIE/CFC-style 100x scale breaks) —
+  always run the scale-break screen; Stooq is bot-walled. 2006–2015 is spent;
+  do NOT re-tune on it. See `backtests/pullback_oos/verification_report.md`.
 - **Frozen v1 portfolio verdict: Reject (20/100).** Realistic daily-marked
   portfolio (next-open fills, costs, constraints) over 10.3y: CAGR −0.45%,
   exposure-matched excess t ≈ −1.8 to −2.7, OOS Sharpe collapse. See
