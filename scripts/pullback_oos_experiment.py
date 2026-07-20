@@ -67,11 +67,28 @@ def filter_member_detections(
     return kept, dropped
 
 
-def assign_fold(date_str: str | None) -> str | None:
-    """Fold label for a YYYY-MM-DD pair date; None outside 2006-2015."""
+def parse_folds(specs: list[str]) -> tuple[tuple[str, str, str], ...]:
+    """Parse repeatable --fold specs of the form ``label:start:end``."""
+    folds = []
+    for spec in specs:
+        parts = spec.split(":")
+        if len(parts) != 3 or not all(parts):
+            raise ValueError(f"--fold expects label:start:end, got '{spec}'")
+        label, start, end = parts
+        if end < start:
+            raise ValueError(f"--fold '{spec}': end before start")
+        folds.append((label, start, end))
+    return tuple(folds)
+
+
+def assign_fold(
+    date_str: str | None,
+    folds: tuple[tuple[str, str, str], ...] = FOLDS,
+) -> str | None:
+    """Fold label for a YYYY-MM-DD pair date; None outside all folds."""
     if not date_str:
         return None
-    for label, start, end in FOLDS:
+    for label, start, end in folds:
         if start <= date_str <= end:
             return label
     return None
@@ -187,14 +204,17 @@ def _leg_and_delta_stats(records: list[dict]) -> dict:
     }
 
 
-def aggregate_records(records: list[dict]) -> dict:
+def aggregate_records(
+    records: list[dict],
+    folds: tuple[tuple[str, str, str], ...] = FOLDS,
+) -> dict:
     """Pooled, per-fold, and trimmed summaries. Pure."""
     deltas = [r["delta"] for r in records if r["delta"] is not None]
-    folds = {
+    fold_stats = {
         label: _leg_and_delta_stats(
-            [r for r in records if assign_fold(r.get("pair_date")) == label]
+            [r for r in records if assign_fold(r.get("pair_date"), folds) == label]
         )
-        for label, _, _ in FOLDS
+        for label, _, _ in folds
     }
     trims = {
         f"drop_top_{k}": summarize_values(trim_top(deltas, k)) for k in TRIM_KS
@@ -205,7 +225,7 @@ def aggregate_records(records: list[dict]) -> dict:
     }
     return {
         "pooled": _leg_and_delta_stats(records),
-        "folds": folds,
+        "folds": fold_stats,
         "trims": trims,
         "counts": counts,
     }
@@ -257,7 +277,7 @@ def build_report(agg: dict, meta: dict) -> str:
         "| Fold | N | Mean | t | 95% CI | Median | Win% |",
         "|---|---|---|---|---|---|---|",
     ]
-    for label, _, _ in FOLDS:
+    for label in agg["folds"]:
         lines.append(_stats_row(label, agg["folds"][label]["deltas"]))
     lines += [
         "",
@@ -353,7 +373,8 @@ def run(args: argparse.Namespace) -> None:
             n_detections += 1
             records.append({**rec, "symbol": sym})
 
-    agg = aggregate_records(records)
+    folds = parse_folds(args.fold) if args.fold else FOLDS
+    agg = aggregate_records(records, folds=folds)
     meta = {
         "generated_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         "backtest_jsons": ", ".join(args.backtest_jsons),
@@ -384,6 +405,9 @@ def main() -> None:
                     help="pre-2016 vcp_backtest_*.json report(s)")
     ap.add_argument("--price-csv", required=True,
                     help="Offline OHLCV CSV (CSVClient; synthetic benchmark)")
+    ap.add_argument("--fold", action="append",
+                    help="Fold spec label:start:end (repeatable); default = "
+                    "the 2006-2010 / 2011-2015 pair")
     ap.add_argument("--membership-csv",
                     help="PIT membership intervals CSV; drops detections whose "
                     "symbol was not an index member on as_of_date (pit_addendum.md)")
