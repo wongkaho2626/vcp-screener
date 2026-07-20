@@ -50,7 +50,10 @@ EARLIEST_BAR = "1999-01-01"
 # Same-entity renames: historical ticker <- successor ticker whose Yahoo/CSV
 # series carries the continuous share line. Curated; do not add merger
 # acquirers (e.g. CB is ACE Ltd, NOT old Chubb).
-IN_CSV_ALIASES = {"ANTM": "ELV", "BLL": "BALL", "HRS": "LHX", "UTX": "RTX"}
+IN_CSV_ALIASES = {"ANTM": "ELV", "BLL": "BALL", "HRS": "LHX", "UTX": "RTX",
+                  "TMK": "GL", "ABC": "COR", "FB": "META", "RE": "EG",
+                  "FLT": "CPAY", "PEAK": "DOC", "HCP": "DOC", "WLTW": "WTW",
+                  "NLOK": "GEN", "SYMC": "GEN"}
 
 
 def _shift(d: str, days: int) -> str:
@@ -120,7 +123,11 @@ def build(args: argparse.Namespace) -> None:
     def add_row(t: str, row: list) -> None:
         bars.setdefault(t, []).append(row)
 
-    rev = {v: k for k, v in IN_CSV_ALIASES.items()}
+    # successor -> [historical tickers]; one successor can carry several eras
+    # (e.g. DOC covers both HCP and PEAK) — membership trims slice each copy.
+    rev: dict[str, list[str]] = {}
+    for old, new in IN_CSV_ALIASES.items():
+        rev.setdefault(new, []).append(old)
     with open(args.survivors_csv, newline="") as f:
         r = csv.reader(f)
         next(r)
@@ -128,8 +135,8 @@ def build(args: argparse.Namespace) -> None:
             t = row[0]
             if t in uni:
                 add_row(t, row)
-            if t in rev:
-                add_row(rev[t], [rev[t]] + row[1:])
+            for old in rev.get(t, []):
+                add_row(old, [old] + row[1:])
     for path in args.recovered:
         with open(path, newline="") as f:
             r = csv.reader(f)

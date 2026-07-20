@@ -15,11 +15,14 @@ sys.path.insert(
     os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "scripts"),
 )
 
+import pytest as _pytest
+
 from pullback_oos_experiment import (
     aggregate_records,
     assign_fold,
     evaluate_detection,
     filter_member_detections,
+    parse_folds,
     summarize_values,
     trim_top,
 )
@@ -144,6 +147,29 @@ class TestEvaluateDetection:
                                  lambda e, x: 1.0,
                                  ma_period=2, window=15, max_hold_bars=3)
         assert rec["bo_exc"] == pytest.approx((106 / 101 - 1) * 100 - 1.0, abs=1e-6)
+
+
+class TestParseFolds:
+    def test_parses_label_start_end(self):
+        folds = parse_folds(["a:2016-07-01:2020-12-31", "b:2021-01-01:2026-06-30"])
+        assert folds == (("a", "2016-07-01", "2020-12-31"),
+                         ("b", "2021-01-01", "2026-06-30"))
+
+    def test_custom_folds_drive_assign_and_aggregate(self):
+        folds = parse_folds(["x:2016-01-01:2020-12-31", "y:2021-01-01:2026-12-31"])
+        assert assign_fold("2019-05-01", folds) == "x"
+        assert assign_fold("2010-05-01", folds) is None
+        records = [{"pair_date": "2019-05-01", "status": "paired",
+                    "bo_exc": 0.0, "pb_exc": 1.0, "delta": 1.0}] * 6
+        agg = aggregate_records(records, folds=folds)
+        assert agg["folds"]["x"]["deltas"]["n"] == 6
+        assert agg["folds"]["y"]["deltas"] is None
+
+    def test_malformed_spec_raises(self):
+        with _pytest.raises(ValueError):
+            parse_folds(["bad-spec"])
+        with _pytest.raises(ValueError):
+            parse_folds(["a:2020-12-31:2016-01-01"])  # end before start
 
 
 class TestFilterMemberDetections:

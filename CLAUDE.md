@@ -72,6 +72,9 @@ excess-vs-SPY → `vcp_trades_*.json`) → experiment CLIs (see README table).
 - **Validated and shipped**: MA20 pullback entry (+1.36 pp paired, t 3.13,
   replicates on R2K, smooth parameter surface) and Edge Rank sizing
   (+1.01%/trade, PIT-only — did not replicate on the CSV dataset).
+  2026-07-21 PIT correction: the pullback overlay's true effect size is
+  ≈ +0.98 pp (see the pullback_pit2016 bullet below) — reset any sizing
+  intuition built on the survivor-only numbers.
 - **The two overlays don't stack.** Edge×pullback interaction
   (`edge_pullback_interaction.py`, one-shot declared test): the pullback
   improvement does NOT concentrate in high-Edge names (Edge≥70 pooled t 1.09,
@@ -185,6 +188,23 @@ excess-vs-SPY → `vcp_trades_*.json`) → experiment CLIs (see README table).
   delisted names but with corrupt series (TIE/CFC-style 100x scale breaks) —
   always run the scale-break screen; Stooq is bot-walled. 2006–2015 is spent;
   do NOT re-tune on it. See `backtests/pullback_oos/verification_report.md`.
+- **2016–2026 PIT re-measurement of the shipped MA20 pullback overlay:
+  PASSED — real but 58% smaller, first uncapped score (2026-07-21, 68/100
+  Promising).** Predeclared follow-up to the pullback_oos reversal
+  (`backtests/pullback_pit2016/frozen_spec.md`, frozen pre-results): built a
+  600-ticker delisted-inclusive 2016–2026 universe with
+  `build_pit_universe.py` (98 recovered + 15 same-entity rename aliases incl.
+  FB←META; **91.39% member-day coverage ⇒ survivorship cap lifted** per the
+  predeclared schedule) and replayed the identical frozen rule
+  membership-gated. Paired Δ +0.98 pp (t 2.73, adj 2.55; PSR 99.4%, DSR 92.5%
+  at N=4; PF 1.85; bootstrap P(≤0) 0.31%); both folds positive (2016H2–20
+  +2.17 t 3.42; 2021–26 +0.33 t 0.75); trim signs hold. Verdict: the shipped
+  overlay's improvement is real, NOT a survivorship artifact — but PIT
+  discipline cuts it from +2.35 to +0.98 (survivor-only numbers overstated
+  2.4×), the 2021–2026 half is a coin flip (faded since 2022), and the failed
+  2006–2015 OOS stands. Overlay stays live with corrected expectations
+  (≈ +1 pp, median +0.8); 80+ requires prospective forward evidence, not more
+  history. See `backtests/pullback_pit2016/verification_report.md`.
 - **Frozen v1 portfolio verdict: Reject (20/100).** Realistic daily-marked
   portfolio (next-open fills, costs, constraints) over 10.3y: CAGR −0.45%,
   exposure-matched excess t ≈ −1.8 to −2.7, OOS Sharpe collapse. See
