@@ -1,0 +1,154 @@
+{
+  "generated_at": "2026-08-01T23:34:06",
+  "family_spec": "backtests/membership_tenure_v2/density_spec.md",
+  "classification": "outcome_free_density_only",
+  "return_evaluation_accessed": false,
+  "validation_accessed": false,
+  "best_available_oos_accessed": false,
+  "period": [
+    "2016-07-01",
+    "2018-06-30"
+  ],
+  "price_end_for_fill_bookkeeping": "2018-12-31",
+  "coverage": {
+    "universe": 720,
+    "kept": 599,
+    "benchmark_present": true,
+    "coverage_pct": 91.31,
+    "per_year": {
+      "2016": 82.4,
+      "2017": 84.3,
+      "2018": 85.8,
+      "2019": 87.2,
+      "2020": 90.0,
+      "2021": 91.8,
+      "2022": 93.7,
+      "2023": 95.7,
+      "2024": 96.5,
+      "2025": 97.8,
+      "2026": 98.7
+    },
+    "dropped": [
+      [
+        "AMTM",
+        "only-60-bars-in-membership"
+      ],
+      [
+        "APC",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "BNY",
+        "only-27-bars-in-membership"
+      ],
+      [
+        "CASY",
+        "only-57-bars-in-membership"
+      ],
+      [
+        "CIEN",
+        "only-98-bars-in-membership"
+      ],
+      [
+        "COHR",
+        "only-69-bars-in-membership"
+      ],
+      [
+        "EMC",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "FDXF",
+        "only-21-bars-in-membership"
+      ],
+      [
+        "HOT",
+        "only-57-bars-in-membership"
+      ],
+      [
+        "INFO",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "LB",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "LITE",
+        "only-69-bars-in-membership"
+      ],
+      [
+        "SBNY",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "SE",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "SOLS",
+        "only-37-bars-in-membership"
+      ],
+      [
+        "SPLS",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "STI",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "TE",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "VEEV",
+        "only-37-bars-in-membership"
+      ],
+      [
+        "VRT",
+        "only-69-bars-in-membership"
+      ]
+    ]
+  },
+  "trials_before": 466,
+  "new_multiplicity_units": 4,
+  "trials_after": 470,
+  "parameters": {
+    "tenure_caps_calendar_days": [
+      90,
+      180,
+      365,
+      730
+    ],
+    "selection": "shortest cap with 80-500 signals",
+    "feature_uses_membership_end": false,
+    "signal_and_fill_membership_verified": true
+  },
+  "base_detection_candidates": 103,
+  "annotated_candidates": 103,
+  "detection_membership_drops": 16,
+  "candidate_membership_drops": {
+    "not_member_on_signal_and_fill": 0
+  },
+  "density": {
+    "90": {
+      "signals": 0,
+      "symbols": 0
+    },
+    "180": {
+      "signals": 0,
+      "symbols": 0
+    },
+    "365": {
+      "signals": 4,
+      "symbols": 4
+    },
+    "730": {
+      "signals": 11,
+      "symbols": 8
+    }
+  },
+  "selected_cap_days": null,
+  "permission_to_freeze_strategy": false
+}

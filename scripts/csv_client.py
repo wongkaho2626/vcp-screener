@@ -33,10 +33,14 @@ BENCHMARK_SYMBOL = "SPY"
 
 
 def _adjust_bar(o: float, h: float, low: float, c: float, adj: float) -> tuple:
-    """Scale OHLC by AdjClose/Close so the series is split-continuous."""
+    """Scale OHLC and repair impossible source-bar ordering outcome-free."""
     factor = (adj / c) if c else 1.0
-    return (round(o * factor, 4), round(h * factor, 4), round(low * factor, 4),
-            round(adj, 4))
+    adjusted_open = o * factor
+    adjusted_close = adj
+    adjusted_high = max(h * factor, low * factor, adjusted_open, adjusted_close)
+    adjusted_low = min(h * factor, low * factor, adjusted_open, adjusted_close)
+    return (round(adjusted_open, 4), round(adjusted_high, 4),
+            round(adjusted_low, 4), round(adjusted_close, 4))
 
 
 class CSVClient:

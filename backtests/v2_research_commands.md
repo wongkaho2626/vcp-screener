@@ -407,8 +407,195 @@ curl -L https://www.sec.gov/files/company_tickers.json \
   --coverage-json backtests/pivot_retest_v2/coverage_2016_2026.json \
   --output-dir backtests/chaikin_money_flow_v2/results --iterations 1000
 
-# Outcome-free public 2000-2005 data-source audit. The downloaded archives
-# are temporary inputs and are not committed.
+# Repository-local 2006+ inventory. This intentionally performs no external
+# lookup and does not search or require 2000-2005 data.
+.venv/bin/python scripts/audit_existing_2006_plus_data.py \
+  --membership-csv scripts/data/sp500_membership.csv \
+  --price-csv SP500_PIT_2016_2026.csv \
+  --price-csv backtests/daily_rescreen_v2/SP500_PIT_through_2021.csv \
+  --output-json backtests/current_2006_plus_data_audit/inventory.json \
+  --output-md backtests/current_2006_plus_data_audit/inventory.md
+
+# Trial 363-367: 14-session Wilder DMI crossover lifecycle. The input carries
+# detections only through 2021; 2022+ best-available OOS remains separately sealed.
+.venv/bin/python scripts/dmi_crossover_lifecycle_discovery.py \
+  backtests/daily_rescreen_v2/detections/vcp_backtest_2026-08-01_141348.json \
+  --price-csv backtests/daily_rescreen_v2/SP500_PIT_through_2021.csv \
+  --membership-csv scripts/data/sp500_membership.csv \
+  --coverage-json backtests/pivot_retest_v2/coverage_2016_2026.json \
+  --output-dir backtests/dmi_crossover_lifecycle_v2/results --iterations 1000
+
+# Trial 368-373: standard 0.02/0.20 Parabolic SAR flip lifecycle.
+.venv/bin/python scripts/parabolic_sar_lifecycle_discovery.py \
+  backtests/daily_rescreen_v2/detections/vcp_backtest_2026-08-01_141348.json \
+  --price-csv backtests/daily_rescreen_v2/SP500_PIT_through_2021.csv \
+  --membership-csv scripts/data/sp500_membership.csv \
+  --coverage-json backtests/pivot_retest_v2/coverage_2016_2026.json \
+  --output-dir backtests/parabolic_sar_lifecycle_v2/results --iterations 1000
+
+# Trial 374-380: standard 12/26/9 MACD signal-line crossover lifecycle.
+.venv/bin/python scripts/macd_crossover_lifecycle_discovery.py \
+  backtests/daily_rescreen_v2/detections/vcp_backtest_2026-08-01_141348.json \
+  --price-csv backtests/daily_rescreen_v2/SP500_PIT_through_2021.csv \
+  --membership-csv scripts/data/sp500_membership.csv \
+  --coverage-json backtests/pivot_retest_v2/coverage_2016_2026.json \
+  --output-dir backtests/macd_crossover_lifecycle_v2/results --iterations 1000
+
+# Trial 381-386: canonical 55/20 Donchian closing-channel lifecycle.
+.venv/bin/python scripts/donchian_channel_lifecycle_discovery.py \
+  backtests/daily_rescreen_v2/detections/vcp_backtest_2026-08-01_141348.json \
+  --price-csv backtests/daily_rescreen_v2/SP500_PIT_through_2021.csv \
+  --membership-csv scripts/data/sp500_membership.csv \
+  --coverage-json backtests/pivot_retest_v2/coverage_2016_2026.json \
+  --output-dir backtests/donchian_channel_lifecycle_v2/results --iterations 1000
+
+# Trial 387-393: 1.5x prior-ATR bullish range-expansion ignition lifecycle.
+.venv/bin/python scripts/atr_range_expansion_discovery.py \
+  backtests/daily_rescreen_v2/detections/vcp_backtest_2026-08-01_141348.json \
+  --price-csv backtests/daily_rescreen_v2/SP500_PIT_through_2021.csv \
+  --membership-csv scripts/data/sp500_membership.csv \
+  --coverage-json backtests/pivot_retest_v2/coverage_2016_2026.json \
+  --output-dir backtests/atr_range_expansion_v2/results --iterations 1000
+
+# Trial 394-399: three rising closes/lows plus two-prior-low failure lifecycle.
+.venv/bin/python scripts/three_bar_staircase_discovery.py \
+  backtests/daily_rescreen_v2/detections/vcp_backtest_2026-08-01_141348.json \
+  --price-csv backtests/daily_rescreen_v2/SP500_PIT_through_2021.csv \
+  --membership-csv scripts/data/sp500_membership.csv \
+  --coverage-json backtests/pivot_retest_v2/coverage_2016_2026.json \
+  --output-dir backtests/three_bar_staircase_v2/results --iterations 1000
+
+# Trial 400-405: repeated fresh MA20 touch-and-hold lifecycle after breakout.
+.venv/bin/python scripts/ma20_touch_lifecycle_discovery.py \
+  backtests/daily_rescreen_v2/detections/vcp_backtest_2026-08-01_141348.json \
+  --price-csv backtests/daily_rescreen_v2/SP500_PIT_through_2021.csv \
+  --membership-csv scripts/data/sp500_membership.csv \
+  --coverage-json backtests/pivot_retest_v2/coverage_2016_2026.json \
+  --output-dir backtests/ma20_touch_lifecycle_v2/results --iterations 1000
+
+# Trial 406-411: 20-session OBV accumulation breakout plus EMA10 exit.
+.venv/bin/python scripts/obv_accumulation_lifecycle_discovery.py \
+  backtests/daily_rescreen_v2/detections/vcp_backtest_2026-08-01_141348.json \
+  --price-csv backtests/daily_rescreen_v2/SP500_PIT_through_2021.csv \
+  --membership-csv scripts/data/sp500_membership.csv \
+  --coverage-json backtests/pivot_retest_v2/coverage_2016_2026.json \
+  --output-dir backtests/obv_accumulation_lifecycle_v2/results --iterations 1000
+
+# Trial 412-417: active-VCP cohort 12-1 cross-sectional momentum lifecycle.
+.venv/bin/python scripts/slow_xs_momentum_lifecycle_discovery.py \
+  backtests/daily_rescreen_v2/detections/vcp_backtest_2026-08-01_141348.json \
+  --price-csv backtests/daily_rescreen_v2/SP500_PIT_through_2021.csv \
+  --membership-csv scripts/data/sp500_membership.csv \
+  --coverage-json backtests/pivot_retest_v2/coverage_2016_2026.json \
+  --output-dir backtests/slow_xs_momentum_lifecycle_v2/results --iterations 1000
+
+# Trial 418-424: 20-session log-price OLS trend-quality lifecycle.
+.venv/bin/python scripts/regression_trend_lifecycle_discovery.py \
+  backtests/daily_rescreen_v2/detections/vcp_backtest_2026-08-01_141348.json \
+  --price-csv backtests/daily_rescreen_v2/SP500_PIT_through_2021.csv \
+  --membership-csv scripts/data/sp500_membership.csv \
+  --coverage-json backtests/pivot_retest_v2/coverage_2016_2026.json \
+  --output-dir backtests/regression_trend_lifecycle_v2/results --iterations 1000
+
+# Trial 425-431: 25-session Aroon extreme-recency lifecycle.
+.venv/bin/python scripts/aroon_recency_lifecycle_discovery.py \
+  backtests/daily_rescreen_v2/detections/vcp_backtest_2026-08-01_141348.json \
+  --price-csv backtests/daily_rescreen_v2/SP500_PIT_through_2021.csv \
+  --membership-csv scripts/data/sp500_membership.csv \
+  --coverage-json backtests/pivot_retest_v2/coverage_2016_2026.json \
+  --output-dir backtests/aroon_recency_lifecycle_v2/results --iterations 1000
+
+# Trial 432-440: causal Ichimoku 9/26/52 range-midpoint equilibrium lifecycle.
+.venv/bin/python scripts/ichimoku_equilibrium_lifecycle_discovery.py \
+  backtests/daily_rescreen_v2/detections/vcp_backtest_2026-08-01_141348.json \
+  --price-csv backtests/daily_rescreen_v2/SP500_PIT_through_2021.csv \
+  --membership-csv scripts/data/sp500_membership.csv \
+  --coverage-json backtests/pivot_retest_v2/coverage_2016_2026.json \
+  --output-dir backtests/ichimoku_equilibrium_lifecycle_v2/results --iterations 1000
+
+# Trial 441-447: 20-session realized semivariance-asymmetry lifecycle.
+.venv/bin/python scripts/semivariance_asymmetry_lifecycle_discovery.py \
+  backtests/daily_rescreen_v2/detections/vcp_backtest_2026-08-01_141348.json \
+  --price-csv backtests/daily_rescreen_v2/SP500_PIT_through_2021.csv \
+  --membership-csv scripts/data/sp500_membership.csv \
+  --coverage-json backtests/pivot_retest_v2/coverage_2016_2026.json \
+  --output-dir backtests/semivariance_asymmetry_lifecycle_v2/results --iterations 1000
+
+# Trial 448-454: gap-adjusted 10-session intraday follow-through lifecycle.
+.venv/bin/python scripts/intraday_followthrough_lifecycle_discovery.py \
+  backtests/daily_rescreen_v2/detections/vcp_backtest_2026-08-01_141348.json \
+  --price-csv backtests/daily_rescreen_v2/SP500_PIT_through_2021.csv \
+  --membership-csv scripts/data/sp500_membership.csv \
+  --coverage-json backtests/pivot_retest_v2/coverage_2016_2026.json \
+  --output-dir backtests/intraday_followthrough_lifecycle_v2/results --iterations 1000
+
+# Train-only non-deployable oracle exit residual audit. This never opens
+# validation/OOS and never receives a Backtest Score.
+.venv/bin/python scripts/oracle_exit_residual_audit.py \
+  backtests/daily_rescreen_v2/detections/vcp_backtest_2026-08-01_141348.json \
+  --price-csv backtests/daily_rescreen_v2/SP500_PIT_through_2021.csv \
+  --membership-csv scripts/data/sp500_membership.csv \
+  --coverage-json backtests/pivot_retest_v2/coverage_2016_2026.json \
+  --output-dir backtests/oracle_exit_residual_audit
+
+# Trial 455-466: train-oracle-generated AVWAP reclaim plus delayed fresh
+# five-day closing-high exit. Specification discloses post-hoc provenance.
+.venv/bin/python scripts/avwap_strength_exit_discovery.py \
+  backtests/daily_rescreen_v2/detections/vcp_backtest_2026-08-01_141348.json \
+  --price-csv backtests/daily_rescreen_v2/SP500_PIT_through_2021.csv \
+  --membership-csv scripts/data/sp500_membership.csv \
+  --coverage-json backtests/pivot_retest_v2/coverage_2016_2026.json \
+  --output-dir backtests/avwap_strength_exit_v2/results --iterations 1000
+
+# Trial 467-470: outcome-free PIT membership-tenure density audit.
+.venv/bin/python scripts/membership_tenure_density_audit.py \
+  backtests/daily_rescreen_v2/detections/vcp_backtest_2026-08-01_141348.json \
+  --price-csv backtests/daily_rescreen_v2/SP500_PIT_through_2021.csv \
+  --membership-csv scripts/data/sp500_membership.csv \
+  --coverage-json backtests/pivot_retest_v2/coverage_2016_2026.json \
+  --output-dir backtests/membership_tenure_v2/results
+
+# Trial 471-477: outcome-free gap-up rejection / supply-absorption reclaim
+# density audit. Do not evaluate returns unless the fixed 80-500 gate passes.
+.venv/bin/python scripts/gap_rejection_reclaim_density_audit.py \
+  backtests/daily_rescreen_v2/detections/vcp_backtest_2026-08-01_141348.json \
+  --price-csv backtests/daily_rescreen_v2/SP500_PIT_through_2021.csv \
+  --membership-csv scripts/data/sp500_membership.csv \
+  --coverage-json backtests/pivot_retest_v2/coverage_2016_2026.json \
+  --output-dir backtests/gap_rejection_reclaim_v2/results
+
+# Trial 478-482: first-session-of-month institutional-flow lifecycle. The
+# script opens train returns only if its frozen 80-500 density gate passes.
+.venv/bin/python scripts/month_start_flow_lifecycle_discovery.py \
+  backtests/daily_rescreen_v2/detections/vcp_backtest_2026-08-01_141348.json \
+  --price-csv backtests/daily_rescreen_v2/SP500_PIT_through_2021.csv \
+  --membership-csv scripts/data/sp500_membership.csv \
+  --coverage-json backtests/pivot_retest_v2/coverage_2016_2026.json \
+  --output-dir backtests/month_start_flow_lifecycle_v2/results --iterations 1000
+
+# Trial 483-488: canonical 20-return lag-1 serial-dependence lifecycle. The
+# script opens train returns only if its frozen 80-500 density gate passes.
+.venv/bin/python scripts/serial_dependence_lifecycle_discovery.py \
+  backtests/daily_rescreen_v2/detections/vcp_backtest_2026-08-01_141348.json \
+  --price-csv backtests/daily_rescreen_v2/SP500_PIT_through_2021.csv \
+  --membership-csv scripts/data/sp500_membership.csv \
+  --coverage-json backtests/pivot_retest_v2/coverage_2016_2026.json \
+  --output-dir backtests/serial_dependence_lifecycle_v2/results --iterations 1000
+
+# Trial 489-495: strictly as-filed SEC weighted-average-share contraction.
+# Uses only the repository-existing Company Facts cache and opens train returns
+# only if the frozen 80-500 signal-density gate passes.
+.venv/bin/python scripts/share_supply_contraction_discovery.py \
+  backtests/daily_rescreen_v2/detections/vcp_backtest_2026-08-01_141348.json \
+  --price-csv backtests/daily_rescreen_v2/SP500_PIT_through_2021.csv \
+  --membership-csv scripts/data/sp500_membership.csv \
+  --coverage-json backtests/pivot_retest_v2/coverage_2016_2026.json \
+  --companyfacts-dir backtests/sec_pit_audit/companyfacts \
+  --output-dir backtests/share_supply_contraction_v2/results --iterations 1000
+
+# Historical provenance only: this superseded 2000-2005 audit command is
+# retained to reproduce prior work. Do not rerun it under the current 2006+
+# goal; it is not a current research dependency or completion blocker.
 audit_dir=$(mktemp -d)
 curl -L --fail --silent --show-error --max-time 600 --retry 2 \
   -o "$audit_dir/huge-stock-market.zip" \
@@ -460,10 +647,9 @@ git diff --check
 resistance overlay is additive and no S/R entry filter is enabled. It changes
 runtime, not VCP detection decisions.
 
-The 2000-2005 untouched OOS command is intentionally absent. All frozen
-validation gates failed or their train gates prevented validation, so opening
-that data would violate their specs. The required survivorship-safe 2000-2005
-price/security-master dataset is also absent. Two public archives were audited
-and rejected rather than treated as substitutes; see
-`backtests/data_source_audit/public_oos_coverage.md` and
+The current goal does not search, reconstruct or require 2000-2005 PIT data.
+The command above remains solely as historical provenance for an already
+completed, rejected audit and must not be rerun as part of the 2006+ workflow.
+Current evidence boundaries and limitations are recorded in
+`backtests/current_2006_plus_data_audit/inventory.md` and
 `backtests/adjusted_v2/completion_blocker_audit.md`.

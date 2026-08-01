@@ -1,0 +1,137 @@
+{
+  "generated_at": "2026-08-01T23:38:43",
+  "family_spec": "backtests/gap_rejection_reclaim_v2/density_spec.md",
+  "classification": "outcome_free_density_only",
+  "return_evaluation_accessed": false,
+  "validation_accessed": false,
+  "best_available_oos_accessed": false,
+  "period": [
+    "2016-07-01",
+    "2018-06-30"
+  ],
+  "price_end_for_causal_signal_bookkeeping": "2018-12-31",
+  "coverage": {
+    "universe": 720,
+    "kept": 599,
+    "benchmark_present": true,
+    "coverage_pct": 91.31,
+    "per_year": {
+      "2016": 82.4,
+      "2017": 84.3,
+      "2018": 85.8,
+      "2019": 87.2,
+      "2020": 90.0,
+      "2021": 91.8,
+      "2022": 93.7,
+      "2023": 95.7,
+      "2024": 96.5,
+      "2025": 97.8,
+      "2026": 98.7
+    },
+    "dropped": [
+      [
+        "AMTM",
+        "only-60-bars-in-membership"
+      ],
+      [
+        "APC",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "BNY",
+        "only-27-bars-in-membership"
+      ],
+      [
+        "CASY",
+        "only-57-bars-in-membership"
+      ],
+      [
+        "CIEN",
+        "only-98-bars-in-membership"
+      ],
+      [
+        "COHR",
+        "only-69-bars-in-membership"
+      ],
+      [
+        "EMC",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "FDXF",
+        "only-21-bars-in-membership"
+      ],
+      [
+        "HOT",
+        "only-57-bars-in-membership"
+      ],
+      [
+        "INFO",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "LB",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "LITE",
+        "only-69-bars-in-membership"
+      ],
+      [
+        "SBNY",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "SE",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "SOLS",
+        "only-37-bars-in-membership"
+      ],
+      [
+        "SPLS",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "STI",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "TE",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "VEEV",
+        "only-37-bars-in-membership"
+      ],
+      [
+        "VRT",
+        "only-69-bars-in-membership"
+      ]
+    ]
+  },
+  "trials_before": 470,
+  "new_multiplicity_units": 7,
+  "trials_after": 477,
+  "parameters": {
+    "gap_threshold_pct": 1.0,
+    "rejection": "close strictly below open",
+    "reclaim_window_sessions": 5,
+    "reclaim": "close strictly above frozen rejection high and pivot",
+    "model_exit": "next open after close below frozen rejection low",
+    "max_attempts": 3,
+    "max_hold_sessions": 60
+  },
+  "density": {
+    "active_setup_rows": 4165,
+    "signals": 27,
+    "symbols": 21,
+    "setups": 24,
+    "minimum": 80,
+    "maximum": 500,
+    "passed": false
+  },
+  "membership_drops": 16,
+  "permission_to_freeze_return_specification": false
+}
