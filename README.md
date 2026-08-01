@@ -12,7 +12,7 @@ local OHLCV CSV for fully offline runs (see [Offline mode](#offline-mode)).
 
 ## Research findings (read this first)
 
-### Current v2 verification status (2026-08-01)
+### Current v2 verification status (2026-08-02)
 
 **No strategy in this repository currently meets the deployment goal.** The
 latest frozen, stocks-only Trial 288 replay used the existing point-in-time
@@ -190,6 +190,9 @@ abnormal day and ten were failed-MA recoveries; 47 were swing-low breaks, so
 the proposed character-change mechanism mostly collapsed into another weak
 swing-low exit. A/B/C/D were 7/7/4/0, normalized raw 22 and final
 survivorship-capped score 20/100 (Reject). Validation and OOS stayed sealed.
+The frozen rule, causal implementation, tests and complete signal/trade/equity
+artifacts are under
+[`backtests/character_change_exit_v2/`](backtests/character_change_exit_v2/).
 
 The replay also found and fixed a historical benchmark-alignment defect.
 Stocks with short or gapped histories had previously selected SPY by the
@@ -780,6 +783,7 @@ report excess-vs-SPY with t-stats and bootstrap CIs:
 | [`momentum_validation.py`](scripts/momentum_validation.py) | Momentum follow-ups: turnover+costs, PIT membership, lookbacks, vol scaling, R2K benchmark swap *(PIT cuts ~60% → +0.3%/mo, ns)* |
 | [`industry_momentum_vcp_experiment.py`](scripts/industry_momentum_vcp_experiment.py) | Does a frozen 6-1 GICS industry-momentum gate rescue support-qualified VCPs? *(No — fewer trades, still negative OOS)* |
 | [`daily_score_decay_discovery.py`](scripts/daily_score_decay_discovery.py) | Purged daily causal entry/exit research with fixed fit, calibration and later evaluation windows |
+| [`character_change_exit_discovery.py`](scripts/character_change_exit_discovery.py) | Does a strong-trend → damage → failed-recovery/swing-low exit improve the unchanged detection entry? *(No — Trial 496–504 train reject)* |
 | [`exploratory_existing_data_verification.py`](scripts/exploratory_existing_data_verification.py) | Full Trial 288 replay audit: score, costs, folds, sensitivity, trims, bootstrap, PSR/DSR and causality |
 | [`train_feasibility_audit.py`](scripts/train_feasibility_audit.py) | Determines whether a declared signal family clears its training gate before validation may be opened |
 | [`fetch_r2k_membership.py`](scripts/fetch_r2k_membership.py) | Rebuild R2K PIT membership intervals from quarterly IWM holdings snapshots |
@@ -808,6 +812,8 @@ python3 -m pytest \
 python3 -m pytest tests/ -v
 ```
 
+Latest verified baseline after Trial 496–504: **524 passed**.
+
 ## Docs
 
 - `references/vcp_methodology.md` — VCP theory and the 7-point Trend Template
@@ -815,6 +821,8 @@ python3 -m pytest tests/ -v
 - `references/data_source.md` — yfinance data source and snapshot refresh
 - `backtests/v2_research_commands.md` — exact v2 research and verification commands
 - `backtests/exploratory_existing_data_replay/results/verification_report.md` — latest corrected replay verdict
+- `backtests/character_change_exit_v2/frozen_spec.md` — latest frozen exit-family specification
+- `backtests/character_change_exit_v2/results/character_change_exit_2026-08-02_002548.md` — Trial 496–504 verification report
 
 ## Disclaimer
 
