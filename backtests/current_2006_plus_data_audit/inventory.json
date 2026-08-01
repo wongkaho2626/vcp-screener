@@ -1,0 +1,281 @@
+{
+  "scope": "repository-local data from 2006 onward; no 2000-2005 search",
+  "price_inputs": [
+    {
+      "path": "SP500_PIT_2016_2026.csv",
+      "sha256": "bed1c4f16f6398583b21eb0a61b5929dcb634ea838ed1dbe5ed84c462c2827f3",
+      "rows": 1512174,
+      "symbols_including_spy": 600,
+      "stock_symbols": 599,
+      "first_date": "2014-01-02",
+      "last_date": "2026-07-01",
+      "benchmark_present": true,
+      "spy_rows": 3017,
+      "duplicate_adjacent_ticker_dates": 0,
+      "out_of_order_rows": 0,
+      "invalid_rows": 0,
+      "nonpositive_rows": 0,
+      "invalid_adjusted_ohlc_rows": 33,
+      "invalid_adjusted_ohlc_by_symbol": {
+        "ANDV": 1,
+        "EVHC": 1,
+        "HAR": 30,
+        "UA": 1
+      },
+      "invalid_adjusted_ohlc_examples": [
+        {
+          "symbol": "ANDV",
+          "date": "2018-09-20",
+          "open": 155.419998,
+          "high": 153.580002,
+          "low": 148.75,
+          "close": 152.559998
+        },
+        {
+          "symbol": "EVHC",
+          "date": "2015-03-30",
+          "open": 61.849998,
+          "high": 62.689999,
+          "low": 61.919998,
+          "close": 62.43
+        },
+        {
+          "symbol": "HAR",
+          "date": "2014-06-05",
+          "open": 7670.470215,
+          "high": 7389.839844,
+          "low": 7857.549805,
+          "close": 7857.549805
+        },
+        {
+          "symbol": "HAR",
+          "date": "2014-07-21",
+          "open": 10196.099609,
+          "high": 9915.480469,
+          "low": 9915.480469,
+          "close": 9915.480469
+        },
+        {
+          "symbol": "HAR",
+          "date": "2014-07-22",
+          "open": 9915.480469,
+          "high": 10009.0,
+          "low": 10009.0,
+          "close": 10009.0
+        },
+        {
+          "symbol": "HAR",
+          "date": "2014-07-23",
+          "open": 9915.480469,
+          "high": 9821.94043,
+          "low": 9821.94043,
+          "close": 9821.94043
+        },
+        {
+          "symbol": "HAR",
+          "date": "2014-07-24",
+          "open": 9915.480469,
+          "high": 9634.860352,
+          "low": 9634.860352,
+          "close": 9634.860352
+        },
+        {
+          "symbol": "HAR",
+          "date": "2014-07-25",
+          "open": 9634.860352,
+          "high": 9354.230469,
+          "low": 9354.230469,
+          "close": 9354.230469
+        },
+        {
+          "symbol": "HAR",
+          "date": "2014-07-28",
+          "open": 9260.69043,
+          "high": 8886.519531,
+          "low": 8886.519531,
+          "close": 8886.519531
+        },
+        {
+          "symbol": "HAR",
+          "date": "2014-07-30",
+          "open": 8980.05957,
+          "high": 8886.519531,
+          "low": 8886.519531,
+          "close": 8886.519531
+        }
+      ],
+      "adjustment_factor_min": 0.11914505634113769,
+      "adjustment_factor_max": 1.0,
+      "execution_transform": "O/H/L scaled by Adj Close / Close; close=Adj Close; high/low normalized to contain open and close"
+    },
+    {
+      "path": "backtests/daily_rescreen_v2/SP500_PIT_through_2021.csv",
+      "sha256": "b07300d62f741d97a239240fa5350064fbafd0cd6f2d377ce22e9756a5e980bd",
+      "rows": 934273,
+      "symbols_including_spy": 558,
+      "stock_symbols": 557,
+      "first_date": "2014-01-02",
+      "last_date": "2021-12-31",
+      "benchmark_present": true,
+      "spy_rows": 1890,
+      "duplicate_adjacent_ticker_dates": 0,
+      "out_of_order_rows": 0,
+      "invalid_rows": 0,
+      "nonpositive_rows": 0,
+      "invalid_adjusted_ohlc_rows": 33,
+      "invalid_adjusted_ohlc_by_symbol": {
+        "ANDV": 1,
+        "EVHC": 1,
+        "HAR": 30,
+        "UA": 1
+      },
+      "invalid_adjusted_ohlc_examples": [
+        {
+          "symbol": "ANDV",
+          "date": "2018-09-20",
+          "open": 155.419998,
+          "high": 153.580002,
+          "low": 148.75,
+          "close": 152.559998
+        },
+        {
+          "symbol": "EVHC",
+          "date": "2015-03-30",
+          "open": 61.849998,
+          "high": 62.689999,
+          "low": 61.919998,
+          "close": 62.43
+        },
+        {
+          "symbol": "HAR",
+          "date": "2014-06-05",
+          "open": 7670.470215,
+          "high": 7389.839844,
+          "low": 7857.549805,
+          "close": 7857.549805
+        },
+        {
+          "symbol": "HAR",
+          "date": "2014-07-21",
+          "open": 10196.099609,
+          "high": 9915.480469,
+          "low": 9915.480469,
+          "close": 9915.480469
+        },
+        {
+          "symbol": "HAR",
+          "date": "2014-07-22",
+          "open": 9915.480469,
+          "high": 10009.0,
+          "low": 10009.0,
+          "close": 10009.0
+        },
+        {
+          "symbol": "HAR",
+          "date": "2014-07-23",
+          "open": 9915.480469,
+          "high": 9821.94043,
+          "low": 9821.94043,
+          "close": 9821.94043
+        },
+        {
+          "symbol": "HAR",
+          "date": "2014-07-24",
+          "open": 9915.480469,
+          "high": 9634.860352,
+          "low": 9634.860352,
+          "close": 9634.860352
+        },
+        {
+          "symbol": "HAR",
+          "date": "2014-07-25",
+          "open": 9634.860352,
+          "high": 9354.230469,
+          "low": 9354.230469,
+          "close": 9354.230469
+        },
+        {
+          "symbol": "HAR",
+          "date": "2014-07-28",
+          "open": 9260.69043,
+          "high": 8886.519531,
+          "low": 8886.519531,
+          "close": 8886.519531
+        },
+        {
+          "symbol": "HAR",
+          "date": "2014-07-30",
+          "open": 8980.05957,
+          "high": 8886.519531,
+          "low": 8886.519531,
+          "close": 8886.519531
+        }
+      ],
+      "adjustment_factor_min": 0.11914505634113769,
+      "adjustment_factor_max": 1.0,
+      "execution_transform": "O/H/L scaled by Adj Close / Close; close=Adj Close; high/low normalized to contain open and close"
+    }
+  ],
+  "membership": {
+    "path": "scripts/data/sp500_membership.csv",
+    "sha256": "1a6401bc7bdac3aed202de07356cc7f38f74656ad89098563c873e847509dbd3",
+    "intervals": 1255,
+    "symbols": 1202,
+    "first_start": "1996-01-02",
+    "last_start": "2026-06-01",
+    "symbols_with_ended_interval": 730,
+    "priced_symbols_with_ended_interval": 135,
+    "note": "ended membership interval is evidence of historical membership, not proof of delisting"
+  },
+  "known_coverage": {
+    "2006_2015_prior_reconstruction_pct": 69.74,
+    "2006_2015_raw_price_available": false,
+    "2016_2026_current_execution_pct": 91.31
+  },
+  "contamination_registry": [
+    {
+      "period": "2006-01-01..2015-12-31",
+      "status": "closed prior OOS; raw price CSV absent from current repository",
+      "evidence": "backtests/pullback_oos/verification_report.md"
+    },
+    {
+      "period": "2016-07-01..2018-06-30",
+      "status": "heavily reused discovery/train",
+      "evidence": "backtests/adjusted_v2/research_status_2026-08-01.md"
+    },
+    {
+      "period": "2019-01-01..2021-12-31",
+      "status": "reused validation/internal holdout",
+      "evidence": "backtests/adjusted_v2/research_status_2026-08-01.md"
+    },
+    {
+      "period": "2022-01-01..2026-03-31",
+      "status": "opened exploratory replay; not untouched",
+      "evidence": "backtests/exploratory_existing_data_replay/results/verification_report.md"
+    }
+  ],
+  "chronology": {
+    "discovery_train": [
+      "2016-07-01",
+      "2018-06-30"
+    ],
+    "embargo": [
+      "2018-07-01",
+      "2018-12-31"
+    ],
+    "validation": [
+      "2019-01-01",
+      "2021-12-31"
+    ],
+    "best_available_frozen_oos": [
+      "2022-01-01",
+      "2026-03-31"
+    ]
+  },
+  "genuine_untouched_period_available": false,
+  "applicable_score_cap_policy": {
+    "unresolved_survivorship": 20,
+    "no_genuine_untouched_oos_or_wfa": 55,
+    "apply_lowest_applicable_cap": true
+  }
+}

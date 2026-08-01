@@ -99,8 +99,9 @@ fixed; signal research may change only entry/exit behavior.
 - Therefore the hard goal is **not complete**. Never describe this replay as a
   pass. The amended completion rule accepts a score capped at or below 80 but
   still requires the same frozen S&P 500 stocks-only strategy to deliver at
-  least 20% net CAGR on untouched OOS and at least 30 independent OOS trades,
-  with raw A/B/C/D and every hard cap disclosed.
+  least 20% net CAGR and 30 independent trades on the pre-frozen
+  best-available 2022–2026Q1 OOS, with raw A/B/C/D and every hard cap disclosed.
+  Use repository-local 2006+ evidence only; do not search or require 2000–2005.
 - Canonical artifacts:
   `backtests/exploratory_existing_data_replay/frozen_spec.md`,
   `backtests/exploratory_existing_data_replay/results/verification_report.md`,
@@ -300,6 +301,104 @@ fixed; signal research may change only entry/exit behavior.
   PF 0.975. Drop-top-five expectancy was -1.40%. Multi-session
   close-location-weighted volume did not improve the prior volume/Pocket Pivot
   failures; every later evidence partition stayed sealed.
+- **Wilder DMI crossover lifecycle: train reject (Trial 363–367, 17/100).**
+  A causal DMI(14) +DI/-DI crossover above the frozen pivot, with a two-close
+  reverse-DMI exit, produced 80 trades, -0.80% CAGR, -0.350 Sharpe and PF
+  0.921. Drop-top-five expectancy was -1.37%. The stricter ADX>20/rising
+  definition had only one outcome-free signal. Validation and OOS stayed
+  sealed.
+- **Parabolic SAR flip lifecycle: train reject (Trial 368–373, 17/100).**
+  A causal standard PSAR(0.02, 0.20) bullish close crossover above the frozen
+  pivot, with a two-close bearish-PSAR exit, produced 98 trades, -0.86% CAGR,
+  -0.331 Sharpe and PF 0.699. Drop-top-five expectancy was -1.66%.
+  Validation and best-available OOS stayed sealed.
+- **MACD signal-line lifecycle: outcome-free density reject (Trial 374–380).**
+  The exact causal MACD(12,26,9) bullish crossover above zero and the frozen
+  pivot emitted 79 pre-portfolio signals, below the predeclared minimum of 80.
+  The threshold was not relaxed; no return or later partition was accessed.
+- **Donchian price-channel lifecycle: outcome-free density reject (Trial
+  381–386).** A canonical 55-session closing high above the frozen pivot with a
+  20-session closing-low exit emitted 79 signals, below the same frozen minimum
+  of 80. No return or later partition was accessed.
+- **ATR range-expansion lifecycle: train reject (Trial 387–393, 17/100).** A
+  1.5x prior-20 ATR bullish bar closing in the top quartile above the pivot,
+  with a two-close EMA10 exit, produced 72 trades, -0.63% CAGR, -0.346 Sharpe
+  and PF 0.817. Drop-top-five expectancy was -1.32%; validation/OOS stayed
+  sealed.
+- **Three-bar staircase lifecycle: train reject (Trial 394–399, 17/100).**
+  Three rising closes and lows above the pivot, with a two-prior-low failure
+  exit, produced 144 trades, -1.14% CAGR, -0.553 Sharpe and PF 0.700.
+  Drop-top-five expectancy was -1.01%; later partitions stayed sealed.
+- **Repeated MA20 touch lifecycle: train reject (Trial 400–405, 17/100).**
+  Recycling fresh MA20 touch-and-hold entries after a pivot breakout, with a
+  two-close SMA20 exit, produced 85 trades, -1.82% CAGR, -1.056 Sharpe and PF
+  0.572. Drop-top-five expectancy was -1.84%. The known paired execution
+  improvement does not become standalone alpha when recycled.
+- **OBV accumulation lifecycle: train reject (Trial 406–411, 17/100).** A
+  fresh 20-session On-Balance Volume high above the pivot, with a two-close
+  OBV-EMA10 exit, produced 90 trades, -0.63% CAGR, -0.267 Sharpe and PF 0.704.
+  Drop-top-five expectancy was -1.62%; cumulative signed volume does not
+  rescue the prior volume failures. Validation/OOS stayed sealed.
+- **Slow cross-sectional momentum: outcome-free density reject (Trial
+  412–417).** Ranking canonical 12–1 momentum inside each active-VCP cohort and
+  requiring the top quintile produced only 41 train signals versus the frozen
+  minimum 80. No return or later partition was accessed; the rank threshold
+  was not relaxed.
+- **Log-price OLS trend quality: train reject (Trial 418–424, 20/100
+  capped).** A causal 20-session log-close regression with positive slope,
+  R-squared >=0.50 and frozen-pivot confirmation produced 79 train trades,
+  0.30% CAGR, 0.138 Sharpe and PF 1.008. Drop-top-five expectancy was -1.06%.
+  The reduced-denominator raw score was 29/100; unresolved survivorship capped
+  it at 20. Validation and best-available OOS stayed sealed.
+- **Aroon extreme recency: train reject (Trial 425–431, 20/100 capped).** A
+  fixed 25-session recent-high/stale-low state above the pivot produced 75
+  trades, 0.08% CAGR, 0.040 Sharpe and PF 1.022. Drop-top-five expectancy was
+  -1.10%. The reduced-denominator raw score was 24/100 and survivorship-capped
+  final score 20; validation/OOS stayed sealed.
+- **Causal Ichimoku equilibrium: train reject (Trial 432–440, 17/100).** A
+  zero-displacement 9/26/52 high-low-midpoint state above the current cloud and
+  pivot produced 81 trades, -0.95% CAGR, -0.305 Sharpe and PF 0.868.
+  Drop-top-five expectancy was -1.65%. Validation/OOS stayed sealed; do not
+  retune the canonical windows or cloud threshold.
+- **Realized semivariance asymmetry: train reject (Trial 441–447, 20/100
+  capped).** A fixed 20-session upside/downside squared-return ratio with
+  1.50/0.75 hysteresis produced 73 trades, -0.03% CAGR, 0.002 Sharpe and PF
+  1.120. Untrimmed expectancy was positive but drop-top-five expectancy was
+  -1.09%. Raw score 28, survivorship-capped final 20; later partitions sealed.
+- **Gap-adjusted intraday follow-through: train reject (Trial 448–454, 20/100
+  capped).** A fixed 10-session regular-session-vs-overnight log-return state
+  produced 125 trades, 0.33% CAGR, 0.153 Sharpe and PF 1.050. Drop-top-five
+  expectancy was -0.57%. Raw score 29, capped final 20; validation/OOS sealed.
+- **Oracle exit residual audit: diagnostic only, never scoreable.** On 90
+  future-profitable perfect-timing train paths, 84.4% of closes before the best
+  next-open exit were fresh five-day closing highs in both halves and after
+  trim-5. Weakness proxies covered <=11.1%. This can motivate exactly one
+  frozen sell-into-strength test; it is lookahead evidence, not a strategy.
+- **AVWAP + delayed five-day-high exit: train reject (Trial 455–466, 20/100
+  capped).** The sole oracle-generated translation produced 83 trades, 0.17%
+  CAGR, 0.085 Sharpe, PF 1.009 and -0.90% trim-5 expectancy. Raw score 35,
+  capped final 20. Validation/OOS stayed sealed; do not retune high/arm windows.
+- **PIT membership tenure: outcome-free reject (Trial 467–470).** Fixed
+  90/180/365/730-day start-tenure caps emitted 0/0/4/11 signals versus the
+  frozen minimum 80. Membership end was verification-only; no P&L was opened.
+- **Gap rejection/reclaim: outcome-free reject (Trial 471–477).** A >=1%
+  gap-up bearish rejection followed by a five-session strict reclaim of its
+  high and the pivot emitted 27 signals across 21 symbols. No return,
+  validation or OOS partition was opened; do not relax the frozen rule.
+- **Month-start flow: train reject (Trial 478–482, 17/100).** SPY was
+  calendar/benchmark-only. A first-monthly-session close above pivot, next-open
+  entry and three-session exit produced 99 trades, -0.32% CAGR, -0.220 Sharpe,
+  PF 0.750 and -0.56% trim-five expectancy. A/B/C/D = 7/7/0/0; validation/OOS
+  stayed sealed.
+- **Lag-1 serial dependence: train reject (Trial 483–488, 20/100 capped).**
+  A fixed 20-return autocorrelation zero cross produced 103 trades, 1.29% CAGR,
+  0.499 Sharpe and PF 1.515, but trim-five PF/expectancy fell to 0.715/-0.47%.
+  A/B/C/D = 7/10/4/14, raw 42, final 20; validation/OOS stayed sealed.
+- **SEC share-supply contraction: train reject (Trial 489–495, 20/100
+  capped).** Existing cached same-accession diluted/basic weighted shares
+  covered 78/79 train symbols and emitted 114 signals. One hundred trades
+  returned 0.69% CAGR, 0.291 Sharpe, PF 1.025 and -0.57% trim-five expectancy.
+  A/B/C/D = 7/7/4/6, raw 29, final 20; no external data or later partition.
 - **Data caveats**: legacy CSV and R2K pattern-level universes are
   survivorship-biased (R2K lost 26% of names), with close-based fills and no
   costs. Newer portfolio reports include costs and next-session execution but

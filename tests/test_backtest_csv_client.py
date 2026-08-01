@@ -35,3 +35,17 @@ def test_detector_falls_back_to_raw_scale_when_adjusted_close_is_missing(tmp_pat
 
     bar = CSVHistoricalClient(str(path)).get_historical_prices("AAA")["historical"][0]
     assert (bar["open"], bar["high"], bar["low"], bar["close"]) == (100, 110, 90, 100)
+
+
+def test_detector_and_portfolio_repair_impossible_ohlc_envelope(tmp_path):
+    path = tmp_path / "prices.csv"
+    path.write_text(
+        "Ticker,Date,Open,High,Low,Close,Adj Close,Volume\n"
+        "AAA,2020-01-02,105,100,102,103,51.5,1234\n"
+    )
+    detector = CSVHistoricalClient(str(path)).get_historical_prices("AAA")["historical"][0]
+    portfolio = CSVClient(str(path)).get_historical_prices("AAA")["historical"][0]
+    assert detector == portfolio
+    assert (detector["open"], detector["high"], detector["low"], detector["close"]) == (
+        52.5, 52.5, 50.0, 51.5,
+    )

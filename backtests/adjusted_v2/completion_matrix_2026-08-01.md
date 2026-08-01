@@ -2,54 +2,32 @@
 
 ## Verdict
 
-**NOT PROVEN — BLOCKED, NOT COMPLETE.** No frozen strategy has passed its
-prespecified discovery gate, and the untouched 2000–2005 OOS cannot be opened
-because the workspace lacks survivorship-safe prices, delisting returns and a
-compatible security master for that interval. The score threshold has been
-removed by the amended goal; the 20% CAGR and all other hard conditions remain
-unchanged.
+**NOT PROVEN — ACTIVE, NOT COMPLETE.** The repository-local 2006+ evidence
+boundary and capped best-available OOS process are now defined, but no frozen
+strategy has passed discovery or demonstrated >=20% OOS CAGR.
 
 ## Hard-condition audit
 
-| # | Hard condition | Evidence | Status |
+| # | Hard condition | Current evidence | Status |
 |---|---|---|---|
-| 1 | Same frozen OOS strategy receives a transparent raw A/B/C/D score and final score after every applicable hard cap; no minimum score | The exploratory replay reports raw 25 and capped 20 with the survivorship reason. No qualifying final strategy exists yet, so final-strategy scoring remains unavailable. | **PASS for exploratory reporting; incomplete for final strategy** |
-| 2 | Net portfolio CAGR **>=20%** after fixed realistic costs | Date-aligned Trial 288 reconstruction reached 4.82% and failed its gate. Its user-requested 2022–2026 exploratory replay produced 0.05% net CAGR on 89 trades. No untouched-OOS CAGR exists. | **FAIL / contradicted by available replay** |
-| 3 | Point-in-time S&P 500 constituent stocks only | Membership-on-signal/fill checks and a stocks-only universe are implemented for evaluated data. The intended final 2000–2005 PIT execution dataset is absent. | **PARTIAL: infrastructure verified; final OOS missing** |
-| 4 | Change buy/sell signals only | Research changes are confined to causal entry filters/timing and stop, profit, trailing or time-exit rules. | **PASS for attempted research** |
-| 5 | Keep sizing, position cap, capital, cost model and risk limits fixed; no leverage | All evaluated candidates use the repository's frozen portfolio construction and cost/risk settings. | **PASS for attempted research** |
-| 6 | No crypto, ETF, options, futures, FX or fallback; SPY benchmark only | Candidate holdings are individual PIT S&P 500 stocks. SPY is never submitted as an order. | **PASS for attempted research** |
-| 7 | Fully causal; close-confirmed signals fill no earlier than next session | Signal/fill separation, next-session execution and fill-time/as-of stop checks are covered by the portfolio tests. | **PASS for evaluated rules** |
-| 8 | PIT membership, delisted names where possible, and explicit survivorship coverage | Modern 2016–2026 reconstruction has 91.39% member-day coverage but was used during discovery. Legacy 2006–2015 has 69.74%. Public 2000–2005 recovery has only 58.35% and was rejected outcome-free. | **FAIL for untouched OOS** |
-| 9 | Separate discovery/train, validation and untouched OOS; freeze before opening OOS | At user direction, 2022–2026 was opened only as a predeclared exploratory replay after Trial 288 had already failed. It is now explicitly contaminated and cannot be formal validation or untouched OOS. The intended 2000–2005 OOS remains unavailable. | **PARTIAL; no qualifying untouched OOS** |
-| 10 | Walk-forward, cost stress, sensitivity, bootstrap/Monte Carlo, folds/regimes, outlier trim, PSR/DSR, MDD, Sharpe, Sortino, Calmar, PF and trade count | These checks are complete for the non-qualifying existing-data replay and all reject a robust edge. They still cannot be claimed for a qualifying final frozen OOS strategy because none exists. | **PASS for exploratory replay; incomplete for final strategy** |
-| 11 | At least 30 independent OOS trades; no leverage, cost omission, outlier dependence or post-hoc period choice | The replay has 89 trades but is not untouched OOS; drop-top-five expectancy is -1.71% and 2x-cost CAGR is negative. No qualifying untouched-OOS trades exist. | **FAIL / wrong evidence class** |
-| 12 | Read prior README/specs/reports/failures; predeclare novel, explainable hypotheses | Trials through 362 have frozen pre-outcome specifications, explicit hypotheses and recorded rejection evidence. | **PASS** |
-| 13 | Preserve reproducible spec, commands, JSON/CSV and full verification report | Attempted candidates preserve frozen specs, commands, result JSON/Markdown and trade/equity CSV. A successful final verification report cannot exist until the hard conditions are met. | **PASS for attempts; final artifact missing** |
+| 1 | Transparent raw A/B/C/D, caps and final score; no minimum score | Every recent trial reports reduced-denominator components, raw score, both applicable caps and final score. | **PASS for attempted research; final strategy absent** |
+| 2 | Net portfolio CAGR >=20% after fixed costs | Best available replay: 0.05%; latest character-change-exit train: 0.50% and trim-five expectancy -0.87%. | **FAIL** |
+| 3 | Existing 2006+ historical S&P 500 stocks only | Membership gating is implemented; executable price inputs support 2016+ signals. | **PASS for attempted research** |
+| 4 | Change buy/sell signals only | Signal research changes entry/exit behavior; the OHLC repair is outcome-free shared data integrity. | **PASS** |
+| 5 | Fixed sizing, positions, capital, costs and risk; no leverage | All evaluated candidates use the unchanged portfolio engine and Config. | **PASS** |
+| 6 | No other assets; SPY benchmark only | Orders contain stocks only; SPY is never a holding/fallback. | **PASS** |
+| 7 | Causal next-session execution | Signal/fill separation, truncation invariance and detector/portfolio parity have regression tests. | **PASS** |
+| 8 | Measure PIT/delisted/survivorship coverage using current data | Inventory records 91.31% modern coverage, 69.74% prior reconstruction evidence and 135 priced ended-membership symbols. | **PASS with disclosed limitations/cap** |
+| 9 | Chronological discovery, validation and frozen best-available OOS; label contamination | Split and contamination registry are frozen in the inventory. Trial 496–504 failed train; no validation or later partition was opened. | **PASS for process; final OOS absent** |
+| 10 | Full robustness panel | Complete for the non-qualifying exploratory replay; unavailable for a final strategy because none passed gates. | **INCOMPLETE for final strategy** |
+| 11 | >=30 independent OOS trades; no outlier/leverage/cost/post-hoc shortcut | Existing 89-trade replay is contaminated and has 0.05% CAGR; no qualifying final OOS exists. | **FAIL** |
+| 12 | Read failures; predeclare novel hypothesis, density, gates and give-up criteria | Trials through 504 are frozen pre-return; density and train give-up gates were enforced without post-hoc relaxation. | **PASS** |
+| 13 | Reproducible spec, command, code/tests, JSON/CSV/report | All opened recent trials and the inventory preserve these artifacts. | **PASS for attempts; final report absent** |
+| 14 | Do not pursue 2000–2005 PIT | New workflow uses only repository-local 2006+ evidence and makes no external lookup. | **PASS** |
 
-## Evidence boundary
+## Completion boundary
 
-- Full code/test validation demonstrates execution-engine integrity; it does
-  **not** demonstrate a profitable strategy.
-- Low drawdown, a positive profit factor, or 30+ discovery trades cannot
-  substitute for the two simultaneous untouched-OOS thresholds.
-- The 2016–2026 data cannot be relabelled as untouched because it informed
-  discovery and internal holdout decisions.
-- The rejected public archive cannot be patched with current survivors: doing
-  so would leave confirmed survivorship bias and fail the separate PIT,
-  delisted-name and untouched-OOS requirements. The associated 20-point hard
-  cap would also have to be disclosed, though the amended goal permits it.
-
-## Exact blocker and unlock contract
-
-Completion requires both a candidate that first passes its frozen discovery
-and validation gates and a survivorship-safe untouched OOS dataset. The current
-external blocker is the latter: no licensed/user-provided 2000–2005 daily data
-with stable identifiers, PIT membership, corporate actions, delisting
-prices/returns and at least 90% measured member-day coverage is available.
-
-Acceptable unlock paths are working CRSP/WRDS entitlement or a repository-local
-equivalent satisfying the fields and audit sequence in
-`completion_blocker_audit.md`. On unlock, coverage must be audited without
-opening strategy outcomes; only a specification frozen after successful
-discovery and formal validation may be run once on untouched OOS.
+Score caps are acceptable but do not excuse failed performance. Completion
+requires one unchanged frozen candidate to pass discovery and validation, then
+produce >=20% net CAGR and >=30 independent trades on the frozen
+2022–2026Q1 best-available OOS, with full robustness and transparent caps.

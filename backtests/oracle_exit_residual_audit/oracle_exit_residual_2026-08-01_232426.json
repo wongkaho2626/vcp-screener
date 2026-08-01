@@ -1,0 +1,1764 @@
+{
+  "generated_at": "2026-08-01T23:24:26",
+  "classification": "lookahead_train_only_mechanism_diagnostic",
+  "deployable": false,
+  "scoreable": false,
+  "period": [
+    "2016-07-01",
+    "2018-06-30"
+  ],
+  "price_end_for_forward_diagnostic": "2018-12-31",
+  "validation_accessed": false,
+  "best_available_oos_accessed": false,
+  "coverage": {
+    "universe": 720,
+    "kept": 599,
+    "benchmark_present": true,
+    "coverage_pct": 91.31,
+    "per_year": {
+      "2016": 82.4,
+      "2017": 84.3,
+      "2018": 85.8,
+      "2019": 87.2,
+      "2020": 90.0,
+      "2021": 91.8,
+      "2022": 93.7,
+      "2023": 95.7,
+      "2024": 96.5,
+      "2025": 97.8,
+      "2026": 98.7
+    },
+    "dropped": [
+      [
+        "AMTM",
+        "only-60-bars-in-membership"
+      ],
+      [
+        "APC",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "BNY",
+        "only-27-bars-in-membership"
+      ],
+      [
+        "CASY",
+        "only-57-bars-in-membership"
+      ],
+      [
+        "CIEN",
+        "only-98-bars-in-membership"
+      ],
+      [
+        "COHR",
+        "only-69-bars-in-membership"
+      ],
+      [
+        "EMC",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "FDXF",
+        "only-21-bars-in-membership"
+      ],
+      [
+        "HOT",
+        "only-57-bars-in-membership"
+      ],
+      [
+        "INFO",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "LB",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "LITE",
+        "only-69-bars-in-membership"
+      ],
+      [
+        "SBNY",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "SE",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "SOLS",
+        "only-37-bars-in-membership"
+      ],
+      [
+        "SPLS",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "STI",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "TE",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "VEEV",
+        "only-37-bars-in-membership"
+      ],
+      [
+        "VRT",
+        "only-69-bars-in-membership"
+      ]
+    ]
+  },
+  "membership_drops": 16,
+  "base_signals": 103,
+  "oracle_records": [
+    {
+      "symbol": "TPR",
+      "base_fill_date": "2016-08-12",
+      "entry_date": "2016-08-18",
+      "exit_date": "2016-08-24",
+      "entry_delay_sessions": 4,
+      "hold_sessions": 4,
+      "oracle_return_pct": 2.08159298084436,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": false,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": false
+      }
+    },
+    {
+      "symbol": "AN",
+      "base_fill_date": "2016-07-11",
+      "entry_date": "2016-09-12",
+      "exit_date": "2016-10-07",
+      "entry_delay_sessions": 44,
+      "hold_sessions": 19,
+      "oracle_return_pct": 6.944017520940604,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": true,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": false
+      }
+    },
+    {
+      "symbol": "CAT",
+      "base_fill_date": "2016-07-13",
+      "entry_date": "2016-09-14",
+      "exit_date": "2016-12-08",
+      "entry_delay_sessions": 44,
+      "hold_sessions": 60,
+      "oracle_return_pct": 21.82453831636979,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": true,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": true
+      }
+    },
+    {
+      "symbol": "KMI",
+      "base_fill_date": "2016-09-07",
+      "entry_date": "2016-09-16",
+      "exit_date": "2016-10-03",
+      "entry_delay_sessions": 7,
+      "hold_sessions": 11,
+      "oracle_return_pct": 8.710807517090258,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": true,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": false
+      }
+    },
+    {
+      "symbol": "OKE",
+      "base_fill_date": "2016-09-12",
+      "entry_date": "2016-09-16",
+      "exit_date": "2016-09-30",
+      "entry_delay_sessions": 4,
+      "hold_sessions": 10,
+      "oracle_return_pct": 11.131351222985696,
+      "flags": {
+        "five_day_close_high": false,
+        "two_up_closes": false,
+        "down_close": true,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": true
+      }
+    },
+    {
+      "symbol": "LRCX",
+      "base_fill_date": "2016-07-05",
+      "entry_date": "2016-09-27",
+      "exit_date": "2016-12-20",
+      "entry_delay_sessions": 59,
+      "hold_sessions": 59,
+      "oracle_return_pct": 19.74741116276826,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": false,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": true
+      }
+    },
+    {
+      "symbol": "HRL",
+      "base_fill_date": "2016-10-11",
+      "entry_date": "2016-10-11",
+      "exit_date": "2016-11-01",
+      "entry_delay_sessions": 0,
+      "hold_sessions": 15,
+      "oracle_return_pct": 2.0662904658403036,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": true,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": false
+      }
+    },
+    {
+      "symbol": "VLO",
+      "base_fill_date": "2016-10-18",
+      "entry_date": "2016-10-18",
+      "exit_date": "2017-01-03",
+      "entry_delay_sessions": 0,
+      "hold_sessions": 52,
+      "oracle_return_pct": 28.907401739713954,
+      "flags": {
+        "five_day_close_high": false,
+        "two_up_closes": false,
+        "down_close": true,
+        "below_sma10": true,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": true
+      }
+    },
+    {
+      "symbol": "SWKS",
+      "base_fill_date": "2016-10-03",
+      "entry_date": "2016-11-04",
+      "exit_date": "2016-11-22",
+      "entry_delay_sessions": 24,
+      "hold_sessions": 12,
+      "oracle_return_pct": 9.548439862430968,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": true,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": false
+      }
+    },
+    {
+      "symbol": "SWKS",
+      "base_fill_date": "2016-10-05",
+      "entry_date": "2016-11-04",
+      "exit_date": "2016-11-22",
+      "entry_delay_sessions": 22,
+      "hold_sessions": 12,
+      "oracle_return_pct": 9.548439862430968,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": true,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": false
+      }
+    },
+    {
+      "symbol": "AXP",
+      "base_fill_date": "2016-11-08",
+      "entry_date": "2016-11-08",
+      "exit_date": "2017-01-25",
+      "entry_delay_sessions": 0,
+      "hold_sessions": 52,
+      "oracle_return_pct": 17.047717222254,
+      "flags": {
+        "five_day_close_high": false,
+        "two_up_closes": false,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": true
+      }
+    },
+    {
+      "symbol": "HUM",
+      "base_fill_date": "2016-11-09",
+      "entry_date": "2016-11-09",
+      "exit_date": "2016-12-02",
+      "entry_delay_sessions": 0,
+      "hold_sessions": 16,
+      "oracle_return_pct": 20.90570202978732,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": true,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": true
+      }
+    },
+    {
+      "symbol": "MAR",
+      "base_fill_date": "2016-11-11",
+      "entry_date": "2016-11-11",
+      "exit_date": "2017-02-09",
+      "entry_delay_sessions": 0,
+      "hold_sessions": 60,
+      "oracle_return_pct": 18.967847993395925,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": true,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": true
+      }
+    },
+    {
+      "symbol": "KEY",
+      "base_fill_date": "2016-11-16",
+      "entry_date": "2016-11-17",
+      "exit_date": "2017-02-15",
+      "entry_delay_sessions": 1,
+      "hold_sessions": 60,
+      "oracle_return_pct": 14.27219548048997,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": true,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": true
+      }
+    },
+    {
+      "symbol": "RF",
+      "base_fill_date": "2016-11-16",
+      "entry_date": "2016-11-17",
+      "exit_date": "2017-02-15",
+      "entry_delay_sessions": 1,
+      "hold_sessions": 60,
+      "oracle_return_pct": 22.293638843659448,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": true,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": true
+      }
+    },
+    {
+      "symbol": "AZO",
+      "base_fill_date": "2016-11-21",
+      "entry_date": "2016-11-21",
+      "exit_date": "2016-12-09",
+      "entry_delay_sessions": 0,
+      "hold_sessions": 13,
+      "oracle_return_pct": 7.342406876790841,
+      "flags": {
+        "five_day_close_high": false,
+        "two_up_closes": false,
+        "down_close": true,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": false
+      }
+    },
+    {
+      "symbol": "DOV",
+      "base_fill_date": "2016-11-22",
+      "entry_date": "2016-11-29",
+      "exit_date": "2017-02-23",
+      "entry_delay_sessions": 4,
+      "hold_sessions": 58,
+      "oracle_return_pct": 15.769918177041543,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": true,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": true
+      }
+    },
+    {
+      "symbol": "HRB",
+      "base_fill_date": "2016-11-17",
+      "entry_date": "2016-11-29",
+      "exit_date": "2017-01-09",
+      "entry_delay_sessions": 7,
+      "hold_sessions": 27,
+      "oracle_return_pct": 10.370248783902468,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": true,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": true
+      }
+    },
+    {
+      "symbol": "KEY",
+      "base_fill_date": "2016-11-29",
+      "entry_date": "2016-11-29",
+      "exit_date": "2017-02-15",
+      "entry_delay_sessions": 0,
+      "hold_sessions": 53,
+      "oracle_return_pct": 12.04823459262423,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": true,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": true
+      }
+    },
+    {
+      "symbol": "RF",
+      "base_fill_date": "2016-11-29",
+      "entry_date": "2016-11-29",
+      "exit_date": "2017-02-15",
+      "entry_delay_sessions": 0,
+      "hold_sessions": 53,
+      "oracle_return_pct": 19.500034833716096,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": true,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": true
+      }
+    },
+    {
+      "symbol": "APA",
+      "base_fill_date": "2016-12-01",
+      "entry_date": "2016-12-02",
+      "exit_date": "2016-12-12",
+      "entry_delay_sessions": 1,
+      "hold_sessions": 6,
+      "oracle_return_pct": 4.645236843515521,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": true,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": false
+      }
+    },
+    {
+      "symbol": "HPQ",
+      "base_fill_date": "2016-12-01",
+      "entry_date": "2016-12-02",
+      "exit_date": "2016-12-08",
+      "entry_delay_sessions": 1,
+      "hold_sessions": 4,
+      "oracle_return_pct": 7.1710551766069,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": true,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": false
+      }
+    },
+    {
+      "symbol": "KEY",
+      "base_fill_date": "2016-11-30",
+      "entry_date": "2016-12-06",
+      "exit_date": "2017-03-02",
+      "entry_delay_sessions": 4,
+      "hold_sessions": 58,
+      "oracle_return_pct": 10.271439128381331,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": false,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": false
+      }
+    },
+    {
+      "symbol": "AVGO",
+      "base_fill_date": "2016-09-28",
+      "entry_date": "2016-12-07",
+      "exit_date": "2017-03-02",
+      "entry_delay_sessions": 49,
+      "hold_sessions": 57,
+      "oracle_return_pct": 36.52640232528619,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": false,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": true
+      }
+    },
+    {
+      "symbol": "EMN",
+      "base_fill_date": "2016-12-15",
+      "entry_date": "2016-12-15",
+      "exit_date": "2017-03-02",
+      "entry_delay_sessions": 0,
+      "hold_sessions": 51,
+      "oracle_return_pct": 7.760524688859083,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": true,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": false
+      }
+    },
+    {
+      "symbol": "VRSN",
+      "base_fill_date": "2016-10-24",
+      "entry_date": "2016-12-30",
+      "exit_date": "2017-03-17",
+      "entry_delay_sessions": 47,
+      "hold_sessions": 52,
+      "oracle_return_pct": 14.537851691196234,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": true,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": true
+      }
+    },
+    {
+      "symbol": "HAS",
+      "base_fill_date": "2017-01-20",
+      "entry_date": "2017-01-26",
+      "exit_date": "2017-04-24",
+      "entry_delay_sessions": 4,
+      "hold_sessions": 60,
+      "oracle_return_pct": 26.61462329307249,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": true,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": true
+      }
+    },
+    {
+      "symbol": "VRSN",
+      "base_fill_date": "2017-01-23",
+      "entry_date": "2017-02-02",
+      "exit_date": "2017-04-28",
+      "entry_delay_sessions": 8,
+      "hold_sessions": 59,
+      "oracle_return_pct": 13.764366820621454,
+      "flags": {
+        "five_day_close_high": false,
+        "two_up_closes": false,
+        "down_close": true,
+        "below_sma10": true,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": true
+      }
+    },
+    {
+      "symbol": "GRMN",
+      "base_fill_date": "2017-02-09",
+      "entry_date": "2017-02-09",
+      "exit_date": "2017-02-23",
+      "entry_delay_sessions": 0,
+      "hold_sessions": 9,
+      "oracle_return_pct": 11.571576086705026,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": false,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": true
+      }
+    },
+    {
+      "symbol": "ORLY",
+      "base_fill_date": "2017-02-22",
+      "entry_date": "2017-02-24",
+      "exit_date": "2017-03-15",
+      "entry_delay_sessions": 2,
+      "hold_sessions": 13,
+      "oracle_return_pct": 3.5632689730680456,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": true,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": false
+      }
+    },
+    {
+      "symbol": "TXT",
+      "base_fill_date": "2017-02-08",
+      "entry_date": "2017-02-24",
+      "exit_date": "2017-03-02",
+      "entry_delay_sessions": 11,
+      "hold_sessions": 4,
+      "oracle_return_pct": 5.5189966086007125,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": false,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": false
+      }
+    },
+    {
+      "symbol": "EOG",
+      "base_fill_date": "2017-03-02",
+      "entry_date": "2017-03-03",
+      "exit_date": "2017-03-07",
+      "entry_delay_sessions": 1,
+      "hold_sessions": 2,
+      "oracle_return_pct": 1.7254069360386426,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": true,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": false
+      }
+    },
+    {
+      "symbol": "MET",
+      "base_fill_date": "2017-03-09",
+      "entry_date": "2017-03-09",
+      "exit_date": "2017-03-17",
+      "entry_delay_sessions": 0,
+      "hold_sessions": 6,
+      "oracle_return_pct": 0.8796698353698451,
+      "flags": {
+        "five_day_close_high": false,
+        "two_up_closes": false,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": false
+      }
+    },
+    {
+      "symbol": "ULTA",
+      "base_fill_date": "2016-12-19",
+      "entry_date": "2017-03-10",
+      "exit_date": "2017-06-06",
+      "entry_delay_sessions": 55,
+      "hold_sessions": 60,
+      "oracle_return_pct": 15.344725385315794,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": true,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": true
+      }
+    },
+    {
+      "symbol": "QRVO",
+      "base_fill_date": "2017-02-13",
+      "entry_date": "2017-03-22",
+      "exit_date": "2017-06-02",
+      "entry_delay_sessions": 26,
+      "hold_sessions": 50,
+      "oracle_return_pct": 20.38542053820891,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": false,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": true
+      }
+    },
+    {
+      "symbol": "MLM",
+      "base_fill_date": "2017-03-14",
+      "entry_date": "2017-03-27",
+      "exit_date": "2017-05-04",
+      "entry_delay_sessions": 9,
+      "hold_sessions": 27,
+      "oracle_return_pct": 17.132138993899204,
+      "flags": {
+        "five_day_close_high": false,
+        "two_up_closes": false,
+        "down_close": true,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": true
+      }
+    },
+    {
+      "symbol": "TDC",
+      "base_fill_date": "2017-02-23",
+      "entry_date": "2017-03-27",
+      "exit_date": "2017-04-21",
+      "entry_delay_sessions": 22,
+      "hold_sessions": 18,
+      "oracle_return_pct": 6.089708890642531,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": true,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": false
+      }
+    },
+    {
+      "symbol": "ORLY",
+      "base_fill_date": "2017-03-23",
+      "entry_date": "2017-03-28",
+      "exit_date": "2017-03-30",
+      "entry_delay_sessions": 3,
+      "hold_sessions": 2,
+      "oracle_return_pct": 1.9034553872319115,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": false,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": false
+      }
+    },
+    {
+      "symbol": "NTRS",
+      "base_fill_date": "2017-03-29",
+      "entry_date": "2017-03-29",
+      "exit_date": "2017-03-31",
+      "entry_delay_sessions": 0,
+      "hold_sessions": 2,
+      "oracle_return_pct": 1.1839950058057491,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": false,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": false
+      }
+    },
+    {
+      "symbol": "IVZ",
+      "base_fill_date": "2017-02-08",
+      "entry_date": "2017-04-17",
+      "exit_date": "2017-07-11",
+      "entry_delay_sessions": 46,
+      "hold_sessions": 59,
+      "oracle_return_pct": 21.960126017616034,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": true,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": true
+      }
+    },
+    {
+      "symbol": "EW",
+      "base_fill_date": "2017-04-27",
+      "entry_date": "2017-04-27",
+      "exit_date": "2017-06-26",
+      "entry_delay_sessions": 0,
+      "hold_sessions": 41,
+      "oracle_return_pct": 10.159572037615504,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": false,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": true
+      }
+    },
+    {
+      "symbol": "REGN",
+      "base_fill_date": "2017-04-20",
+      "entry_date": "2017-04-28",
+      "exit_date": "2017-06-22",
+      "entry_delay_sessions": 6,
+      "hold_sessions": 38,
+      "oracle_return_pct": 42.180933378781305,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": true,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": true
+      }
+    },
+    {
+      "symbol": "REGN",
+      "base_fill_date": "2017-04-21",
+      "entry_date": "2017-04-28",
+      "exit_date": "2017-06-22",
+      "entry_delay_sessions": 5,
+      "hold_sessions": 38,
+      "oracle_return_pct": 42.180933378781305,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": true,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": true
+      }
+    },
+    {
+      "symbol": "NTAP",
+      "base_fill_date": "2017-02-17",
+      "entry_date": "2017-05-05",
+      "exit_date": "2017-07-26",
+      "entry_delay_sessions": 53,
+      "hold_sessions": 56,
+      "oracle_return_pct": 12.999964960250022,
+      "flags": {
+        "five_day_close_high": false,
+        "two_up_closes": false,
+        "down_close": true,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": true
+      }
+    },
+    {
+      "symbol": "VRTX",
+      "base_fill_date": "2017-04-05",
+      "entry_date": "2017-05-08",
+      "exit_date": "2017-07-25",
+      "entry_delay_sessions": 22,
+      "hold_sessions": 54,
+      "oracle_return_pct": 45.431610986778594,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": true,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": true
+      }
+    },
+    {
+      "symbol": "XRX",
+      "base_fill_date": "2017-05-10",
+      "entry_date": "2017-05-10",
+      "exit_date": "2017-05-16",
+      "entry_delay_sessions": 0,
+      "hold_sessions": 4,
+      "oracle_return_pct": 1.5017076441093735,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": false,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": false
+      }
+    },
+    {
+      "symbol": "REGN",
+      "base_fill_date": "2017-05-12",
+      "entry_date": "2017-05-15",
+      "exit_date": "2017-06-22",
+      "entry_delay_sessions": 1,
+      "hold_sessions": 27,
+      "oracle_return_pct": 18.977028489257396,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": true,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": true
+      }
+    },
+    {
+      "symbol": "CVS",
+      "base_fill_date": "2017-05-18",
+      "entry_date": "2017-05-18",
+      "exit_date": "2017-05-24",
+      "entry_delay_sessions": 0,
+      "hold_sessions": 4,
+      "oracle_return_pct": 0.9757673841764181,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": true,
+        "down_close": false,
+        "below_sma10": true,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": false
+      }
+    },
+    {
+      "symbol": "REGN",
+      "base_fill_date": "2017-05-17",
+      "entry_date": "2017-05-18",
+      "exit_date": "2017-06-22",
+      "entry_delay_sessions": 1,
+      "hold_sessions": 24,
+      "oracle_return_pct": 16.953351069000668,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": true,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": true
+      }
+    },
+    {
+      "symbol": "REGN",
+      "base_fill_date": "2017-05-18",
+      "entry_date": "2017-05-18",
+      "exit_date": "2017-06-22",
+      "entry_delay_sessions": 0,
+      "hold_sessions": 24,
+      "oracle_return_pct": 16.953351069000668,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": true,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": true
+      }
+    },
+    {
+      "symbol": "WMB",
+      "base_fill_date": "2017-06-26",
+      "entry_date": "2017-06-26",
+      "exit_date": "2017-07-31",
+      "entry_delay_sessions": 0,
+      "hold_sessions": 24,
+      "oracle_return_pct": 11.043461896234884,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": true,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": true
+      }
+    },
+    {
+      "symbol": "GT",
+      "base_fill_date": "2017-06-28",
+      "entry_date": "2017-06-28",
+      "exit_date": "2017-07-17",
+      "entry_delay_sessions": 0,
+      "hold_sessions": 12,
+      "oracle_return_pct": 6.334351549064965,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": false,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": false
+      }
+    },
+    {
+      "symbol": "TROW",
+      "base_fill_date": "2017-06-06",
+      "entry_date": "2017-07-12",
+      "exit_date": "2017-10-05",
+      "entry_delay_sessions": 25,
+      "hold_sessions": 60,
+      "oracle_return_pct": 22.457901991149853,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": true,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": true
+      }
+    },
+    {
+      "symbol": "CHTR",
+      "base_fill_date": "2017-08-01",
+      "entry_date": "2017-08-08",
+      "exit_date": "2017-09-07",
+      "entry_delay_sessions": 5,
+      "hold_sessions": 21,
+      "oracle_return_pct": 6.108290951193984,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": true,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": false
+      }
+    },
+    {
+      "symbol": "ADI",
+      "base_fill_date": "2017-06-01",
+      "entry_date": "2017-08-11",
+      "exit_date": "2017-11-06",
+      "entry_delay_sessions": 50,
+      "hold_sessions": 60,
+      "oracle_return_pct": 20.819781067807508,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": false,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": true
+      }
+    },
+    {
+      "symbol": "DLR",
+      "base_fill_date": "2017-08-15",
+      "entry_date": "2017-08-15",
+      "exit_date": "2017-09-12",
+      "entry_delay_sessions": 0,
+      "hold_sessions": 19,
+      "oracle_return_pct": 9.526306011971798,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": false,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": false
+      }
+    },
+    {
+      "symbol": "QRVO",
+      "base_fill_date": "2017-08-31",
+      "entry_date": "2017-09-26",
+      "exit_date": "2017-11-10",
+      "entry_delay_sessions": 17,
+      "hold_sessions": 33,
+      "oracle_return_pct": 17.446032228640963,
+      "flags": {
+        "five_day_close_high": false,
+        "two_up_closes": false,
+        "down_close": true,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": true
+      }
+    },
+    {
+      "symbol": "SO",
+      "base_fill_date": "2017-09-20",
+      "entry_date": "2017-09-28",
+      "exit_date": "2017-11-03",
+      "entry_delay_sessions": 6,
+      "hold_sessions": 26,
+      "oracle_return_pct": 9.425601274659678,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": false,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": false
+      }
+    },
+    {
+      "symbol": "AMAT",
+      "base_fill_date": "2017-10-03",
+      "entry_date": "2017-10-06",
+      "exit_date": "2017-11-17",
+      "entry_delay_sessions": 3,
+      "hold_sessions": 30,
+      "oracle_return_pct": 17.85001127381087,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": false,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": true
+      }
+    },
+    {
+      "symbol": "EQT",
+      "base_fill_date": "2017-11-07",
+      "entry_date": "2017-11-08",
+      "exit_date": "2017-11-10",
+      "entry_delay_sessions": 1,
+      "hold_sessions": 2,
+      "oracle_return_pct": 3.706890634082427,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": true,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": false
+      }
+    },
+    {
+      "symbol": "PRGO",
+      "base_fill_date": "2017-09-13",
+      "entry_date": "2017-11-08",
+      "exit_date": "2018-01-26",
+      "entry_delay_sessions": 40,
+      "hold_sessions": 53,
+      "oracle_return_pct": 18.611502891326516,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": false,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": true
+      }
+    },
+    {
+      "symbol": "SWKS",
+      "base_fill_date": "2017-11-09",
+      "entry_date": "2017-11-13",
+      "exit_date": "2017-11-21",
+      "entry_delay_sessions": 2,
+      "hold_sessions": 6,
+      "oracle_return_pct": 0.9980610253865541,
+      "flags": {
+        "five_day_close_high": false,
+        "two_up_closes": false,
+        "down_close": false,
+        "below_sma10": true,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": false
+      }
+    },
+    {
+      "symbol": "HPE",
+      "base_fill_date": "2017-11-06",
+      "entry_date": "2017-11-15",
+      "exit_date": "2017-11-21",
+      "entry_delay_sessions": 7,
+      "hold_sessions": 4,
+      "oracle_return_pct": 6.6055851423434175,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": true,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": false
+      }
+    },
+    {
+      "symbol": "HPE",
+      "base_fill_date": "2017-11-07",
+      "entry_date": "2017-11-15",
+      "exit_date": "2017-11-21",
+      "entry_delay_sessions": 6,
+      "hold_sessions": 4,
+      "oracle_return_pct": 6.6055851423434175,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": true,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": false
+      }
+    },
+    {
+      "symbol": "TJX",
+      "base_fill_date": "2017-08-23",
+      "entry_date": "2017-11-15",
+      "exit_date": "2018-01-30",
+      "entry_delay_sessions": 59,
+      "hold_sessions": 50,
+      "oracle_return_pct": 19.446593855582627,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": true,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": true
+      }
+    },
+    {
+      "symbol": "JEF",
+      "base_fill_date": "2017-11-07",
+      "entry_date": "2017-11-17",
+      "exit_date": "2018-01-12",
+      "entry_delay_sessions": 8,
+      "hold_sessions": 37,
+      "oracle_return_pct": 13.039223803662448,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": true,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": true
+      }
+    },
+    {
+      "symbol": "JEF",
+      "base_fill_date": "2017-11-08",
+      "entry_date": "2017-11-17",
+      "exit_date": "2018-01-12",
+      "entry_delay_sessions": 7,
+      "hold_sessions": 37,
+      "oracle_return_pct": 13.039223803662448,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": true,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": true
+      }
+    },
+    {
+      "symbol": "SYY",
+      "base_fill_date": "2017-11-15",
+      "entry_date": "2017-11-17",
+      "exit_date": "2018-01-29",
+      "entry_delay_sessions": 2,
+      "hold_sessions": 47,
+      "oracle_return_pct": 18.656704005547688,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": true,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": true
+      }
+    },
+    {
+      "symbol": "ORCL",
+      "base_fill_date": "2017-12-11",
+      "entry_date": "2017-12-11",
+      "exit_date": "2017-12-13",
+      "entry_delay_sessions": 0,
+      "hold_sessions": 2,
+      "oracle_return_pct": 1.2485507980321442,
+      "flags": {
+        "five_day_close_high": false,
+        "two_up_closes": false,
+        "down_close": true,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": false
+      }
+    },
+    {
+      "symbol": "PRU",
+      "base_fill_date": "2017-12-18",
+      "entry_date": "2018-01-02",
+      "exit_date": "2018-01-29",
+      "entry_delay_sessions": 9,
+      "hold_sessions": 18,
+      "oracle_return_pct": 9.054973421288203,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": false,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": false
+      }
+    },
+    {
+      "symbol": "CB",
+      "base_fill_date": "2017-10-30",
+      "entry_date": "2018-01-03",
+      "exit_date": "2018-02-01",
+      "entry_delay_sessions": 44,
+      "hold_sessions": 20,
+      "oracle_return_pct": 9.596610178618725,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": false,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": true
+      }
+    },
+    {
+      "symbol": "AES",
+      "base_fill_date": "2018-01-19",
+      "entry_date": "2018-01-25",
+      "exit_date": "2018-01-30",
+      "entry_delay_sessions": 4,
+      "hold_sessions": 3,
+      "oracle_return_pct": 5.439035803483816,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": true,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": false
+      }
+    },
+    {
+      "symbol": "AES",
+      "base_fill_date": "2018-01-23",
+      "entry_date": "2018-01-25",
+      "exit_date": "2018-01-30",
+      "entry_delay_sessions": 2,
+      "hold_sessions": 3,
+      "oracle_return_pct": 5.439035803483816,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": true,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": false
+      }
+    },
+    {
+      "symbol": "STT",
+      "base_fill_date": "2018-01-25",
+      "entry_date": "2018-02-06",
+      "exit_date": "2018-03-12",
+      "entry_delay_sessions": 8,
+      "hold_sessions": 23,
+      "oracle_return_pct": 9.615847653077614,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": true,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": false
+      }
+    },
+    {
+      "symbol": "IDXX",
+      "base_fill_date": "2018-01-18",
+      "entry_date": "2018-02-09",
+      "exit_date": "2018-05-07",
+      "entry_delay_sessions": 16,
+      "hold_sessions": 59,
+      "oracle_return_pct": 26.353459931301625,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": true,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": true
+      }
+    },
+    {
+      "symbol": "ESRX",
+      "base_fill_date": "2017-12-26",
+      "entry_date": "2018-02-13",
+      "exit_date": "2018-03-08",
+      "entry_delay_sessions": 33,
+      "hold_sessions": 16,
+      "oracle_return_pct": 17.98730877129544,
+      "flags": {
+        "five_day_close_high": false,
+        "two_up_closes": false,
+        "down_close": true,
+        "below_sma10": true,
+        "trailing_drawdown_5pct": true,
+        "gain_10pct": false
+      }
+    },
+    {
+      "symbol": "ADM",
+      "base_fill_date": "2018-02-07",
+      "entry_date": "2018-02-14",
+      "exit_date": "2018-04-30",
+      "entry_delay_sessions": 5,
+      "hold_sessions": 51,
+      "oracle_return_pct": 13.46313022218566,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": true,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": true
+      }
+    },
+    {
+      "symbol": "BKNG",
+      "base_fill_date": "2018-02-20",
+      "entry_date": "2018-02-20",
+      "exit_date": "2018-03-13",
+      "entry_delay_sessions": 0,
+      "hold_sessions": 15,
+      "oracle_return_pct": 17.176311684562528,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": true,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": true
+      }
+    },
+    {
+      "symbol": "CHTR",
+      "base_fill_date": "2018-02-09",
+      "entry_date": "2018-03-05",
+      "exit_date": "2018-03-13",
+      "entry_delay_sessions": 15,
+      "hold_sessions": 6,
+      "oracle_return_pct": 9.022002777108561,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": true,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": false
+      }
+    },
+    {
+      "symbol": "TAP",
+      "base_fill_date": "2018-03-06",
+      "entry_date": "2018-03-07",
+      "exit_date": "2018-03-16",
+      "entry_delay_sessions": 1,
+      "hold_sessions": 7,
+      "oracle_return_pct": 4.495337345130035,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": true,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": false
+      }
+    },
+    {
+      "symbol": "HUM",
+      "base_fill_date": "2018-02-06",
+      "entry_date": "2018-03-26",
+      "exit_date": "2018-06-13",
+      "entry_delay_sessions": 33,
+      "hold_sessions": 55,
+      "oracle_return_pct": 17.1531976794417,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": true,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": true
+      }
+    },
+    {
+      "symbol": "ESRX",
+      "base_fill_date": "2018-01-19",
+      "entry_date": "2018-04-03",
+      "exit_date": "2018-06-15",
+      "entry_delay_sessions": 50,
+      "hold_sessions": 52,
+      "oracle_return_pct": 20.863926334738856,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": true,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": true
+      }
+    },
+    {
+      "symbol": "ESRX",
+      "base_fill_date": "2018-01-31",
+      "entry_date": "2018-04-03",
+      "exit_date": "2018-06-15",
+      "entry_delay_sessions": 42,
+      "hold_sessions": 52,
+      "oracle_return_pct": 20.863926334738856,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": true,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": true
+      }
+    },
+    {
+      "symbol": "MGM",
+      "base_fill_date": "2018-04-06",
+      "entry_date": "2018-04-12",
+      "exit_date": "2018-04-24",
+      "entry_delay_sessions": 4,
+      "hold_sessions": 8,
+      "oracle_return_pct": 7.563607757435409,
+      "flags": {
+        "five_day_close_high": false,
+        "two_up_closes": false,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": false
+      }
+    },
+    {
+      "symbol": "CTAS",
+      "base_fill_date": "2018-04-11",
+      "entry_date": "2018-05-01",
+      "exit_date": "2018-07-26",
+      "entry_delay_sessions": 14,
+      "hold_sessions": 60,
+      "oracle_return_pct": 23.55695509841702,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": true,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": true
+      }
+    },
+    {
+      "symbol": "TRIP",
+      "base_fill_date": "2018-02-07",
+      "entry_date": "2018-05-02",
+      "exit_date": "2018-07-27",
+      "entry_delay_sessions": 58,
+      "hold_sessions": 60,
+      "oracle_return_pct": 66.07563654390725,
+      "flags": {
+        "five_day_close_high": false,
+        "two_up_closes": false,
+        "down_close": true,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": true
+      }
+    },
+    {
+      "symbol": "IDXX",
+      "base_fill_date": "2018-05-08",
+      "entry_date": "2018-05-18",
+      "exit_date": "2018-07-26",
+      "entry_delay_sessions": 8,
+      "hold_sessions": 47,
+      "oracle_return_pct": 28.649371764703368,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": false,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": true
+      }
+    },
+    {
+      "symbol": "SRE",
+      "base_fill_date": "2018-06-13",
+      "entry_date": "2018-06-18",
+      "exit_date": "2018-09-06",
+      "entry_delay_sessions": 3,
+      "hold_sessions": 56,
+      "oracle_return_pct": 6.46922006302677,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": true,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": false
+      }
+    },
+    {
+      "symbol": "VRSK",
+      "base_fill_date": "2018-05-25",
+      "entry_date": "2018-06-28",
+      "exit_date": "2018-09-14",
+      "entry_delay_sessions": 23,
+      "hold_sessions": 54,
+      "oracle_return_pct": 15.545239440133818,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": true,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": true
+      }
+    },
+    {
+      "symbol": "CMG",
+      "base_fill_date": "2018-04-27",
+      "entry_date": "2018-07-02",
+      "exit_date": "2018-08-16",
+      "entry_delay_sessions": 45,
+      "hold_sessions": 32,
+      "oracle_return_pct": 22.77630542736391,
+      "flags": {
+        "five_day_close_high": true,
+        "two_up_closes": true,
+        "down_close": false,
+        "below_sma10": false,
+        "trailing_drawdown_5pct": false,
+        "gain_10pct": true
+      }
+    }
+  ],
+  "proxy_labels": {
+    "five_day_close_high": "strength exit; near prior profit-taking/high rules",
+    "two_up_closes": "strength exit; price-staircase analogue",
+    "down_close": "weakness exit; directly tested family",
+    "below_sma10": "weakness exit; directly tested family",
+    "trailing_drawdown_5pct": "giveback exit; trailing-stop family",
+    "gain_10pct": "profit exit; target/scale-out family"
+  },
+  "summaries": {
+    "overall": {
+      "records": 90,
+      "entry_delay_sessions": {
+        "median": 5.0,
+        "mean": 13.922222222222222
+      },
+      "hold_sessions": {
+        "median": 27.0,
+        "mean": 31.544444444444444,
+        "within_5_pct": 15.555555555555555,
+        "within_10_pct": 24.444444444444443,
+        "within_20_pct": 41.111111111111114
+      },
+      "oracle_return_pct": {
+        "median": 13.019594381956235,
+        "mean": 14.400250487675747
+      },
+      "proxy_hit_rates": {
+        "five_day_close_high": 84.44444444444444,
+        "two_up_closes": 62.22222222222222,
+        "down_close": 11.11111111111111,
+        "below_sma10": 5.555555555555555,
+        "trailing_drawdown_5pct": 1.1111111111111112,
+        "gain_10pct": 57.77777777777778
+      }
+    },
+    "early_fold": {
+      "records": 52,
+      "entry_delay_sessions": {
+        "median": 2.5,
+        "mean": 11.5
+      },
+      "hold_sessions": {
+        "median": 27.0,
+        "mean": 31.75,
+        "within_5_pct": 15.384615384615385,
+        "within_10_pct": 23.076923076923077,
+        "within_20_pct": 42.30769230769231
+      },
+      "oracle_return_pct": {
+        "median": 11.809905339664628,
+        "mean": 14.101351114503263
+      },
+      "proxy_hit_rates": {
+        "five_day_close_high": 84.61538461538461,
+        "two_up_closes": 61.53846153846154,
+        "down_close": 11.538461538461538,
+        "below_sma10": 5.769230769230769,
+        "trailing_drawdown_5pct": 0.0,
+        "gain_10pct": 59.61538461538461
+      }
+    },
+    "late_fold": {
+      "records": 38,
+      "entry_delay_sessions": {
+        "median": 8.0,
+        "mean": 17.236842105263158
+      },
+      "hold_sessions": {
+        "median": 31.0,
+        "mean": 31.263157894736842,
+        "within_5_pct": 15.789473684210526,
+        "within_10_pct": 26.31578947368421,
+        "within_20_pct": 39.473684210526315
+      },
+      "oracle_return_pct": {
+        "median": 13.251177012924053,
+        "mean": 14.809270682543351
+      },
+      "proxy_hit_rates": {
+        "five_day_close_high": 84.21052631578948,
+        "two_up_closes": 63.1578947368421,
+        "down_close": 10.526315789473685,
+        "below_sma10": 5.2631578947368425,
+        "trailing_drawdown_5pct": 2.6315789473684212,
+        "gain_10pct": 55.26315789473684
+      }
+    },
+    "drop_top_5": {
+      "records": 85,
+      "entry_delay_sessions": {
+        "median": 4,
+        "mean": 13.094117647058823
+      },
+      "hold_sessions": {
+        "median": 26,
+        "mean": 30.49411764705882,
+        "within_5_pct": 16.470588235294116,
+        "within_10_pct": 25.88235294117647,
+        "within_20_pct": 43.529411764705884
+      },
+      "oracle_return_pct": {
+        "median": 11.571576086705026,
+        "mean": 12.513259144438617
+      },
+      "proxy_hit_rates": {
+        "five_day_close_high": 84.70588235294117,
+        "two_up_closes": 62.35294117647059,
+        "down_close": 10.588235294117647,
+        "below_sma10": 5.882352941176471,
+        "trailing_drawdown_5pct": 1.1764705882352942,
+        "gain_10pct": 55.294117647058826
+      }
+    }
+  },
+  "qualification_rule": "at least 60% coverage in both chronological folds and drop-top-five, with a mechanism not already tested",
+  "qualified_unresolved_proxies": []
+}

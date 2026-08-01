@@ -41,6 +41,156 @@ trades, -0.23% CAGR, -0.091 Sharpe, 0.975 PF and -1.40% expectancy after
 removing the five largest trades. Its score was 17/100 raw and final. The gate
 failed and no later evidence partition was accessed.
 
+Trial 363–367 tested a causal Wilder DMI(14) positive-direction crossover
+above the frozen pivot. It produced 80 train trades, -0.80% CAGR, -0.350
+Sharpe, 0.921 PF and -1.37% trim-5 expectancy. Its raw/final score was 17/100;
+the train gate failed, so 2019–2021 validation and 2022–2026Q1 best-available
+OOS stayed sealed.
+
+Trial 368–373 tested a standard causal Parabolic SAR(0.02, 0.20) bullish flip
+above the frozen pivot, with a two-close bearish-flip exit. It produced 98
+train trades, -0.86% CAGR, -0.331 Sharpe, 0.699 PF and -1.66% trim-5
+expectancy. Its raw/final score was 17/100; the train gate failed and every
+later evidence partition stayed sealed.
+
+Trial 374–380 prespecified a standard MACD(12,26,9) signal-line crossover
+lifecycle. Its outcome-free discovery density was 79 signals, one below the
+frozen minimum of 80, so the family was rejected without evaluating returns or
+opening validation/OOS. The density threshold was not relaxed post hoc.
+
+Trial 381–386 applied a canonical Donchian 55-session closing-high entry and
+20-session closing-low exit. Its outcome-free density was also 79 signals, so
+it was rejected without return evaluation under the same unchanged 80-signal
+minimum.
+
+Trial 387–393 tested a causal 1.5x prior-ATR bullish range-expansion ignition
+with an EMA10 lifecycle exit. It produced 72 train trades, -0.63% CAGR, -0.346
+Sharpe, 0.817 PF and -1.32% trim-5 expectancy. Its raw/final score was 17/100;
+the train gate failed and validation/OOS remained sealed.
+
+Trial 394–399 tested three consecutive rising closes and lows above the pivot,
+with a two-prior-low failure exit. It produced 144 train trades, -1.14% CAGR,
+-0.553 Sharpe, 0.700 PF and -1.01% trim-5 expectancy. Trial 400–405 then
+recycled the previously validated MA20 touch-and-hold execution effect after a
+pivot breakout; 85 train trades produced -1.82% CAGR, -1.056 Sharpe, 0.572 PF
+and -1.84% trim-5 expectancy. Both scored 17/100 and failed before validation.
+
+Trial 406–411 tested cumulative signed-volume participation through a fresh
+20-session OBV high above the pivot and an OBV-EMA10 exit. It produced 90
+train trades, -0.63% CAGR, -0.267 Sharpe, 0.704 PF and -1.62% trim-5
+expectancy. Its raw/final score was 17/100; cumulative OBV did not rescue the
+previously failed volume family, and later partitions remained sealed.
+
+Trial 412–417 applied canonical 12–1 momentum as a top-quintile rank within
+the contemporaneous active-VCP cohort. Its outcome-free train density was only
+41 signals versus the frozen minimum of 80. The family was rejected without
+evaluating returns or relaxing the threshold; validation/OOS stayed sealed.
+
+Trial 418–424 tested a distinct 20-session natural-log-price OLS trend-quality
+lifecycle: positive slope plus R-squared of at least 0.50 above the frozen
+pivot, followed by a two-close trend-quality failure exit. It passed the
+outcome-free density audit with 106 signals and produced 79 train trades, but
+only 0.30% net CAGR, 0.138 Sharpe, 1.008 PF and -5.57% MDD. Removing the five
+largest winners reduced expectancy to -1.06%. Its reduced-denominator raw
+score is 29/100 and its final survivorship-capped score is 20/100 (Reject).
+The train gate failed, so validation and best-available OOS stayed sealed.
+
+Trial 425–431 then tested a 25-session Aroon extreme-recency lifecycle, which
+uses the age of the most recent high versus low rather than move magnitude.
+It passed density with 101 signals and produced 75 train trades, but only
+0.08% net CAGR, 0.040 Sharpe, 1.022 PF and -5.83% MDD. Drop-top-five
+expectancy was -1.10%. Its reduced-denominator raw score is 24/100 and final
+survivorship-capped score is 20/100 (Reject). The train gate failed and later
+partitions stayed sealed.
+
+Trial 432–440 tested a causal, zero-displacement Ichimoku 9/26/52
+range-midpoint equilibrium lifecycle. It passed density with 115 signals but
+produced 81 train trades, -0.95% net CAGR, -0.305 Sharpe, 0.868 PF and -7.01%
+MDD. Removing the five largest winners reduced expectancy to -1.65%. Its
+reduced-denominator raw and final score is 17/100 (Reject). The train gate
+failed, validation/OOS stayed sealed, and the frozen give-up rule closes this
+range-midpoint family without changing canonical windows or thresholds.
+
+Trial 441–447 tested a 20-session realized upside/downside semivariance-ratio
+lifecycle with frozen 1.50/0.75 hysteresis. It produced 104 signals and 73
+train trades, but -0.03% net CAGR, 0.002 Sharpe, 1.120 PF and -6.04% MDD.
+Although untrimmed trade expectancy was +0.41%, removing the five largest
+winners reduced it to -1.09%. Its normalized raw score is 28/100 and final
+survivorship-capped score is 20/100 (Reject). The train gate failed and later
+partitions stayed sealed.
+
+Trial 448–454 tested a gap-adjusted 10-session regular-session versus overnight
+log-return lifecycle. It passed density with 164 signals and produced 125
+train trades, but only 0.33% net CAGR, 0.153 Sharpe, 1.050 PF and -4.85% MDD.
+Removing the five largest winners reduced expectancy to -0.57%. Its normalized
+raw score is 29/100 and final survivorship-capped score is 20/100 (Reject).
+The train gate failed and later partitions stayed sealed; decomposing where
+daily returns accrue does not recover the missing continuation edge.
+
+A subsequent explicitly lookahead, train-only oracle-exit residual audit did
+not score or open validation/OOS. Across 90 future-profitable perfectly timed
+paths, the close before the best feasible next-open exit was a fresh five-day
+closing high 84.4% of the time, stable in both train halves and after dropping
+the five largest oracle returns. Down-close, SMA10-break and 5% giveback states
+covered only 11.1%, 5.6% and 1.1%. This is hypothesis-generating evidence for
+one prespecified sell-into-strength exit, not evidence that such an exit works.
+
+Trial 455–466 performed that one frozen translation: the prior AVWAP reclaim
+entry, held at least 10 sessions, exited next open after the first strict fresh
+five-day closing high. It produced 103 signals and 83 train trades, but only
+0.17% CAGR, 0.085 Sharpe, 1.009 PF and -4.91% MDD; drop-top-five expectancy was
+-0.90%. Its normalized raw score is 35/100 and final survivorship-capped score
+20/100 (Reject). Validation/OOS stayed sealed. Frequent coincidence at a
+perfect-foresight best exit does not make the first causal occurrence useful.
+
+Trial 467–470 next audited whether VCP entries early in a current PIT S&P 500
+membership spell were dense enough to test. Fixed 90/180/365/730 calendar-day
+caps emitted only 0/0/4/11 train candidates versus the frozen minimum 80. The
+membership end date was never a feature; returns and all later partitions
+stayed sealed.
+
+Trial 471–477 tested a distinct supply-absorption timing mechanism: after a
+>=1% gap-up closed below its open, require a close above that rejection bar's
+frozen high and the VCP pivot within five sessions. The outcome-free audit
+found only 27 signals across 21 symbols from 4,165 active setup rows. It failed
+the unchanged 80-signal density gate, so no P&L was evaluated and no threshold
+or window was relaxed.
+
+Trial 478–482 then tested a first-session-of-month institutional-flow
+lifecycle. SPY supplied only the observed exchange calendar; stocks had to
+close above their frozen pivot, entered next open and exited three sessions
+later. Density passed with 143 signals, but 99 train trades produced -0.32%
+CAGR, -0.220 Sharpe, 0.750 PF and -0.56% trim-five expectancy. A/B/C/D were
+7/7/0/0, normalized raw and final score 17/100 (Reject). The train gate failed,
+so validation and best-available OOS stayed sealed.
+
+Trial 483–488 tested a canonical 20-return lag-1 autocorrelation zero-cross as
+an order-splitting persistence signal. It passed density with 129 signals and
+produced 103 train trades, 1.29% CAGR, 0.499 Sharpe and PF 1.515. Removing the
+five largest winners reversed PF to 0.715 and expectancy to -0.47%; t-stat was
+0.78, PSR 77.9% and approximate DSR probability 0.08%. A/B/C/D were 7/10/4/14,
+normalized raw 42 and final survivorship-capped score 20/100 (Reject).
+Validation/OOS stayed sealed and the serial-dependence parameters are closed.
+
+Trial 489–495 used only repository-cached SEC Company Facts to test a distinct
+share-supply contraction proxy. Same-accession weighted-average shares,
+diluted-before-basic priority, strict filed-before timing and 120-day freshness
+covered 78/79 requested train symbols and emitted 114 signals. Its 100 trades
+produced 0.69% CAGR, 0.291 Sharpe, PF 1.025 and -0.57% trim-five expectancy.
+A/B/C/D were 7/7/4/6, normalized raw 29 and final survivorship-capped score
+20/100 (Reject). No external data, validation or OOS was accessed.
+
+Trial 496–504 translated the supplied strong-stock exit checklist into one
+causal state machine: persistent SMA10/SMA20 support, then an abnormal down day
+or dual-MA damage followed by a frozen-MA rejection / pre-damage swing-low
+break. The outcome-free gate passed with 58 custom exits among 103 unchanged
+detection-entry signals, but 88 train trades produced only 0.50% CAGR, 0.228
+Sharpe, PF 0.982 and -0.87% trim-five expectancy. Only one activation was an
+abnormal day and ten were failed-MA recoveries; 47 were swing-low breaks, so
+the proposed character-change mechanism mostly collapsed into another weak
+swing-low exit. A/B/C/D were 7/7/4/0, normalized raw 22 and final
+survivorship-capped score 20/100 (Reject). Validation and OOS stayed sealed.
+
 The replay also found and fixed a historical benchmark-alignment defect.
 Stocks with short or gapped histories had previously selected SPY by the
 stock's integer bar offset, which could use a benchmark observation after the
@@ -60,10 +210,14 @@ commands are committed at:
 - [`backtests/exploratory_existing_data_replay/results/verification_metrics.json`](backtests/exploratory_existing_data_replay/results/verification_metrics.json)
 - [`backtests/v2_research_commands.md`](backtests/v2_research_commands.md)
 
-The amended success definition requires the same frozen strategy to produce at
-least 20% net CAGR on untouched OOS, with the Backtest Score fully calculated
-under the A/B/C/D rubric and every hard cap disclosed. There is no longer a
-minimum score threshold, but a cap may not be hidden, waived or bypassed.
+The current success definition uses repository-local 2006+ data only and does
+not search or require 2000–2005 PIT. It requires the same frozen strategy to
+produce at least 20% net CAGR and 30 independent trades on a pre-frozen
+best-available OOS, with the Backtest Score fully calculated under the A/B/C/D
+rubric and every survivorship/contamination cap disclosed. There is no minimum
+score threshold, but a cap may not be hidden, waived or bypassed. The data
+inventory and frozen chronology are in
+[`backtests/current_2006_plus_data_audit/inventory.md`](backtests/current_2006_plus_data_audit/inventory.md).
 
 Roughly 1,500 simulated trades across S&P 500 and Russell 2000, 2016–2026,
 with fold splits, outlier trims, cost sweeps and cross-universe replication.

@@ -3,10 +3,11 @@
 ## Decision
 
 **Goal not complete.** No frozen rule has passed the internal discovery gate,
-so formal validation and untouched OOS remain sealed. The amended goal no
-longer requires Backtest Score >80; it requires transparent raw A/B/C/D and
-hard-cap reporting. Net OOS CAGR >=20% remains unproved and is contradicted by
-the available exploratory replay.
+so 2019–2021 validation and the 2022–2026Q1 best-available frozen OOS remain
+sealed. The current goal uses only repository-local 2006+ evidence and no
+longer searches or requires 2000–2005 PIT data. Backtest Score has no minimum,
+but raw A/B/C/D and every hard cap remain mandatory. Net OOS CAGR >=20% remains
+unproved and is contradicted by the available exploratory replay.
 
 The corrected frozen pivot-retest baseline has Backtest Score **41/100**, net
 CAGR **0.64%**, and 94 trades. Trial 288's previously reported 5.58% CAGR is
@@ -19,6 +20,9 @@ failed both the 15% CAGR gate and drop-top-five robustness.
 
 - Raw/adjusted OHLC mismatches were repaired so detection and portfolio
   execution use the same adjusted scale.
+- An outcome-free inventory found 33 impossible source OHLC envelopes. The
+  shared detector/portfolio transform now expands adjusted high/low to contain
+  open, close and the original range; parity and causality tests cover it.
 - A detection whose as-of close is already below its frozen stop is rejected.
 - Signals confirmed at a close fill no earlier than the next open.
 - Historical relative strength now aligns SPY by date at or before the stock's
@@ -26,6 +30,11 @@ failed both the 15% CAGR gate and drop-top-five robustness.
   and restores truncation invariance; regression tests cover the defect.
 - PIT S&P 500 price coverage is 599/720 union names and 91.31% overall; SPY is
   present only as benchmark.
+- The only executable raw price inputs begin on 2014-01-02 and support signals
+  from 2016 onward. The prior 2006–2015 reconstruction remains available only
+  as a 69.74%-coverage report, not a runnable price CSV. The frozen
+  best-available chronology and contamination registry are in
+  `backtests/current_2006_plus_data_audit/`.
 - Current SEC ticker mapping covers 576/599 priced PIT names. The 23 unmapped
   legacy names represent 21,236 of 1,152,014 member trading days, giving 98.16%
   mapped member-day coverage on the priced sample.
@@ -59,6 +68,27 @@ slippage on each side. Formal validation and untouched OOS were not accessed.
 | 345–351 | Bollinger bandwidth squeeze-release lifecycle | 71 train | -0.05% train | -0.018 | 0.995 | -2.61% | -1.20% | train fail; holdout sealed |
 | 352–357 | detection-anchored VWAP reclaim lifecycle | 85 train | 1.62% train | 0.566 | 1.386 | -5.21% | -0.53% | train fail; holdout sealed |
 | 358–362 | 20-session Chaikin Money Flow zero-cross lifecycle | 74 train | -0.23% train | -0.091 | 0.975 | -5.07% | -1.40% | train fail; holdout sealed |
+| 363–367 | Wilder DMI(14) crossover lifecycle | 80 train | -0.80% train | -0.350 | 0.921 | -6.78% | -1.37% | train fail; validation/OOS sealed |
+| 368–373 | Parabolic SAR(0.02, 0.20) flip lifecycle | 98 train | -0.86% train | -0.331 | 0.699 | -4.97% | -1.66% | train fail; validation/OOS sealed |
+| 374–380 | MACD(12,26,9) signal-line lifecycle | 79 signals | — | — | — | — | — | outcome-free density fail; returns/OOS sealed |
+| 381–386 | Donchian 55/20 closing-channel lifecycle | 79 signals | — | — | — | — | — | outcome-free density fail; returns/OOS sealed |
+| 387–393 | 1.5x ATR bullish range-expansion lifecycle | 72 train | -0.63% train | -0.346 | 0.817 | -4.71% | -1.32% | train fail; validation/OOS sealed |
+| 394–399 | Three-bar rising-close/rising-low staircase | 144 train | -1.14% train | -0.553 | 0.700 | -4.90% | -1.01% | train fail; validation/OOS sealed |
+| 400–405 | Repeated MA20 touch-and-hold lifecycle | 85 train | -1.82% train | -1.056 | 0.572 | -5.32% | -1.84% | train fail; validation/OOS sealed |
+| 406–411 | 20-session OBV accumulation-breakout lifecycle | 90 train | -0.63% train | -0.267 | 0.704 | -4.93% | -1.62% | train fail; validation/OOS sealed |
+| 412–417 | Active-VCP cohort 12–1 momentum top quintile | 41 signals | — | — | — | — | — | outcome-free density fail; returns/OOS sealed |
+| 418–424 | 20-session log-price OLS trend-quality lifecycle | 79 train | 0.30% train | 0.138 | 1.008 | -5.57% | -1.06% | train fail; validation/OOS sealed |
+| 425–431 | 25-session Aroon extreme-recency lifecycle | 75 train | 0.08% train | 0.040 | 1.022 | -5.83% | -1.10% | train fail; validation/OOS sealed |
+| 432–440 | Causal Ichimoku 9/26/52 range-midpoint equilibrium | 81 train | -0.95% train | -0.305 | 0.868 | -7.01% | -1.65% | train fail; validation/OOS sealed |
+| 441–447 | 20-session realized semivariance asymmetry | 73 train | -0.03% train | 0.002 | 1.120 | -6.04% | -1.09% | train fail; validation/OOS sealed |
+| 448–454 | 10-session gap-adjusted intraday follow-through | 125 train | 0.33% train | 0.153 | 1.050 | -4.85% | -0.57% | train fail; validation/OOS sealed |
+| 455–466 | AVWAP reclaim + delayed fresh five-day-high exit | 83 train | 0.17% train | 0.085 | 1.009 | -4.91% | -0.90% | train fail; validation/OOS sealed |
+| 467–470 | PIT membership-tenure caps of 90/180/365/730 days | 0/0/4/11 signals | — | — | — | — | — | outcome-free density fail; returns/OOS sealed |
+| 471–477 | Gap-up rejection then five-session high+pivot reclaim | 27 signals | — | — | — | — | — | outcome-free density fail; returns/OOS sealed |
+| 478–482 | First-session-of-month flow, three-session exit | 99 train | -0.32% train | -0.220 | 0.750 | -2.90% | -0.56% | train fail; validation/OOS sealed |
+| 483–488 | 20-return lag-1 autocorrelation zero-cross lifecycle | 103 train | 1.29% train | 0.499 | 1.515 | -4.32% | -0.47% | train fail; validation/OOS sealed |
+| 489–495 | SEC weighted-average-share contraction, fixed-20 exit | 100 train | 0.69% train | 0.291 | 1.025 | -3.30% | -0.57% | train fail; validation/OOS sealed |
+| 496–504 | Strong trend -> character damage -> resistance-flip/swing-low exit | 88 train | 0.50% train | 0.228 | 0.982 | -3.26% | -0.87% | train fail; validation/OOS sealed |
 
 Trial 303–304 is an explicit discovery-collapse check: its fit sample had only
 13 setups, 12 positive, with mean fixed-20 label +4.54%; the untouched internal
@@ -124,6 +154,120 @@ evidence of a durable edge.
   negative CAGR, PF below one and -1.40% trim-5 expectancy. Aggregating
   close-location-weighted volume across multiple sessions does not rescue the
   previously failed isolated volume and Pocket Pivot directions.
+- A Wilder DMI(14) positive-direction crossover emitted 80 trades but produced
+  -0.80% CAGR, -0.350 Sharpe and PF below one. The stricter ADX>20/rising
+  ignition emitted only one outcome-free signal. Directional-movement strength
+  does not identify the missing continuation edge.
+- A standard Parabolic SAR bullish flip emitted 98 trades but produced -0.86%
+  CAGR, -0.331 Sharpe and PF 0.699. Removing the five largest winners reduced
+  expectancy to -1.66%. A path-dependent stop-and-reverse trend state does not
+  recover the missing continuation edge.
+- A standard MACD(12,26,9) bullish crossover above zero and the frozen pivot
+  emitted 79 pre-portfolio discovery signals, one below its frozen minimum of
+  80. The family was rejected outcome-free and the threshold was not relaxed.
+- A canonical Donchian 55-session closing high above the frozen pivot, paired
+  with a 20-session closing-low exit, also emitted 79 pre-portfolio signals.
+  It was rejected under the unchanged density rule without viewing returns.
+- A bullish bar with at least 1.5x prior-20 ATR, a top-quartile close and pivot
+  confirmation passed density but produced -0.63% CAGR, -0.346 Sharpe and PF
+  0.817 across 72 trades. Removing the five largest winners reduced expectancy
+  to -1.32%; large price displacement alone does not identify continuation.
+- Three consecutive rising closes and lows above the pivot generated 144
+  trades but -1.14% CAGR, -0.553 Sharpe and PF 0.700. An orderly short-term
+  price staircase is common enough but has negative continuation expectancy.
+- Recycling the historically validated MA20 touch-and-hold execution overlay
+  after pivot breakouts produced -1.82% CAGR, -1.056 Sharpe and PF 0.572 across
+  85 trades. Removing five winners cut expectancy to -1.84%. A positive paired
+  entry-price improvement versus chasing does not create standalone alpha or
+  justify repeated exposure.
+- A fresh 20-session On-Balance Volume high above the pivot produced -0.63%
+  CAGR, -0.267 Sharpe and PF 0.704 across 90 trades. Removing five winners cut
+  expectancy to -1.62%. Cumulative close-direction-signed volume confirms the
+  broader negative evidence from breakout volume, Pocket Pivot and CMF.
+- Canonical 12–1 momentum ranked inside the contemporaneous active-VCP cohort
+  produced only 41 top-quintile lifecycle signals. The slow factor and the
+  short-lived VCP opportunity set have insufficient overlap for the fixed
+  portfolio gate; returns were never opened and thresholds were not relaxed.
+- A positive 20-session log-close regression slope with R-squared at least
+  0.50 emitted 106 signals and 79 portfolio trades, but produced only 0.30%
+  CAGR, 0.138 Sharpe and PF 1.008. Removing the five largest winners reduced
+  expectancy to -1.06%. Linear trend smoothness is sufficiently dense but
+  does not isolate robust continuation after the frozen pivot.
+- A 25-session Aroon recent-high/stale-low state emitted 101 signals and 75
+  trades, but produced only 0.08% CAGR, 0.040 Sharpe and PF 1.022. Removing
+  the five largest winners reduced expectancy to -1.10%. Extreme recency is
+  mechanically distinct from move magnitude but still fails to isolate
+  continuation after the pivot.
+- A causal, zero-displacement Ichimoku 9/26/52 range-midpoint state emitted
+  115 signals and 81 trades, but produced -0.95% CAGR, -0.305 Sharpe and PF
+  0.868. Removing the five largest winners reduced expectancy to -1.65%.
+  Multi-horizon high-low equilibrium does not rescue the failed trend family;
+  its canonical windows are closed under the frozen give-up rule.
+- A fixed 20-session upside/downside semivariance ratio emitted 104 signals
+  and 73 trades. Untrimmed expectancy was +0.41%, but fixed-portfolio CAGR was
+  -0.03%, Sharpe 0.002 and PF 1.120; removing five winners reduced expectancy
+  to -1.09%. Sign-separated return energy remains outlier-dependent and does
+  not provide the missing portfolio edge.
+- A fixed 10-session decomposition of regular-session and overnight log
+  returns emitted 164 signals and 125 trades, but produced only 0.33% CAGR,
+  0.153 Sharpe and PF 1.050. Removing five winners reduced expectancy to
+  -0.57%. Avoiding gap-led moves while requiring positive intraday drift still
+  does not identify robust continuation.
+- A non-deployable train-only oracle-exit residual audit reconstructed 90
+  positive perfect-timing paths. Fresh five-day closing highs occurred before
+  84.4% of oracle next-open exits (84.6% early fold, 84.2% late fold, 84.7%
+  after drop-top-five), while down-close, SMA10-break and 5% giveback states
+  covered only 11.1%, 5.6% and 1.1%. This does not receive a score or authorise
+  validation; it only motivates one separately frozen sell-into-strength test.
+- That one disclosed oracle-generated translation paired the prior AVWAP
+  reclaim with a 10-session-armed fresh five-day-high exit. It produced 83
+  trades but only 0.17% CAGR, 0.085 Sharpe and PF 1.009; removing five winners
+  reduced expectancy to -0.90%. The causal first occurrence is not equivalent
+  to selecting the future-best occurrence, so the strength-exit direction is
+  closed without retuning its window or arm.
+- A start-date-only PIT membership-tenure audit found 0, 0, 4 and 11
+  detection-entry candidates inside fixed 90, 180, 365 and 730 calendar-day
+  caps. All were below the unchanged 80-signal minimum. Membership end dates
+  were used only to verify signal/fill membership, never as features; no
+  return partition was opened and the family was closed outcome-free.
+- A separately frozen supply-absorption entry required a >=1% gap-up bearish
+  rejection followed within five sessions by a strict close above the frozen
+  rejection high and VCP pivot. Only 27 signals across 21 symbols survived
+  from 4,165 active setup rows. The 80-signal density gate failed before P&L,
+  so the gap threshold, reclaim window and three-attempt lifecycle were not
+  relaxed and all later evidence stayed sealed.
+- A calendar-flow lifecycle used SPY only to identify observed month
+  transitions, required the completed first-session close above the frozen
+  pivot, entered next open and exited three sessions later. Density passed at
+  143 signals, but 99 executed train trades produced -0.32% CAGR, -0.220
+  Sharpe, PF 0.750 and -0.56% trim-five expectancy. Its A/B/C/D scores were
+  7/7/0/0, normalized raw and final score 17/100 (Reject); validation and OOS
+  stayed sealed. Month-start allocation flow does not rescue active VCPs.
+- A canonical 20-return lag-1 autocorrelation zero cross tested order-splitting
+  persistence rather than trend magnitude. It produced 129 signals and 103
+  trades with 1.29% CAGR, 0.499 Sharpe and PF 1.515, but removing the five
+  largest winners reversed PF to 0.715 and expectancy to -0.47%. Its t-stat
+  was 0.78, PSR 77.9% and approximate DSR probability 0.08%. A/B/C/D were
+  7/10/4/14, normalized raw 42 and survivorship-capped final 20/100 (Reject).
+  The train gate failed; window, lag and zero threshold are closed.
+- A strictly as-filed SEC share-supply contraction proxy used same-accession
+  weighted-average shares, diluted-before-basic priority, latest filing <
+  signal date and fixed 120-day freshness. Existing cache coverage was 78/79
+  requested train symbols with 4,755 comparable events. The lifecycle emitted
+  114 signals and 100 trades, but only 0.69% CAGR, 0.291 Sharpe and PF 1.025;
+  trim-five PF/expectancy fell to 0.759/-0.57%. A/B/C/D were 7/7/4/6,
+  normalized raw 29 and final survivorship-capped score 20/100 (Reject).
+  Coverage was adequate; the economic rule failed before validation.
+- A supplied strong-stock exit checklist was translated before outcomes into
+  a reproducible state machine: arm only after persistent SMA10/SMA20 support,
+  then exit next open on a 6% gap-down / 16% close loss, a frozen five-session
+  swing-low break, or a failed recovery into the frozen MA cluster after dual-
+  MA damage. Fifty-eight of 103 baseline paths activated, but only one was an
+  abnormal day and ten were failed-MA recoveries; 47 were swing-low breaks.
+  The 88 trades returned 0.50% CAGR, 0.228 Sharpe, PF 0.982 and -0.87%
+  trim-five expectancy. A/B/C/D were 7/7/4/0, normalized raw 22 and final 20
+  after the survivorship cap. The ordered character-change claim failed train
+  and is closed without relaxing its thresholds or opening later partitions.
 - Additional fit/coverage audits rejected initial SC 13D/13G ownership events,
   non-earnings 8-K catalysts, cash-conversion quality, and the full Stage-2
   trend template. Either independent-event density was below 30 or fixed-20
@@ -137,17 +281,15 @@ evidence of a durable edge.
   equity CSV outputs.
 - SEC-derived events preserve filing/accession dates and require
   `filed < signal_date`; same-day filings cannot trigger an entry.
-- Full test suite after Trial 358–362: **424 passed**.
+- Full test suite after Trial 496–504 and the 2006+ inventory repair:
+  **524 passed**.
   `git diff --check`: clean.
 
-No current rule meets the research gate. Independently, completion remains
-externally blocked: this workspace has no survivorship-safe 2000–2005 daily
-price/security-master dataset, no configured CRSP/WRDS access, and the available
-2006–2015 PIT reconstruction covers only 69.74% of member-days. The amended
-goal permits the resulting score cap, but it does not waive point-in-time,
-delisted-name or untouched-OOS evidence; those requirements still cannot be
-demonstrated with the available data. See `completion_blocker_audit.md` for the
-exact evidence and unblock contract.
+No current rule meets the research gate. Missing 2000–2005 data is explicitly
+out of scope and is no longer a blocker. All available 2006+ periods are
+contaminated by prior research, so a genuinely new rule may use the frozen
+2022–2026Q1 segment only as capped best-available OOS after passing train and
+validation. See `completion_blocker_audit.md` for the current evidence boundary.
 The requirement-by-requirement verdict is recorded in
 `completion_matrix_2026-08-01.md`.
 
