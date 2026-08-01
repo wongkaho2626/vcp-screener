@@ -97,9 +97,10 @@ fixed; signal research may change only entry/exit behavior.
   expectancy is -1.71%, 5x-cost CAGR is -1.18%, DSR probability is 0.22%, and
   the 2024–2026 fold is negative.
 - Therefore the hard goal is **not complete**. Never describe this replay as a
-  pass. Required completion remains the same frozen S&P 500 stocks-only
-  strategy scoring above 80 with at least 20% net CAGR on untouched OOS and at
-  least 30 independent OOS trades.
+  pass. The amended completion rule accepts a score capped at or below 80 but
+  still requires the same frozen S&P 500 stocks-only strategy to deliver at
+  least 20% net CAGR on untouched OOS and at least 30 independent OOS trades,
+  with raw A/B/C/D and every hard cap disclosed.
 - Canonical artifacts:
   `backtests/exploratory_existing_data_replay/frozen_spec.md`,
   `backtests/exploratory_existing_data_replay/results/verification_report.md`,
@@ -248,8 +249,9 @@ fixed; signal research may change only entry/exit behavior.
   discipline cuts it from +2.35 to +0.98 (survivor-only numbers overstated
   2.4×), the 2021–2026 half is a coin flip (faded since 2022), and the failed
   2006–2015 OOS stands. Overlay stays live with corrected expectations
-  (≈ +1 pp, median +0.8); 80+ requires prospective forward evidence, not more
-  history. See `backtests/pullback_pit2016/verification_report.md`.
+  (≈ +1 pp, median +0.8); materially higher confidence requires prospective
+  forward evidence, not more history. See
+  `backtests/pullback_pit2016/verification_report.md`.
 - **Frozen v1 portfolio verdict: Reject (20/100).** Realistic daily-marked
   portfolio (next-open fills, costs, constraints) over 10.3y: CAGR −0.45%,
   exposure-matched excess t ≈ −1.8 to −2.7, OOS Sharpe collapse. See
@@ -257,6 +259,47 @@ fixed; signal research may change only entry/exit behavior.
   `references/frozen_strategy_v1.md`. The programme is closed: no deployable
   edge in this data; further work requires new data + a new predeclared
   hypothesis.
+- **Cross-sectional VCP leadership lifecycle: train reject (Trial 328–333,
+  20/100 capped; 33/100 normalized raw).**
+  The prespecified same-date 5d/20d active-VCP rank crossover produced 95
+  train trades, 0.88% CAGR, 0.356 Sharpe and PF 1.359. Removing the five
+  largest winners changed expectancy from +0.79% to -0.37%; the train gate
+  failed and 2020–2021 internal holdout, formal validation and untouched OOS
+  remained sealed. Dynamic relative leadership does not close the joint
+  timing/exit oracle gap.
+- **Signed path-efficiency lifecycle: train reject (Trial 334–339, 17/100).**
+  A causal ER(10) crossover above +0.30 with pivot/SMA20 confirmation produced
+  109 trades, -0.74% CAGR, -0.353 Sharpe and PF 0.895. Drop-top-five
+  expectancy was -0.93%. Measuring a smooth intermediate price path rather
+  than endpoint momentum did not identify continuation winners; holdout stayed
+  sealed.
+- **RS-line leadership lifecycle: train reject (Trial 340–344, 20/100 capped;
+  33/100 normalized raw).** A
+  causal 63-session stock/SPY RS-line high with price pivot/SMA20 confirmation
+  produced 65 trades, 0.44% CAGR, 0.213 Sharpe and PF 1.208. Removing the five
+  largest winners changed expectancy from +0.46% to -0.82%. SPY was
+  benchmark-only and date-aligned at or before every stock date. The train
+  gate failed; holdout, formal validation and untouched OOS stayed sealed.
+- **Volatility squeeze-release lifecycle: train reject (Trial 345–351,
+  17/100).** A causal prior-day bottom-20% Bollinger bandwidth squeeze followed
+  by bandwidth expansion, an up-close and pivot confirmation produced 71
+  trades, -0.05% CAGR, -0.018 Sharpe and PF 0.995. Drop-top-five expectancy
+  was -1.20%. The stricter +2-sigma release was rejected outcome-free at only
+  31 signals. Neither squeeze definition supports a robust continuation edge;
+  holdout stayed sealed.
+- **Detection-anchored VWAP reclaim lifecycle: train reject (Trial 352–357,
+  20/100 capped; 51/100 normalized raw).** A causal typical-price/volume VWAP
+  anchored on each setup's detection date, fresh below-to-above reclaim above
+  the frozen pivot, and two-close AVWAP exit produced 85 trades, 1.62% CAGR,
+  0.566 Sharpe and PF 1.386. Drop-top-five expectancy was -0.53%. The train
+  gate failed, so internal holdout, formal validation and untouched OOS stayed
+  sealed.
+- **Chaikin Money Flow reclaim lifecycle: train reject (Trial 358–362,
+  17/100).** A causal 20-session CMF zero cross above the frozen pivot, with a
+  two-negative-close exit, produced 74 trades, -0.23% CAGR, -0.091 Sharpe and
+  PF 0.975. Drop-top-five expectancy was -1.40%. Multi-session
+  close-location-weighted volume did not improve the prior volume/Pocket Pivot
+  failures; every later evidence partition stayed sealed.
 - **Data caveats**: legacy CSV and R2K pattern-level universes are
   survivorship-biased (R2K lost 26% of names), with close-based fills and no
   costs. Newer portfolio reports include costs and next-session execution but

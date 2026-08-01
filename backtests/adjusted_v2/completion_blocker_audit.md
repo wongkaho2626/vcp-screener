@@ -6,9 +6,10 @@ The goal is **not complete** and cannot be honestly completed from the data and
 credentials currently available in this workspace. This is separate from the
 strategy failures: no frozen candidate has passed its discovery gate. Trial
 288's date-aligned reconstruction produced only 4.82% net CAGR, while the
-user-requested 2022–2026 exploratory replay produced 0.05%. Even if a later signal
-rule passed, the required Backtest Score above 80 could not be established on
-the requested untouched OOS because survivorship bias remains unresolved.
+user-requested 2022–2026 exploratory replay produced 0.05%. The amended goal
+accepts a score capped at or below 80, so survivorship no longer blocks a score
+threshold. It still blocks the separate requirement for a credible
+delisted-inclusive, point-in-time untouched OOS result.
 
 ## Third resumed-goal audit
 
@@ -20,9 +21,9 @@ goal turn on 2026-08-01:
   were found in the workspace;
 - no frozen specification has `open_formal_validation: true`, a formal
   validation pass, or an authorised untouched-OOS run;
-- the latest predeclared Trial 324–327 family failed its train gate with 80
-  trades, 0.07% CAGR, 0.062 Sharpe, 1.025 profit factor, -2.12% maximum
-  drawdown and -0.29% CAGR after removing the five largest winners.
+- the latest predeclared Trial 358–362 family failed its train gate with 74
+  trades, -0.23% CAGR, -0.091 Sharpe, 0.975 profit factor, -5.07% maximum
+  drawdown and -1.40% expectancy after removing the five largest winners.
 
 The itemised disposition of every hard condition is preserved in
 `completion_matrix_2026-08-01.md`. This audit therefore confirms a repeated
@@ -60,7 +61,9 @@ external-state impasse, not a strategy success.
 
 This same missing-data condition has recurred throughout the research. It is
 now a genuine external-state impasse: additional buy/sell hypotheses can change
-returns, but cannot remove a score cap caused by absent OOS observations.
+returns, but cannot supply the absent PIT/delisted untouched-OOS observations.
+Any resulting score cap is acceptable under the amended goal but must be
+reported rather than waived.
 
 The user subsequently directed an existing-data run without relying on the
 survivorship cap. That exploratory replay failed independently: raw score
@@ -111,6 +114,7 @@ Resume the goal when either:
 
 On resume, first ingest and audit coverage without inspecting strategy returns.
 Only after a candidate passes discovery and formal validation should its frozen
-specification be run once on the untouched OOS. The success definition remains
-unchanged: same frozen stocks-only strategy, score above 80, net CAGR at least
-20%, and at least 30 independent OOS trades.
+specification be run once on the untouched OOS. The amended success definition
+requires the same frozen stocks-only strategy, net CAGR at least 20%, at least
+30 independent OOS trades, and transparent raw/final Backtest Score reporting
+with every applicable hard cap; it does not impose a minimum score.

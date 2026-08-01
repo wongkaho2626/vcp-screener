@@ -3,8 +3,10 @@
 ## Decision
 
 **Goal not complete.** No frozen rule has passed the internal discovery gate,
-so formal validation and untouched OOS remain sealed. It would be invalid to
-claim either the required Backtest Score >80 or net OOS CAGR >=20%.
+so formal validation and untouched OOS remain sealed. The amended goal no
+longer requires Backtest Score >80; it requires transparent raw A/B/C/D and
+hard-cap reporting. Net OOS CAGR >=20% remains unproved and is contradicted by
+the available exploratory replay.
 
 The corrected frozen pivot-retest baseline has Backtest Score **41/100**, net
 CAGR **0.64%**, and 94 trades. Trial 288's previously reported 5.58% CAGR is
@@ -33,9 +35,9 @@ failed both the 15% CAGR gate and drop-top-five robustness.
 
 ## New orthogonal trials
 
-All rows below are the prespecified 2020–2021 internal holdout, net of the
-unchanged 5 bps commission plus 5 bps slippage on each side. Formal validation
-and untouched OOS were not accessed.
+All rows below are prespecified discovery results (train or 2020–2021 internal
+holdout as labelled), net of the unchanged 5 bps commission plus 5 bps
+slippage on each side. Formal validation and untouched OOS were not accessed.
 
 | Trial | Hypothesis | Trades | CAGR | Sharpe | PF | MDD | Trim-5 expectancy | Gate |
 |---|---|---:|---:|---:|---:|---:|---:|---|
@@ -51,6 +53,12 @@ and untouched OOS were not accessed.
 | 316–319 | RSI(2)<10 + SMA(5)/five-session lifecycle | 214 train | -0.72% train | -0.442 | 0.976 | -4.94% | -0.20% | train fail; holdout sealed |
 | 320–323 | 12–1 positive + five-day momentum cross, SMA20 lifecycle | 158 train | -1.35% train | <0.75 | <1.20 | -4.40% | negative | train fail; holdout sealed |
 | 324–327 | prior-SMA20 opening limit + full-gap recovery | 80 train | 0.07% train | <0.75 | <1.20 | -2.12% | negative | train fail; holdout sealed |
+| 328–333 | active-VCP 5d/20d cross-sectional leadership lifecycle | 95 train | 0.88% train | 0.356 | 1.359 | -3.81% | -0.37% | train fail; holdout sealed |
+| 334–339 | signed ER(10) path-efficiency crossover lifecycle | 109 train | -0.74% train | -0.353 | 0.895 | -3.67% | -0.93% | train fail; holdout sealed |
+| 340–344 | 63-session stock/SPY RS-line high lifecycle | 65 train | 0.44% train | 0.213 | 1.208 | -3.24% | -0.82% | train fail; holdout sealed |
+| 345–351 | Bollinger bandwidth squeeze-release lifecycle | 71 train | -0.05% train | -0.018 | 0.995 | -2.61% | -1.20% | train fail; holdout sealed |
+| 352–357 | detection-anchored VWAP reclaim lifecycle | 85 train | 1.62% train | 0.566 | 1.386 | -5.21% | -0.53% | train fail; holdout sealed |
+| 358–362 | 20-session Chaikin Money Flow zero-cross lifecycle | 74 train | -0.23% train | -0.091 | 0.975 | -5.07% | -1.40% | train fail; holdout sealed |
 
 Trial 303–304 is an explicit discovery-collapse check: its fit sample had only
 13 setups, 12 positive, with mean fixed-20 label +4.54%; the untouched internal
@@ -94,6 +102,28 @@ evidence of a durable edge.
 - A causal one-session opening limit at the prior SMA20 produced 80 train
   trades, but waiting for complete gap recovery earned only 0.07% CAGR and
   failed PF/trim stability. Execution price concessions alone are not an edge.
+- Same-date 5d/20d active-VCP leadership rankings produced a positive headline
+  PF but only 0.88% train CAGR; removing the five largest winners reversed
+  expectancy. Cross-sectional leadership did not make the causal selector
+  robust enough to approach the joint timing/exit oracle.
+- Signed ten-session path efficiency produced negative CAGR and PF below one;
+  distinguishing smooth from choppy endpoint-equivalent moves did not recover
+  the missing continuation edge.
+- A causal 63-session RS-line high produced PF just above 1.20 but only 0.44%
+  CAGR, 0.213 Sharpe and negative trim-5 expectancy. Dynamic benchmark-relative
+  leadership remains dependent on a handful of winners.
+- A prior-day bottom-20% Bollinger bandwidth squeeze followed by directional
+  expansion produced approximately zero CAGR and PF below one. Explicitly
+  measuring the contraction-to-expansion transition does not rescue VCP entry
+  timing.
+- A causal typical-price/volume VWAP anchored on each setup's detection date
+  produced the strongest recent headline PF (1.386) but only 1.62% CAGR and
+  0.566 Sharpe. Removing the five largest winners reversed expectancy to
+  -0.53%; an institutional-cost-basis reclaim remains outlier-dependent.
+- A 20-session Chaikin Money Flow zero cross above the frozen pivot produced
+  negative CAGR, PF below one and -1.40% trim-5 expectancy. Aggregating
+  close-location-weighted volume across multiple sessions does not rescue the
+  previously failed isolated volume and Pocket Pivot directions.
 - Additional fit/coverage audits rejected initial SC 13D/13G ownership events,
   non-earnings 8-K catalysts, cash-conversion quality, and the full Stage-2
   trend template. Either independent-event density was below 30 or fixed-20
@@ -107,16 +137,17 @@ evidence of a durable edge.
   equity CSV outputs.
 - SEC-derived events preserve filing/accession dates and require
   `filed < signal_date`; same-day filings cannot trigger an entry.
-- Full test suite after the benchmark-alignment correction: **399 passed**.
+- Full test suite after Trial 358–362: **424 passed**.
   `git diff --check`: clean.
 
-No current rule meets the research gate. Independently, completion is now
+No current rule meets the research gate. Independently, completion remains
 externally blocked: this workspace has no survivorship-safe 2000–2005 daily
 price/security-master dataset, no configured CRSP/WRDS access, and the available
-2006–2015 PIT reconstruction covers only 69.74% of member-days. Under the
-backtest-analyst hard caps, unresolved survivorship bias caps a score at 20, so
-the required score above 80 cannot be demonstrated with the available data.
-See `completion_blocker_audit.md` for the exact evidence and unblock contract.
+2006–2015 PIT reconstruction covers only 69.74% of member-days. The amended
+goal permits the resulting score cap, but it does not waive point-in-time,
+delisted-name or untouched-OOS evidence; those requirements still cannot be
+demonstrated with the available data. See `completion_blocker_audit.md` for the
+exact evidence and unblock contract.
 The requirement-by-requirement verdict is recorded in
 `completion_matrix_2026-08-01.md`.
 

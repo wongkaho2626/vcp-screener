@@ -5,14 +5,15 @@
 **NOT PROVEN — BLOCKED, NOT COMPLETE.** No frozen strategy has passed its
 prespecified discovery gate, and the untouched 2000–2005 OOS cannot be opened
 because the workspace lacks survivorship-safe prices, delisting returns and a
-compatible security master for that interval. The success thresholds have not
-been changed.
+compatible security master for that interval. The score threshold has been
+removed by the amended goal; the 20% CAGR and all other hard conditions remain
+unchanged.
 
 ## Hard-condition audit
 
 | # | Hard condition | Evidence | Status |
 |---|---|---|---|
-| 1 | Same frozen OOS strategy scores **>80/100** under the backtest-analyst rubric and hard caps | The existing formal baseline scores 41. Unresolved survivorship bias in the intended OOS invokes the rubric's 20/100 hard cap. No candidate has authority to enter formal validation. | **FAIL / not demonstrated** |
+| 1 | Same frozen OOS strategy receives a transparent raw A/B/C/D score and final score after every applicable hard cap; no minimum score | The exploratory replay reports raw 25 and capped 20 with the survivorship reason. No qualifying final strategy exists yet, so final-strategy scoring remains unavailable. | **PASS for exploratory reporting; incomplete for final strategy** |
 | 2 | Net portfolio CAGR **>=20%** after fixed realistic costs | Date-aligned Trial 288 reconstruction reached 4.82% and failed its gate. Its user-requested 2022–2026 exploratory replay produced 0.05% net CAGR on 89 trades. No untouched-OOS CAGR exists. | **FAIL / contradicted by available replay** |
 | 3 | Point-in-time S&P 500 constituent stocks only | Membership-on-signal/fill checks and a stocks-only universe are implemented for evaluated data. The intended final 2000–2005 PIT execution dataset is absent. | **PARTIAL: infrastructure verified; final OOS missing** |
 | 4 | Change buy/sell signals only | Research changes are confined to causal entry filters/timing and stop, profit, trailing or time-exit rules. | **PASS for attempted research** |
@@ -23,7 +24,7 @@ been changed.
 | 9 | Separate discovery/train, validation and untouched OOS; freeze before opening OOS | At user direction, 2022–2026 was opened only as a predeclared exploratory replay after Trial 288 had already failed. It is now explicitly contaminated and cannot be formal validation or untouched OOS. The intended 2000–2005 OOS remains unavailable. | **PARTIAL; no qualifying untouched OOS** |
 | 10 | Walk-forward, cost stress, sensitivity, bootstrap/Monte Carlo, folds/regimes, outlier trim, PSR/DSR, MDD, Sharpe, Sortino, Calmar, PF and trade count | These checks are complete for the non-qualifying existing-data replay and all reject a robust edge. They still cannot be claimed for a qualifying final frozen OOS strategy because none exists. | **PASS for exploratory replay; incomplete for final strategy** |
 | 11 | At least 30 independent OOS trades; no leverage, cost omission, outlier dependence or post-hoc period choice | The replay has 89 trades but is not untouched OOS; drop-top-five expectancy is -1.71% and 2x-cost CAGR is negative. No qualifying untouched-OOS trades exist. | **FAIL / wrong evidence class** |
-| 12 | Read prior README/specs/reports/failures; predeclare novel, explainable hypotheses | Trials through 327 have frozen pre-outcome specifications, explicit hypotheses and recorded rejection evidence. | **PASS** |
+| 12 | Read prior README/specs/reports/failures; predeclare novel, explainable hypotheses | Trials through 362 have frozen pre-outcome specifications, explicit hypotheses and recorded rejection evidence. | **PASS** |
 | 13 | Preserve reproducible spec, commands, JSON/CSV and full verification report | Attempted candidates preserve frozen specs, commands, result JSON/Markdown and trade/equity CSV. A successful final verification report cannot exist until the hard conditions are met. | **PASS for attempts; final artifact missing** |
 
 ## Evidence boundary
@@ -35,7 +36,9 @@ been changed.
 - The 2016–2026 data cannot be relabelled as untouched because it informed
   discovery and internal holdout decisions.
 - The rejected public archive cannot be patched with current survivors: doing
-  so would leave confirmed survivorship bias and retain the 20-point hard cap.
+  so would leave confirmed survivorship bias and fail the separate PIT,
+  delisted-name and untouched-OOS requirements. The associated 20-point hard
+  cap would also have to be disclosed, though the amended goal permits it.
 
 ## Exact blocker and unlock contract
 

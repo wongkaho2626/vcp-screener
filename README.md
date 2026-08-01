@@ -20,9 +20,26 @@ S&P 500 reconstruction for 2022-01-01 through 2026-03-31, preserved the
 portfolio sizing, holding limits, capital, risk constraints and two-sided
 cost model, and allowed SPY only as a benchmark. It produced **89 trades,
 0.05% net CAGR, 0.031 Sharpe, 1.059 profit factor and -6.81% MDD**. Its
-Backtest Score is **25/100 before the requested survivorship-cap waiver and
-20/100 under the full rubric**, versus the required score above 80 and net
-CAGR of at least 20%.
+Backtest Score is **25/100 raw and 20/100 after the unresolved-survivorship
+hard cap**. The current goal accepts a capped score at or below 80 provided
+the raw A/B/C/D score, final capped score, triggered cap and reason are all
+reported honestly; this replay still fails the required net CAGR of at least
+20%.
+
+The latest prespecified discovery family, Trial 352–357, tested a causal
+typical-price/volume VWAP anchored to each VCP detection date. Its fresh
+below-to-above reclaim plus frozen-pivot entry and two-close AVWAP exit
+produced 85 train trades, 1.62% net CAGR, 0.566 Sharpe, 1.386 profit factor and
+-5.21% MDD. Removing the five largest winners changed expectancy to -0.53%,
+so the train gate failed and the internal holdout/OOS stayed sealed. Its
+reduced-denominator score is 51/100 raw and 20/100 after the disclosed
+survivorship cap; the acceptable cap does not compensate for the failed CAGR.
+
+Trial 358–362 then tested a distinct 20-session Chaikin Money Flow zero cross
+above the frozen pivot, with a two-negative-close exit. It produced 74 train
+trades, -0.23% CAGR, -0.091 Sharpe, 0.975 PF and -1.40% expectancy after
+removing the five largest trades. Its score was 17/100 raw and final. The gate
+failed and no later evidence partition was accessed.
 
 The replay also found and fixed a historical benchmark-alignment defect.
 Stocks with short or gapped histories had previously selected SPY by the
@@ -43,9 +60,10 @@ commands are committed at:
 - [`backtests/exploratory_existing_data_replay/results/verification_metrics.json`](backtests/exploratory_existing_data_replay/results/verification_metrics.json)
 - [`backtests/v2_research_commands.md`](backtests/v2_research_commands.md)
 
-The original success definition is unchanged: only the same frozen strategy
-scoring above 80 with at least 20% net CAGR on untouched OOS can be called
-complete.
+The amended success definition requires the same frozen strategy to produce at
+least 20% net CAGR on untouched OOS, with the Backtest Score fully calculated
+under the A/B/C/D rubric and every hard cap disclosed. There is no longer a
+minimum score threshold, but a cap may not be hidden, waived or bypassed.
 
 Roughly 1,500 simulated trades across S&P 500 and Russell 2000, 2016–2026,
 with fold splits, outlier trims, cost sweeps and cross-universe replication.
