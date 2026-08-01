@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<ownershipDocument>
+
+    <schemaVersion>X0306</schemaVersion>
+
+    <documentType>4</documentType>
+
+    <periodOfReport>2021-05-04</periodOfReport>
+
+    <notSubjectToSection16>0</notSubjectToSection16>
+
+    <issuer>
+        <issuerCik>0000814453</issuerCik>
+        <issuerName>NEWELL BRANDS INC.</issuerName>
+        <issuerTradingSymbol>NWL</issuerTradingSymbol>
+    </issuer>
+
+    <reportingOwner>
+        <reportingOwnerId>
+            <rptOwnerCik>0001608717</rptOwnerCik>
+            <rptOwnerName>MATHER COURTNEY</rptOwnerName>
+        </reportingOwnerId>
+        <reportingOwnerAddress>
+            <rptOwnerStreet1>C/O NEWELL BRANDS INC.</rptOwnerStreet1>
+            <rptOwnerStreet2>6655 PEACHTREE DUNWOODY ROAD</rptOwnerStreet2>
+            <rptOwnerCity>ATLANTA</rptOwnerCity>
+            <rptOwnerState>GA</rptOwnerState>
+            <rptOwnerZipCode>30328</rptOwnerZipCode>
+            <rptOwnerStateDescription></rptOwnerStateDescription>
+        </reportingOwnerAddress>
+        <reportingOwnerRelationship>
+            <isDirector>1</isDirector>
+            <isOfficer>0</isOfficer>
+            <isTenPercentOwner>0</isTenPercentOwner>
+            <isOther>0</isOther>
+            <officerTitle></officerTitle>
+            <otherText></otherText>
+        </reportingOwnerRelationship>
+    </reportingOwner>
+
+    <nonDerivativeTable></nonDerivativeTable>
+
+    <derivativeTable>
+        <derivativeTransaction>
+            <securityTitle>
+                <value>Deferred RSU Phantom Stock</value>
+                <footnoteId id="F1"/>
+                <footnoteId id="F2"/>
+                <footnoteId id="F3"/>
+            </securityTitle>
+            <conversionOrExercisePrice>
+                <footnoteId id="F4"/>
+            </conversionOrExercisePrice>
+            <transactionDate>
+                <value>2021-05-04</value>
+            </transactionDate>
+            <transactionCoding>
+                <transactionFormType>4</transactionFormType>
+                <transactionCode>A</transactionCode>
+                <equitySwapInvolved>0</equitySwapInvolved>
+            </transactionCoding>
+            <transactionAmounts>
+                <transactionShares>
+                    <value>5167</value>
+                </transactionShares>
+                <transactionPricePerShare>
+                    <value>0</value>
+                    <footnoteId id="F5"/>
+                </transactionPricePerShare>
+                <transactionAcquiredDisposedCode>
+                    <value>A</value>
+                </transactionAcquiredDisposedCode>
+            </transactionAmounts>
+            <exerciseDate>
+                <footnoteId id="F5"/>
+                <footnoteId id="F6"/>
+            </exerciseDate>
+            <expirationDate>
+                <footnoteId id="F7"/>
+            </expirationDate>
+            <underlyingSecurity>
+                <underlyingSecurityTitle>
+                    <value>Common Stock</value>
+                </underlyingSecurityTitle>
+                <underlyingSecurityShares>
+                    <value>5167.0</value>
+                </underlyingSecurityShares>
+            </underlyingSecurity>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>5167</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+            </ownershipNature>
+        </derivativeTransaction>
+    </derivativeTable>
+
+    <footnotes>
+        <footnote id="F1">Represents an award of restricted stock units (&quot;RSUs&quot;) which, pursuant to the reporting person's grant agreement with the Company, are scheduled to vest on the earlier of:  (i) the first anniversary of the grant date; or (ii) the date immediately preceding the Company's 2022 annual meeting of its stockholders (as applicable, the &quot;RSU Vesting Date&quot;), with vesting conditioned upon the reporting person's continuous service on the Board until the RSU Vesting Date, and with the award being eligible to vest before the RSU Vesting Date in the event of the reporting person's death, disability or retirement.  Pursuant to the grant agreement, as of the RSU Vesting Date, the reporting person would also be entitled to receive a cash payment equal to the value of dividends paid by the Company on an equal number of shares of the Company's Common Stock during the period from the grant date specified in Table II to the RSU Vesting Date (the &quot;Vesting Year Dividend Payment&quot;).</footnote>
+        <footnote id="F2">Pursuant to the Company's 2008 Deferred Compensation Plan, as amended (the &quot;DCP&quot;), the reporting person elected to defer vesting of the award and instead shall become eligible to receive on the RSU Vesting Date:  (i) phantom stock units and (ii) the Vesting Year Dividend Payment.  Settlement of the phantom stock units received on the RSU Vesting Date will be deferred until after the end of the reporting person's service on the Board of the Company.  At the end of the deferral period, the phantom stock units will settle on a one-for-one basis for shares of the Company's Common Stock.</footnote>
+        <footnote id="F3">During the deferral period, additional phantom stock units will continue to accrue pursuant to a dividend reinvestment feature of the DCP.  At the end of the deferral period, the reporting person will also have the right to receive the cash equivalent of the additional phantom stock units accrued.</footnote>
+        <footnote id="F4">Before the RSU Vesting Date, each RSU represents a contingent right to receive one phantom stock unit.  On and after the RSU Vesting Date, each phantom stock unit will represent the right to receive one share of Common Stock of the Company at the end of the deferral period</footnote>
+        <footnote id="F5">The RSUs will be exchanged for an equal number of phantom stock units on the RSU Vesting Date.</footnote>
+        <footnote id="F6">The phantom stock units to be acquired pursuant to this award on the RSU Vesting Date will be settled on a one-for-one basis for shares of the Company's Common Stock after the end of the reporting person's service on the Board.  On the settlement date, all additional phantom stock units acquired during the deferral period through reinvested dividends will also be payable to the reporting person in cash.  The cash value will be calculated based on the closing stock price for the Company's Common Stock on the settlement date.</footnote>
+        <footnote id="F7">N/A</footnote>
+    </footnotes>
+
+    <remarks></remarks>
+
+    <ownerSignature>
+        <signatureName>/s/ Raj Dave, attorney-in-fact for Courtney Mather</signatureName>
+        <signatureDate>2021-05-06</signatureDate>
+    </ownerSignature>
+</ownershipDocument>

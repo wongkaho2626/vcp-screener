@@ -1,0 +1,425 @@
+{
+  "generated_at": "2026-08-01T20:30:09",
+  "classification": "exploratory_nonqualifying",
+  "inputs": {
+    "detector_json": "backtests/exploratory_existing_data_replay/detections_date_aligned/vcp_backtest_2026-08-01_202358.json",
+    "detector_sha256": "fca8c536187779b9cb832bab744ae75062334e1fa52046e7a51b702c4eb12102",
+    "replay_json": "backtests/exploratory_existing_data_replay/results/trial288_existing_data_replay_2026-08-01_202443.json",
+    "replay_sha256": "59c0e6ed23b1b89fe2e1dbd5ee1720b115b35ed708977faf50cd4ed4155a43c0",
+    "price_csv": "SP500_PIT_2016_2026.csv",
+    "price_sha256": "bed1c4f16f6398583b21eb0a61b5929dcb634ea838ed1dbe5ed84c462c2827f3"
+  },
+  "primary": {
+    "summary": {
+      "signals": 125,
+      "trades": 89,
+      "end_value": 100192.2,
+      "total_return_pct": 0.19,
+      "cagr_pct": 0.05,
+      "max_drawdown_pct": -6.81,
+      "rejected": {
+        "cash_sector_or_liquidity": 26,
+        "duplicate_or_position_limit": 10
+      }
+    },
+    "trade_stats": {
+      "trades": 89,
+      "profit_factor": 1.0594344506276692,
+      "expectancy_pct": 0.20640449438202252,
+      "win_rate": 0.42696629213483145,
+      "average_win_pct": 8.617105263157894,
+      "average_loss_pct": -6.060392156862744,
+      "payoff_ratio": 1.4218725521581876
+    },
+    "drop_top_5": {
+      "trades": 84,
+      "profit_factor": 0.5364954057202019,
+      "expectancy_pct": -1.7054761904761904,
+      "win_rate": 0.39285714285714285,
+      "average_win_pct": 5.0248484848484845,
+      "average_loss_pct": -6.060392156862744,
+      "payoff_ratio": 0.8291292633857666
+    },
+    "drop_top_10": {
+      "trades": 79,
+      "profit_factor": 0.33916785298304647,
+      "expectancy_pct": -2.5854430379746836,
+      "win_rate": 0.35443037974683544,
+      "average_win_pct": 3.7439285714285715,
+      "average_loss_pct": -6.060392156862744,
+      "payoff_ratio": 0.6177700179334061
+    },
+    "robustness": {
+      "sample": {
+        "observations": 999,
+        "start": "2022-04-06",
+        "end": "2026-03-31",
+        "trials_declared": 288
+      },
+      "performance": {
+        "total_return": 0.001958232642856661,
+        "cagr": 0.0004936073563954757,
+        "annual_volatility": 0.03384011236307576
+      },
+      "distribution": {
+        "skewness": 0.12017097488515435,
+        "excess_kurtosis": 5.72893470351498,
+        "jarque_bera": {
+          "statistic": 1368.565776369488,
+          "p_value": 6.6026397255142816e-298
+        }
+      },
+      "risk_adjusted": {
+        "sharpe": 0.03148334699864944,
+        "sortino": 0.044817371322892104,
+        "calmar": 0.0072465778705052535,
+        "omega_zero": 1.0065315368744694
+      },
+      "risk": {
+        "max_drawdown": -0.0681159252292779,
+        "max_drawdown_duration_days": 497,
+        "ulcer_index": 0.03047859366380132,
+        "lake_ratio": 0.9769769769769769,
+        "var_95": -0.0035417039999999993,
+        "cvar_95": -0.0052657768
+      },
+      "significance": {
+        "t_statistic": 0.06268496240964128,
+        "effective_sample_size": 978.6870146433378,
+        "autocorrelations": [
+          0.010377671846430353,
+          -0.08045785723329,
+          0.042939951574550536,
+          -0.015839064757003116,
+          0.011606866668150329,
+          0.07338310642489469,
+          -0.03852779680968369,
+          0.05647489017567245,
+          0.031363948157139776,
+          -0.07062656975477276,
+          0.0027884895898495484,
+          0.05590156583366455,
+          0.013854645577767334,
+          -0.06536438481807391,
+          0.04288390086238916,
+          -0.10333582204544169,
+          0.056845299401416964,
+          -0.07156746365301121,
+          -0.01659588267442255,
+          0.08882157089599704,
+          0.018462968489764402,
+          -0.03186092552483515,
+          0.019812054799827544,
+          -0.00894079257725318,
+          0.004180841339969105,
+          -0.017985944982397053,
+          -0.0008858560061837399,
+          0.06189661698951995,
+          -0.014120089916248123,
+          -0.006347595264936748,
+          -0.06021981358370197
+        ],
+        "psr_vs_zero": 0.5249816974379747,
+        "approximate_dsr": {
+          "benchmark_sharpe": 1.463493288139453,
+          "probability": 0.002185227233057918
+        }
+      },
+      "stability": {
+        "is_sharpe": -0.04551381508867358,
+        "oos_sharpe": 0.18472249796524506,
+        "wfa_efficiency": -4.05860281335138,
+        "positive_months": 0.3958333333333333,
+        "positive_quarters": 0.375
+      },
+      "optional_tests": {
+        "ljung_box": {
+          "available": false
+        },
+        "adf": {
+          "available": false
+        },
+        "reason": "No module named 'statsmodels'"
+      },
+      "block_bootstrap": {
+        "cagr": {
+          "p05": -0.026092685163273815,
+          "median": 0.0010557963443152962,
+          "p95": 0.028273124227084584
+        },
+        "sharpe": {
+          "p05": -0.7748667316739138,
+          "median": 0.04982981523813716,
+          "p95": 0.8398245581230157
+        },
+        "max_drawdown": {
+          "p05": -0.13910781896836108,
+          "median": -0.07026436976392175,
+          "p95": -0.03635846487811494
+        }
+      },
+      "monte_carlo": {
+        "max_drawdown": {
+          "p05": -0.13425649019613375,
+          "median": -0.07155012704526015,
+          "p95": -0.036779509013545104
+        },
+        "final_equity": {
+          "p05": 0.8953378801205067,
+          "median": 1.0011602033167657,
+          "p95": 1.120042490478751
+        }
+      }
+    }
+  },
+  "cost_stress": [
+    {
+      "cost_multiplier": 1,
+      "trades": 89,
+      "cagr_pct": 0.05,
+      "total_return_pct": 0.19,
+      "profit_factor": 1.0594344506276692,
+      "expectancy_pct": 0.20640449438202252,
+      "max_drawdown_pct": -6.81
+    },
+    {
+      "cost_multiplier": 2,
+      "trades": 90,
+      "cagr_pct": -0.11,
+      "total_return_pct": -0.44,
+      "profit_factor": 1.1440249984218167,
+      "expectancy_pct": 0.5070000000000001,
+      "max_drawdown_pct": -7.03
+    },
+    {
+      "cost_multiplier": 5,
+      "trades": 93,
+      "cagr_pct": -1.18,
+      "total_return_pct": -4.6,
+      "profit_factor": 0.9369106665939936,
+      "expectancy_pct": -0.24892473118279607,
+      "max_drawdown_pct": -7.6
+    },
+    {
+      "cost_multiplier": 10,
+      "trades": 94,
+      "cagr_pct": -2.05,
+      "total_return_pct": -7.87,
+      "profit_factor": 0.7152327821279364,
+      "expectancy_pct": -1.2109574468085105,
+      "max_drawdown_pct": -9.17
+    }
+  ],
+  "parameter_sensitivity": [
+    {
+      "dimension": "entry_percentile",
+      "value": 80,
+      "entry_percentile": 80,
+      "exit_percentile": 50,
+      "signals": 157,
+      "trades": 116,
+      "cagr_pct": -0.92,
+      "sharpe": -0.24402940329305867,
+      "profit_factor": 1.0375848870230893,
+      "drop_top_5_expectancy_pct": -1.4912612612612612,
+      "max_drawdown_pct": -7.93
+    },
+    {
+      "dimension": "entry_percentile",
+      "value": 82.5,
+      "entry_percentile": 82.5,
+      "exit_percentile": 50,
+      "signals": 147,
+      "trades": 108,
+      "cagr_pct": 0.17,
+      "sharpe": 0.06782027821858806,
+      "profit_factor": 1.1017142857142856,
+      "drop_top_5_expectancy_pct": -1.5948543689320387,
+      "max_drawdown_pct": -3.96
+    },
+    {
+      "dimension": "entry_percentile",
+      "value": 85,
+      "entry_percentile": 85,
+      "exit_percentile": 50,
+      "signals": 125,
+      "trades": 89,
+      "cagr_pct": 0.05,
+      "sharpe": 0.03148334699864944,
+      "profit_factor": 1.0594344506276692,
+      "drop_top_5_expectancy_pct": -1.7054761904761904,
+      "max_drawdown_pct": -6.81
+    },
+    {
+      "dimension": "entry_percentile",
+      "value": 87.5,
+      "entry_percentile": 87.5,
+      "exit_percentile": 50,
+      "signals": 109,
+      "trades": 73,
+      "cagr_pct": 0.42,
+      "sharpe": 0.14191052334332943,
+      "profit_factor": 1.417289262663798,
+      "drop_top_5_expectancy_pct": -1.0958823529411763,
+      "max_drawdown_pct": -5.93
+    },
+    {
+      "dimension": "entry_percentile",
+      "value": 90,
+      "entry_percentile": 90,
+      "exit_percentile": 50,
+      "signals": 97,
+      "trades": 67,
+      "cagr_pct": 0.87,
+      "sharpe": 0.2825264214140401,
+      "profit_factor": 1.6154235999662134,
+      "drop_top_5_expectancy_pct": -0.5232258064516129,
+      "max_drawdown_pct": -5.13
+    },
+    {
+      "dimension": "exit_percentile",
+      "value": 40,
+      "entry_percentile": 85,
+      "exit_percentile": 40,
+      "signals": 125,
+      "trades": 89,
+      "cagr_pct": 0.18,
+      "sharpe": 0.06689149194195321,
+      "profit_factor": 1.0293404807390722,
+      "drop_top_5_expectancy_pct": -1.8630952380952381,
+      "max_drawdown_pct": -6.7
+    },
+    {
+      "dimension": "exit_percentile",
+      "value": 45,
+      "entry_percentile": 85,
+      "exit_percentile": 45,
+      "signals": 125,
+      "trades": 89,
+      "cagr_pct": 0.06,
+      "sharpe": 0.034647323607895304,
+      "profit_factor": 1.2016539440203562,
+      "drop_top_5_expectancy_pct": -1.4279761904761905,
+      "max_drawdown_pct": -6.87
+    },
+    {
+      "dimension": "exit_percentile",
+      "value": 55,
+      "entry_percentile": 85,
+      "exit_percentile": 55,
+      "signals": 125,
+      "trades": 92,
+      "cagr_pct": 0.04,
+      "sharpe": 0.027505971126637788,
+      "profit_factor": 1.2423553027768484,
+      "drop_top_5_expectancy_pct": -1.311264367816092,
+      "max_drawdown_pct": -6.27
+    },
+    {
+      "dimension": "exit_percentile",
+      "value": 60,
+      "entry_percentile": 85,
+      "exit_percentile": 60,
+      "signals": 125,
+      "trades": 91,
+      "cagr_pct": 0.23,
+      "sharpe": 0.08667379202312947,
+      "profit_factor": 1.2980239824353992,
+      "drop_top_5_expectancy_pct": -1.142906976744186,
+      "max_drawdown_pct": -5.93
+    }
+  ],
+  "folds": [
+    {
+      "start": "2022-01-01",
+      "end": "2023-12-31",
+      "observations": 436,
+      "total_return_pct": 2.002602792295849,
+      "cagr_pct": 1.1526224590633127,
+      "sharpe": 0.4667462264232032,
+      "max_drawdown_pct": -3.0963085687243597,
+      "positive_months_pct": 42.857142857142854
+    },
+    {
+      "start": "2024-01-01",
+      "end": "2026-03-31",
+      "observations": 563,
+      "total_return_pct": -1.7713072789813489,
+      "cagr_pct": -0.7967557144268445,
+      "sharpe": -0.18425967589836612,
+      "max_drawdown_pct": -6.811592522927901,
+      "positive_months_pct": 37.03703703703704
+    }
+  ],
+  "trade_bootstrap": {
+    "iterations": 5000,
+    "expectancy_pct": {
+      "p05": -1.456578651685393,
+      "median": 0.17185393258426973,
+      "p95": 2.1106853932584286,
+      "probability_nonpositive": 0.4324
+    },
+    "profit_factor": {
+      "p05": 0.630541038638235,
+      "median": 1.0493224875661533,
+      "p95": 1.7047958503674376
+    }
+  },
+  "dsr_289": {
+    "benchmark_sharpe": 1.4640486897377725,
+    "probability": 0.002177644294332537
+  },
+  "ljung_box": {
+    "lag": 10,
+    "statistic": 25.014753829741768,
+    "p_value": 0.005317610020106764
+  },
+  "effective_sample_size": 978.6870146433378,
+  "psr_recomputed": 0.5249816974379747,
+  "benchmark": {
+    "spy_total_return_pct": 53.91565288612223,
+    "exposure_matched_spy_total_return_pct": 9.991402374464965
+  },
+  "causality": {
+    "all_signal_before_fill": true,
+    "all_signal_members": true,
+    "all_fill_members": true,
+    "spy_trades": 0
+  },
+  "score": {
+    "A": {
+      "t_stat": 0,
+      "psr": 0,
+      "dsr": 0,
+      "sample": 7,
+      "total": 7,
+      "max": 30
+    },
+    "B": {
+      "sharpe": 0,
+      "sortino_or_calmar": 0,
+      "drawdown": 7,
+      "total": 7,
+      "max": 25
+    },
+    "C": {
+      "wfa": 0,
+      "bootstrap": 4,
+      "sensitivity": 4,
+      "total": 8,
+      "max": 25
+    },
+    "D": {
+      "profit_factor": 0,
+      "coherence": 3,
+      "consistency": 0,
+      "total": 3,
+      "max": 20
+    },
+    "raw_score_ignoring_survivorship_cap": 25,
+    "caps": {
+      "unresolved_survivorship": 20
+    },
+    "final_score": 20
+  }
+}

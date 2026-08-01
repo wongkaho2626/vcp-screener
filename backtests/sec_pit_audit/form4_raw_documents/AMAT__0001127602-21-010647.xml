@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<ownershipDocument>
+
+    <schemaVersion>X0306</schemaVersion>
+
+    <documentType>4</documentType>
+
+    <periodOfReport>2021-03-11</periodOfReport>
+
+    <issuer>
+        <issuerCik>0000006951</issuerCik>
+        <issuerName>APPLIED MATERIALS INC /DE</issuerName>
+        <issuerTradingSymbol>AMAT</issuerTradingSymbol>
+    </issuer>
+
+    <reportingOwner>
+        <reportingOwnerId>
+            <rptOwnerCik>0001057449</rptOwnerCik>
+            <rptOwnerName>MCGREGOR SCOTT A</rptOwnerName>
+        </reportingOwnerId>
+        <reportingOwnerAddress>
+            <rptOwnerStreet1>C/O APPLIED MATERIALS, INC.</rptOwnerStreet1>
+            <rptOwnerStreet2>3050 BOWERS AV. P.O. BOX 58039, M/S 1268</rptOwnerStreet2>
+            <rptOwnerCity>SANTA CLARA</rptOwnerCity>
+            <rptOwnerState>CA</rptOwnerState>
+            <rptOwnerZipCode>95054</rptOwnerZipCode>
+            <rptOwnerStateDescription></rptOwnerStateDescription>
+        </reportingOwnerAddress>
+        <reportingOwnerRelationship>
+            <isDirector>1</isDirector>
+        </reportingOwnerRelationship>
+    </reportingOwner>
+
+    <nonDerivativeTable>
+        <nonDerivativeTransaction>
+            <securityTitle>
+                <value>Common Stock</value>
+            </securityTitle>
+            <transactionDate>
+                <value>2021-03-11</value>
+            </transactionDate>
+            <transactionCoding>
+                <transactionFormType>4</transactionFormType>
+                <transactionCode>A</transactionCode>
+                <equitySwapInvolved>0</equitySwapInvolved>
+            </transactionCoding>
+            <transactionTimeliness></transactionTimeliness>
+            <transactionAmounts>
+                <transactionShares>
+                    <value>1919</value>
+                    <footnoteId id="F1"/>
+                </transactionShares>
+                <transactionPricePerShare>
+                    <value>0</value>
+                </transactionPricePerShare>
+                <transactionAcquiredDisposedCode>
+                    <value>A</value>
+                </transactionAcquiredDisposedCode>
+            </transactionAmounts>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>17155</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+            </ownershipNature>
+        </nonDerivativeTransaction>
+    </nonDerivativeTable>
+
+    <footnotes>
+        <footnote id="F1">Represents automatic annual grant of restricted stock units to a non-employee member of the Board of Directors pursuant to the Applied Materials, Inc. (&quot;Applied&quot;) Employee Stock Incentive Plan. These restricted stock units will be converted on a one-for-one basis into shares of Applied common stock upon vesting, which vesting is scheduled to occur on March 1, 2022 (subject to continued service as a director through the vesting date).</footnote>
+    </footnotes>
+
+    <ownerSignature>
+        <signatureName>/s/ To-Anh Nguyen, Attorney-in-Fact</signatureName>
+        <signatureDate>2021-03-15</signatureDate>
+    </ownerSignature>
+</ownershipDocument>

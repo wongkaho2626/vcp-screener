@@ -1,0 +1,367 @@
+<?xml version="1.0"?>
+<ownershipDocument>
+
+    <schemaVersion>X0306</schemaVersion>
+
+    <documentType>4</documentType>
+
+    <periodOfReport>2017-10-31</periodOfReport>
+
+    <issuer>
+        <issuerCik>0001645590</issuerCik>
+        <issuerName>Hewlett Packard Enterprise Co</issuerName>
+        <issuerTradingSymbol>HPE</issuerTradingSymbol>
+    </issuer>
+
+    <reportingOwner>
+        <reportingOwnerId>
+            <rptOwnerCik>0001648401</rptOwnerCik>
+            <rptOwnerName>Neri Antonio F</rptOwnerName>
+        </reportingOwnerId>
+        <reportingOwnerAddress>
+            <rptOwnerStreet1>C/O HEWLETT PACKARD ENTERPRISE COMPANY</rptOwnerStreet1>
+            <rptOwnerStreet2>3000 HANOVER STREET</rptOwnerStreet2>
+            <rptOwnerCity>PALO ALTO</rptOwnerCity>
+            <rptOwnerState>CA</rptOwnerState>
+            <rptOwnerZipCode>94304</rptOwnerZipCode>
+            <rptOwnerStateDescription></rptOwnerStateDescription>
+        </reportingOwnerAddress>
+        <reportingOwnerRelationship>
+            <isDirector>0</isDirector>
+            <isOfficer>1</isOfficer>
+            <isTenPercentOwner>0</isTenPercentOwner>
+            <isOther>0</isOther>
+            <officerTitle>EVP and GM EG</officerTitle>
+        </reportingOwnerRelationship>
+    </reportingOwner>
+
+    <nonDerivativeTable>
+        <nonDerivativeTransaction>
+            <securityTitle>
+                <value>Common Stock</value>
+            </securityTitle>
+            <transactionDate>
+                <value>2017-10-31</value>
+            </transactionDate>
+            <transactionCoding>
+                <transactionFormType>4</transactionFormType>
+                <transactionCode>A</transactionCode>
+                <equitySwapInvolved>0</equitySwapInvolved>
+            </transactionCoding>
+            <transactionAmounts>
+                <transactionShares>
+                    <value>153897</value>
+                    <footnoteId id="F1"/>
+                </transactionShares>
+                <transactionPricePerShare>
+                    <value>13.92</value>
+                </transactionPricePerShare>
+                <transactionAcquiredDisposedCode>
+                    <value>A</value>
+                </transactionAcquiredDisposedCode>
+            </transactionAmounts>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>174523</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+                <natureOfOwnership>
+                    <value></value>
+                </natureOfOwnership>
+            </ownershipNature>
+        </nonDerivativeTransaction>
+        <nonDerivativeTransaction>
+            <securityTitle>
+                <value>Common Stock</value>
+            </securityTitle>
+            <transactionDate>
+                <value>2017-11-01</value>
+            </transactionDate>
+            <transactionCoding>
+                <transactionFormType>4</transactionFormType>
+                <transactionCode>S</transactionCode>
+                <equitySwapInvolved>0</equitySwapInvolved>
+            </transactionCoding>
+            <transactionAmounts>
+                <transactionShares>
+                    <value>78210</value>
+                    <footnoteId id="F2"/>
+                </transactionShares>
+                <transactionPricePerShare>
+                    <value>13.8057</value>
+                    <footnoteId id="F3"/>
+                </transactionPricePerShare>
+                <transactionAcquiredDisposedCode>
+                    <value>D</value>
+                </transactionAcquiredDisposedCode>
+            </transactionAmounts>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>96313</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+                <natureOfOwnership>
+                    <value></value>
+                </natureOfOwnership>
+            </ownershipNature>
+        </nonDerivativeTransaction>
+    </nonDerivativeTable>
+
+    <derivativeTable>
+        <derivativeTransaction>
+            <securityTitle>
+                <value>Restricted Stock Units</value>
+                <footnoteId id="F4"/>
+            </securityTitle>
+            <conversionOrExercisePrice>
+                <footnoteId id="F5"/>
+            </conversionOrExercisePrice>
+            <transactionDate>
+                <value>2017-07-05</value>
+            </transactionDate>
+            <transactionCoding>
+                <transactionFormType>4</transactionFormType>
+                <transactionCode>A</transactionCode>
+                <equitySwapInvolved>0</equitySwapInvolved>
+            </transactionCoding>
+            <transactionAmounts>
+                <transactionShares>
+                    <value>399.3493</value>
+                    <footnoteId id="F6"/>
+                </transactionShares>
+                <transactionPricePerShare>
+                    <footnoteId id="F6"/>
+                </transactionPricePerShare>
+                <transactionAcquiredDisposedCode>
+                    <value>A</value>
+                </transactionAcquiredDisposedCode>
+            </transactionAmounts>
+            <exerciseDate>
+                <footnoteId id="F6"/>
+            </exerciseDate>
+            <expirationDate>
+                <footnoteId id="F6"/>
+            </expirationDate>
+            <underlyingSecurity>
+                <underlyingSecurityTitle>
+                    <value>Common Stock</value>
+                </underlyingSecurityTitle>
+                <underlyingSecurityShares>
+                    <value>399.3493</value>
+                </underlyingSecurityShares>
+            </underlyingSecurity>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>56604.3217</value>
+                    <footnoteId id="F6"/>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+                <natureOfOwnership>
+                    <value></value>
+                </natureOfOwnership>
+            </ownershipNature>
+        </derivativeTransaction>
+        <derivativeTransaction>
+            <securityTitle>
+                <value>Restricted Stock Units</value>
+                <footnoteId id="F4"/>
+            </securityTitle>
+            <conversionOrExercisePrice>
+                <footnoteId id="F5"/>
+            </conversionOrExercisePrice>
+            <transactionDate>
+                <value>2017-07-05</value>
+            </transactionDate>
+            <transactionCoding>
+                <transactionFormType>4</transactionFormType>
+                <transactionCode>A</transactionCode>
+                <equitySwapInvolved>0</equitySwapInvolved>
+            </transactionCoding>
+            <transactionAmounts>
+                <transactionShares>
+                    <value>1717.475</value>
+                    <footnoteId id="F7"/>
+                </transactionShares>
+                <transactionPricePerShare>
+                    <footnoteId id="F7"/>
+                </transactionPricePerShare>
+                <transactionAcquiredDisposedCode>
+                    <value>A</value>
+                </transactionAcquiredDisposedCode>
+            </transactionAmounts>
+            <exerciseDate>
+                <footnoteId id="F7"/>
+            </exerciseDate>
+            <expirationDate>
+                <footnoteId id="F7"/>
+            </expirationDate>
+            <underlyingSecurity>
+                <underlyingSecurityTitle>
+                    <value>Common Stock</value>
+                </underlyingSecurityTitle>
+                <underlyingSecurityShares>
+                    <value>1717.475</value>
+                </underlyingSecurityShares>
+            </underlyingSecurity>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>238516.072</value>
+                    <footnoteId id="F7"/>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+                <natureOfOwnership>
+                    <value></value>
+                </natureOfOwnership>
+            </ownershipNature>
+        </derivativeTransaction>
+        <derivativeTransaction>
+            <securityTitle>
+                <value>Restricted Stock Units</value>
+                <footnoteId id="F4"/>
+            </securityTitle>
+            <conversionOrExercisePrice>
+                <footnoteId id="F5"/>
+            </conversionOrExercisePrice>
+            <transactionDate>
+                <value>2017-07-05</value>
+            </transactionDate>
+            <transactionCoding>
+                <transactionFormType>4</transactionFormType>
+                <transactionCode>A</transactionCode>
+                <equitySwapInvolved>0</equitySwapInvolved>
+            </transactionCoding>
+            <transactionAmounts>
+                <transactionShares>
+                    <value>628.446</value>
+                    <footnoteId id="F8"/>
+                </transactionShares>
+                <transactionPricePerShare>
+                    <footnoteId id="F8"/>
+                </transactionPricePerShare>
+                <transactionAcquiredDisposedCode>
+                    <value>A</value>
+                </transactionAcquiredDisposedCode>
+            </transactionAmounts>
+            <exerciseDate>
+                <footnoteId id="F8"/>
+            </exerciseDate>
+            <expirationDate>
+                <footnoteId id="F8"/>
+            </expirationDate>
+            <underlyingSecurity>
+                <underlyingSecurityTitle>
+                    <value>Common Stock</value>
+                </underlyingSecurityTitle>
+                <underlyingSecurityShares>
+                    <value>628.446</value>
+                </underlyingSecurityShares>
+            </underlyingSecurity>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>87274.2987</value>
+                    <footnoteId id="F8"/>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+                <natureOfOwnership>
+                    <value></value>
+                </natureOfOwnership>
+            </ownershipNature>
+        </derivativeTransaction>
+        <derivativeTransaction>
+            <securityTitle>
+                <value>Restricted Stock Units</value>
+                <footnoteId id="F4"/>
+            </securityTitle>
+            <conversionOrExercisePrice>
+                <footnoteId id="F5"/>
+            </conversionOrExercisePrice>
+            <transactionDate>
+                <value>2017-07-05</value>
+            </transactionDate>
+            <transactionCoding>
+                <transactionFormType>4</transactionFormType>
+                <transactionCode>A</transactionCode>
+                <equitySwapInvolved>0</equitySwapInvolved>
+            </transactionCoding>
+            <transactionAmounts>
+                <transactionShares>
+                    <value>1134.3952</value>
+                    <footnoteId id="F9"/>
+                </transactionShares>
+                <transactionPricePerShare>
+                    <footnoteId id="F9"/>
+                </transactionPricePerShare>
+                <transactionAcquiredDisposedCode>
+                    <value>A</value>
+                </transactionAcquiredDisposedCode>
+            </transactionAmounts>
+            <exerciseDate>
+                <footnoteId id="F9"/>
+            </exerciseDate>
+            <expirationDate>
+                <footnoteId id="F9"/>
+            </expirationDate>
+            <underlyingSecurity>
+                <underlyingSecurityTitle>
+                    <value>Common Stock</value>
+                </underlyingSecurityTitle>
+                <underlyingSecurityShares>
+                    <value>1134.3952</value>
+                </underlyingSecurityShares>
+            </underlyingSecurity>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>155665.882</value>
+                    <footnoteId id="F9"/>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+                <natureOfOwnership>
+                    <value></value>
+                </natureOfOwnership>
+            </ownershipNature>
+        </derivativeTransaction>
+    </derivativeTable>
+
+    <footnotes>
+        <footnote id="F1">On 12/07/16 the reporting person was granted performance adjusted restricted stock (&quot;PARS&quot;) subject to certain return on invested capital performance conditions and/or relative total stockholder return conditions being met at the time of vesting. These PARS vest 50% after 2 and 3 years subjects to performance, and are issued in Issuer's common stock.</footnote>
+        <footnote id="F2">The sales reported on this Form 4 were effectuated pursuant to a Rule 10b5-1 trading plan adopted by the reporting person on 12/01/16 to sell these shares to satisfy taxes associated with the PARs vesting on 10/31/17.</footnote>
+        <footnote id="F3">The price in Column 4 is a weighted average price. The prices actually paid ranged from $13.65 to $13.94. Upon request, the reporting person will provide to the Issuer, any security holder of the Issuer, or the SEC staff information regarding the number of shares purchased at each price within the range.</footnote>
+        <footnote id="F4">As reported in the Registration Statements on Form 10 filed by Issuer with the SEC, in connection with the spin-offs of Everett SpinCo, Inc. on 04/01/17 and Seattle SpinCo, Inc. on 09/01/17, equity-based awards granted by Issuer, prior to the spin-offs were converted to adjust the award in a manner intended to preserve the aggregate intrinsic value of the original award as measured immediately before and immediately after the spin-offs, subject to rounding. The adjusted equity award is otherwise subject to the same terms and conditions that applied to the original award immediately prior to the spin-offs, unless otherwise noted. The reporting person's equity based awards reflect the conversion adjustments.</footnote>
+        <footnote id="F5">Each restricted stock unit represents a contingent right to receive one share of Issuer's common stock.</footnote>
+        <footnote id="F6">As previously reported, on 12/10/14 the reporting person was granted 53,533 Restricted Stock Units (&quot;RSUs&quot;), 17,844 of which vested early on 09/17/15, 32,093 of which vested on 12/10/16, and 54,010 of which will vest on 12/10/17. Dividend equivalent rights accrue with respect to these RSUs when and as dividends are paid on Issuer's common stock. Also included is 399.3493 dividend equivalent rights that reflect 162.1432 dividend equivalent rights at $16.94 per RSU credited to the reporting person's account on 07/05/17, and 237.2061 dividend equivalent rights at $14.80 per RSU credited to the reporting person's account on 10/04/17. Unvested RSUs in this footnote, and the amount in column 9 reflect the conversion adjustments noted in footnote (4) above.</footnote>
+        <footnote id="F7">As previously reported, on 11/02/15 the reporting person was granted 207,039 RSUs, 69,013 of which vested on 11/02/16, and 116,140 of which will vest on each of 11/02/17 and 11/02/18. Dividend equivalent rights accrue with respect to these RSUs when and as dividends are paid on Issuer's common stock. Also included is 1,717.4750 dividend equivalent rights that reflect 697.3264 dividend equivalent rights at $16.94 per RSU credited to the reporting person's account on 07/05/17, and 1,020.1486 dividend equivalent rights at $14.80 per RSU credited to the reporting person's account on 10/04/17. Unvested RSUs in this footnote, and the amount in column 9 reflect the conversion adjustments noted in footnote (4) above.</footnote>
+        <footnote id="F8">As previously reported, on 12/09/15 the reporting person was granted 75,758 RSUs, 25,252 of which vested on 12/09/16, 42,496 of which will vest on 12/09/17, and 42,498 of which will vest on 12/09/18. Dividend equivalent rights accrue with respect to these RSUs when and as dividends are paid on Issuer's common stock. Also included is 628.4460 dividend equivalent rights that reflect 255.1615 dividend equivalent rights at $16.94 per RSU credited to the reporting person's account on 07/05/17, and 373.2845 dividend equivalent rights at $14.80 per RSU credited to the reporting person's account on 10/04/17. Unvested RSUs in this footnote, and the amount in column 9 reflect the conversion adjustments noted in footnote (4) above.</footnote>
+        <footnote id="F9">As previously reported, on 12/07/16 the reporting person was granted 91,167 RSUs, 51,140 of which will vest on each of 12/07/17 and 12/07/18, and 51,141 of which will vest on 12/07/19. Dividend equivalent rights accrue with respect to these RSUs when and as dividends are paid on Issuer's common stock. Also included is 1,134.3952 dividend equivalent rights that reflect 460.5868 dividend equivalent rights at $16.94 per RSU credited to the reporting person's account on 07/05/17, and 673.8084 dividend equivalent rights at $14.80 per RSU credited to the reporting person's account on 10/04/17. Unvested RSUs in this footnote, and the amount in column 9 reflect the conversion adjustments noted in footnote (4) above.</footnote>
+    </footnotes>
+
+    <remarks></remarks>
+
+    <ownerSignature>
+        <signatureName>Derek Windham as Attorney-in-Fact for Antonio F. Neri</signatureName>
+        <signatureDate>2017-11-02</signatureDate>
+    </ownerSignature>
+</ownershipDocument>

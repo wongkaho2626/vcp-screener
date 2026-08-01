@@ -1,0 +1,622 @@
+{
+  "generated_at": "2026-08-01T15:55:01",
+  "family_spec": "backtests/undercut_reclaim_v2/frozen_spec.md",
+  "formal_validation_accessed": false,
+  "untouched_oos_accessed": false,
+  "internal_holdout_accessed": false,
+  "coverage": {
+    "universe": 720,
+    "kept": 599,
+    "benchmark_present": true,
+    "coverage_pct": 91.31,
+    "per_year": {
+      "2016": 82.4,
+      "2017": 84.3,
+      "2018": 85.8,
+      "2019": 87.2,
+      "2020": 90.0,
+      "2021": 91.8,
+      "2022": 93.7,
+      "2023": 95.7,
+      "2024": 96.5,
+      "2025": 97.8,
+      "2026": 98.7
+    },
+    "dropped": [
+      [
+        "AMTM",
+        "only-60-bars-in-membership"
+      ],
+      [
+        "APC",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "BNY",
+        "only-27-bars-in-membership"
+      ],
+      [
+        "CASY",
+        "only-57-bars-in-membership"
+      ],
+      [
+        "CIEN",
+        "only-98-bars-in-membership"
+      ],
+      [
+        "COHR",
+        "only-69-bars-in-membership"
+      ],
+      [
+        "EMC",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "FDXF",
+        "only-21-bars-in-membership"
+      ],
+      [
+        "HOT",
+        "only-57-bars-in-membership"
+      ],
+      [
+        "INFO",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "LB",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "LITE",
+        "only-69-bars-in-membership"
+      ],
+      [
+        "SBNY",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "SE",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "SOLS",
+        "only-37-bars-in-membership"
+      ],
+      [
+        "SPLS",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "STI",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "TE",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "VEEV",
+        "only-37-bars-in-membership"
+      ],
+      [
+        "VRT",
+        "only-69-bars-in-membership"
+      ]
+    ]
+  },
+  "trials_before": 304,
+  "new_multiplicity_units": 3,
+  "trials_after": 307,
+  "parameters": {
+    "max_undercut_pct": 2,
+    "min_clv": 0.5,
+    "time_exit_sessions": 20,
+    "next_open": true,
+    "stop": "shakeout low bounded by unchanged 8% risk cap"
+  },
+  "membership_drops": {
+    "train": 16,
+    "holdout": null
+  },
+  "train": {
+    "signal_period": [
+      "2016-07-01",
+      "2018-06-30"
+    ],
+    "price_end": "2018-12-31",
+    "signals": [
+      {
+        "symbol": "LRCX",
+        "sector": "Unknown",
+        "signal_date": "2016-07-05",
+        "fill_date": "2016-07-06",
+        "fill_idx": 506,
+        "edge_rank": 30.0,
+        "pattern_stop": 7.0723,
+        "pivot": 7.34,
+        "model_exit_idx": 526,
+        "original_pattern_stop": 7.09,
+        "undercut_depth": -0.002496473906911101,
+        "clv": 0.5230263157894697
+      },
+      {
+        "symbol": "KMI",
+        "sector": "Unknown",
+        "signal_date": "2016-09-16",
+        "fill_date": "2016-09-19",
+        "fill_idx": 558,
+        "edge_rank": 30.0,
+        "pattern_stop": 12.8561,
+        "pivot": 13.81,
+        "model_exit_idx": 578,
+        "original_pattern_stop": 12.86,
+        "undercut_depth": -0.00030326594090201997,
+        "clv": 0.6250000000000019
+      },
+      {
+        "symbol": "DOV",
+        "sector": "Unknown",
+        "signal_date": "2016-11-29",
+        "fill_date": "2016-11-30",
+        "fill_idx": 609,
+        "edge_rank": 30.0,
+        "pattern_stop": 47.3183,
+        "pivot": 49.88,
+        "model_exit_idx": 629,
+        "original_pattern_stop": 48.0,
+        "undercut_depth": -0.014202083333333282,
+        "clv": 0.8077215802947512
+      },
+      {
+        "symbol": "AVGO",
+        "sector": "Unknown",
+        "signal_date": "2016-12-02",
+        "fill_date": "2016-12-05",
+        "fill_idx": 612,
+        "edge_rank": 30.0,
+        "pattern_stop": 12.35,
+        "pivot": 13.35,
+        "model_exit_idx": 632,
+        "original_pattern_stop": 12.51,
+        "undercut_depth": -0.012789768185451633,
+        "clv": 0.837265577737445
+      },
+      {
+        "symbol": "HPQ",
+        "sector": "Unknown",
+        "signal_date": "2017-01-10",
+        "fill_date": "2017-01-11",
+        "fill_idx": 637,
+        "edge_rank": 65.0,
+        "pattern_stop": 10.4425,
+        "pivot": 11.64,
+        "model_exit_idx": 657,
+        "original_pattern_stop": 10.63,
+        "undercut_depth": -0.01763875823142047,
+        "clv": 0.5088313573675263
+      },
+      {
+        "symbol": "HAS",
+        "sector": "Unknown",
+        "signal_date": "2017-01-26",
+        "fill_date": "2017-01-27",
+        "fill_idx": 648,
+        "edge_rank": 30.0,
+        "pattern_stop": 58.0234,
+        "pivot": 60.89,
+        "model_exit_idx": 668,
+        "original_pattern_stop": 58.81,
+        "undercut_depth": -0.013375276313552065,
+        "clv": 0.686203853507866
+      },
+      {
+        "symbol": "AZO",
+        "sector": "Unknown",
+        "signal_date": "2017-01-31",
+        "fill_date": "2017-02-01",
+        "fill_idx": 651,
+        "edge_rank": 30.0,
+        "pattern_stop": 718.07,
+        "pivot": 783.33,
+        "model_exit_idx": 671,
+        "original_pattern_stop": 720.45,
+        "undercut_depth": -0.0033034908737594737,
+        "clv": 0.8148584905660432
+      },
+      {
+        "symbol": "IVZ",
+        "sector": "Unknown",
+        "signal_date": "2017-02-03",
+        "fill_date": "2017-02-06",
+        "fill_idx": 654,
+        "edge_rank": 30.0,
+        "pattern_stop": 19.539,
+        "pivot": 20.63,
+        "model_exit_idx": 674,
+        "original_pattern_stop": 19.75,
+        "undercut_depth": -0.010683544303797365,
+        "clv": 0.9624132613723964
+      },
+      {
+        "symbol": "IVZ",
+        "sector": "Unknown",
+        "signal_date": "2017-02-08",
+        "fill_date": "2017-02-09",
+        "fill_idx": 657,
+        "edge_rank": 30.0,
+        "pattern_stop": 19.4417,
+        "pivot": 20.63,
+        "model_exit_idx": 677,
+        "original_pattern_stop": 19.53,
+        "undercut_depth": -0.004521249359959012,
+        "clv": 0.8709276299427922
+      },
+      {
+        "symbol": "GRMN",
+        "sector": "Unknown",
+        "signal_date": "2017-02-09",
+        "fill_date": "2017-02-10",
+        "fill_idx": 658,
+        "edge_rank": 30.0,
+        "pattern_stop": 38.3283,
+        "pivot": 41.75,
+        "model_exit_idx": 678,
+        "original_pattern_stop": 38.34,
+        "undercut_depth": -0.000305164319248985,
+        "clv": 0.7757827895774112
+      },
+      {
+        "symbol": "ORLY",
+        "sector": "Unknown",
+        "signal_date": "2017-02-24",
+        "fill_date": "2017-02-27",
+        "fill_idx": 668,
+        "edge_rank": 30.0,
+        "pattern_stop": 17.6247,
+        "pivot": 18.49,
+        "model_exit_idx": 688,
+        "original_pattern_stop": 17.63,
+        "undercut_depth": -0.00030062393647178887,
+        "clv": 0.8878704552398314
+      },
+      {
+        "symbol": "TXT",
+        "sector": "Unknown",
+        "signal_date": "2017-03-22",
+        "fill_date": "2017-03-23",
+        "fill_idx": 686,
+        "edge_rank": 70.0,
+        "pattern_stop": 45.8996,
+        "pivot": 48.77,
+        "model_exit_idx": 706,
+        "original_pattern_stop": 45.99,
+        "undercut_depth": -0.0019656447053707504,
+        "clv": 0.7674199623352157
+      },
+      {
+        "symbol": "MLM",
+        "sector": "Unknown",
+        "signal_date": "2017-03-27",
+        "fill_date": "2017-03-28",
+        "fill_idx": 689,
+        "edge_rank": 30.0,
+        "pattern_stop": 188.5191,
+        "pivot": 209.81,
+        "model_exit_idx": 709,
+        "original_pattern_stop": 192.34,
+        "undercut_depth": -0.01986534262243944,
+        "clv": 0.8170549581839917
+      },
+      {
+        "symbol": "NTRS",
+        "sector": "Unknown",
+        "signal_date": "2017-03-28",
+        "fill_date": "2017-03-29",
+        "fill_idx": 690,
+        "edge_rank": 100.0,
+        "pattern_stop": 65.3246,
+        "pivot": 68.57,
+        "model_exit_idx": 710,
+        "original_pattern_stop": 65.83,
+        "undercut_depth": -0.007677350751936762,
+        "clv": 0.859925093632965
+      },
+      {
+        "symbol": "REGN",
+        "sector": "Unknown",
+        "signal_date": "2017-04-27",
+        "fill_date": "2017-04-28",
+        "fill_idx": 711,
+        "edge_rank": 30.0,
+        "pattern_stop": 357.051,
+        "pivot": 393.43,
+        "model_exit_idx": 731,
+        "original_pattern_stop": 358.99,
+        "undercut_depth": -0.005401264659182781,
+        "clv": 0.5653263302910259
+      },
+      {
+        "symbol": "REGN",
+        "sector": "Unknown",
+        "signal_date": "2017-04-27",
+        "fill_date": "2017-04-28",
+        "fill_idx": 711,
+        "edge_rank": 30.0,
+        "pattern_stop": 357.051,
+        "pivot": 393.43,
+        "model_exit_idx": 731,
+        "original_pattern_stop": 358.99,
+        "undercut_depth": -0.005401264659182781,
+        "clv": 0.5653263302910259
+      },
+      {
+        "symbol": "TDC",
+        "sector": "Unknown",
+        "signal_date": "2017-04-28",
+        "fill_date": "2017-05-01",
+        "fill_idx": 712,
+        "edge_rank": 30.0,
+        "pattern_stop": 28.82,
+        "pivot": 31.13,
+        "model_exit_idx": 732,
+        "original_pattern_stop": 28.9,
+        "undercut_depth": -0.0027681660899653293,
+        "clv": 0.5454545454545445
+      },
+      {
+        "symbol": "TJX",
+        "sector": "Unknown",
+        "signal_date": "2017-11-08",
+        "fill_date": "2017-11-09",
+        "fill_idx": 847,
+        "edge_rank": 30.0,
+        "pattern_stop": 30.0197,
+        "pivot": 32.28,
+        "model_exit_idx": 867,
+        "original_pattern_stop": 30.14,
+        "undercut_depth": -0.003991373589913749,
+        "clv": 0.5100022476961121
+      },
+      {
+        "symbol": "JEF",
+        "sector": "Unknown",
+        "signal_date": "2017-11-15",
+        "fill_date": "2017-11-16",
+        "fill_idx": 852,
+        "edge_rank": 70.0,
+        "pattern_stop": 17.4464,
+        "pivot": 18.23,
+        "model_exit_idx": 872,
+        "original_pattern_stop": 17.48,
+        "undercut_depth": -0.0019221967963386488,
+        "clv": 0.7383304940374816
+      },
+      {
+        "symbol": "JEF",
+        "sector": "Unknown",
+        "signal_date": "2017-11-15",
+        "fill_date": "2017-11-16",
+        "fill_idx": 852,
+        "edge_rank": 30.0,
+        "pattern_stop": 17.4464,
+        "pivot": 18.23,
+        "model_exit_idx": 872,
+        "original_pattern_stop": 17.48,
+        "undercut_depth": -0.0019221967963386488,
+        "clv": 0.7383304940374816
+      },
+      {
+        "symbol": "SWKS",
+        "sector": "Unknown",
+        "signal_date": "2017-12-01",
+        "fill_date": "2017-12-04",
+        "fill_idx": 863,
+        "edge_rank": 100.0,
+        "pattern_stop": 81.5785,
+        "pivot": 88.27,
+        "model_exit_idx": 883,
+        "original_pattern_stop": 82.36,
+        "undercut_depth": -0.009488829528897402,
+        "clv": 0.5878277796862462
+      },
+      {
+        "symbol": "PRU",
+        "sector": "Unknown",
+        "signal_date": "2018-02-06",
+        "fill_date": "2018-02-07",
+        "fill_idx": 907,
+        "edge_rank": 100.0,
+        "pattern_stop": 70.6632,
+        "pivot": 75.1,
+        "model_exit_idx": 927,
+        "original_pattern_stop": 71.19,
+        "undercut_depth": -0.007399915718499739,
+        "clv": 0.8632126158046047
+      },
+      {
+        "symbol": "APA",
+        "sector": "Unknown",
+        "signal_date": "2018-02-06",
+        "fill_date": "2018-02-07",
+        "fill_idx": 907,
+        "edge_rank": 30.0,
+        "pattern_stop": 31.6634,
+        "pivot": 37.06,
+        "model_exit_idx": 927,
+        "original_pattern_stop": 31.87,
+        "undercut_depth": -0.006482585503608473,
+        "clv": 0.7067429259482247
+      }
+    ],
+    "cell": {
+      "summary": {
+        "signals": 23,
+        "trades": 21,
+        "end_value": 102608.99,
+        "total_return_pct": 2.61,
+        "cagr_pct": 1.04,
+        "max_drawdown_pct": -1.35,
+        "rejected": {
+          "duplicate_or_position_limit": 2
+        }
+      },
+      "trade_stats": {
+        "trades": 21,
+        "profit_factor": 4.01173139158576,
+        "expectancy_pct": 3.5452380952380955,
+        "win_rate": 0.5238095238095238,
+        "average_win_pct": 9.015454545454546,
+        "average_loss_pct": -2.472,
+        "payoff_ratio": 3.647028537805237
+      },
+      "drop_top_5": {
+        "trades": 16,
+        "profit_factor": 1.2196601941747574,
+        "expectancy_pct": 0.339375,
+        "win_rate": 0.375,
+        "average_win_pct": 5.0249999999999995,
+        "average_loss_pct": -2.472,
+        "payoff_ratio": 2.032766990291262
+      },
+      "drop_top_10": {
+        "trades": 11,
+        "profit_factor": 0.03964401294498382,
+        "expectancy_pct": -2.158181818181818,
+        "win_rate": 0.09090909090909091,
+        "average_win_pct": 0.98,
+        "average_loss_pct": -2.472,
+        "payoff_ratio": 0.3964401294498382
+      },
+      "robustness": {
+        "sample": {
+          "observations": 627,
+          "start": "2016-07-06",
+          "end": "2018-12-31",
+          "trials_declared": 307
+        },
+        "performance": {
+          "total_return": 0.026089882802446285,
+          "cagr": 0.010405193136634905,
+          "annual_volatility": 0.00905626476393741
+        },
+        "distribution": {
+          "skewness": 0.315141147666519,
+          "excess_kurtosis": 25.682507047263385,
+          "jarque_bera": {
+            "statistic": 17242.197577118706,
+            "p_value": 0.0
+          }
+        },
+        "risk_adjusted": {
+          "sharpe": 1.1475570502148722,
+          "sortino": 1.7894575255729885,
+          "calmar": 0.7685292085426654,
+          "omega_zero": 1.5086062512920344
+        },
+        "risk": {
+          "max_drawdown": -0.013539099127235388,
+          "max_drawdown_duration_days": 283,
+          "ulcer_index": 0.008530010496104825,
+          "lake_ratio": 0.9202551834130781,
+          "var_95": -0.0005535690000000001,
+          "cvar_95": -0.0012672209375
+        },
+        "significance": {
+          "t_statistic": 1.810121744626497,
+          "effective_sample_size": 249.92729094253545,
+          "autocorrelations": [
+            0.012888406176782488,
+            0.14392230539039505,
+            0.12204412547701836,
+            0.08861955300372246,
+            0.03806809250471156,
+            0.10735594555983606,
+            0.0013684605337203274,
+            0.09263655951398543,
+            0.0237221544935234,
+            0.028363873161446784,
+            0.0953753389184421,
+            -0.026058813551710105,
+            0.1384935499065763,
+            -0.07187145822676538,
+            -0.005995040676106844,
+            0.024979046442923036,
+            0.02122359614008167,
+            -0.03679609033842489,
+            0.04022965139660681,
+            0.013559928856341342,
+            0.0036488501041219913,
+            -0.030773669885282618,
+            0.03983861871653836,
+            -0.06455497012881549,
+            -0.012573337839387366
+          ],
+          "psr_vs_zero": 0.9638079021878841,
+          "approximate_dsr": {
+            "benchmark_sharpe": 2.920607754933079,
+            "probability": 0.0027515265379121634
+          }
+        },
+        "stability": {
+          "is_sharpe": 1.374080762372002,
+          "oos_sharpe": null,
+          "wfa_efficiency": null,
+          "positive_months": 0.26666666666666666,
+          "positive_quarters": 0.4
+        },
+        "optional_tests": {
+          "ljung_box": {
+            "available": false
+          },
+          "adf": {
+            "available": false
+          },
+          "reason": "No module named 'statsmodels'"
+        },
+        "block_bootstrap": {
+          "cagr": {
+            "p05": -0.0016811208480490777,
+            "median": 0.009732066527314398,
+            "p95": 0.02199314133774997
+          },
+          "sharpe": {
+            "p05": -0.18703595834319892,
+            "median": 1.1045129650796124,
+            "p95": 2.3025550200558142
+          },
+          "max_drawdown": {
+            "p05": -0.019477802173583983,
+            "median": -0.009461927379282975,
+            "p95": -0.004719028145779355
+          }
+        },
+        "monte_carlo": {
+          "max_drawdown": {
+            "p05": -0.0162706245580864,
+            "median": -0.008483006540877913,
+            "p95": -0.004647947197931847
+          },
+          "final_equity": {
+            "p05": 1.00235592485414,
+            "median": 1.0264159918206577,
+            "p95": 1.049465643612597
+          }
+        }
+      }
+    },
+    "gate": {
+      "passed": false,
+      "checks": {
+        "trades>=20": true,
+        "cagr>=10pct": false,
+        "sharpe>=0.75": true,
+        "pf>1.20": true,
+        "mdd>-15pct": true,
+        "drop_top_5_expectancy>0": true
+      }
+    }
+  },
+  "internal_holdout": null,
+  "open_formal_validation": false
+}

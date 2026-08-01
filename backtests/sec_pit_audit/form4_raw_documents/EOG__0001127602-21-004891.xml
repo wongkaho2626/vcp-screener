@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<ownershipDocument>
+
+    <schemaVersion>X0306</schemaVersion>
+
+    <documentType>4</documentType>
+
+    <periodOfReport>2021-02-09</periodOfReport>
+
+    <issuer>
+        <issuerCik>0000821189</issuerCik>
+        <issuerName>EOG RESOURCES INC</issuerName>
+        <issuerTradingSymbol>EOG</issuerTradingSymbol>
+    </issuer>
+
+    <reportingOwner>
+        <reportingOwnerId>
+            <rptOwnerCik>0001576182</rptOwnerCik>
+            <rptOwnerName>Helms Lloyd W Jr</rptOwnerName>
+        </reportingOwnerId>
+        <reportingOwnerAddress>
+            <rptOwnerStreet1>1111 BAGBY, SKY LOBBY 2</rptOwnerStreet1>
+            <rptOwnerStreet2></rptOwnerStreet2>
+            <rptOwnerCity>HOUSTON</rptOwnerCity>
+            <rptOwnerState>TX</rptOwnerState>
+            <rptOwnerZipCode>77002</rptOwnerZipCode>
+            <rptOwnerStateDescription></rptOwnerStateDescription>
+        </reportingOwnerAddress>
+        <reportingOwnerRelationship>
+            <isOfficer>1</isOfficer>
+            <officerTitle>Chief Operating Officer</officerTitle>
+        </reportingOwnerRelationship>
+    </reportingOwner>
+
+    <nonDerivativeTable>
+        <nonDerivativeTransaction>
+            <securityTitle>
+                <value>Common Stock</value>
+            </securityTitle>
+            <transactionDate>
+                <value>2021-02-09</value>
+            </transactionDate>
+            <transactionCoding>
+                <transactionFormType>4</transactionFormType>
+                <transactionCode>A</transactionCode>
+                <equitySwapInvolved>0</equitySwapInvolved>
+            </transactionCoding>
+            <transactionTimeliness></transactionTimeliness>
+            <transactionAmounts>
+                <transactionShares>
+                    <value>7117</value>
+                    <footnoteId id="F1"/>
+                </transactionShares>
+                <transactionPricePerShare>
+                    <value>0</value>
+                </transactionPricePerShare>
+                <transactionAcquiredDisposedCode>
+                    <value>A</value>
+                </transactionAcquiredDisposedCode>
+            </transactionAmounts>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>131616.794</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+            </ownershipNature>
+        </nonDerivativeTransaction>
+    </nonDerivativeTable>
+
+    <footnotes>
+        <footnote id="F1">Effective September 25, 2017, the Reporting Person received an award of 5,694 Performance Units (the &quot;September 2017 Award&quot;).  The performance metric applicable to this award was the Total Shareholder Return of the Issuer over a three-year performance period (January 2018 through December 2020) relative to the Total Shareholder Return of each of the Issuer's Peer Companies. Pursuant to the terms of the award agreement, between 0% and 200% of the award could be earned based on the Issuer's TSR Rank for such performance period.  The Issuer's TSR Rank and applicable Performance Multiple (each as certified by the Compensation Committee of the Issuer's Board of Directors, effective February 9, 2021) was 4 and 125%, respectively. Accordingly, an additional 1,423 Performance Units have been credited to the Reporting Person in respect of the September 2017 Award.  Subject to the terms of the award agreement governing the September 2017 Award, (i) the 7,117 aggregate Performance Units in respect of the September 2017 Award will &quot;cliff&quot; vest on February 28, 2021 and (ii) the shares of the Issuer's common stock represented by such Performance Units (on a one-for-one basis) will be distributed to the Reporting Person following such vesting date.  Defined terms used herein have the meanings set forth in the form of award agreement governing the September 2017 Award, which is filed as Exhibit 10.3 to the Issuer's Current Report on Form 8-K filed on September 29, 2017.</footnote>
+    </footnotes>
+
+    <ownerSignature>
+        <signatureName>Vicky Strom, attorney-in-fact for Lloyd W. Helms, Jr.</signatureName>
+        <signatureDate>2021-02-10</signatureDate>
+    </ownerSignature>
+</ownershipDocument>

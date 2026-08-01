@@ -1,0 +1,52 @@
+{
+  "generated_at": "2026-08-01T15:49:55",
+  "outcomes_accessed": false,
+  "window_days": 30,
+  "strict_filed_before_signal": true,
+  "transaction_definition": "nonDerivative transactionCode=P and A/D=A",
+  "documents": {
+    "candidates": 4353,
+    "parsed": 4353,
+    "missing": 0,
+    "invalid": 0
+  },
+  "purchases": {
+    "filings": 49,
+    "transactions": 126,
+    "symbols": 29,
+    "filings_by_year": {
+      "2016": 2,
+      "2017": 13,
+      "2018": 5,
+      "2019": 5,
+      "2020": 5,
+      "2021": 19
+    }
+  },
+  "periods": {
+    "fit": {
+      "active_rows": 4160,
+      "active_setups": 103,
+      "purchase_window_rows": 388,
+      "purchase_window_setups": 19,
+      "independent_purchase_filings": 20,
+      "membership_drops": 16
+    },
+    "calibration": {
+      "active_rows": 811,
+      "active_setups": 28,
+      "purchase_window_rows": 21,
+      "purchase_window_setups": 4,
+      "independent_purchase_filings": 4,
+      "membership_drops": 4
+    },
+    "internal_holdout": {
+      "active_rows": 6341,
+      "active_setups": 190,
+      "purchase_window_rows": 329,
+      "purchase_window_setups": 16,
+      "independent_purchase_filings": 25,
+      "membership_drops": 24
+    }
+  }
+}

@@ -1,0 +1,1967 @@
+{
+  "generated_at": "2026-08-01T16:21:46",
+  "family_spec": "backtests/prove_it_lifecycle_v2/frozen_spec.md",
+  "formal_validation_accessed": false,
+  "untouched_oos_accessed": false,
+  "period": [
+    "2020-01-01",
+    "2021-12-31"
+  ],
+  "period_role": "recycled discovery",
+  "coverage": {
+    "universe": 720,
+    "kept": 599,
+    "benchmark_present": true,
+    "coverage_pct": 91.31,
+    "per_year": {
+      "2016": 82.4,
+      "2017": 84.3,
+      "2018": 85.8,
+      "2019": 87.2,
+      "2020": 90.0,
+      "2021": 91.8,
+      "2022": 93.7,
+      "2023": 95.7,
+      "2024": 96.5,
+      "2025": 97.8,
+      "2026": 98.7
+    },
+    "dropped": [
+      [
+        "AMTM",
+        "only-60-bars-in-membership"
+      ],
+      [
+        "APC",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "BNY",
+        "only-27-bars-in-membership"
+      ],
+      [
+        "CASY",
+        "only-57-bars-in-membership"
+      ],
+      [
+        "CIEN",
+        "only-98-bars-in-membership"
+      ],
+      [
+        "COHR",
+        "only-69-bars-in-membership"
+      ],
+      [
+        "EMC",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "FDXF",
+        "only-21-bars-in-membership"
+      ],
+      [
+        "HOT",
+        "only-57-bars-in-membership"
+      ],
+      [
+        "INFO",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "LB",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "LITE",
+        "only-69-bars-in-membership"
+      ],
+      [
+        "SBNY",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "SE",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "SOLS",
+        "only-37-bars-in-membership"
+      ],
+      [
+        "SPLS",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "STI",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "TE",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "VEEV",
+        "only-37-bars-in-membership"
+      ],
+      [
+        "VRT",
+        "only-69-bars-in-membership"
+      ]
+    ]
+  },
+  "trials_before": 312,
+  "new_multiplicity_units": 3,
+  "trials_after": 315,
+  "membership_drops": {
+    "fit": 16,
+    "calibration": 4,
+    "discovery": 24
+  },
+  "model": {
+    "model_type": "linear",
+    "feature_names": [
+      "delay_60",
+      "close_pivot",
+      "close_stop",
+      "ret_1",
+      "ret_3",
+      "ret_5",
+      "ret_10",
+      "ret_20",
+      "sma10_dist",
+      "sma20_dist",
+      "drawdown_high10",
+      "clv",
+      "volume_ratio20",
+      "atr20",
+      "edge_rank_100"
+    ],
+    "ridge_lambda": 10.0,
+    "mean": [
+      0.44991437023197817,
+      0.09500305286440926,
+      0.17505222819353272,
+      0.0010155425047662704,
+      0.0036159393106573617,
+      0.0067698347715274,
+      0.01516461983480173,
+      0.03663287888860318,
+      0.005797958510783025,
+      0.014391077309968373,
+      -0.029972936226459957,
+      0.5089660089744459,
+      -0.010600682201409663,
+      0.02197198256364823,
+      0.42271438580101245
+    ],
+    "std": [
+      0.2930558305067747,
+      0.13262445123713562,
+      0.14237070675518113,
+      0.016073635554071798,
+      0.027793804870578486,
+      0.03570041375762462,
+      0.049275288015855324,
+      0.07276983800453383,
+      0.026052267799479552,
+      0.03760958260924665,
+      0.026652995946991012,
+      0.29929637552069593,
+      0.5501602311290585,
+      0.006267744048890497,
+      0.21088087737016928
+    ],
+    "intercept": -0.006645765490127458,
+    "coefficients": [
+      0.004993686242252215,
+      0.0027881539958030796,
+      0.0030965113793852187,
+      0.000437387334314252,
+      0.00023620254512665535,
+      0.00020187336473082877,
+      -0.0007087102193900004,
+      0.006455299403839784,
+      -0.002800428135472142,
+      -0.0010412960203336462,
+      -0.005338242152558479,
+      -0.0003654660621439536,
+      -0.0005710475860659646,
+      -0.005182396853887626,
+      -0.0016808078665756449
+    ],
+    "fit_rows": 4282,
+    "fit_setups": 103
+  },
+  "parameters": {
+    "entry_percentile": 70,
+    "entry_threshold": -0.0006904532035594502,
+    "reset_percentile": 50,
+    "reset_threshold": -0.006037286236044451,
+    "underwater_checkpoint_sessions": 5,
+    "cooldown_sessions": 5,
+    "max_attempts": 3
+  },
+  "discovery": {
+    "candidate_rows": 6341,
+    "signals": [
+      {
+        "symbol": "NLOK",
+        "sector": "Unknown",
+        "signal_date": "2020-02-12",
+        "fill_date": "2020-02-13",
+        "fill_idx": 532,
+        "edge_rank": 30.0,
+        "pattern_stop": 12.73,
+        "pivot": 13.43,
+        "attempt": 1,
+        "model_exit_idx": 550
+      },
+      {
+        "symbol": "TMUS",
+        "sector": "Unknown",
+        "signal_date": "2020-02-24",
+        "fill_date": "2020-02-25",
+        "fill_idx": 539,
+        "edge_rank": 46.7,
+        "pattern_stop": 75.7,
+        "pivot": 79.4,
+        "attempt": 1,
+        "model_exit_idx": 544
+      },
+      {
+        "symbol": "NRG",
+        "sector": "Unknown",
+        "signal_date": "2020-02-25",
+        "fill_date": "2020-02-26",
+        "fill_idx": 540,
+        "edge_rank": 30.0,
+        "pattern_stop": 30.13,
+        "pivot": 32.52,
+        "attempt": 1,
+        "model_exit_idx": 545
+      },
+      {
+        "symbol": "CCI",
+        "sector": "Unknown",
+        "signal_date": "2020-02-27",
+        "fill_date": "2020-02-28",
+        "fill_idx": 542,
+        "edge_rank": 80.0,
+        "pattern_stop": 97.39,
+        "pivot": 102.96,
+        "attempt": 1,
+        "model_exit_idx": 546
+      },
+      {
+        "symbol": "SPGI",
+        "sector": "Unknown",
+        "signal_date": "2020-02-27",
+        "fill_date": "2020-02-28",
+        "fill_idx": 542,
+        "edge_rank": 70.0,
+        "pattern_stop": 215.76,
+        "pivot": 228.94,
+        "attempt": 1,
+        "model_exit_idx": 544
+      },
+      {
+        "symbol": "CL",
+        "sector": "Unknown",
+        "signal_date": "2020-02-27",
+        "fill_date": "2020-02-28",
+        "fill_idx": 542,
+        "edge_rank": 43.3,
+        "pattern_stop": 58.82,
+        "pivot": 60.98,
+        "attempt": 1
+      },
+      {
+        "symbol": "CLX",
+        "sector": "Unknown",
+        "signal_date": "2020-04-23",
+        "fill_date": "2020-04-24",
+        "fill_idx": 581,
+        "edge_rank": 70.0,
+        "pattern_stop": 117.72,
+        "pivot": 125.17,
+        "attempt": 1,
+        "model_exit_idx": 586
+      },
+      {
+        "symbol": "CLX",
+        "sector": "Unknown",
+        "signal_date": "2020-04-23",
+        "fill_date": "2020-04-24",
+        "fill_idx": 581,
+        "edge_rank": 46.7,
+        "pattern_stop": 117.72,
+        "pivot": 125.17,
+        "attempt": 1,
+        "model_exit_idx": 586
+      },
+      {
+        "symbol": "MET",
+        "sector": "Unknown",
+        "signal_date": "2020-06-10",
+        "fill_date": "2020-06-11",
+        "fill_idx": 614,
+        "edge_rank": 100.0,
+        "pattern_stop": 21.8,
+        "pivot": 26.61,
+        "attempt": 1,
+        "model_exit_idx": 624
+      },
+      {
+        "symbol": "CAH",
+        "sector": "Unknown",
+        "signal_date": "2020-06-11",
+        "fill_date": "2020-06-12",
+        "fill_idx": 615,
+        "edge_rank": 30.0,
+        "pattern_stop": 43.19,
+        "pivot": 47.08,
+        "attempt": 1,
+        "model_exit_idx": 618
+      },
+      {
+        "symbol": "PKG",
+        "sector": "Unknown",
+        "signal_date": "2020-06-11",
+        "fill_date": "2020-06-12",
+        "fill_idx": 615,
+        "edge_rank": 30.0,
+        "pattern_stop": 80.41,
+        "pivot": 86.18,
+        "attempt": 1,
+        "model_exit_idx": 620
+      },
+      {
+        "symbol": "F",
+        "sector": "Unknown",
+        "signal_date": "2020-06-16",
+        "fill_date": "2020-06-17",
+        "fill_idx": 618,
+        "edge_rank": 30.0,
+        "pattern_stop": 3.5,
+        "pivot": 4.26,
+        "attempt": 1,
+        "model_exit_idx": 623
+      },
+      {
+        "symbol": "F",
+        "sector": "Unknown",
+        "signal_date": "2020-07-29",
+        "fill_date": "2020-07-30",
+        "fill_idx": 648,
+        "edge_rank": 30.0,
+        "pattern_stop": 3.5,
+        "pivot": 4.26,
+        "attempt": 2
+      },
+      {
+        "symbol": "SHW",
+        "sector": "Unknown",
+        "signal_date": "2020-08-10",
+        "fill_date": "2020-08-11",
+        "fill_idx": 656,
+        "edge_rank": 30.0,
+        "pattern_stop": 174.79,
+        "pivot": 187.89,
+        "attempt": 1
+      },
+      {
+        "symbol": "SWKS",
+        "sector": "Unknown",
+        "signal_date": "2020-08-21",
+        "fill_date": "2020-08-24",
+        "fill_idx": 665,
+        "edge_rank": 30.0,
+        "pattern_stop": 105.49,
+        "pivot": 114.01,
+        "attempt": 1,
+        "model_exit_idx": 670
+      },
+      {
+        "symbol": "SWKS",
+        "sector": "Unknown",
+        "signal_date": "2020-09-04",
+        "fill_date": "2020-09-08",
+        "fill_idx": 675,
+        "edge_rank": 30.0,
+        "pattern_stop": 105.49,
+        "pivot": 114.01,
+        "attempt": 2,
+        "model_exit_idx": 683
+      },
+      {
+        "symbol": "INTU",
+        "sector": "Unknown",
+        "signal_date": "2020-09-08",
+        "fill_date": "2020-09-09",
+        "fill_idx": 676,
+        "edge_rank": 35.0,
+        "pattern_stop": 286.06,
+        "pivot": 300.41,
+        "attempt": 1,
+        "model_exit_idx": 681
+      },
+      {
+        "symbol": "CRM",
+        "sector": "Unknown",
+        "signal_date": "2020-09-14",
+        "fill_date": "2020-09-15",
+        "fill_idx": 680,
+        "edge_rank": 70.0,
+        "pattern_stop": 188.46,
+        "pivot": 193.16,
+        "attempt": 1,
+        "model_exit_idx": 684
+      },
+      {
+        "symbol": "PLD",
+        "sector": "Unknown",
+        "signal_date": "2020-10-14",
+        "fill_date": "2020-10-15",
+        "fill_idx": 702,
+        "edge_rank": 30.0,
+        "pattern_stop": 77.92,
+        "pivot": 82.89,
+        "attempt": 1,
+        "model_exit_idx": 707
+      },
+      {
+        "symbol": "CRM",
+        "sector": "Unknown",
+        "signal_date": "2020-10-16",
+        "fill_date": "2020-10-19",
+        "fill_idx": 704,
+        "edge_rank": 70.0,
+        "pattern_stop": 188.46,
+        "pivot": 193.16,
+        "attempt": 2,
+        "model_exit_idx": 709
+      },
+      {
+        "symbol": "INTU",
+        "sector": "Unknown",
+        "signal_date": "2020-10-19",
+        "fill_date": "2020-10-20",
+        "fill_idx": 705,
+        "edge_rank": 35.0,
+        "pattern_stop": 286.06,
+        "pivot": 300.41,
+        "attempt": 2,
+        "model_exit_idx": 710
+      },
+      {
+        "symbol": "AVGO",
+        "sector": "Unknown",
+        "signal_date": "2020-10-19",
+        "fill_date": "2020-10-20",
+        "fill_idx": 705,
+        "edge_rank": 30.0,
+        "pattern_stop": 26.79,
+        "pivot": 28.56,
+        "attempt": 1,
+        "model_exit_idx": 710
+      },
+      {
+        "symbol": "COF",
+        "sector": "Unknown",
+        "signal_date": "2020-10-20",
+        "fill_date": "2020-10-21",
+        "fill_idx": 706,
+        "edge_rank": 30.0,
+        "pattern_stop": 57.41,
+        "pivot": 65.11,
+        "attempt": 1,
+        "model_exit_idx": 711
+      },
+      {
+        "symbol": "PPG",
+        "sector": "Unknown",
+        "signal_date": "2020-10-21",
+        "fill_date": "2020-10-22",
+        "fill_idx": 707,
+        "edge_rank": 30.0,
+        "pattern_stop": 104.6,
+        "pivot": 110.22,
+        "attempt": 1,
+        "model_exit_idx": 712
+      },
+      {
+        "symbol": "ALGN",
+        "sector": "Unknown",
+        "signal_date": "2020-10-27",
+        "fill_date": "2020-10-28",
+        "fill_idx": 711,
+        "edge_rank": 85.0,
+        "pattern_stop": 289.52,
+        "pivot": 316.28,
+        "attempt": 1
+      },
+      {
+        "symbol": "EMN",
+        "sector": "Unknown",
+        "signal_date": "2020-10-27",
+        "fill_date": "2020-10-28",
+        "fill_idx": 711,
+        "edge_rank": 80.0,
+        "pattern_stop": 56.98,
+        "pivot": 61.8,
+        "attempt": 1,
+        "model_exit_idx": 716
+      },
+      {
+        "symbol": "AVY",
+        "sector": "Unknown",
+        "signal_date": "2020-10-27",
+        "fill_date": "2020-10-28",
+        "fill_idx": 711,
+        "edge_rank": 66.7,
+        "pattern_stop": 98.58,
+        "pivot": 108.05,
+        "attempt": 1
+      },
+      {
+        "symbol": "TPR",
+        "sector": "Unknown",
+        "signal_date": "2020-11-10",
+        "fill_date": "2020-11-11",
+        "fill_idx": 721,
+        "edge_rank": 30.0,
+        "pattern_stop": 13.38,
+        "pivot": 16.34,
+        "attempt": 1
+      },
+      {
+        "symbol": "PPG",
+        "sector": "Unknown",
+        "signal_date": "2020-11-12",
+        "fill_date": "2020-11-13",
+        "fill_idx": 723,
+        "edge_rank": 30.0,
+        "pattern_stop": 104.6,
+        "pivot": 110.22,
+        "attempt": 2
+      },
+      {
+        "symbol": "INTU",
+        "sector": "Unknown",
+        "signal_date": "2020-11-18",
+        "fill_date": "2020-11-19",
+        "fill_idx": 727,
+        "edge_rank": 35.0,
+        "pattern_stop": 286.06,
+        "pivot": 300.41,
+        "attempt": 3,
+        "model_exit_idx": 732
+      },
+      {
+        "symbol": "COF",
+        "sector": "Unknown",
+        "signal_date": "2020-11-18",
+        "fill_date": "2020-11-19",
+        "fill_idx": 727,
+        "edge_rank": 30.0,
+        "pattern_stop": 57.41,
+        "pivot": 65.11,
+        "attempt": 2
+      },
+      {
+        "symbol": "ZBRA",
+        "sector": "Unknown",
+        "signal_date": "2020-11-18",
+        "fill_date": "2020-11-19",
+        "fill_idx": 727,
+        "edge_rank": 30.0,
+        "pattern_stop": 281.02,
+        "pivot": 304.57,
+        "attempt": 1,
+        "model_exit_idx": 728
+      },
+      {
+        "symbol": "EMN",
+        "sector": "Unknown",
+        "signal_date": "2020-11-24",
+        "fill_date": "2020-11-25",
+        "fill_idx": 731,
+        "edge_rank": 80.0,
+        "pattern_stop": 56.98,
+        "pivot": 61.8,
+        "attempt": 2,
+        "model_exit_idx": 736
+      },
+      {
+        "symbol": "DVA",
+        "sector": "Unknown",
+        "signal_date": "2020-11-24",
+        "fill_date": "2020-11-25",
+        "fill_idx": 731,
+        "edge_rank": 30.0,
+        "pattern_stop": 84.14,
+        "pivot": 91.7,
+        "attempt": 1,
+        "model_exit_idx": 736
+      },
+      {
+        "symbol": "CRM",
+        "sector": "Unknown",
+        "signal_date": "2020-11-25",
+        "fill_date": "2020-11-27",
+        "fill_idx": 732,
+        "edge_rank": 70.0,
+        "pattern_stop": 188.46,
+        "pivot": 193.16,
+        "attempt": 3,
+        "model_exit_idx": 737
+      },
+      {
+        "symbol": "AVGO",
+        "sector": "Unknown",
+        "signal_date": "2020-11-25",
+        "fill_date": "2020-11-27",
+        "fill_idx": 732,
+        "edge_rank": 30.0,
+        "pattern_stop": 26.79,
+        "pivot": 28.56,
+        "attempt": 2
+      },
+      {
+        "symbol": "ZBRA",
+        "sector": "Unknown",
+        "signal_date": "2020-11-25",
+        "fill_date": "2020-11-27",
+        "fill_idx": 732,
+        "edge_rank": 30.0,
+        "pattern_stop": 281.02,
+        "pivot": 304.57,
+        "attempt": 2,
+        "model_exit_idx": 737
+      },
+      {
+        "symbol": "ABC",
+        "sector": "Unknown",
+        "signal_date": "2020-11-27",
+        "fill_date": "2020-11-30",
+        "fill_idx": 733,
+        "edge_rank": 100.0,
+        "pattern_stop": 81.19,
+        "pivot": 87.72,
+        "attempt": 1,
+        "model_exit_idx": 735
+      },
+      {
+        "symbol": "TER",
+        "sector": "Unknown",
+        "signal_date": "2020-12-01",
+        "fill_date": "2020-12-02",
+        "fill_idx": 552,
+        "edge_rank": 70.0,
+        "pattern_stop": 83.16,
+        "pivot": 91.15,
+        "attempt": 1,
+        "model_exit_idx": 556
+      },
+      {
+        "symbol": "KEY",
+        "sector": "Unknown",
+        "signal_date": "2020-12-03",
+        "fill_date": "2020-12-04",
+        "fill_idx": 737,
+        "edge_rank": 33.3,
+        "pattern_stop": 8.9,
+        "pivot": 10.15,
+        "attempt": 1,
+        "model_exit_idx": 740
+      },
+      {
+        "symbol": "TER",
+        "sector": "Unknown",
+        "signal_date": "2020-12-09",
+        "fill_date": "2020-12-10",
+        "fill_idx": 558,
+        "edge_rank": 70.0,
+        "pattern_stop": 83.16,
+        "pivot": 91.15,
+        "attempt": 2
+      },
+      {
+        "symbol": "QRVO",
+        "sector": "Unknown",
+        "signal_date": "2020-12-09",
+        "fill_date": "2020-12-10",
+        "fill_idx": 741,
+        "edge_rank": 30.0,
+        "pattern_stop": 124.56,
+        "pivot": 140.69,
+        "attempt": 1,
+        "model_exit_idx": 746
+      },
+      {
+        "symbol": "CFG",
+        "sector": "Unknown",
+        "signal_date": "2020-12-11",
+        "fill_date": "2020-12-14",
+        "fill_idx": 743,
+        "edge_rank": 30.0,
+        "pattern_stop": 20.36,
+        "pivot": 22.55,
+        "attempt": 1,
+        "model_exit_idx": 748
+      },
+      {
+        "symbol": "ZBRA",
+        "sector": "Unknown",
+        "signal_date": "2020-12-16",
+        "fill_date": "2020-12-17",
+        "fill_idx": 746,
+        "edge_rank": 30.0,
+        "pattern_stop": 281.02,
+        "pivot": 304.57,
+        "attempt": 3
+      },
+      {
+        "symbol": "HSIC",
+        "sector": "Unknown",
+        "signal_date": "2020-12-18",
+        "fill_date": "2020-12-21",
+        "fill_idx": 748,
+        "edge_rank": 30.0,
+        "pattern_stop": 59.44,
+        "pivot": 68.19,
+        "attempt": 1,
+        "model_exit_idx": 753
+      },
+      {
+        "symbol": "DVA",
+        "sector": "Unknown",
+        "signal_date": "2020-12-24",
+        "fill_date": "2020-12-28",
+        "fill_idx": 752,
+        "edge_rank": 30.0,
+        "pattern_stop": 84.14,
+        "pivot": 91.7,
+        "attempt": 2
+      },
+      {
+        "symbol": "ACN",
+        "sector": "Unknown",
+        "signal_date": "2020-12-29",
+        "fill_date": "2020-12-30",
+        "fill_idx": 754,
+        "edge_rank": 70.0,
+        "pattern_stop": 193.75,
+        "pivot": 214.05,
+        "attempt": 1,
+        "model_exit_idx": 760
+      },
+      {
+        "symbol": "KEY",
+        "sector": "Unknown",
+        "signal_date": "2020-12-29",
+        "fill_date": "2020-12-30",
+        "fill_idx": 754,
+        "edge_rank": 33.3,
+        "pattern_stop": 8.9,
+        "pivot": 10.15,
+        "attempt": 2
+      },
+      {
+        "symbol": "QRVO",
+        "sector": "Unknown",
+        "signal_date": "2021-01-11",
+        "fill_date": "2021-01-12",
+        "fill_idx": 762,
+        "edge_rank": 30.0,
+        "pattern_stop": 124.56,
+        "pivot": 140.69,
+        "attempt": 2
+      },
+      {
+        "symbol": "ACN",
+        "sector": "Unknown",
+        "signal_date": "2021-01-12",
+        "fill_date": "2021-01-13",
+        "fill_idx": 763,
+        "edge_rank": 70.0,
+        "pattern_stop": 193.75,
+        "pivot": 214.05,
+        "attempt": 2
+      },
+      {
+        "symbol": "WAT",
+        "sector": "Unknown",
+        "signal_date": "2021-01-13",
+        "fill_date": "2021-01-14",
+        "fill_idx": 764,
+        "edge_rank": 56.7,
+        "pattern_stop": 212.85,
+        "pivot": 229.92,
+        "attempt": 1
+      },
+      {
+        "symbol": "DD",
+        "sector": "Unknown",
+        "signal_date": "2021-01-13",
+        "fill_date": "2021-01-14",
+        "fill_idx": 764,
+        "edge_rank": 30.0,
+        "pattern_stop": 62.19,
+        "pivot": 67.79,
+        "attempt": 1,
+        "model_exit_idx": 769
+      },
+      {
+        "symbol": "WAT",
+        "sector": "Unknown",
+        "signal_date": "2021-01-14",
+        "fill_date": "2021-01-15",
+        "fill_idx": 765,
+        "edge_rank": 70.0,
+        "pattern_stop": 212.85,
+        "pivot": 229.92,
+        "attempt": 1
+      },
+      {
+        "symbol": "MA",
+        "sector": "Unknown",
+        "signal_date": "2021-01-14",
+        "fill_date": "2021-01-15",
+        "fill_idx": 765,
+        "edge_rank": 30.0,
+        "pattern_stop": 312.45,
+        "pivot": 345.34,
+        "attempt": 1,
+        "model_exit_idx": 768
+      },
+      {
+        "symbol": "HSIC",
+        "sector": "Unknown",
+        "signal_date": "2021-01-19",
+        "fill_date": "2021-01-20",
+        "fill_idx": 767,
+        "edge_rank": 30.0,
+        "pattern_stop": 59.44,
+        "pivot": 68.19,
+        "attempt": 2,
+        "model_exit_idx": 772
+      },
+      {
+        "symbol": "LRCX",
+        "sector": "Unknown",
+        "signal_date": "2021-01-20",
+        "fill_date": "2021-01-21",
+        "fill_idx": 768,
+        "edge_rank": 30.0,
+        "pattern_stop": 31.42,
+        "pivot": 36.01,
+        "attempt": 1,
+        "model_exit_idx": 773
+      },
+      {
+        "symbol": "EOG",
+        "sector": "Unknown",
+        "signal_date": "2021-01-21",
+        "fill_date": "2021-01-22",
+        "fill_idx": 769,
+        "edge_rank": 30.0,
+        "pattern_stop": 34.8,
+        "pivot": 38.7,
+        "attempt": 1,
+        "model_exit_idx": 778
+      },
+      {
+        "symbol": "EOG",
+        "sector": "Unknown",
+        "signal_date": "2021-01-22",
+        "fill_date": "2021-01-25",
+        "fill_idx": 770,
+        "edge_rank": 100.0,
+        "pattern_stop": 34.8,
+        "pivot": 38.7,
+        "attempt": 1,
+        "model_exit_idx": 775
+      },
+      {
+        "symbol": "APA",
+        "sector": "Unknown",
+        "signal_date": "2021-01-22",
+        "fill_date": "2021-01-25",
+        "fill_idx": 770,
+        "edge_rank": 30.0,
+        "pattern_stop": 11.32,
+        "pivot": 12.97,
+        "attempt": 1,
+        "model_exit_idx": 775
+      },
+      {
+        "symbol": "LRCX",
+        "sector": "Unknown",
+        "signal_date": "2021-01-25",
+        "fill_date": "2021-01-26",
+        "fill_idx": 771,
+        "edge_rank": 30.0,
+        "pattern_stop": 31.42,
+        "pivot": 36.01,
+        "attempt": 1,
+        "model_exit_idx": 776
+      },
+      {
+        "symbol": "JNJ",
+        "sector": "Unknown",
+        "signal_date": "2021-01-27",
+        "fill_date": "2021-01-28",
+        "fill_idx": 773,
+        "edge_rank": 30.0,
+        "pattern_stop": 122.58,
+        "pivot": 128.93,
+        "attempt": 1,
+        "model_exit_idx": 778
+      },
+      {
+        "symbol": "LLY",
+        "sector": "Unknown",
+        "signal_date": "2021-01-27",
+        "fill_date": "2021-01-28",
+        "fill_idx": 773,
+        "edge_rank": 30.0,
+        "pattern_stop": 137.86,
+        "pivot": 147.47,
+        "attempt": 1,
+        "model_exit_idx": 778
+      },
+      {
+        "symbol": "LRCX",
+        "sector": "Unknown",
+        "signal_date": "2021-01-27",
+        "fill_date": "2021-01-28",
+        "fill_idx": 773,
+        "edge_rank": 30.0,
+        "pattern_stop": 31.42,
+        "pivot": 36.01,
+        "attempt": 1,
+        "model_exit_idx": 778
+      },
+      {
+        "symbol": "INTU",
+        "sector": "Unknown",
+        "signal_date": "2021-01-29",
+        "fill_date": "2021-02-01",
+        "fill_idx": 775,
+        "edge_rank": 90.0,
+        "pattern_stop": 299.6,
+        "pivot": 339.86,
+        "attempt": 1,
+        "model_exit_idx": 777
+      },
+      {
+        "symbol": "AMGN",
+        "sector": "Unknown",
+        "signal_date": "2021-01-29",
+        "fill_date": "2021-02-01",
+        "fill_idx": 775,
+        "edge_rank": 50.0,
+        "pattern_stop": 184.35,
+        "pivot": 205.62,
+        "attempt": 1,
+        "model_exit_idx": 780
+      },
+      {
+        "symbol": "AMAT",
+        "sector": "Unknown",
+        "signal_date": "2021-02-05",
+        "fill_date": "2021-02-08",
+        "fill_idx": 780,
+        "edge_rank": 70.0,
+        "pattern_stop": 54.17,
+        "pivot": 62.31,
+        "attempt": 1,
+        "model_exit_idx": 782
+      },
+      {
+        "symbol": "ILMN",
+        "sector": "Unknown",
+        "signal_date": "2021-02-12",
+        "fill_date": "2021-02-16",
+        "fill_idx": 785,
+        "edge_rank": 30.0,
+        "pattern_stop": 280.17,
+        "pivot": 346.3,
+        "attempt": 1,
+        "model_exit_idx": 790
+      },
+      {
+        "symbol": "AMAT",
+        "sector": "Unknown",
+        "signal_date": "2021-02-16",
+        "fill_date": "2021-02-17",
+        "fill_idx": 786,
+        "edge_rank": 70.0,
+        "pattern_stop": 54.17,
+        "pivot": 62.31,
+        "attempt": 2,
+        "model_exit_idx": 791
+      },
+      {
+        "symbol": "AMAT",
+        "sector": "Unknown",
+        "signal_date": "2021-02-16",
+        "fill_date": "2021-02-17",
+        "fill_idx": 786,
+        "edge_rank": 30.0,
+        "pattern_stop": 54.17,
+        "pivot": 62.31,
+        "attempt": 1,
+        "model_exit_idx": 791
+      },
+      {
+        "symbol": "EOG",
+        "sector": "Unknown",
+        "signal_date": "2021-02-24",
+        "fill_date": "2021-02-25",
+        "fill_idx": 792,
+        "edge_rank": 100.0,
+        "pattern_stop": 34.8,
+        "pivot": 38.7,
+        "attempt": 2,
+        "model_exit_idx": 797
+      },
+      {
+        "symbol": "EOG",
+        "sector": "Unknown",
+        "signal_date": "2021-02-24",
+        "fill_date": "2021-02-25",
+        "fill_idx": 792,
+        "edge_rank": 30.0,
+        "pattern_stop": 34.8,
+        "pivot": 38.7,
+        "attempt": 2,
+        "model_exit_idx": 797
+      },
+      {
+        "symbol": "ALGN",
+        "sector": "Unknown",
+        "signal_date": "2021-02-25",
+        "fill_date": "2021-02-26",
+        "fill_idx": 793,
+        "edge_rank": 85.0,
+        "pattern_stop": 498.26,
+        "pivot": 524.88,
+        "attempt": 1,
+        "model_exit_idx": 798
+      },
+      {
+        "symbol": "APA",
+        "sector": "Unknown",
+        "signal_date": "2021-02-25",
+        "fill_date": "2021-02-26",
+        "fill_idx": 793,
+        "edge_rank": 30.0,
+        "pattern_stop": 11.32,
+        "pivot": 12.97,
+        "attempt": 2
+      },
+      {
+        "symbol": "LRCX",
+        "sector": "Unknown",
+        "signal_date": "2021-02-25",
+        "fill_date": "2021-02-26",
+        "fill_idx": 793,
+        "edge_rank": 30.0,
+        "pattern_stop": 31.42,
+        "pivot": 36.01,
+        "attempt": 2,
+        "model_exit_idx": 798
+      },
+      {
+        "symbol": "LRCX",
+        "sector": "Unknown",
+        "signal_date": "2021-02-25",
+        "fill_date": "2021-02-26",
+        "fill_idx": 793,
+        "edge_rank": 30.0,
+        "pattern_stop": 31.42,
+        "pivot": 36.01,
+        "attempt": 2,
+        "model_exit_idx": 798
+      },
+      {
+        "symbol": "LRCX",
+        "sector": "Unknown",
+        "signal_date": "2021-02-25",
+        "fill_date": "2021-02-26",
+        "fill_idx": 793,
+        "edge_rank": 30.0,
+        "pattern_stop": 31.42,
+        "pivot": 36.01,
+        "attempt": 2,
+        "model_exit_idx": 798
+      },
+      {
+        "symbol": "LRCX",
+        "sector": "Unknown",
+        "signal_date": "2021-02-25",
+        "fill_date": "2021-02-26",
+        "fill_idx": 793,
+        "edge_rank": 30.0,
+        "pattern_stop": 31.42,
+        "pivot": 36.01,
+        "attempt": 1,
+        "model_exit_idx": 798
+      },
+      {
+        "symbol": "FE",
+        "sector": "Unknown",
+        "signal_date": "2021-02-26",
+        "fill_date": "2021-03-01",
+        "fill_idx": 794,
+        "edge_rank": 30.0,
+        "pattern_stop": 23.28,
+        "pivot": 25.28,
+        "attempt": 1,
+        "model_exit_idx": 799
+      },
+      {
+        "symbol": "LLY",
+        "sector": "Unknown",
+        "signal_date": "2021-03-02",
+        "fill_date": "2021-03-03",
+        "fill_idx": 796,
+        "edge_rank": 30.0,
+        "pattern_stop": 137.86,
+        "pivot": 147.47,
+        "attempt": 2,
+        "model_exit_idx": 815
+      },
+      {
+        "symbol": "DD",
+        "sector": "Unknown",
+        "signal_date": "2021-03-15",
+        "fill_date": "2021-03-16",
+        "fill_idx": 805,
+        "edge_rank": 30.0,
+        "pattern_stop": 62.19,
+        "pivot": 67.79,
+        "attempt": 2
+      },
+      {
+        "symbol": "FE",
+        "sector": "Unknown",
+        "signal_date": "2021-03-16",
+        "fill_date": "2021-03-17",
+        "fill_idx": 806,
+        "edge_rank": 30.0,
+        "pattern_stop": 23.28,
+        "pivot": 25.28,
+        "attempt": 2,
+        "model_exit_idx": 811
+      },
+      {
+        "symbol": "ORCL",
+        "sector": "Unknown",
+        "signal_date": "2021-03-17",
+        "fill_date": "2021-03-18",
+        "fill_idx": 807,
+        "edge_rank": 77.5,
+        "pattern_stop": 51.33,
+        "pivot": 54.58,
+        "attempt": 1,
+        "model_exit_idx": 812
+      },
+      {
+        "symbol": "NRG",
+        "sector": "Unknown",
+        "signal_date": "2021-03-22",
+        "fill_date": "2021-03-23",
+        "fill_idx": 810,
+        "edge_rank": 70.0,
+        "pattern_stop": 26.01,
+        "pivot": 29.25,
+        "attempt": 1,
+        "model_exit_idx": 815
+      },
+      {
+        "symbol": "TSN",
+        "sector": "Unknown",
+        "signal_date": "2021-03-22",
+        "fill_date": "2021-03-23",
+        "fill_idx": 810,
+        "edge_rank": 30.0,
+        "pattern_stop": 52.92,
+        "pivot": 57.04,
+        "attempt": 1
+      },
+      {
+        "symbol": "AMAT",
+        "sector": "Unknown",
+        "signal_date": "2021-03-23",
+        "fill_date": "2021-03-24",
+        "fill_idx": 811,
+        "edge_rank": 70.0,
+        "pattern_stop": 54.17,
+        "pivot": 62.31,
+        "attempt": 3
+      },
+      {
+        "symbol": "AMGN",
+        "sector": "Unknown",
+        "signal_date": "2021-03-30",
+        "fill_date": "2021-03-31",
+        "fill_idx": 816,
+        "edge_rank": 50.0,
+        "pattern_stop": 184.35,
+        "pivot": 205.62,
+        "attempt": 2,
+        "model_exit_idx": 821
+      },
+      {
+        "symbol": "LRCX",
+        "sector": "Unknown",
+        "signal_date": "2021-04-01",
+        "fill_date": "2021-04-05",
+        "fill_idx": 818,
+        "edge_rank": 30.0,
+        "pattern_stop": 31.42,
+        "pivot": 36.01,
+        "attempt": 3
+      },
+      {
+        "symbol": "LRCX",
+        "sector": "Unknown",
+        "signal_date": "2021-04-01",
+        "fill_date": "2021-04-05",
+        "fill_idx": 818,
+        "edge_rank": 30.0,
+        "pattern_stop": 31.42,
+        "pivot": 36.01,
+        "attempt": 3
+      },
+      {
+        "symbol": "LRCX",
+        "sector": "Unknown",
+        "signal_date": "2021-04-01",
+        "fill_date": "2021-04-05",
+        "fill_idx": 818,
+        "edge_rank": 30.0,
+        "pattern_stop": 31.42,
+        "pivot": 36.01,
+        "attempt": 3
+      },
+      {
+        "symbol": "LRCX",
+        "sector": "Unknown",
+        "signal_date": "2021-04-01",
+        "fill_date": "2021-04-05",
+        "fill_idx": 818,
+        "edge_rank": 30.0,
+        "pattern_stop": 31.42,
+        "pivot": 36.01,
+        "attempt": 2
+      },
+      {
+        "symbol": "WMB",
+        "sector": "Unknown",
+        "signal_date": "2021-04-12",
+        "fill_date": "2021-04-13",
+        "fill_idx": 824,
+        "edge_rank": 30.0,
+        "pattern_stop": 16.26,
+        "pivot": 17.63,
+        "attempt": 1
+      },
+      {
+        "symbol": "ORCL",
+        "sector": "Unknown",
+        "signal_date": "2021-04-13",
+        "fill_date": "2021-04-14",
+        "fill_idx": 825,
+        "edge_rank": 77.5,
+        "pattern_stop": 51.33,
+        "pivot": 54.58,
+        "attempt": 2
+      },
+      {
+        "symbol": "IQV",
+        "sector": "Unknown",
+        "signal_date": "2021-04-16",
+        "fill_date": "2021-04-19",
+        "fill_idx": 828,
+        "edge_rank": 30.0,
+        "pattern_stop": 185.38,
+        "pivot": 199.99,
+        "attempt": 1
+      },
+      {
+        "symbol": "NRG",
+        "sector": "Unknown",
+        "signal_date": "2021-04-20",
+        "fill_date": "2021-04-21",
+        "fill_idx": 830,
+        "edge_rank": 70.0,
+        "pattern_stop": 26.01,
+        "pivot": 29.25,
+        "attempt": 2,
+        "model_exit_idx": 835
+      },
+      {
+        "symbol": "V",
+        "sector": "Unknown",
+        "signal_date": "2021-04-20",
+        "fill_date": "2021-04-21",
+        "fill_idx": 830,
+        "edge_rank": 30.0,
+        "pattern_stop": 195.37,
+        "pivot": 203.53,
+        "attempt": 1
+      },
+      {
+        "symbol": "SJM",
+        "sector": "Unknown",
+        "signal_date": "2021-04-22",
+        "fill_date": "2021-04-23",
+        "fill_idx": 832,
+        "edge_rank": 65.0,
+        "pattern_stop": 92.7,
+        "pivot": 99.62,
+        "attempt": 1
+      },
+      {
+        "symbol": "RE",
+        "sector": "Unknown",
+        "signal_date": "2021-04-22",
+        "fill_date": "2021-04-23",
+        "fill_idx": 832,
+        "edge_rank": 30.0,
+        "pattern_stop": 212.92,
+        "pivot": 222.21,
+        "attempt": 1
+      },
+      {
+        "symbol": "AES",
+        "sector": "Unknown",
+        "signal_date": "2021-04-27",
+        "fill_date": "2021-04-28",
+        "fill_idx": 835,
+        "edge_rank": 42.5,
+        "pattern_stop": 20.63,
+        "pivot": 23.48,
+        "attempt": 1,
+        "model_exit_idx": 840
+      },
+      {
+        "symbol": "MA",
+        "sector": "Unknown",
+        "signal_date": "2021-04-28",
+        "fill_date": "2021-04-29",
+        "fill_idx": 836,
+        "edge_rank": 70.0,
+        "pattern_stop": 318.43,
+        "pivot": 338.6,
+        "attempt": 1,
+        "model_exit_idx": 841
+      },
+      {
+        "symbol": "AMGN",
+        "sector": "Unknown",
+        "signal_date": "2021-04-28",
+        "fill_date": "2021-04-29",
+        "fill_idx": 836,
+        "edge_rank": 30.0,
+        "pattern_stop": 185.33,
+        "pivot": 195.53,
+        "attempt": 1,
+        "model_exit_idx": 842
+      },
+      {
+        "symbol": "ILMN",
+        "sector": "Unknown",
+        "signal_date": "2021-04-28",
+        "fill_date": "2021-04-29",
+        "fill_idx": 836,
+        "edge_rank": 30.0,
+        "pattern_stop": 280.17,
+        "pivot": 346.3,
+        "attempt": 2,
+        "model_exit_idx": 841
+      },
+      {
+        "symbol": "MA",
+        "sector": "Unknown",
+        "signal_date": "2021-04-29",
+        "fill_date": "2021-04-30",
+        "fill_idx": 837,
+        "edge_rank": 30.0,
+        "pattern_stop": 333.84,
+        "pivot": 357.2,
+        "attempt": 1,
+        "model_exit_idx": 842
+      },
+      {
+        "symbol": "GPN",
+        "sector": "Unknown",
+        "signal_date": "2021-05-03",
+        "fill_date": "2021-05-04",
+        "fill_idx": 839,
+        "edge_rank": 70.0,
+        "pattern_stop": 181.17,
+        "pivot": 196.64,
+        "attempt": 1,
+        "model_exit_idx": 844
+      },
+      {
+        "symbol": "EFX",
+        "sector": "Unknown",
+        "signal_date": "2021-05-04",
+        "fill_date": "2021-05-05",
+        "fill_idx": 840,
+        "edge_rank": 30.0,
+        "pattern_stop": 162.83,
+        "pivot": 171.07,
+        "attempt": 1
+      },
+      {
+        "symbol": "KMX",
+        "sector": "Unknown",
+        "signal_date": "2021-05-07",
+        "fill_date": "2021-05-10",
+        "fill_idx": 843,
+        "edge_rank": 50.0,
+        "pattern_stop": 117.3,
+        "pivot": 124.19,
+        "attempt": 1,
+        "model_exit_idx": 848
+      },
+      {
+        "symbol": "HCA",
+        "sector": "Unknown",
+        "signal_date": "2021-05-11",
+        "fill_date": "2021-05-12",
+        "fill_idx": 845,
+        "edge_rank": 100.0,
+        "pattern_stop": 162.36,
+        "pivot": 172.74,
+        "attempt": 1,
+        "model_exit_idx": 850
+      },
+      {
+        "symbol": "PH",
+        "sector": "Unknown",
+        "signal_date": "2021-05-12",
+        "fill_date": "2021-05-13",
+        "fill_idx": 846,
+        "edge_rank": 100.0,
+        "pattern_stop": 249.26,
+        "pivot": 268.16,
+        "attempt": 1
+      },
+      {
+        "symbol": "PH",
+        "sector": "Unknown",
+        "signal_date": "2021-05-12",
+        "fill_date": "2021-05-13",
+        "fill_idx": 846,
+        "edge_rank": 67.5,
+        "pattern_stop": 248.83,
+        "pivot": 268.16,
+        "attempt": 1,
+        "model_exit_idx": 848
+      },
+      {
+        "symbol": "WMB",
+        "sector": "Unknown",
+        "signal_date": "2021-05-12",
+        "fill_date": "2021-05-13",
+        "fill_idx": 846,
+        "edge_rank": 67.5,
+        "pattern_stop": 16.22,
+        "pivot": 17.63,
+        "attempt": 1
+      },
+      {
+        "symbol": "CF",
+        "sector": "Unknown",
+        "signal_date": "2021-05-18",
+        "fill_date": "2021-05-19",
+        "fill_idx": 850,
+        "edge_rank": 35.0,
+        "pattern_stop": 39.31,
+        "pivot": 43.72,
+        "attempt": 1,
+        "model_exit_idx": 855
+      },
+      {
+        "symbol": "PH",
+        "sector": "Unknown",
+        "signal_date": "2021-05-19",
+        "fill_date": "2021-05-20",
+        "fill_idx": 851,
+        "edge_rank": 67.5,
+        "pattern_stop": 248.83,
+        "pivot": 268.16,
+        "attempt": 2,
+        "model_exit_idx": 856
+      },
+      {
+        "symbol": "NWL",
+        "sector": "Unknown",
+        "signal_date": "2021-05-20",
+        "fill_date": "2021-05-21",
+        "fill_idx": 852,
+        "edge_rank": 70.0,
+        "pattern_stop": 19.36,
+        "pivot": 20.89,
+        "attempt": 1,
+        "model_exit_idx": 857
+      },
+      {
+        "symbol": "AMGN",
+        "sector": "Unknown",
+        "signal_date": "2021-05-26",
+        "fill_date": "2021-05-27",
+        "fill_idx": 856,
+        "edge_rank": 30.0,
+        "pattern_stop": 185.33,
+        "pivot": 195.53,
+        "attempt": 2,
+        "model_exit_idx": 861
+      },
+      {
+        "symbol": "NWL",
+        "sector": "Unknown",
+        "signal_date": "2021-06-10",
+        "fill_date": "2021-06-11",
+        "fill_idx": 866,
+        "edge_rank": 70.0,
+        "pattern_stop": 19.36,
+        "pivot": 20.89,
+        "attempt": 2,
+        "model_exit_idx": 871
+      },
+      {
+        "symbol": "GS",
+        "sector": "Unknown",
+        "signal_date": "2021-06-17",
+        "fill_date": "2021-06-18",
+        "fill_idx": 871,
+        "edge_rank": 70.0,
+        "pattern_stop": 289.21,
+        "pivot": 304.14,
+        "attempt": 1,
+        "model_exit_idx": 876
+      },
+      {
+        "symbol": "REGN",
+        "sector": "Unknown",
+        "signal_date": "2021-07-12",
+        "fill_date": "2021-07-13",
+        "fill_idx": 887,
+        "edge_rank": 30.0,
+        "pattern_stop": 466.92,
+        "pivot": 502.84,
+        "attempt": 1
+      },
+      {
+        "symbol": "GS",
+        "sector": "Unknown",
+        "signal_date": "2021-07-19",
+        "fill_date": "2021-07-20",
+        "fill_idx": 892,
+        "edge_rank": 70.0,
+        "pattern_stop": 289.21,
+        "pivot": 304.14,
+        "attempt": 2,
+        "model_exit_idx": 894
+      },
+      {
+        "symbol": "AEP",
+        "sector": "Unknown",
+        "signal_date": "2021-07-19",
+        "fill_date": "2021-07-20",
+        "fill_idx": 892,
+        "edge_rank": 30.0,
+        "pattern_stop": 67.16,
+        "pivot": 70.77,
+        "attempt": 1
+      },
+      {
+        "symbol": "TJX",
+        "sector": "Unknown",
+        "signal_date": "2021-07-19",
+        "fill_date": "2021-07-20",
+        "fill_idx": 892,
+        "edge_rank": 30.0,
+        "pattern_stop": 58.74,
+        "pivot": 63.04,
+        "attempt": 1,
+        "model_exit_idx": 896
+      },
+      {
+        "symbol": "CAH",
+        "sector": "Unknown",
+        "signal_date": "2021-08-04",
+        "fill_date": "2021-08-05",
+        "fill_idx": 904,
+        "edge_rank": 30.0,
+        "pattern_stop": 49.12,
+        "pivot": 52.92,
+        "attempt": 1,
+        "model_exit_idx": 909
+      },
+      {
+        "symbol": "GS",
+        "sector": "Unknown",
+        "signal_date": "2021-08-12",
+        "fill_date": "2021-08-13",
+        "fill_idx": 910,
+        "edge_rank": 70.0,
+        "pattern_stop": 289.21,
+        "pivot": 304.14,
+        "attempt": 3,
+        "model_exit_idx": 915
+      },
+      {
+        "symbol": "EW",
+        "sector": "Unknown",
+        "signal_date": "2021-08-27",
+        "fill_date": "2021-08-30",
+        "fill_idx": 921,
+        "edge_rank": 30.0,
+        "pattern_stop": 92.59,
+        "pivot": 97.28,
+        "attempt": 1,
+        "model_exit_idx": 954
+      },
+      {
+        "symbol": "COF",
+        "sector": "Unknown",
+        "signal_date": "2021-08-30",
+        "fill_date": "2021-08-31",
+        "fill_idx": 922,
+        "edge_rank": 30.0,
+        "pattern_stop": 136.33,
+        "pivot": 147.78,
+        "attempt": 1,
+        "model_exit_idx": 927
+      },
+      {
+        "symbol": "BLL",
+        "sector": "Unknown",
+        "signal_date": "2021-09-01",
+        "fill_date": "2021-09-02",
+        "fill_idx": 924,
+        "edge_rank": 30.0,
+        "pattern_stop": 75.91,
+        "pivot": 81.01,
+        "attempt": 1,
+        "model_exit_idx": 929
+      },
+      {
+        "symbol": "PWR",
+        "sector": "Unknown",
+        "signal_date": "2021-09-13",
+        "fill_date": "2021-09-14",
+        "fill_idx": 931,
+        "edge_rank": 100.0,
+        "pattern_stop": 84.39,
+        "pivot": 92.35,
+        "attempt": 1
+      },
+      {
+        "symbol": "KMB",
+        "sector": "Unknown",
+        "signal_date": "2021-09-16",
+        "fill_date": "2021-09-17",
+        "fill_idx": 934,
+        "edge_rank": 30.0,
+        "pattern_stop": 106.08,
+        "pivot": 112.89,
+        "attempt": 1,
+        "model_exit_idx": 939
+      },
+      {
+        "symbol": "NLOK",
+        "sector": "Unknown",
+        "signal_date": "2021-09-16",
+        "fill_date": "2021-09-17",
+        "fill_idx": 934,
+        "edge_rank": 30.0,
+        "pattern_stop": 22.99,
+        "pivot": 24.08,
+        "attempt": 1,
+        "model_exit_idx": 939
+      },
+      {
+        "symbol": "BLL",
+        "sector": "Unknown",
+        "signal_date": "2021-10-12",
+        "fill_date": "2021-10-13",
+        "fill_idx": 952,
+        "edge_rank": 30.0,
+        "pattern_stop": 75.91,
+        "pivot": 81.01,
+        "attempt": 2,
+        "model_exit_idx": 957
+      },
+      {
+        "symbol": "URI",
+        "sector": "Unknown",
+        "signal_date": "2021-10-12",
+        "fill_date": "2021-10-13",
+        "fill_idx": 952,
+        "edge_rank": 30.0,
+        "pattern_stop": 289.37,
+        "pivot": 314.21,
+        "attempt": 1,
+        "model_exit_idx": 954
+      },
+      {
+        "symbol": "EW",
+        "sector": "Unknown",
+        "signal_date": "2021-10-27",
+        "fill_date": "2021-10-28",
+        "fill_idx": 963,
+        "edge_rank": 30.0,
+        "pattern_stop": 92.59,
+        "pivot": 97.28,
+        "attempt": 2
+      },
+      {
+        "symbol": "MTCH",
+        "sector": "Unknown",
+        "signal_date": "2021-10-29",
+        "fill_date": "2021-11-01",
+        "fill_idx": 532,
+        "edge_rank": 70.0,
+        "pattern_stop": 142.25,
+        "pivot": 164.68,
+        "attempt": 1,
+        "model_exit_idx": 536
+      },
+      {
+        "symbol": "MPC",
+        "sector": "Unknown",
+        "signal_date": "2021-11-03",
+        "fill_date": "2021-11-04",
+        "fill_idx": 968,
+        "edge_rank": 30.0,
+        "pattern_stop": 50.69,
+        "pivot": 54.3,
+        "attempt": 1,
+        "model_exit_idx": 970
+      },
+      {
+        "symbol": "NVDA",
+        "sector": "Unknown",
+        "signal_date": "2021-11-04",
+        "fill_date": "2021-11-05",
+        "fill_idx": 969,
+        "edge_rank": 30.0,
+        "pattern_stop": 18.7,
+        "pivot": 20.66,
+        "attempt": 1,
+        "model_exit_idx": 991
+      },
+      {
+        "symbol": "BKNG",
+        "sector": "Unknown",
+        "signal_date": "2021-11-22",
+        "fill_date": "2021-11-23",
+        "fill_idx": 981,
+        "edge_rank": 70.0,
+        "pattern_stop": 81.44,
+        "pivot": 88.7,
+        "attempt": 1,
+        "model_exit_idx": 983
+      },
+      {
+        "symbol": "SHW",
+        "sector": "Unknown",
+        "signal_date": "2021-11-22",
+        "fill_date": "2021-11-23",
+        "fill_idx": 981,
+        "edge_rank": 30.0,
+        "pattern_stop": 273.02,
+        "pivot": 287.15,
+        "attempt": 1
+      },
+      {
+        "symbol": "NVDA",
+        "sector": "Unknown",
+        "signal_date": "2021-12-09",
+        "fill_date": "2021-12-10",
+        "fill_idx": 993,
+        "edge_rank": 30.0,
+        "pattern_stop": 18.7,
+        "pivot": 20.66,
+        "attempt": 2,
+        "model_exit_idx": 997
+      }
+    ],
+    "cell": {
+      "summary": {
+        "signals": 136,
+        "trades": 99,
+        "end_value": 102556.93,
+        "total_return_pct": 2.56,
+        "cagr_pct": 1.35,
+        "max_drawdown_pct": -5.35,
+        "rejected": {
+          "duplicate_or_position_limit": 16,
+          "cash_sector_or_liquidity": 21
+        }
+      },
+      "trade_stats": {
+        "trades": 99,
+        "profit_factor": 1.288495455162122,
+        "expectancy_pct": 0.8591919191919192,
+        "win_rate": 0.41414141414141414,
+        "average_win_pct": 9.265853658536585,
+        "average_loss_pct": -5.083448275862069,
+        "payoff_ratio": 1.8227496682781235
+      },
+      "drop_top_5": {
+        "trades": 94,
+        "profit_factor": 0.776319359652693,
+        "expectancy_pct": -0.7015957446808511,
+        "win_rate": 0.3829787234042553,
+        "average_win_pct": 6.358055555555556,
+        "average_loss_pct": -5.083448275862069,
+        "payoff_ratio": 1.2507367461071164
+      },
+      "drop_top_10": {
+        "trades": 89,
+        "profit_factor": 0.4967100800434134,
+        "expectancy_pct": -1.6673033707865168,
+        "win_rate": 0.34831460674157305,
+        "average_win_pct": 4.724193548387096,
+        "average_loss_pct": -5.083448275862069,
+        "payoff_ratio": 0.9293285368554185
+      },
+      "robustness": {
+        "sample": {
+          "observations": 476,
+          "start": "2020-02-13",
+          "end": "2021-12-31",
+          "trials_declared": 315
+        },
+        "performance": {
+          "total_return": 0.025650526766873627,
+          "cagr": 0.013498746026030739,
+          "annual_volatility": 0.04504947419795673
+        },
+        "distribution": {
+          "skewness": 0.23551241455753447,
+          "excess_kurtosis": 6.2107621772023,
+          "jarque_bera": {
+            "statistic": 769.4427190262891,
+            "p_value": 8.272494614947646e-168
+          }
+        },
+        "risk_adjusted": {
+          "sharpe": 0.3201131179398516,
+          "sortino": 0.46973947624846063,
+          "calmar": 0.25240867507891895,
+          "omega_zero": 1.0693942473163465
+        },
+        "risk": {
+          "max_drawdown": -0.053479723000052104,
+          "max_drawdown_duration_days": 243,
+          "ulcer_index": 0.026580958645787335,
+          "lake_ratio": 0.9453781512605042,
+          "var_95": -0.0039999400000000004,
+          "cvar_95": -0.006889783333333333
+        },
+        "significance": {
+          "t_statistic": 0.4399533991372706,
+          "effective_sample_size": 358.9983936694297,
+          "autocorrelations": [
+            0.013750914327647166,
+            0.08258060887635549,
+            0.06662408940287008,
+            -0.01552305733455103,
+            0.023442381229097736,
+            0.03245980235022606,
+            -0.07589377204728773,
+            -0.04702079481749795,
+            -0.06482578357219633,
+            -0.01965233431369039,
+            -0.03597396386338779,
+            -0.07333135774003076,
+            -0.06919828915484157,
+            -0.05131309739150767,
+            0.05476197795475471,
+            -0.07821781490862592,
+            -0.041739652661878776,
+            0.010179861675727377,
+            -0.01080274232883015,
+            0.028466632971860948,
+            0.10728935247591499
+          ],
+          "psr_vs_zero": 0.6701595378185915,
+          "approximate_dsr": {
+            "benchmark_sharpe": 2.4421573912993937,
+            "probability": 0.0017550784986287704
+          }
+        },
+        "stability": {
+          "is_sharpe": 0.6456555815289777,
+          "oos_sharpe": -0.4999414874716011,
+          "wfa_efficiency": -0.7743160622691266,
+          "positive_months": 0.4782608695652174,
+          "positive_quarters": 0.5
+        },
+        "optional_tests": {
+          "ljung_box": {
+            "available": false
+          },
+          "adf": {
+            "available": false
+          },
+          "reason": "No module named 'statsmodels'"
+        },
+        "block_bootstrap": {
+          "cagr": {
+            "p05": -0.044195738426006964,
+            "median": 0.014563230284391437,
+            "p95": 0.07448080844350563
+          },
+          "sharpe": {
+            "p05": -0.911692010206404,
+            "median": 0.34527037918223874,
+            "p95": 1.6042392630966258
+          },
+          "max_drawdown": {
+            "p05": -0.1237377818241034,
+            "median": -0.06036475935454416,
+            "p95": -0.03127376709292953
+          }
+        },
+        "monte_carlo": {
+          "max_drawdown": {
+            "p05": -0.11018773487378199,
+            "median": -0.05691856993489658,
+            "p95": -0.02939934996108917
+          },
+          "final_equity": {
+            "p05": 0.9263404608526205,
+            "median": 1.024078764725692,
+            "p95": 1.1376810683363694
+          }
+        }
+      }
+    },
+    "gate": {
+      "passed": false,
+      "checks": {
+        "trades>=80": true,
+        "cagr>=10pct": false,
+        "sharpe>=0.75": false,
+        "pf>1.20": true,
+        "mdd>-15pct": true,
+        "drop_top_5_expectancy>0": false
+      }
+    }
+  },
+  "open_formal_validation": false
+}

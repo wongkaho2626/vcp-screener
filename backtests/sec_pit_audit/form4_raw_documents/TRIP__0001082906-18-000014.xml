@@ -1,0 +1,171 @@
+<?xml version="1.0"?>
+<ownershipDocument>
+
+    <schemaVersion>X0306</schemaVersion>
+
+    <documentType>4</documentType>
+
+    <periodOfReport>2018-01-31</periodOfReport>
+
+    <issuer>
+        <issuerCik>0001526520</issuerCik>
+        <issuerName>TripAdvisor, Inc.</issuerName>
+        <issuerTradingSymbol>TRIP</issuerTradingSymbol>
+    </issuer>
+
+    <reportingOwner>
+        <reportingOwnerId>
+            <rptOwnerCik>0001082906</rptOwnerCik>
+            <rptOwnerName>HOAG JAY C</rptOwnerName>
+        </reportingOwnerId>
+        <reportingOwnerAddress>
+            <rptOwnerStreet1>C/O TECHNOLOGY CROSSOVER VENTURES</rptOwnerStreet1>
+            <rptOwnerStreet2>528 RAMONA STREET</rptOwnerStreet2>
+            <rptOwnerCity>PALO ALTO</rptOwnerCity>
+            <rptOwnerState>CA</rptOwnerState>
+            <rptOwnerZipCode>94301</rptOwnerZipCode>
+            <rptOwnerStateDescription></rptOwnerStateDescription>
+        </reportingOwnerAddress>
+        <reportingOwnerRelationship>
+            <isDirector>1</isDirector>
+            <isOfficer>0</isOfficer>
+            <isTenPercentOwner>0</isTenPercentOwner>
+            <isOther>0</isOther>
+        </reportingOwnerRelationship>
+    </reportingOwner>
+
+    <nonDerivativeTable>
+        <nonDerivativeTransaction>
+            <securityTitle>
+                <value>Common Stock</value>
+            </securityTitle>
+            <transactionDate>
+                <value>2018-01-31</value>
+            </transactionDate>
+            <transactionCoding>
+                <transactionFormType>4</transactionFormType>
+                <transactionCode>A</transactionCode>
+                <equitySwapInvolved>0</equitySwapInvolved>
+            </transactionCoding>
+            <transactionAmounts>
+                <transactionShares>
+                    <value>2785</value>
+                    <footnoteId id="F5"/>
+                </transactionShares>
+                <transactionPricePerShare>
+                    <value>0</value>
+                </transactionPricePerShare>
+                <transactionAcquiredDisposedCode>
+                    <value>A</value>
+                </transactionAcquiredDisposedCode>
+            </transactionAmounts>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>2785</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                    <footnoteId id="F6"/>
+                </directOrIndirectOwnership>
+                <natureOfOwnership>
+                    <value></value>
+                </natureOfOwnership>
+            </ownershipNature>
+        </nonDerivativeTransaction>
+        <nonDerivativeHolding>
+            <securityTitle>
+                <value>Common Stock</value>
+            </securityTitle>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>1613606</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>I</value>
+                </directOrIndirectOwnership>
+                <natureOfOwnership>
+                    <value>TCV IX Tumi, L.P.</value>
+                    <footnoteId id="F1"/>
+                </natureOfOwnership>
+            </ownershipNature>
+        </nonDerivativeHolding>
+        <nonDerivativeHolding>
+            <securityTitle>
+                <value>Common Stock</value>
+            </securityTitle>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>455300</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>I</value>
+                </directOrIndirectOwnership>
+                <natureOfOwnership>
+                    <value>TCV IX TUMI (A), L.P.</value>
+                    <footnoteId id="F2"/>
+                </natureOfOwnership>
+            </ownershipNature>
+        </nonDerivativeHolding>
+        <nonDerivativeHolding>
+            <securityTitle>
+                <value>Common Stock</value>
+            </securityTitle>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>86179</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>I</value>
+                </directOrIndirectOwnership>
+                <natureOfOwnership>
+                    <value>TCV IX TUMI (B), L.P.</value>
+                    <footnoteId id="F3"/>
+                </natureOfOwnership>
+            </ownershipNature>
+        </nonDerivativeHolding>
+        <nonDerivativeHolding>
+            <securityTitle>
+                <value>Common Stock</value>
+            </securityTitle>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>125915</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>I</value>
+                </directOrIndirectOwnership>
+                <natureOfOwnership>
+                    <value>TCV IX TUMI (MF), L.P.</value>
+                    <footnoteId id="F4"/>
+                </natureOfOwnership>
+            </ownershipNature>
+        </nonDerivativeHolding>
+    </nonDerivativeTable>
+
+    <footnotes>
+        <footnote id="F1">These shares are directly held by TCV IX TUMI, L.P. (&quot;TCV TUMI&quot;).  Jay C.Hoag is a Class A Member of Technology Crossover Management IX, Ltd. (&quot;Management IX&quot;) and a limited partner of Technology Crossover Management IX, L.P. (&quot;TCM IX&quot;). Management IX is the sole general partner of TCM IX, which in turn is the sole general partner of TCV IX, L.P., which in turn is the sole member of TCV IX TUMI GP, LLC, which in turn is the sole general partner of TCV TUMI. Mr. Hoag may be deemed to beneficially own the shares held by TCV TUMI, but disclaims beneficial ownership of such shares except to the extent of his pecuniary interest therein.</footnote>
+        <footnote id="F2">These shares are directly held by TCV IX TUMI (A), L.P. (&quot;TCV TUMI A&quot;). Mr. Hoag is a Class A Member of Management IX and a limited partner of TCM IX. Management IX is the sole general partner of TCM IX, which in turn is the sole general partner of TCV IX, L.P., which in turn is the sole member of TCV IX TUMI GP, LLC, which in turn is the sole general partner of TCV TUMI A. Mr. Hoag may be deemed to beneficially own the shares held by TCV TUMI A, but disclaims beneficial ownership of such shares except to the extent of his pecuniary interest therein.</footnote>
+        <footnote id="F3">These shares are directly held by TCV IX TUMI (B), L.P. (&quot;TCV TUMI B&quot;). Mr. Hoag is a Class A Member of Management IX and a limited partner of TCM IX. Management IX is the sole general partner of TCM IX, which in turn is the sole general partner of TCV IX, L.P., which in turn is the sole member of TCV IX TUMI GP, LLC, which in turn is the sole general partner of TCV TUMI B. Mr. Hoag may be deemed to beneficially own the shares held by TCV TUMI B, but disclaims beneficial ownership of such shares except to the extent of his pecuniary interest therein.</footnote>
+        <footnote id="F4">These shares are directly held by TCV TUMI (MF), L.P. (&quot;TCV TUMI MF&quot;).  Each of the TCM Members are Class A Members of Management IX and limited partners of TCM IX. Management IX is the sole general partner of TCM IX, which in turn is the sole general partner of TCV IX, L.P., which in turn is the sole member of TCV IX TUMI GP, LLC, which in turn is the sole general partner of TCV TUMI MF.  The TCM Members are also limited partners of TCV Member Fund, L.P., which is the sole limited partner of TCV TUMI MF. The TCM Members may be deemed to beneficially own the shares held by TCV TUMI MF, but the TCM Members disclaim beneficial ownership of such shares except to the extent of their pecuniary interest therein.</footnote>
+        <footnote id="F5">Represents shares underlying Restricted Stock Units (&quot;RSUs&quot;) granted under the Issuer's Amended and Restated 2011 Stock and Annual Incentive Plan granted in consideration for service as a member of the issuer's Board of Directors. Such RSUs vest on the first anniversary of the date of grant.</footnote>
+        <footnote id="F6">Jay C. Hoag has sole voting and dispositive power over the RSUs he holds directly. However, TCV IX Management, L.L.C. has a right to 100% of the pecuniary interest in such RSUs. Mr. Hoag is a Member of
+TCV IX Management, L.L.C. Mr. Hoag disclaims beneficial ownership of such RSUs and the shares underlying such RSUs except to the extent of his pecuniary interest therein.</footnote>
+    </footnotes>
+
+    <remarks></remarks>
+
+    <ownerSignature>
+        <signatureName>Frederic D. Fenton, Authorized Signatory for Jay C. Hoag</signatureName>
+        <signatureDate>2018-02-02</signatureDate>
+    </ownerSignature>
+</ownershipDocument>

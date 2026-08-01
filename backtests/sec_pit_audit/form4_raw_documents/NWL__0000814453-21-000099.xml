@@ -1,0 +1,183 @@
+<?xml version="1.0"?>
+<ownershipDocument>
+
+    <schemaVersion>X0306</schemaVersion>
+
+    <documentType>4</documentType>
+
+    <periodOfReport>2021-05-04</periodOfReport>
+
+    <notSubjectToSection16>0</notSubjectToSection16>
+
+    <issuer>
+        <issuerCik>0000814453</issuerCik>
+        <issuerName>NEWELL BRANDS INC.</issuerName>
+        <issuerTradingSymbol>NWL</issuerTradingSymbol>
+    </issuer>
+
+    <reportingOwner>
+        <reportingOwnerId>
+            <rptOwnerCik>0001206994</rptOwnerCik>
+            <rptOwnerName>SPRIESER JUDITH A</rptOwnerName>
+        </reportingOwnerId>
+        <reportingOwnerAddress>
+            <rptOwnerStreet1>C/O NEWELL BRANDS INC.</rptOwnerStreet1>
+            <rptOwnerStreet2>6655 PEACHTREE DUNWOODY ROAD</rptOwnerStreet2>
+            <rptOwnerCity>ATLANTA</rptOwnerCity>
+            <rptOwnerState>GA</rptOwnerState>
+            <rptOwnerZipCode>30328</rptOwnerZipCode>
+            <rptOwnerStateDescription></rptOwnerStateDescription>
+        </reportingOwnerAddress>
+        <reportingOwnerRelationship>
+            <isDirector>1</isDirector>
+            <isOfficer>0</isOfficer>
+            <isTenPercentOwner>0</isTenPercentOwner>
+            <isOther>0</isOther>
+            <officerTitle></officerTitle>
+            <otherText></otherText>
+        </reportingOwnerRelationship>
+    </reportingOwner>
+
+    <nonDerivativeTable></nonDerivativeTable>
+
+    <derivativeTable>
+        <derivativeTransaction>
+            <securityTitle>
+                <value>Restricted Stock Units</value>
+            </securityTitle>
+            <conversionOrExercisePrice>
+                <footnoteId id="F1"/>
+            </conversionOrExercisePrice>
+            <transactionDate>
+                <value>2021-05-04</value>
+            </transactionDate>
+            <transactionCoding>
+                <transactionFormType>4</transactionFormType>
+                <transactionCode>A</transactionCode>
+                <equitySwapInvolved>0</equitySwapInvolved>
+            </transactionCoding>
+            <transactionAmounts>
+                <transactionShares>
+                    <value>5167</value>
+                </transactionShares>
+                <transactionPricePerShare>
+                    <value>0</value>
+                </transactionPricePerShare>
+                <transactionAcquiredDisposedCode>
+                    <value>A</value>
+                </transactionAcquiredDisposedCode>
+            </transactionAmounts>
+            <exerciseDate>
+                <footnoteId id="F2"/>
+            </exerciseDate>
+            <expirationDate>
+                <footnoteId id="F3"/>
+            </expirationDate>
+            <underlyingSecurity>
+                <underlyingSecurityTitle>
+                    <value>Common Stock</value>
+                </underlyingSecurityTitle>
+                <underlyingSecurityShares>
+                    <value>5167.0</value>
+                </underlyingSecurityShares>
+            </underlyingSecurity>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>5167</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+            </ownershipNature>
+        </derivativeTransaction>
+        <derivativeHolding>
+            <securityTitle>
+                <value>Deferred RSU Phantom Stock</value>
+                <footnoteId id="F4"/>
+            </securityTitle>
+            <conversionOrExercisePrice>
+                <footnoteId id="F5"/>
+            </conversionOrExercisePrice>
+            <exerciseDate>
+                <footnoteId id="F5"/>
+            </exerciseDate>
+            <expirationDate>
+                <footnoteId id="F3"/>
+            </expirationDate>
+            <underlyingSecurity>
+                <underlyingSecurityTitle>
+                    <value>Common Stock</value>
+                </underlyingSecurityTitle>
+                <underlyingSecurityShares>
+                    <value>6119.778</value>
+                </underlyingSecurityShares>
+            </underlyingSecurity>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>6119.778</value>
+                    <footnoteId id="F6"/>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+            </ownershipNature>
+        </derivativeHolding>
+        <derivativeHolding>
+            <securityTitle>
+                <value>Deferred RSU Phantom Stock</value>
+                <footnoteId id="F7"/>
+            </securityTitle>
+            <conversionOrExercisePrice>
+                <footnoteId id="F8"/>
+            </conversionOrExercisePrice>
+            <exerciseDate>
+                <footnoteId id="F8"/>
+            </exerciseDate>
+            <expirationDate>
+                <footnoteId id="F3"/>
+            </expirationDate>
+            <underlyingSecurity>
+                <underlyingSecurityTitle>
+                    <value>Common Stock</value>
+                </underlyingSecurityTitle>
+                <underlyingSecurityShares>
+                    <value>9535.888</value>
+                </underlyingSecurityShares>
+            </underlyingSecurity>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>9535.888</value>
+                    <footnoteId id="F9"/>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+            </ownershipNature>
+        </derivativeHolding>
+    </derivativeTable>
+
+    <footnotes>
+        <footnote id="F1">Each restricted stock unit represents a contingent right to receive one share of Newell Brands Inc. common stock.</footnote>
+        <footnote id="F2">The award shall vest in full upon the earlier of:  (i) the first anniversary of the grant date of the award; or (ii) the date immediately preceding the date of the Company's 2022 annual meeting of its stockholders, provided the reporting person remains in continuous service on the Board until such date, but the award may vest earlier in the event of death, disability or retirement.  If the Company pays a dividend on its common stock during the vesting period, then upon vesting, the reporting person will receive a cash amount equal to the dividends that the reporting person would have received had the reporting person been the actual owner during the vesting period of the number of shares of the Company's common stock represented by the restricted stock units.</footnote>
+        <footnote id="F3">N/A</footnote>
+        <footnote id="F4">Represents a vested award of 5,504 restricted stock units (&quot;RSUs&quot;) first made on May 15, 2018. The reporting person elected to defer settlement on the scheduled vesting date and the RSUs instead converted to an equal number of phantom stock units, in accordance with the Company's 2008 Deferred Compensation Plan (the &quot;DCP&quot;). The 5,504 phantom stock units will settle on a one-for-one basis for shares of the Company's Common Stock after the end of the reporting person's service on the Company's Board.</footnote>
+        <footnote id="F5">The reporting person's 5,504 phantom stock units will convert to shares of the Company's Common Stock on a one-for-one basis after the end of the reporting person's service on the Company's Board, in accordance with the DCP.</footnote>
+        <footnote id="F6">The reported total includes 289.363 additional phantom stock units acquired by the reporting person since the date of her last report pursuant to a dividend reinvestment feature of the DCP. The additional phantom stock units acquired pursuant to the dividend reinvestment feature will be settled for cash after the end of the reporting person's service on the Company's Board.</footnote>
+        <footnote id="F7">Represents a vested award of 9,085 restricted stock units (&quot;RSUs&quot;) first made on May 7, 2019. The reporting person elected to defer settlement on the scheduled vesting date and the RSUs instead converted to an equal number of phantom stock units, in accordance with the DCP. The 9,085 phantom stock units will settle on a one-for-one basis for shares of the Company's Common Stock after the end of the reporting person's service on the Company's Board.</footnote>
+        <footnote id="F8">The reporting person's 9,085 phantom stock units will convert to shares of the Company's Common Stock on a one-for-one basis after the end of the reporting person's service on the Company's Board, in accordance with the DCP.</footnote>
+        <footnote id="F9">The reported total includes 450.888 additional phantom stock units acquired by the reporting person since the date of her last report pursuant to a dividend reinvestment feature of the DCP. The additional phantom stock units acquired pursuant to the dividend reinvestment feature will be settled for cash after the end of the reporting person's service on the Company's Board.</footnote>
+    </footnotes>
+
+    <remarks></remarks>
+
+    <ownerSignature>
+        <signatureName>/s/ Raj Dave, attorney-in-fact for Judith Sprieser</signatureName>
+        <signatureDate>2021-05-06</signatureDate>
+    </ownerSignature>
+</ownershipDocument>

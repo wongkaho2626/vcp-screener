@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<ownershipDocument>
+
+    <schemaVersion>X0306</schemaVersion>
+
+    <documentType>4</documentType>
+
+    <periodOfReport>2018-03-14</periodOfReport>
+
+    <issuer>
+        <issuerCik>0000789570</issuerCik>
+        <issuerName>MGM Resorts International</issuerName>
+        <issuerTradingSymbol>MGM</issuerTradingSymbol>
+    </issuer>
+
+    <reportingOwner>
+        <reportingOwnerId>
+            <rptOwnerCik>0001574607</rptOwnerCik>
+            <rptOwnerName>GROUNDS WILLIAM WARWICK</rptOwnerName>
+        </reportingOwnerId>
+        <reportingOwnerAddress>
+            <rptOwnerStreet1>3600 LAS VEGAS BLVD. SOUTH</rptOwnerStreet1>
+            <rptOwnerStreet2></rptOwnerStreet2>
+            <rptOwnerCity>LAS VEGAS</rptOwnerCity>
+            <rptOwnerState>NV</rptOwnerState>
+            <rptOwnerZipCode>89109</rptOwnerZipCode>
+            <rptOwnerStateDescription></rptOwnerStateDescription>
+        </reportingOwnerAddress>
+        <reportingOwnerRelationship>
+            <isDirector>1</isDirector>
+        </reportingOwnerRelationship>
+    </reportingOwner>
+
+    <nonDerivativeTable>
+        <nonDerivativeTransaction>
+            <securityTitle>
+                <value>Common Stock $.01 Par Value ND</value>
+            </securityTitle>
+            <transactionDate>
+                <value>2018-03-14</value>
+            </transactionDate>
+            <transactionCoding>
+                <transactionFormType>4</transactionFormType>
+                <transactionCode>P</transactionCode>
+                <equitySwapInvolved>0</equitySwapInvolved>
+            </transactionCoding>
+            <transactionTimeliness></transactionTimeliness>
+            <transactionAmounts>
+                <transactionShares>
+                    <value>1000</value>
+                </transactionShares>
+                <transactionPricePerShare>
+                    <value>35.50</value>
+                </transactionPricePerShare>
+                <transactionAcquiredDisposedCode>
+                    <value>A</value>
+                </transactionAcquiredDisposedCode>
+            </transactionAmounts>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>3400</value>
+                    <footnoteId id="F1"/>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+            </ownershipNature>
+        </nonDerivativeTransaction>
+    </nonDerivativeTable>
+
+    <footnotes>
+        <footnote id="F1">Reflects Mr. Grounds' personal beneficial ownership. Does not include 20,848,738 beneficially owned by Dubai World, a decree entity of Dubai, United Arab Emirates government that is 100% owned by the Government of Dubai (&quot;DW&quot;), and certain of DW's affiliates as described on the Form 4 relating to the Issuer filed with the SEC on September 11, 2017 by William Warwick Grounds, DW, Infinity World Holding Ltd., a Dubai, United Arab Emirates offshore corporation (&quot;Infinity Holding&quot;), Infinity World Cayman Investments Corporation, a Cayman Islands exempted company (&quot;Cayman Investments&quot;), Infinity World (Cayman) L.P., a Cayman Islands exempted limited partnership (&quot;Cayman LP&quot;), Infinity World (Cayman) Holding, a Cayman Islands exempted company (&quot;Cayman Holding&quot;) and Infinity World Investments LLC, a Nevada limited liability company (&quot;Infinity World&quot;). Mr. Grounds disclaims beneficial ownership of the shares beneficially owned by DW, Infinity Holding, Cayman Investments, Cayman LP, Cayman Holding and Infinity World.</footnote>
+    </footnotes>
+
+    <remarks>William W. Grounds is a director of the Issuer who, prior to 2015, had been designated as a nominee for election to serve on the Issuer's board of directors pursuant to the that certain company stock purchase and support agreement, dated as of August, 21, 2007, by and between the Issuer and Infinity World Investments LLC. As a result, the following persons may be deemed directors by deputization of the Issuer solely for purposes of Section 16 of the Securities Exchange Act of 1934, as amended: Infinity World Investments LLC, Infinity World Cayman Investments Corporation, Infinity World (Cayman) L.P., Infinity World (Cayman) Holding, Infinity World Holding Ltd., and Dubai World. Beginning in 2015, the Board of Directors of the Issuer has recommended Mr. Grounds as a director in its discretion.</remarks>
+
+    <ownerSignature>
+        <signatureName>/s/ Andrew Hagopian III, Attorney-In-Fact</signatureName>
+        <signatureDate>2018-03-16</signatureDate>
+    </ownerSignature>
+</ownershipDocument>

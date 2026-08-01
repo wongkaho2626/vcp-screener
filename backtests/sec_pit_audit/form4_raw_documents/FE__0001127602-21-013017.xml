@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<ownershipDocument>
+
+    <schemaVersion>X0306</schemaVersion>
+
+    <documentType>4</documentType>
+
+    <periodOfReport>2021-04-01</periodOfReport>
+
+    <issuer>
+        <issuerCik>0001031296</issuerCik>
+        <issuerName>FIRSTENERGY CORP</issuerName>
+        <issuerTradingSymbol>FE</issuerTradingSymbol>
+    </issuer>
+
+    <reportingOwner>
+        <reportingOwnerId>
+            <rptOwnerCik>0001538453</rptOwnerCik>
+            <rptOwnerName>Misheff Donald T</rptOwnerName>
+        </reportingOwnerId>
+        <reportingOwnerAddress>
+            <rptOwnerStreet1>76 SOUTH MAIN STREET</rptOwnerStreet1>
+            <rptOwnerStreet2></rptOwnerStreet2>
+            <rptOwnerCity>AKRON</rptOwnerCity>
+            <rptOwnerState>OH</rptOwnerState>
+            <rptOwnerZipCode>44308</rptOwnerZipCode>
+            <rptOwnerStateDescription></rptOwnerStateDescription>
+        </reportingOwnerAddress>
+        <reportingOwnerRelationship>
+            <isDirector>1</isDirector>
+        </reportingOwnerRelationship>
+    </reportingOwner>
+
+    <derivativeTable>
+        <derivativeTransaction>
+            <securityTitle>
+                <value>Phantom Stock Units</value>
+                <footnoteId id="F1"/>
+            </securityTitle>
+            <conversionOrExercisePrice>
+                <footnoteId id="F2"/>
+            </conversionOrExercisePrice>
+            <transactionDate>
+                <value>2021-04-01</value>
+            </transactionDate>
+            <transactionCoding>
+                <transactionFormType>4</transactionFormType>
+                <transactionCode>A</transactionCode>
+                <equitySwapInvolved>0</equitySwapInvolved>
+            </transactionCoding>
+            <transactionTimeliness></transactionTimeliness>
+            <transactionAmounts>
+                <transactionShares>
+                    <value>1091</value>
+                </transactionShares>
+                <transactionPricePerShare>
+                    <value>34.35</value>
+                </transactionPricePerShare>
+                <transactionAcquiredDisposedCode>
+                    <value>A</value>
+                </transactionAcquiredDisposedCode>
+            </transactionAmounts>
+            <exerciseDate>
+                <footnoteId id="F3"/>
+            </exerciseDate>
+            <expirationDate>
+                <footnoteId id="F3"/>
+            </expirationDate>
+            <underlyingSecurity>
+                <underlyingSecurityTitle>
+                    <value>Common Stock</value>
+                </underlyingSecurityTitle>
+                <underlyingSecurityShares>
+                    <value>1091</value>
+                </underlyingSecurityShares>
+            </underlyingSecurity>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>41864.721</value>
+                    <footnoteId id="F4"/>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+            </ownershipNature>
+        </derivativeTransaction>
+    </derivativeTable>
+
+    <footnotes>
+        <footnote id="F1">Represents shares paid quarterly for director compensation under the FirstEnergy Corp. 2020 Incentive Compensation Plan and deferred pursuant to the FirstEnergy Corp. Deferred Compensation Plan for Outside Directors.</footnote>
+        <footnote id="F2">1 for 1</footnote>
+        <footnote id="F3">This holding reflects phantom stock payable in cash or shares of FirstEnergy Corp. common stock following conclusion of service as a director, in accordance with the terms and conditions of the FirstEnergy Corp. Deferred Compensation Plan for Outside Directors. Each share of phantom stock is the economic equivalent of one share of common stock.</footnote>
+        <footnote id="F4">Includes phantom stock units acquired through dividend reinvestments.</footnote>
+    </footnotes>
+
+    <ownerSignature>
+        <signatureName>Daniel M. Dunlap, attorney-in-fact</signatureName>
+        <signatureDate>2021-04-05</signatureDate>
+    </ownerSignature>
+</ownershipDocument>
