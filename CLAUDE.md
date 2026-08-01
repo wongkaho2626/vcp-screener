@@ -1,22 +1,26 @@
 # CLAUDE.md — vcp-screener
 
 Research repo: Minervini VCP screener + 10-year backtests. Python-only, no
-framework, no build step. **The research programme is essentially concluded**
-— read "Established results" before proposing new experiments, because most
-obvious ideas have already been tested to a null.
+framework, no build step. **There is no qualifying deployable strategy in the
+repository.** Read "Current v2 checkpoint" and "Established results" before
+proposing an experiment: more than 300 declared variants have already consumed
+most obvious VCP entry/exit directions, and the latest existing-data replay is
+a reject rather than untouched OOS.
 
 ## Commands
 
 ```bash
-python3 -m pytest tests/ -q                 # full suite, must stay green
-python3 scripts/screen_vcp.py               # live screen (yfinance)
-python3 scripts/backtest_vcp.py --csv-data SP500_Historical_Data.csv --limit 0 --years 10
-python3 scripts/trade_simulator.py <backtest.json> --price-csv SP500_Historical_Data.csv
-python3 scripts/download_sp500_history.py     # (re)build SP500_Historical_Data.csv from yfinance
+.venv/bin/python -m pytest tests/ -q          # full suite, must stay green
+.venv/bin/python scripts/screen_vcp.py        # live screen (yfinance)
+.venv/bin/python scripts/backtest_vcp.py --csv-data SP500_Historical_Data.csv --limit 0 --years 10
+.venv/bin/python scripts/trade_simulator.py <backtest.json> --price-csv SP500_Historical_Data.csv
+.venv/bin/python scripts/download_sp500_history.py  # rebuild local price CSV
 ```
 
-If `yfinance not found`: use `/opt/anaconda3/bin/python3` (system python3
-lacks the deps).
+Create the reproducible environment with `uv venv .venv --python 3.12` and
+`uv pip install --python .venv/bin/python -r requirements.txt`. The system
+Python may not contain the project dependencies. Exact v2 commands and frozen
+artifact paths live in `backtests/v2_research_commands.md`.
 
 ## Architecture
 
@@ -24,6 +28,12 @@ Pipeline: `screen_vcp.py` (live, orchestrates `calculators/`) →
 `historical_scanner.py` (as-of walk) → `backtest_vcp.py` (universe backtest →
 `vcp_backtest_*.json`) → `trade_simulator.py` (detections → trades with
 excess-vs-SPY → `vcp_trades_*.json`) → experiment CLIs (see README table).
+
+The realistic research path is detections → declared train/discovery gate →
+`portfolio_backtest.py` / `daily_score_decay_discovery.py` → frozen JSON and
+daily/trade CSVs → a dedicated verification script. Portfolio capital, sizing,
+maximum holdings, cash/capacity/sector/ADV constraints and cost assumptions are
+fixed; signal research may change only entry/exit behavior.
 
 - Live-screen overlays: `edge_rank.annotate_candidates` (Edge/Weight) and
   `pullback_experiment.annotate_pullback_entry` (Entry) — both non-mutating,
@@ -37,14 +47,23 @@ excess-vs-SPY → `vcp_trades_*.json`) → experiment CLIs (see README table).
   (everything else, `csv_client.CSVClient`) read `SP500_Historical_Data.csv`
   (gitignored, ~145 MB). Always verify `api_stats.data_source == "csv"` in
   report metadata — a silent yfinance fallback once produced garbage results.
-- Generated outputs (`backtests/**/*.json|md|csv|log`, `reports/*`) are
-  gitignored; only code and curated data snapshots (`scripts/data/`) are
-  committed.
+- Large local price inputs and ordinary generated outputs remain gitignored.
+  Frozen specifications, curated verification reports and selected JSON/CSV
+  evidence are explicitly allowlisted and committed under `backtests/`; do not
+  assume every file below that directory is disposable.
 
 ## Conventions
 
 - **Metric**: per-trade excess vs SPY over the trade's own holding dates.
   Raw returns are beta in a 2016–2026 bull tape; never present them as edge.
+- **Causality**: a signal confirmed using a day's close may fill no earlier
+  than the next session. PIT membership must be true on signal and fill dates.
+  Historical SPY data must be selected by date at or before the stock as-of
+  date, never by sharing the stock's integer bar offset.
+- **Fixed portfolio model**: do not alter starting capital, position sizing,
+  holding limits, costs, sector/name/ADV constraints, risk caps or leverage to
+  improve CAGR. SPY is benchmark-only and must never become a position or
+  fallback asset.
 - **Robustness bar** for any claimed effect: 2016–2020 vs 2021–2026 fold
   split, drop-top-5/10 outlier trim, and cross-universe (S&P + R2K)
   replication. Several shiny numbers (edges==3 gate, stop-only +24% mean,
@@ -60,6 +79,32 @@ excess-vs-SPY → `vcp_trades_*.json`) → experiment CLIs (see README table).
 - Tests are synthetic-bars unit tests; TDD (red → green) is the house style.
 - Commits: conventional format (`feat:`/`fix:`/`chore:`), body records the
   experimental result so `git log` doubles as a lab notebook.
+
+## Current v2 checkpoint (2026-08-01)
+
+- The frozen Trial 288 existing-data replay covers signals from 2022-01-01
+  through 2026-03-31 and is exploratory, not untouched OOS. Existing PIT
+  member-day coverage is 91.31%; incomplete delisted coverage remains.
+- A historical benchmark bug was fixed before outcomes were opened:
+  `screen_vcp.analyze_stock` had sliced SPY using the stock's integer bar
+  offset, which could expose the wrong or future benchmark session for short
+  or gapped stock histories. SPY is now date-aligned at or before the stock
+  as-of date, with regression coverage in
+  `tests/test_historical_benchmark_alignment.py`.
+- Corrected result: 89 trades, net CAGR 0.05%, Sharpe 0.031, Sortino 0.045,
+  Calmar 0.007, PF 1.059 and MDD -6.81%. Raw Backtest Score is 25/100; the
+  unresolved-survivorship cap makes the rubric result 20/100. Drop-top-five
+  expectancy is -1.71%, 5x-cost CAGR is -1.18%, DSR probability is 0.22%, and
+  the 2024–2026 fold is negative.
+- Therefore the hard goal is **not complete**. Never describe this replay as a
+  pass. Required completion remains the same frozen S&P 500 stocks-only
+  strategy scoring above 80 with at least 20% net CAGR on untouched OOS and at
+  least 30 independent OOS trades.
+- Canonical artifacts:
+  `backtests/exploratory_existing_data_replay/frozen_spec.md`,
+  `backtests/exploratory_existing_data_replay/results/verification_report.md`,
+  `backtests/exploratory_existing_data_replay/results/verification_metrics.json`,
+  and `backtests/v2_research_commands.md`.
 
 ## Established results (do not re-litigate without new data)
 
@@ -212,6 +257,8 @@ excess-vs-SPY → `vcp_trades_*.json`) → experiment CLIs (see README table).
   `references/frozen_strategy_v1.md`. The programme is closed: no deployable
   edge in this data; further work requires new data + a new predeclared
   hypothesis.
-- **Data caveats**: CSV and R2K universes are survivorship-biased (R2K lost
-  26% of names); close-based fills, no costs. All backtest numbers are
-  optimistic ceilings.
+- **Data caveats**: legacy CSV and R2K pattern-level universes are
+  survivorship-biased (R2K lost 26% of names), with close-based fills and no
+  costs. Newer portfolio reports include costs and next-session execution but
+  are still non-qualifying unless their own PIT coverage, frozen chronology
+  and untouched-OOS contract are satisfied.

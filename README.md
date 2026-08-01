@@ -12,6 +12,41 @@ local OHLCV CSV for fully offline runs (see [Offline mode](#offline-mode)).
 
 ## Research findings (read this first)
 
+### Current v2 verification status (2026-08-01)
+
+**No strategy in this repository currently meets the deployment goal.** The
+latest frozen, stocks-only Trial 288 replay used the existing point-in-time
+S&P 500 reconstruction for 2022-01-01 through 2026-03-31, preserved the
+portfolio sizing, holding limits, capital, risk constraints and two-sided
+cost model, and allowed SPY only as a benchmark. It produced **89 trades,
+0.05% net CAGR, 0.031 Sharpe, 1.059 profit factor and -6.81% MDD**. Its
+Backtest Score is **25/100 before the requested survivorship-cap waiver and
+20/100 under the full rubric**, versus the required score above 80 and net
+CAGR of at least 20%.
+
+The replay also found and fixed a historical benchmark-alignment defect.
+Stocks with short or gapped histories had previously selected SPY by the
+stock's integer bar offset, which could use a benchmark observation after the
+stock's as-of date. Historical screening now selects the latest SPY session
+on or before the stock as-of date, and regression tests enforce that causal
+contract. This invalidates the old Trial 288 coefficients and its previously
+reported 5.58% result; a date-aligned reconstruction of the old 2020–2021
+window returned 4.82% CAGR and failed the top-five-winner trim.
+
+The 2022–2026 replay is explicitly **exploratory, not untouched OOS**. Existing
+membership coverage is 91.31% and delisted coverage remains incomplete. The
+frozen specification, complete verification, metrics and reproduction
+commands are committed at:
+
+- [`backtests/exploratory_existing_data_replay/frozen_spec.md`](backtests/exploratory_existing_data_replay/frozen_spec.md)
+- [`backtests/exploratory_existing_data_replay/results/verification_report.md`](backtests/exploratory_existing_data_replay/results/verification_report.md)
+- [`backtests/exploratory_existing_data_replay/results/verification_metrics.json`](backtests/exploratory_existing_data_replay/results/verification_metrics.json)
+- [`backtests/v2_research_commands.md`](backtests/v2_research_commands.md)
+
+The original success definition is unchanged: only the same frozen strategy
+scoring above 80 with at least 20% net CAGR on untouched OOS can be called
+complete.
+
 Roughly 1,500 simulated trades across S&P 500 and Russell 2000, 2016–2026,
 with fold splits, outlier trims, cost sweeps and cross-universe replication.
 The honest summary:
@@ -104,8 +139,13 @@ support/resistance zones are a **context overlay, not an alpha source**.
 ## Install
 
 ```bash
-pip install -r requirements.txt
+uv venv .venv --python 3.12
+uv pip install --python .venv/bin/python -r requirements.txt
 ```
+
+The examples below use `python3` for readability. For exact reproduction, use
+`.venv/bin/python` and the commands saved in
+[`backtests/v2_research_commands.md`](backtests/v2_research_commands.md).
 
 ## 1. Screen for VCPs (today)
 
@@ -470,6 +510,13 @@ and exposure-matched excess returns. Use `--commission-bps` and
 `--slippage-bps` for cost stress tests. The rules and OOS contract are frozen
 in [`references/frozen_strategy_v1.md`](references/frozen_strategy_v1.md).
 
+The current v2 research path extends this engine without changing its fixed
+portfolio allocation or risk model. Signals confirmed at a daily close may
+fill no earlier than the next trading session; PIT membership is checked on
+both signal and fill dates. The latest existing-data replay and its full
+robustness suite can be reproduced from the final command block in
+[`backtests/v2_research_commands.md`](backtests/v2_research_commands.md).
+
 **Optional S&P 500 breadth gate (`--min-breadth`):** skips entries taken when
 market breadth (% of S&P 500 above their 200-day MA, `scripts/data/sp500_breadth_daily.csv`)
 on the entry date is below the given level. This is a **risk dial, not an alpha
@@ -485,9 +532,10 @@ python3 scripts/trade_simulator.py backtests/vcp_backtest_<ts>.json \
 
 ### Backtest caveats
 
-- Trades are close-based with no slippage/commissions and no
-  position-sizing/overlap handling — pattern-level evidence, not a full
-  portfolio simulation.
+- `trade_simulator.py` results are close-based with no slippage/commissions
+  and no position-sizing/overlap handling — pattern-level evidence, not a
+  full portfolio simulation. `portfolio_backtest.py` is the realistic
+  daily-marked path and includes next-session fills, costs and constraints.
 - Delisted tickers without Yahoo data drop out of the universe (partial
   survivorship bias; see above).
 - Historical `marketCap` and universe-relative RS aren't reconstructable from
@@ -559,6 +607,9 @@ report excess-vs-SPY with t-stats and bootstrap CIs:
 | [`signal_family_experiment.py`](scripts/signal_family_experiment.py) | Any non-VCP signal in this tape? 12-1 momentum / RSI(2) mean-rev / 52w-high *(momentum only — until PIT)* |
 | [`momentum_validation.py`](scripts/momentum_validation.py) | Momentum follow-ups: turnover+costs, PIT membership, lookbacks, vol scaling, R2K benchmark swap *(PIT cuts ~60% → +0.3%/mo, ns)* |
 | [`industry_momentum_vcp_experiment.py`](scripts/industry_momentum_vcp_experiment.py) | Does a frozen 6-1 GICS industry-momentum gate rescue support-qualified VCPs? *(No — fewer trades, still negative OOS)* |
+| [`daily_score_decay_discovery.py`](scripts/daily_score_decay_discovery.py) | Purged daily causal entry/exit research with fixed fit, calibration and later evaluation windows |
+| [`exploratory_existing_data_verification.py`](scripts/exploratory_existing_data_verification.py) | Full Trial 288 replay audit: score, costs, folds, sensitivity, trims, bootstrap, PSR/DSR and causality |
+| [`train_feasibility_audit.py`](scripts/train_feasibility_audit.py) | Determines whether a declared signal family clears its training gate before validation may be opened |
 | [`fetch_r2k_membership.py`](scripts/fetch_r2k_membership.py) | Rebuild R2K PIT membership intervals from quarterly IWM holdings snapshots |
 | [`build_trade_log_page.py`](scripts/build_trade_log_page.py) | Render trades JSONs into an interactive HTML ledger |
 
@@ -590,6 +641,8 @@ python3 -m pytest tests/ -v
 - `references/vcp_methodology.md` — VCP theory and the 7-point Trend Template
 - `references/scoring_system.md` — composite scoring and rating bands
 - `references/data_source.md` — yfinance data source and snapshot refresh
+- `backtests/v2_research_commands.md` — exact v2 research and verification commands
+- `backtests/exploratory_existing_data_replay/results/verification_report.md` — latest corrected replay verdict
 
 ## Disclaimer
 
