@@ -1,0 +1,121 @@
+<?xml version="1.0"?>
+<ownershipDocument>
+
+    <schemaVersion>X0306</schemaVersion>
+
+    <documentType>4</documentType>
+
+    <periodOfReport>2017-12-14</periodOfReport>
+
+    <issuer>
+        <issuerCik>0000006951</issuerCik>
+        <issuerName>APPLIED MATERIALS INC /DE</issuerName>
+        <issuerTradingSymbol>AMAT</issuerTradingSymbol>
+    </issuer>
+
+    <reportingOwner>
+        <reportingOwnerId>
+            <rptOwnerCik>0001610062</rptOwnerCik>
+            <rptOwnerName>Durn Daniel</rptOwnerName>
+        </reportingOwnerId>
+        <reportingOwnerAddress>
+            <rptOwnerStreet1>C/O APPLIED MATERIALS, INC.</rptOwnerStreet1>
+            <rptOwnerStreet2>3050 BOWERS AV, M/S 1268, P.O BOX 58039</rptOwnerStreet2>
+            <rptOwnerCity>SANTA CLARA</rptOwnerCity>
+            <rptOwnerState>CA</rptOwnerState>
+            <rptOwnerZipCode>95052-8039</rptOwnerZipCode>
+            <rptOwnerStateDescription></rptOwnerStateDescription>
+        </reportingOwnerAddress>
+        <reportingOwnerRelationship>
+            <isOfficer>1</isOfficer>
+            <officerTitle>Senior Vice President &amp; CFO</officerTitle>
+        </reportingOwnerRelationship>
+    </reportingOwner>
+
+    <nonDerivativeTable>
+        <nonDerivativeTransaction>
+            <securityTitle>
+                <value>Common Stock</value>
+            </securityTitle>
+            <transactionDate>
+                <value>2017-12-14</value>
+            </transactionDate>
+            <transactionCoding>
+                <transactionFormType>4</transactionFormType>
+                <transactionCode>A</transactionCode>
+                <equitySwapInvolved>0</equitySwapInvolved>
+            </transactionCoding>
+            <transactionTimeliness></transactionTimeliness>
+            <transactionAmounts>
+                <transactionShares>
+                    <value>29235</value>
+                    <footnoteId id="F1"/>
+                </transactionShares>
+                <transactionPricePerShare>
+                    <value>0</value>
+                </transactionPricePerShare>
+                <transactionAcquiredDisposedCode>
+                    <value>A</value>
+                </transactionAcquiredDisposedCode>
+            </transactionAmounts>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>152196</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+            </ownershipNature>
+        </nonDerivativeTransaction>
+        <nonDerivativeTransaction>
+            <securityTitle>
+                <value>Common Stock</value>
+            </securityTitle>
+            <transactionDate>
+                <value>2017-12-14</value>
+            </transactionDate>
+            <transactionCoding>
+                <transactionFormType>4</transactionFormType>
+                <transactionCode>A</transactionCode>
+                <equitySwapInvolved>0</equitySwapInvolved>
+            </transactionCoding>
+            <transactionTimeliness></transactionTimeliness>
+            <transactionAmounts>
+                <transactionShares>
+                    <value>29235</value>
+                    <footnoteId id="F2"/>
+                </transactionShares>
+                <transactionPricePerShare>
+                    <value>0</value>
+                </transactionPricePerShare>
+                <transactionAcquiredDisposedCode>
+                    <value>A</value>
+                </transactionAcquiredDisposedCode>
+            </transactionAmounts>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>181431</value>
+                    <footnoteId id="F3"/>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+            </ownershipNature>
+        </nonDerivativeTransaction>
+    </nonDerivativeTable>
+
+    <footnotes>
+        <footnote id="F1">Represents performance shares that will be converted on a one-for-one basis into shares of Applied Materials common stock upon vesting, which vesting is scheduled to occur on December 19, 2020, depending on the achievement of specified performance goals and continued employment through the vest date. The number of shares shown is the target amount, and the actual number of shares that may vest ranges from 0% to 200% of the target amount, depending on the achievement of specified performance goals.</footnote>
+        <footnote id="F2">Represents restricted stock units that will be converted on a one-for-one basis into shares of Applied Materials common stock upon vesting, which vesting is scheduled to occur in three equal installments beginning on December 19, 2018, depending on the achievement of a specified performance goal and continued employment through each applicable vest date.</footnote>
+        <footnote id="F3">Number of shares includes 122,961 performance shares and restricted stock units previously reported that in the future will be converted on a one-for-one basis into shares of Applied Materials common stock upon vesting, which vesting is scheduled to occur as follows: (a) 55,891 restricted stock units are scheduled to vest annually in three equal installments beginning February 2018; notwithstanding the foregoing, if Mr. Durn's employment is terminated without cause prior to February 1, 2020, any unvested portion of the award shall immediately be fully vested upon such termination, (b) 33,535 performance shares are scheduled to vest in December 2019, which number of shares is the target amount, and the actual number of shares that may vest ranges from 0% to 200% of the target amount, depending on achievement of specified performance goals, and (c) 33,535 restricted stock units are scheduled to vest in three equal installments in January 2018 and December of 2018 and 2019 (all vesting is subject to continued employment through each applicable vest date).</footnote>
+    </footnotes>
+
+    <ownerSignature>
+        <signatureName>/s/ Harpreet S. Bal, Attorney-in-Fact</signatureName>
+        <signatureDate>2017-12-18</signatureDate>
+    </ownerSignature>
+</ownershipDocument>

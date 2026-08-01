@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<ownershipDocument>
+
+    <schemaVersion>X0306</schemaVersion>
+
+    <documentType>4</documentType>
+
+    <periodOfReport>2017-11-06</periodOfReport>
+
+    <issuer>
+        <issuerCik>0000006951</issuerCik>
+        <issuerName>APPLIED MATERIALS INC /DE</issuerName>
+        <issuerTradingSymbol>AMAT</issuerTradingSymbol>
+    </issuer>
+
+    <reportingOwner>
+        <reportingOwnerId>
+            <rptOwnerCik>0001721736</rptOwnerCik>
+            <rptOwnerName>Ghanayem Steve G.</rptOwnerName>
+        </reportingOwnerId>
+        <reportingOwnerAddress>
+            <rptOwnerStreet1>C/O APPLIED MATERIALS, INC.</rptOwnerStreet1>
+            <rptOwnerStreet2>3050 BOWERS AVE., M/S 1268, PO BOX 58039</rptOwnerStreet2>
+            <rptOwnerCity>SANTA CLARA</rptOwnerCity>
+            <rptOwnerState>CA</rptOwnerState>
+            <rptOwnerZipCode>95054</rptOwnerZipCode>
+            <rptOwnerStateDescription></rptOwnerStateDescription>
+        </reportingOwnerAddress>
+        <reportingOwnerRelationship>
+            <isOfficer>1</isOfficer>
+            <officerTitle>SVP, New Mrkts &amp; Alliances Grp</officerTitle>
+        </reportingOwnerRelationship>
+    </reportingOwner>
+
+    <nonDerivativeTable>
+        <nonDerivativeTransaction>
+            <securityTitle>
+                <value>Common Stock</value>
+            </securityTitle>
+            <transactionDate>
+                <value>2017-11-06</value>
+            </transactionDate>
+            <transactionCoding>
+                <transactionFormType>4</transactionFormType>
+                <transactionCode>A</transactionCode>
+                <equitySwapInvolved>0</equitySwapInvolved>
+            </transactionCoding>
+            <transactionTimeliness></transactionTimeliness>
+            <transactionAmounts>
+                <transactionShares>
+                    <value>35506</value>
+                    <footnoteId id="F1"/>
+                </transactionShares>
+                <transactionPricePerShare>
+                    <value>0</value>
+                </transactionPricePerShare>
+                <transactionAcquiredDisposedCode>
+                    <value>A</value>
+                </transactionAcquiredDisposedCode>
+            </transactionAmounts>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>422850</value>
+                    <footnoteId id="F2"/>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+            </ownershipNature>
+        </nonDerivativeTransaction>
+        <nonDerivativeHolding>
+            <securityTitle>
+                <value>Common Stock</value>
+            </securityTitle>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>4370.936</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>I</value>
+                </directOrIndirectOwnership>
+                <natureOfOwnership>
+                    <value>By 401(k) Plan</value>
+                </natureOfOwnership>
+            </ownershipNature>
+        </nonDerivativeHolding>
+    </nonDerivativeTable>
+
+    <footnotes>
+        <footnote id="F1">Represents restricted stock units that will be converted on a one-for-one basis into shares of Applied Materials, Inc. common stock upon vesting, which vesting is scheduled to occur in four equal annual installments beginning December 19, 2018, depending on the achievement of a specified performance goal and continued employment through each applicable vest date.</footnote>
+        <footnote id="F2">Number of shares includes 242,256 performance shares and restricted stock units previously reported that in the future will be converted on a one-for-one basis into shares of Applied Materials, Inc. common stock upon vesting, which vesting is scheduled to occur as follows: (a) 10,350 restricted stock units are scheduled to vest in January 2018, (b) 20,000 restricted stock units are scheduled to vest in October 2018, (c) 38,676 performance shares are scheduled to vest in installments in December of each of 2017 and 2018, (d) 69,408 performance shares are scheduled to vest in installments in December of each of 2017 through 2019, with up to an additional 46,272 shares that may vest, depending on achievement of specified performance goals, (e) 51,911 performance shares are scheduled to vest in December 2019, which number of shares is the target amount, and the actual number of shares that may vest ranges from 0% to 200% of the target amount, depending on achievement of specified performance goals, and (f) 51,911 restricted stock units are scheduled to vest in installments in December of each of 2017 through 2019, depending on achievement of a specified performance goal (all vesting is subject to continued employment through each applicable vest date).</footnote>
+    </footnotes>
+
+    <ownerSignature>
+        <signatureName>/s/ Harpreet S. Bal, Attorney-in-Fact</signatureName>
+        <signatureDate>2017-11-08</signatureDate>
+    </ownerSignature>
+</ownershipDocument>

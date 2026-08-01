@@ -93,6 +93,12 @@ def parse_arguments() -> argparse.Namespace:
         default=0.5,
         help="Pause between successful batches",
     )
+    parser.add_argument(
+        "--retry-missing",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help="Retry symbols omitted from a successful batch individually (default: true)",
+    )
     args = parser.parse_args()
     if args.batch_size < 1:
         parser.error("--batch-size must be at least 1")
@@ -248,6 +254,7 @@ def download_to_csv(
     retries: int = 3,
     retry_delay: float = 2.0,
     sleep_secs: float = 0.5,
+    retry_missing: bool = True,
     downloader: Callable = yf.download,
 ) -> tuple[int, list[str]]:
     """Download symbols and atomically write a combined OHLCV CSV."""
@@ -285,10 +292,14 @@ def download_to_csv(
                 # Bulk responses can omit one ticker even though the request as
                 # a whole succeeds. Retry only those omissions individually.
                 for symbol in missing:
-                    single = download_with_retries(
-                        [symbol], start, end, retries, retry_delay, downloader
-                    )
-                    rows = list(iter_csv_rows(symbol, extract_symbol_frame(single, symbol, 1)))
+                    rows = []
+                    if retry_missing:
+                        single = download_with_retries(
+                            [symbol], start, end, retries, retry_delay, downloader
+                        )
+                        rows = list(iter_csv_rows(
+                            symbol, extract_symbol_frame(single, symbol, 1),
+                        ))
                     if rows:
                         writer.writerows(rows)
                         row_count += len(rows)
@@ -333,6 +344,7 @@ def main() -> int:
             retries=args.retries,
             retry_delay=args.retry_delay,
             sleep_secs=args.sleep_secs,
+            retry_missing=args.retry_missing,
         )
         print(f"\nSaved {rows:,} rows to {args.output.expanduser().resolve()}")
         if failed:

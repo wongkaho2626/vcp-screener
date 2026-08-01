@@ -133,7 +133,7 @@ def build(args: argparse.Namespace) -> None:
         next(r)
         for row in r:
             t = row[0]
-            if t in uni:
+            if t in uni or t == "SPY":
                 add_row(t, row)
             for old in rev.get(t, []):
                 add_row(old, [old] + row[1:])
@@ -148,6 +148,19 @@ def build(args: argparse.Namespace) -> None:
     kept: dict[str, list[list]] = {}
     dropped: list[tuple[str, str]] = []
     for t, rows in bars.items():
+        if t == "SPY":
+            start = _shift(args.win_start, -LEAD_BUFFER_DAYS)
+            end = _shift(args.win_end, SIM_TAIL_DAYS)
+            seen = {row[1]: row for row in rows if start <= row[1] <= end}
+            rows2 = sorted(seen.values(), key=lambda r: r[1])
+            flaw = find_scale_break(rows2)
+            if flaw:
+                dropped.append((t, flaw))
+            elif rows2:
+                kept[t] = rows2
+            else:
+                dropped.append((t, "benchmark-missing"))
+            continue
         rngs = allowed_ranges(t, mem, args.win_start, args.win_end)
         if not rngs:
             dropped.append((t, "no-membership-in-window"))
@@ -193,7 +206,8 @@ def build(args: argparse.Namespace) -> None:
                 w.writerow(row)
     coverage = {
         "universe": len(uni),
-        "kept": len(kept),
+        "kept": len([t for t in kept if t != "SPY"]),
+        "benchmark_present": "SPY" in kept,
         "coverage_pct": round(cov, 2),
         "per_year": {y: round(c / n * 100, 1) for y, (n, c) in sorted(per_year.items())},
         "dropped": dropped,

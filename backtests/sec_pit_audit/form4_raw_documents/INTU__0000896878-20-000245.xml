@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<ownershipDocument>
+
+    <schemaVersion>X0306</schemaVersion>
+
+    <documentType>4</documentType>
+
+    <periodOfReport>2020-12-17</periodOfReport>
+
+    <issuer>
+        <issuerCik>0000896878</issuerCik>
+        <issuerName>INTUIT INC</issuerName>
+        <issuerTradingSymbol>INTU</issuerTradingSymbol>
+    </issuer>
+
+    <reportingOwner>
+        <reportingOwnerId>
+            <rptOwnerCik>0001712627</rptOwnerCik>
+            <rptOwnerName>Liu Deborah</rptOwnerName>
+        </reportingOwnerId>
+        <reportingOwnerAddress>
+            <rptOwnerStreet1>C/O INTUIT INC.</rptOwnerStreet1>
+            <rptOwnerStreet2>2700 COAST AVE</rptOwnerStreet2>
+            <rptOwnerCity>MOUNTAIN VIEW</rptOwnerCity>
+            <rptOwnerState>CA</rptOwnerState>
+            <rptOwnerZipCode>94043</rptOwnerZipCode>
+            <rptOwnerStateDescription></rptOwnerStateDescription>
+        </reportingOwnerAddress>
+        <reportingOwnerRelationship>
+            <isDirector>1</isDirector>
+            <isOfficer>0</isOfficer>
+            <isTenPercentOwner>0</isTenPercentOwner>
+            <isOther>0</isOther>
+        </reportingOwnerRelationship>
+    </reportingOwner>
+
+    <nonDerivativeTable>
+        <nonDerivativeTransaction>
+            <securityTitle>
+                <value>CommonStock</value>
+            </securityTitle>
+            <transactionDate>
+                <value>2020-12-17</value>
+            </transactionDate>
+            <transactionCoding>
+                <transactionFormType>4</transactionFormType>
+                <transactionCode>J</transactionCode>
+                <equitySwapInvolved>0</equitySwapInvolved>
+            </transactionCoding>
+            <transactionAmounts>
+                <transactionShares>
+                    <value>82</value>
+                </transactionShares>
+                <transactionPricePerShare>
+                    <value>369.26</value>
+                    <footnoteId id="F1"/>
+                </transactionPricePerShare>
+                <transactionAcquiredDisposedCode>
+                    <value>A</value>
+                </transactionAcquiredDisposedCode>
+            </transactionAmounts>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>82</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>I</value>
+                </directOrIndirectOwnership>
+                <natureOfOwnership>
+                    <value>Shares held in a Trust.</value>
+                </natureOfOwnership>
+            </ownershipNature>
+        </nonDerivativeTransaction>
+    </nonDerivativeTable>
+
+    <derivativeTable></derivativeTable>
+
+    <footnotes>
+        <footnote id="F1">Represents in kind distribution from 500 Startups II, LP, of which the reporting person is a limited partner.  These shares were acquired by 500 Startups II, LP in exchange for Credit Karma common stock in connection with merger of Credit Karma into Intuit.  On the date of the distribution, the Fair Market Value of Intuit's common stock was $369.26 per share.</footnote>
+    </footnotes>
+
+    <ownerSignature>
+        <signatureName>/s/ Stacey Doynow, by power of attorney</signatureName>
+        <signatureDate>2020-12-21</signatureDate>
+    </ownerSignature>
+</ownershipDocument>

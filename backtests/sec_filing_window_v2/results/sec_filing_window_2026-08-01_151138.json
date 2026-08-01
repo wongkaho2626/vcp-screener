@@ -1,0 +1,1087 @@
+{
+  "generated_at": "2026-08-01T15:11:38",
+  "family_spec": "backtests/sec_filing_window_v2/frozen_spec.md",
+  "formal_validation_accessed": false,
+  "untouched_oos_accessed": false,
+  "coverage": {
+    "universe": 720,
+    "kept": 599,
+    "benchmark_present": true,
+    "coverage_pct": 91.31,
+    "per_year": {
+      "2016": 82.4,
+      "2017": 84.3,
+      "2018": 85.8,
+      "2019": 87.2,
+      "2020": 90.0,
+      "2021": 91.8,
+      "2022": 93.7,
+      "2023": 95.7,
+      "2024": 96.5,
+      "2025": 97.8,
+      "2026": 98.7
+    },
+    "dropped": [
+      [
+        "AMTM",
+        "only-60-bars-in-membership"
+      ],
+      [
+        "APC",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "BNY",
+        "only-27-bars-in-membership"
+      ],
+      [
+        "CASY",
+        "only-57-bars-in-membership"
+      ],
+      [
+        "CIEN",
+        "only-98-bars-in-membership"
+      ],
+      [
+        "COHR",
+        "only-69-bars-in-membership"
+      ],
+      [
+        "EMC",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "FDXF",
+        "only-21-bars-in-membership"
+      ],
+      [
+        "HOT",
+        "only-57-bars-in-membership"
+      ],
+      [
+        "INFO",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "LB",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "LITE",
+        "only-69-bars-in-membership"
+      ],
+      [
+        "SBNY",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "SE",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "SOLS",
+        "only-37-bars-in-membership"
+      ],
+      [
+        "SPLS",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "STI",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "TE",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "VEEV",
+        "only-37-bars-in-membership"
+      ],
+      [
+        "VRT",
+        "only-69-bars-in-membership"
+      ]
+    ]
+  },
+  "trials_before": 302,
+  "new_multiplicity_units": 2,
+  "trials_after": 304,
+  "entry": {
+    "max_filing_age_days": 30,
+    "min_eps_growth": 0.2,
+    "min_revenue_growth": 0.1,
+    "strict_filed_before_signal": true,
+    "same_accession_comparison": true
+  },
+  "exit": {
+    "fixed_holding_sessions": 20,
+    "next_open": true,
+    "hard_stop_earlier": true
+  },
+  "train_evidence": {
+    "period": [
+      "2016-07-01",
+      "2018-06-30"
+    ],
+    "setups": 13,
+    "mean_label": 0.04536967217541794,
+    "median_label": 0.04530631213764402,
+    "positive": 12
+  },
+  "membership_drops": {
+    "fit": 16,
+    "holdout": 24
+  },
+  "internal_holdout": {
+    "period": [
+      "2020-01-01",
+      "2021-12-31"
+    ],
+    "candidate_rows": 6341,
+    "selected_signals": 37,
+    "signals": [
+      {
+        "symbol": "SBAC",
+        "sector": "Unknown",
+        "signal_date": "2020-03-03",
+        "fill_date": "2020-03-04",
+        "fill_idx": 545,
+        "edge_rank": 70.0,
+        "pattern_stop": 207.98,
+        "pivot": 223.72,
+        "setup_id": "SBAC|2020-03-03|0",
+        "fundamental_event": {
+          "filed": "2020-02-24",
+          "accession": "0001034054-20-000003",
+          "form": "10-K",
+          "eps_growth": 2.1219512195121952,
+          "revenue_growth": 0.22773249455137679,
+          "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "age_days": 8
+        },
+        "model_exit_idx": 565
+      },
+      {
+        "symbol": "PGR",
+        "sector": "Unknown",
+        "signal_date": "2020-03-09",
+        "fill_date": "2020-03-10",
+        "fill_idx": 549,
+        "edge_rank": 70.0,
+        "pattern_stop": 56.73,
+        "pivot": 61.2,
+        "setup_id": "PGR|2020-03-09|0",
+        "fundamental_event": {
+          "filed": "2020-03-02",
+          "accession": "0000080661-20-000006",
+          "form": "10-K",
+          "eps_growth": 0.5203619909502262,
+          "revenue_growth": 0.22024766252853434,
+          "revenue_tag": "Revenues",
+          "age_days": 7
+        },
+        "model_exit_idx": 569
+      },
+      {
+        "symbol": "CCI",
+        "sector": "Unknown",
+        "signal_date": "2020-03-11",
+        "fill_date": "2020-03-12",
+        "fill_idx": 551,
+        "edge_rank": 80.0,
+        "pattern_stop": 97.39,
+        "pivot": 102.96,
+        "setup_id": "CCI|2020-02-11|0",
+        "fundamental_event": {
+          "filed": "2020-03-10",
+          "accession": "0001051470-20-000077",
+          "form": "10-K",
+          "eps_growth": 0.4552845528455285,
+          "revenue_growth": 0.16724738675958184,
+          "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "age_days": 1
+        },
+        "model_exit_idx": 571
+      },
+      {
+        "symbol": "CLX",
+        "sector": "Unknown",
+        "signal_date": "2020-05-04",
+        "fill_date": "2020-05-05",
+        "fill_idx": 588,
+        "edge_rank": 70.0,
+        "pattern_stop": 117.72,
+        "pivot": 125.17,
+        "setup_id": "CLX|2020-03-05|1",
+        "fundamental_event": {
+          "filed": "2020-05-01",
+          "accession": "0000021076-20-000008",
+          "form": "10-Q",
+          "eps_growth": 0.3125,
+          "revenue_growth": 0.14958091553836228,
+          "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "age_days": 3
+        },
+        "model_exit_idx": 608
+      },
+      {
+        "symbol": "CLX",
+        "sector": "Unknown",
+        "signal_date": "2020-05-04",
+        "fill_date": "2020-05-05",
+        "fill_idx": 588,
+        "edge_rank": 46.7,
+        "pattern_stop": 117.72,
+        "pivot": 125.17,
+        "setup_id": "CLX|2020-03-02|0",
+        "fundamental_event": {
+          "filed": "2020-05-01",
+          "accession": "0000021076-20-000008",
+          "form": "10-Q",
+          "eps_growth": 0.3125,
+          "revenue_growth": 0.14958091553836228,
+          "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "age_days": 3
+        },
+        "model_exit_idx": 608
+      },
+      {
+        "symbol": "CRM",
+        "sector": "Unknown",
+        "signal_date": "2020-09-14",
+        "fill_date": "2020-09-15",
+        "fill_idx": 680,
+        "edge_rank": 70.0,
+        "pattern_stop": 188.46,
+        "pivot": 193.16,
+        "setup_id": "CRM|2020-09-14|0",
+        "fundamental_event": {
+          "filed": "2020-08-28",
+          "accession": "0001108524-20-000041",
+          "form": "10-Q",
+          "eps_growth": 24.90909090909091,
+          "revenue_growth": 0.28871653740305225,
+          "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "age_days": 17
+        },
+        "model_exit_idx": 700
+      },
+      {
+        "symbol": "ALGN",
+        "sector": "Unknown",
+        "signal_date": "2020-11-02",
+        "fill_date": "2020-11-03",
+        "fill_idx": 715,
+        "edge_rank": 85.0,
+        "pattern_stop": 289.52,
+        "pivot": 316.28,
+        "setup_id": "ALGN|2020-09-04|0",
+        "fundamental_event": {
+          "filed": "2020-10-30",
+          "accession": "0001097149-20-000052",
+          "form": "10-Q",
+          "eps_growth": 0.375,
+          "revenue_growth": 0.20878386277231398,
+          "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "age_days": 3
+        },
+        "model_exit_idx": 735
+      },
+      {
+        "symbol": "TER",
+        "sector": "Unknown",
+        "signal_date": "2020-11-04",
+        "fill_date": "2020-11-05",
+        "fill_idx": 534,
+        "edge_rank": 70.0,
+        "pattern_stop": 83.16,
+        "pivot": 91.15,
+        "setup_id": "TER|2020-11-04|0",
+        "fundamental_event": {
+          "filed": "2020-11-02",
+          "accession": "0001193125-20-283796",
+          "form": "10-Q",
+          "eps_growth": 0.6133333333333333,
+          "revenue_growth": 0.4079561815551562,
+          "revenue_tag": "Revenues",
+          "age_days": 2
+        },
+        "model_exit_idx": 554
+      },
+      {
+        "symbol": "QRVO",
+        "sector": "Unknown",
+        "signal_date": "2020-11-12",
+        "fill_date": "2020-11-13",
+        "fill_idx": 723,
+        "edge_rank": 30.0,
+        "pattern_stop": 124.56,
+        "pivot": 140.69,
+        "setup_id": "QRVO|2020-11-12|0",
+        "fundamental_event": {
+          "filed": "2020-11-05",
+          "accession": "0001604778-20-000086",
+          "form": "10-Q",
+          "eps_growth": 0.6857142857142857,
+          "revenue_growth": 0.3143605165749761,
+          "revenue_tag": "Revenues",
+          "age_days": 7
+        },
+        "model_exit_idx": 743
+      },
+      {
+        "symbol": "INTU",
+        "sector": "Unknown",
+        "signal_date": "2020-11-20",
+        "fill_date": "2020-11-23",
+        "fill_idx": 729,
+        "edge_rank": 90.0,
+        "pattern_stop": 299.6,
+        "pivot": 339.86,
+        "setup_id": "INTU|2020-11-09|1",
+        "fundamental_event": {
+          "filed": "2020-11-19",
+          "accession": "0000896878-20-000223",
+          "form": "10-Q",
+          "eps_growth": 2.409090909090909,
+          "revenue_growth": 0.1356223175965665,
+          "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "age_days": 1
+        },
+        "model_exit_idx": 749
+      },
+      {
+        "symbol": "INTU",
+        "sector": "Unknown",
+        "signal_date": "2020-11-20",
+        "fill_date": "2020-11-23",
+        "fill_idx": 729,
+        "edge_rank": 35.0,
+        "pattern_stop": 286.06,
+        "pivot": 300.41,
+        "setup_id": "INTU|2020-09-04|0",
+        "fundamental_event": {
+          "filed": "2020-11-19",
+          "accession": "0000896878-20-000223",
+          "form": "10-Q",
+          "eps_growth": 2.409090909090909,
+          "revenue_growth": 0.1356223175965665,
+          "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "age_days": 1
+        },
+        "model_exit_idx": 749
+      },
+      {
+        "symbol": "LRCX",
+        "sector": "Unknown",
+        "signal_date": "2021-02-03",
+        "fill_date": "2021-02-04",
+        "fill_idx": 778,
+        "edge_rank": 30.0,
+        "pattern_stop": 31.42,
+        "pivot": 36.01,
+        "setup_id": "LRCX|2021-01-14|0",
+        "fundamental_event": {
+          "filed": "2021-02-02",
+          "accession": "0000707549-21-000017",
+          "form": "10-Q",
+          "eps_growth": 0.7376093294460639,
+          "revenue_growth": 0.3378113652752601,
+          "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "age_days": 1
+        },
+        "model_exit_idx": 798
+      },
+      {
+        "symbol": "LRCX",
+        "sector": "Unknown",
+        "signal_date": "2021-02-03",
+        "fill_date": "2021-02-04",
+        "fill_idx": 778,
+        "edge_rank": 30.0,
+        "pattern_stop": 31.42,
+        "pivot": 36.01,
+        "setup_id": "LRCX|2021-01-25|1",
+        "fundamental_event": {
+          "filed": "2021-02-02",
+          "accession": "0000707549-21-000017",
+          "form": "10-Q",
+          "eps_growth": 0.7376093294460639,
+          "revenue_growth": 0.3378113652752601,
+          "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "age_days": 1
+        },
+        "model_exit_idx": 798
+      },
+      {
+        "symbol": "LRCX",
+        "sector": "Unknown",
+        "signal_date": "2021-02-03",
+        "fill_date": "2021-02-04",
+        "fill_idx": 778,
+        "edge_rank": 30.0,
+        "pattern_stop": 31.42,
+        "pivot": 36.01,
+        "setup_id": "LRCX|2021-01-27|2",
+        "fundamental_event": {
+          "filed": "2021-02-02",
+          "accession": "0000707549-21-000017",
+          "form": "10-Q",
+          "eps_growth": 0.7376093294460639,
+          "revenue_growth": 0.3378113652752601,
+          "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "age_days": 1
+        },
+        "model_exit_idx": 798
+      },
+      {
+        "symbol": "LRCX",
+        "sector": "Unknown",
+        "signal_date": "2021-02-05",
+        "fill_date": "2021-02-08",
+        "fill_idx": 780,
+        "edge_rank": 30.0,
+        "pattern_stop": 31.42,
+        "pivot": 36.01,
+        "setup_id": "LRCX|2021-02-05|3",
+        "fundamental_event": {
+          "filed": "2021-02-02",
+          "accession": "0000707549-21-000017",
+          "form": "10-Q",
+          "eps_growth": 0.7376093294460639,
+          "revenue_growth": 0.3378113652752601,
+          "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "age_days": 3
+        },
+        "model_exit_idx": 800
+      },
+      {
+        "symbol": "MKTX",
+        "sector": "Unknown",
+        "signal_date": "2021-02-22",
+        "fill_date": "2021-02-23",
+        "fill_idx": 790,
+        "edge_rank": 85.0,
+        "pattern_stop": 495.14,
+        "pivot": 552.43,
+        "setup_id": "MKTX|2021-02-19|0",
+        "fundamental_event": {
+          "filed": "2021-02-19",
+          "accession": "0001564590-21-006981",
+          "form": "10-K",
+          "eps_growth": 0.4537037037037035,
+          "revenue_growth": 0.3476528888124033,
+          "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "age_days": 3
+        },
+        "model_exit_idx": 810
+      },
+      {
+        "symbol": "LRCX",
+        "sector": "Unknown",
+        "signal_date": "2021-02-24",
+        "fill_date": "2021-02-25",
+        "fill_idx": 792,
+        "edge_rank": 70.0,
+        "pattern_stop": 50.7,
+        "pivot": 57.05,
+        "setup_id": "LRCX|2021-02-24|4",
+        "fundamental_event": {
+          "filed": "2021-02-02",
+          "accession": "0000707549-21-000017",
+          "form": "10-Q",
+          "eps_growth": 0.7376093294460639,
+          "revenue_growth": 0.3378113652752601,
+          "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "age_days": 22
+        },
+        "model_exit_idx": 812
+      },
+      {
+        "symbol": "AMAT",
+        "sector": "Unknown",
+        "signal_date": "2021-02-26",
+        "fill_date": "2021-03-01",
+        "fill_idx": 794,
+        "edge_rank": 70.0,
+        "pattern_stop": 54.17,
+        "pivot": 62.31,
+        "setup_id": "AMAT|2021-02-05|0",
+        "fundamental_event": {
+          "filed": "2021-02-25",
+          "accession": "0000006951-21-000013",
+          "form": "10-Q",
+          "eps_growth": 0.27083333333333326,
+          "revenue_growth": 0.24026910139356072,
+          "revenue_tag": "Revenues",
+          "age_days": 1
+        },
+        "model_exit_idx": 814
+      },
+      {
+        "symbol": "AMAT",
+        "sector": "Unknown",
+        "signal_date": "2021-02-26",
+        "fill_date": "2021-03-01",
+        "fill_idx": 794,
+        "edge_rank": 30.0,
+        "pattern_stop": 54.17,
+        "pivot": 62.31,
+        "setup_id": "AMAT|2021-02-08|1",
+        "fundamental_event": {
+          "filed": "2021-02-25",
+          "accession": "0000006951-21-000013",
+          "form": "10-Q",
+          "eps_growth": 0.27083333333333326,
+          "revenue_growth": 0.24026910139356072,
+          "revenue_tag": "Revenues",
+          "age_days": 1
+        },
+        "model_exit_idx": 814
+      },
+      {
+        "symbol": "EFX",
+        "sector": "Unknown",
+        "signal_date": "2021-04-23",
+        "fill_date": "2021-04-26",
+        "fill_idx": 833,
+        "edge_rank": 30.0,
+        "pattern_stop": 162.83,
+        "pivot": 171.07,
+        "setup_id": "EFX|2021-04-22|0",
+        "fundamental_event": {
+          "filed": "2021-04-22",
+          "accession": "0000033185-21-000032",
+          "form": "10-Q",
+          "eps_growth": 0.7263157894736842,
+          "revenue_growth": 0.26631172356195854,
+          "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "age_days": 1
+        },
+        "model_exit_idx": 853
+      },
+      {
+        "symbol": "IQV",
+        "sector": "Unknown",
+        "signal_date": "2021-04-26",
+        "fill_date": "2021-04-27",
+        "fill_idx": 834,
+        "edge_rank": 30.0,
+        "pattern_stop": 185.38,
+        "pivot": 199.99,
+        "setup_id": "IQV|2021-02-23|0",
+        "fundamental_event": {
+          "filed": "2021-04-23",
+          "accession": "0001478242-21-000043",
+          "form": "10-Q",
+          "eps_growth": 1.5952380952380953,
+          "revenue_growth": 0.23783587509077697,
+          "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "age_days": 3
+        },
+        "model_exit_idx": 854
+      },
+      {
+        "symbol": "REGN",
+        "sector": "Unknown",
+        "signal_date": "2021-05-18",
+        "fill_date": "2021-05-19",
+        "fill_idx": 850,
+        "edge_rank": 30.0,
+        "pattern_stop": 466.92,
+        "pivot": 502.84,
+        "setup_id": "REGN|2021-05-18|1",
+        "fundamental_event": {
+          "filed": "2021-05-06",
+          "accession": "0001804220-21-000017",
+          "form": "10-Q",
+          "eps_growth": 0.858195211786372,
+          "revenue_growth": 0.3831637676403019,
+          "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "age_days": 12
+        },
+        "model_exit_idx": 870
+      },
+      {
+        "symbol": "URI",
+        "sector": "Unknown",
+        "signal_date": "2021-08-03",
+        "fill_date": "2021-08-04",
+        "fill_idx": 903,
+        "edge_rank": 30.0,
+        "pattern_stop": 289.37,
+        "pivot": 314.21,
+        "setup_id": "URI|2021-08-03|0",
+        "fundamental_event": {
+          "filed": "2021-07-28",
+          "accession": "0001067701-21-000028",
+          "form": "10-Q",
+          "eps_growth": 0.37201365187713287,
+          "revenue_growth": 0.1794739556472409,
+          "revenue_tag": "Revenues",
+          "age_days": 6
+        },
+        "model_exit_idx": 923
+      },
+      {
+        "symbol": "PWR",
+        "sector": "Unknown",
+        "signal_date": "2021-08-09",
+        "fill_date": "2021-08-10",
+        "fill_idx": 907,
+        "edge_rank": 100.0,
+        "pattern_stop": 84.39,
+        "pivot": 92.35,
+        "setup_id": "PWR|2021-07-20|0",
+        "fundamental_event": {
+          "filed": "2021-08-06",
+          "accession": "0001050915-21-000103",
+          "form": "10-Q",
+          "eps_growth": 0.5576923076923077,
+          "revenue_growth": 0.19694313892055448,
+          "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "age_days": 3
+        },
+        "model_exit_idx": 927
+      },
+      {
+        "symbol": "UHS",
+        "sector": "Unknown",
+        "signal_date": "2021-08-09",
+        "fill_date": "2021-08-10",
+        "fill_idx": 907,
+        "edge_rank": 30.0,
+        "pattern_stop": 141.61,
+        "pivot": 152.18,
+        "setup_id": "UHS|2021-07-27|1",
+        "fundamental_event": {
+          "filed": "2021-08-06",
+          "accession": "0001564590-21-042157",
+          "form": "10-Q",
+          "eps_growth": 0.28474576271186436,
+          "revenue_growth": 0.17149017823584112,
+          "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "age_days": 3
+        },
+        "model_exit_idx": 927
+      },
+      {
+        "symbol": "EBAY",
+        "sector": "Unknown",
+        "signal_date": "2021-08-26",
+        "fill_date": "2021-08-27",
+        "fill_idx": 920,
+        "edge_rank": 30.0,
+        "pattern_stop": 65.78,
+        "pivot": 70.16,
+        "setup_id": "EBAY|2021-08-26|0",
+        "fundamental_event": {
+          "filed": "2021-08-12",
+          "accession": "0001065088-21-000030",
+          "form": "10-Q",
+          "eps_growth": 13.933333333333332,
+          "revenue_growth": 0.1416345742404792,
+          "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "age_days": 14
+        },
+        "model_exit_idx": 940
+      },
+      {
+        "symbol": "BBY",
+        "sector": "Unknown",
+        "signal_date": "2021-09-01",
+        "fill_date": "2021-09-02",
+        "fill_idx": 924,
+        "edge_rank": 30.0,
+        "pattern_stop": 85.22,
+        "pivot": 92.93,
+        "setup_id": "BBY|2021-08-24|0",
+        "fundamental_event": {
+          "filed": "2021-08-31",
+          "accession": "0000764478-21-000060",
+          "form": "10-Q",
+          "eps_growth": 0.7575757575757576,
+          "revenue_growth": 0.19566094853683147,
+          "revenue_tag": "Revenues",
+          "age_days": 1
+        },
+        "model_exit_idx": 944
+      },
+      {
+        "symbol": "AMAT",
+        "sector": "Unknown",
+        "signal_date": "2021-09-10",
+        "fill_date": "2021-09-13",
+        "fill_idx": 930,
+        "edge_rank": 30.0,
+        "pattern_stop": 126.55,
+        "pivot": 132.44,
+        "setup_id": "AMAT|2021-09-10|2",
+        "fundamental_event": {
+          "filed": "2021-08-26",
+          "accession": "0000006951-21-000034",
+          "form": "10-Q",
+          "eps_growth": 1.0549450549450552,
+          "revenue_growth": 0.4097838452787259,
+          "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "age_days": 15
+        },
+        "model_exit_idx": 950
+      },
+      {
+        "symbol": "DRI",
+        "sector": "Unknown",
+        "signal_date": "2021-10-06",
+        "fill_date": "2021-10-07",
+        "fill_idx": 948,
+        "edge_rank": 30.0,
+        "pattern_stop": 123.47,
+        "pivot": 130.55,
+        "setup_id": "DRI|2021-09-30|1",
+        "fundamental_event": {
+          "filed": "2021-10-05",
+          "accession": "0000940944-21-000073",
+          "form": "10-Q",
+          "eps_growth": 5.249999999999999,
+          "revenue_growth": 0.5097551394526647,
+          "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "age_days": 1
+        },
+        "model_exit_idx": 968
+      },
+      {
+        "symbol": "FCX",
+        "sector": "Unknown",
+        "signal_date": "2021-11-08",
+        "fill_date": "2021-11-09",
+        "fill_idx": 971,
+        "edge_rank": 100.0,
+        "pattern_stop": 32.07,
+        "pivot": 34.87,
+        "setup_id": "FCX|2021-11-05|0",
+        "fundamental_event": {
+          "filed": "2021-11-05",
+          "accession": "0000831259-21-000038",
+          "form": "10-Q",
+          "eps_growth": 3.2727272727272725,
+          "revenue_growth": 0.655264564404062,
+          "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "age_days": 3
+        },
+        "model_exit_idx": 991
+      },
+      {
+        "symbol": "PNR",
+        "sector": "Unknown",
+        "signal_date": "2021-11-08",
+        "fill_date": "2021-11-09",
+        "fill_idx": 971,
+        "edge_rank": 30.0,
+        "pattern_stop": 67.62,
+        "pivot": 72.51,
+        "setup_id": "PNR|2021-11-08|0",
+        "fundamental_event": {
+          "filed": "2021-10-26",
+          "accession": "0000077360-21-000035",
+          "form": "10-Q",
+          "eps_growth": 0.303030303030303,
+          "revenue_growth": 0.21377582968065112,
+          "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "age_days": 13
+        },
+        "model_exit_idx": 991
+      },
+      {
+        "symbol": "ABT",
+        "sector": "Unknown",
+        "signal_date": "2021-11-09",
+        "fill_date": "2021-11-10",
+        "fill_idx": 972,
+        "edge_rank": 35.0,
+        "pattern_stop": 112.77,
+        "pivot": 117.98,
+        "setup_id": "ABT|2021-11-09|0",
+        "fundamental_event": {
+          "filed": "2021-11-03",
+          "accession": "0001104659-21-133629",
+          "form": "10-Q",
+          "eps_growth": 0.6956521739130435,
+          "revenue_growth": 0.23438382469219476,
+          "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "age_days": 6
+        },
+        "model_exit_idx": 992
+      },
+      {
+        "symbol": "EQIX",
+        "sector": "Unknown",
+        "signal_date": "2021-11-09",
+        "fill_date": "2021-11-10",
+        "fill_idx": 972,
+        "edge_rank": 30.0,
+        "pattern_stop": 700.34,
+        "pivot": 772.66,
+        "setup_id": "EQIX|2021-11-09|1",
+        "fundamental_event": {
+          "filed": "2021-11-04",
+          "accession": "0001628280-21-021707",
+          "form": "10-Q",
+          "eps_growth": 1.2702702702702702,
+          "revenue_growth": 0.10225843830008152,
+          "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "age_days": 5
+        },
+        "model_exit_idx": 992
+      },
+      {
+        "symbol": "NVDA",
+        "sector": "Unknown",
+        "signal_date": "2021-11-23",
+        "fill_date": "2021-11-24",
+        "fill_idx": 982,
+        "edge_rank": 30.0,
+        "pattern_stop": 18.7,
+        "pivot": 20.66,
+        "setup_id": "NVDA|2021-11-04|0",
+        "fundamental_event": {
+          "filed": "2021-11-22",
+          "accession": "0001045810-21-000163",
+          "form": "10-Q",
+          "eps_growth": 0.8301886792452828,
+          "revenue_growth": 0.502962336013542,
+          "revenue_tag": "Revenues",
+          "age_days": 1
+        },
+        "model_exit_idx": 1002
+      },
+      {
+        "symbol": "CDW",
+        "sector": "Unknown",
+        "signal_date": "2021-11-30",
+        "fill_date": "2021-12-01",
+        "fill_idx": 986,
+        "edge_rank": 70.0,
+        "pattern_stop": 170.77,
+        "pivot": 181.17,
+        "setup_id": "CDW|2021-11-30|0",
+        "fundamental_event": {
+          "filed": "2021-11-03",
+          "accession": "0001402057-21-000153",
+          "form": "10-Q",
+          "eps_growth": 0.43609022556390964,
+          "revenue_growth": 0.1142881170633252,
+          "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "age_days": 27
+        },
+        "model_exit_idx": 1006
+      },
+      {
+        "symbol": "NVR",
+        "sector": "Unknown",
+        "signal_date": "2021-12-02",
+        "fill_date": "2021-12-03",
+        "fill_idx": 988,
+        "edge_rank": 70.0,
+        "pattern_stop": 4803.91,
+        "pivot": 5094.0,
+        "setup_id": "NVR|2021-12-02|0",
+        "fundamental_event": {
+          "filed": "2021-11-02",
+          "accession": "0000906163-21-000099",
+          "form": "10-Q",
+          "eps_growth": 0.3275994470895407,
+          "revenue_growth": 0.20383193669183908,
+          "revenue_tag": "Revenues",
+          "age_days": 30
+        },
+        "model_exit_idx": 1008
+      },
+      {
+        "symbol": "DE",
+        "sector": "Unknown",
+        "signal_date": "2021-12-17",
+        "fill_date": "2021-12-20",
+        "fill_idx": 999,
+        "edge_rank": 85.0,
+        "pattern_stop": 308.0,
+        "pivot": 333.53,
+        "setup_id": "DE|2021-11-09|0",
+        "fundamental_event": {
+          "filed": "2021-12-16",
+          "accession": "0001558370-21-016864",
+          "form": "10-K",
+          "eps_growth": 1.1852704257767548,
+          "revenue_growth": 0.238716938660664,
+          "revenue_tag": "Revenues",
+          "age_days": 1
+        },
+        "model_exit_idx": 1019
+      }
+    ],
+    "cell": {
+      "summary": {
+        "signals": 37,
+        "trades": 30,
+        "end_value": 102334.67,
+        "total_return_pct": 2.33,
+        "cagr_pct": 1.26,
+        "max_drawdown_pct": -2.9,
+        "rejected": {
+          "duplicate_or_position_limit": 7
+        }
+      },
+      "trade_stats": {
+        "trades": 30,
+        "profit_factor": 1.19784372568634,
+        "expectancy_pct": 0.5933333333333334,
+        "win_rate": 0.5333333333333333,
+        "average_win_pct": 6.735625,
+        "average_loss_pct": -6.426428571428572,
+        "payoff_ratio": 1.0481132599755474
+      },
+      "drop_top_5": {
+        "trades": 25,
+        "profit_factor": 0.46804490385684117,
+        "expectancy_pct": -1.9143999999999999,
+        "win_rate": 0.44,
+        "average_win_pct": 3.828181818181818,
+        "average_loss_pct": -6.426428571428572,
+        "payoff_ratio": 0.595693513999616
+      },
+      "drop_top_10": {
+        "trades": 20,
+        "profit_factor": 0.16016449927753695,
+        "expectancy_pct": -3.778,
+        "win_rate": 0.3,
+        "average_win_pct": 2.401666666666667,
+        "average_loss_pct": -6.426428571428572,
+        "payoff_ratio": 0.37371716498091956
+      },
+      "robustness": {
+        "sample": {
+          "observations": 463,
+          "start": "2020-03-04",
+          "end": "2021-12-31",
+          "trials_declared": 304
+        },
+        "performance": {
+          "total_return": 0.02350600660138724,
+          "cagr": 0.01272601156419384,
+          "annual_volatility": 0.03282252722894355
+        },
+        "distribution": {
+          "skewness": -0.26191101308887405,
+          "excess_kurtosis": 13.960440280159531,
+          "jarque_bera": {
+            "statistic": 3765.1214466357287,
+            "p_value": 0.0
+          }
+        },
+        "risk_adjusted": {
+          "sharpe": 0.4016666552841166,
+          "sortino": 0.5695078502931429,
+          "calmar": 0.43817378901179366,
+          "omega_zero": 1.1205381526711966
+        },
+        "risk": {
+          "max_drawdown": -0.02904329716502352,
+          "max_drawdown_duration_days": 188,
+          "ulcer_index": 0.018583237963386005,
+          "lake_ratio": 0.9719222462203023,
+          "var_95": -0.002658316,
+          "cvar_95": -0.005271179583333334
+        },
+        "significance": {
+          "t_statistic": 0.5444474963054358,
+          "effective_sample_size": 463.0,
+          "autocorrelations": [
+            -0.14515483156922182,
+            0.059437356265448896,
+            -0.019160615130997528,
+            -0.01752497041022009,
+            0.07803768865867132,
+            -0.01754712590430773,
+            0.03293970564411409,
+            0.006439053871990258,
+            0.06141962781740872,
+            -0.06345406617089745,
+            0.04382479113660198,
+            -0.04998693473812844,
+            0.008446552158997235,
+            -0.006065949704550565,
+            -0.03790678181679627,
+            0.06299504426020047,
+            -0.01063150072004854,
+            0.0138593040293168,
+            -0.015074938615566516,
+            0.012765880118649703,
+            -0.008357051038483275
+          ],
+          "psr_vs_zero": 0.7058769958854718,
+          "approximate_dsr": {
+            "benchmark_sharpe": 2.141543968248766,
+            "probability": 0.00951190932501883
+          }
+        },
+        "stability": {
+          "is_sharpe": 0.302492025776528,
+          "oos_sharpe": 0.6034479541747299,
+          "wfa_efficiency": 1.9949218582725186,
+          "positive_months": 0.5,
+          "positive_quarters": 0.5
+        },
+        "optional_tests": {
+          "ljung_box": {
+            "available": false
+          },
+          "adf": {
+            "available": false
+          },
+          "reason": "No module named 'statsmodels'"
+        },
+        "block_bootstrap": {
+          "cagr": {
+            "p05": -0.024807841076642346,
+            "median": 0.012278593521370507,
+            "p95": 0.05188999654420356
+          },
+          "sharpe": {
+            "p05": -0.7134096085820347,
+            "median": 0.3927639319984487,
+            "p95": 1.7030477105143638
+          },
+          "max_drawdown": {
+            "p05": -0.07267970033961312,
+            "median": -0.03548353604959237,
+            "p95": -0.017782382684877876
+          }
+        },
+        "monte_carlo": {
+          "max_drawdown": {
+            "p05": -0.07652051001332012,
+            "median": -0.03792473288645137,
+            "p95": -0.0184007285219455
+          },
+          "final_equity": {
+            "p05": 0.9512197801288248,
+            "median": 1.0234573497259802,
+            "p95": 1.1030207977139599
+          }
+        }
+      }
+    },
+    "gate": {
+      "passed": false,
+      "checks": {
+        "cagr>=15pct": false,
+        "sharpe>=0.75": false,
+        "pf>1.20": false,
+        "mdd>-15pct": true,
+        "drop_top_5_expectancy>0": false,
+        "trades>=30": true
+      }
+    }
+  },
+  "open_formal_validation": false
+}

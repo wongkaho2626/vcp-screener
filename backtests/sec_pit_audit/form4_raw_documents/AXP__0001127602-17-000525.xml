@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<ownershipDocument>
+
+    <schemaVersion>X0306</schemaVersion>
+
+    <documentType>4</documentType>
+
+    <periodOfReport>2016-12-31</periodOfReport>
+
+    <issuer>
+        <issuerCik>0000004962</issuerCik>
+        <issuerName>AMERICAN EXPRESS CO</issuerName>
+        <issuerTradingSymbol>AXP</issuerTradingSymbol>
+    </issuer>
+
+    <reportingOwner>
+        <reportingOwnerId>
+            <rptOwnerCik>0001189152</rptOwnerCik>
+            <rptOwnerName>VASELLA DANIEL</rptOwnerName>
+        </reportingOwnerId>
+        <reportingOwnerAddress>
+            <rptOwnerStreet1>C/O AMERICAN EXPRESS COMPANY</rptOwnerStreet1>
+            <rptOwnerStreet2>200 VESEY STREET</rptOwnerStreet2>
+            <rptOwnerCity>NEW YORK</rptOwnerCity>
+            <rptOwnerState>NY</rptOwnerState>
+            <rptOwnerZipCode>10285-5001</rptOwnerZipCode>
+            <rptOwnerStateDescription></rptOwnerStateDescription>
+        </reportingOwnerAddress>
+        <reportingOwnerRelationship>
+            <isDirector>1</isDirector>
+        </reportingOwnerRelationship>
+    </reportingOwner>
+
+    <derivativeTable>
+        <derivativeTransaction>
+            <securityTitle>
+                <value>Share Equivalent Units</value>
+            </securityTitle>
+            <conversionOrExercisePrice>
+                <footnoteId id="F1"/>
+            </conversionOrExercisePrice>
+            <transactionDate>
+                <value>2016-12-31</value>
+            </transactionDate>
+            <transactionCoding>
+                <transactionFormType>4</transactionFormType>
+                <transactionCode>A</transactionCode>
+                <equitySwapInvolved>0</equitySwapInvolved>
+                <footnoteId id="F2"/>
+            </transactionCoding>
+            <transactionTimeliness></transactionTimeliness>
+            <transactionAmounts>
+                <transactionShares>
+                    <value>535.619</value>
+                </transactionShares>
+                <transactionPricePerShare>
+                    <value>74.08</value>
+                </transactionPricePerShare>
+                <transactionAcquiredDisposedCode>
+                    <value>A</value>
+                </transactionAcquiredDisposedCode>
+            </transactionAmounts>
+            <exerciseDate>
+                <footnoteId id="F3"/>
+            </exerciseDate>
+            <expirationDate>
+                <footnoteId id="F3"/>
+            </expirationDate>
+            <underlyingSecurity>
+                <underlyingSecurityTitle>
+                    <value>Common Stock</value>
+                </underlyingSecurityTitle>
+                <underlyingSecurityShares>
+                    <value>535.619</value>
+                </underlyingSecurityShares>
+            </underlyingSecurity>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>18088.848</value>
+                    <footnoteId id="F4"/>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+            </ownershipNature>
+        </derivativeTransaction>
+    </derivativeTable>
+
+    <footnotes>
+        <footnote id="F1">The Share Equivalent Units convert into common stock on a one-for-one basis.</footnote>
+        <footnote id="F2">The reported Share Equivalent Units were awarded pursuant to the Company's 2003 Share Equivalent Unit Plan for Directors and will be settled in cash following termination of service as a Director.</footnote>
+        <footnote id="F3">The Share Equivalent Units are convertible immediately and have no expiration date.</footnote>
+        <footnote id="F4">Includes Share Equivalent Units acquired pursuant to a dividend reinvestment feature of the Directors' Deferred Compensation Plan and/or the 2003 Share Equivalent Unit Plan for Directors.</footnote>
+    </footnotes>
+
+    <ownerSignature>
+        <signatureName>/s/ Carol V. Schwartz, attorney-in-fact</signatureName>
+        <signatureDate>2017-01-04</signatureDate>
+    </ownerSignature>
+</ownershipDocument>

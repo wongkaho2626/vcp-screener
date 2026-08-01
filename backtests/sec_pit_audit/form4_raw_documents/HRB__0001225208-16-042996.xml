@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<ownershipDocument>
+
+    <schemaVersion>X0306</schemaVersion>
+
+    <documentType>4</documentType>
+
+    <periodOfReport>2016-12-09</periodOfReport>
+
+    <issuer>
+        <issuerCik>0000012659</issuerCik>
+        <issuerName>H&amp;R BLOCK INC</issuerName>
+        <issuerTradingSymbol>HRB</issuerTradingSymbol>
+    </issuer>
+
+    <reportingOwner>
+        <reportingOwnerId>
+            <rptOwnerCik>0001393959</rptOwnerCik>
+            <rptOwnerName>Macfarlane Gregory J</rptOwnerName>
+        </reportingOwnerId>
+        <reportingOwnerAddress>
+            <rptOwnerStreet1>C/O H&amp;R BLOCK</rptOwnerStreet1>
+            <rptOwnerStreet2>ONE H&amp;R BLOCK WAY</rptOwnerStreet2>
+            <rptOwnerCity>KANSAS CITY</rptOwnerCity>
+            <rptOwnerState>MO</rptOwnerState>
+            <rptOwnerZipCode>64105</rptOwnerZipCode>
+            <rptOwnerStateDescription></rptOwnerStateDescription>
+        </reportingOwnerAddress>
+        <reportingOwnerRelationship>
+            <isOfficer>1</isOfficer>
+            <officerTitle>SVP, U.S. Retail Prods &amp; Ops</officerTitle>
+        </reportingOwnerRelationship>
+    </reportingOwner>
+
+    <nonDerivativeTable>
+        <nonDerivativeTransaction>
+            <securityTitle>
+                <value>Common Stock</value>
+            </securityTitle>
+            <transactionDate>
+                <value>2016-12-09</value>
+            </transactionDate>
+            <transactionCoding>
+                <transactionFormType>4</transactionFormType>
+                <transactionCode>F</transactionCode>
+                <equitySwapInvolved>0</equitySwapInvolved>
+            </transactionCoding>
+            <transactionAmounts>
+                <transactionShares>
+                    <value>1728.0000</value>
+                    <footnoteId id="F1"/>
+                </transactionShares>
+                <transactionPricePerShare>
+                    <value>22.9500</value>
+                </transactionPricePerShare>
+                <transactionAcquiredDisposedCode>
+                    <value>D</value>
+                </transactionAcquiredDisposedCode>
+            </transactionAmounts>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>120259.6060</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+            </ownershipNature>
+        </nonDerivativeTransaction>
+    </nonDerivativeTable>
+
+    <derivativeTable></derivativeTable>
+
+    <footnotes>
+        <footnote id="F1">Represents shares withheld by the Issuer to satisfy tax withholding obligations related to the vesting of restricted share units (&quot;RSUs&quot;) that were granted to the Reporting Person under the H&amp;R Block, Inc. 2013 Long Term Incentive Plan on December 10, 2015.  The RSUs vested pursuant to the previously disclosed vesting schedule.  Given the Reporting Person's resignation effective December 30, 2016 announced in a Form 8-K filed on December 7, 2016, remaining unvested RSUs will be forfeited.</footnote>
+    </footnotes>
+
+    <ownerSignature>
+        <signatureName>Scott W. Andreasen, per Power of Attorney</signatureName>
+        <signatureDate>2016-12-12</signatureDate>
+    </ownerSignature>
+</ownershipDocument>

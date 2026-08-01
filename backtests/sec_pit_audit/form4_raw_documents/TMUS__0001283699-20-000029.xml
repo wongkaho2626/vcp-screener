@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<ownershipDocument>
+
+    <schemaVersion>X0306</schemaVersion>
+
+    <documentType>4</documentType>
+
+    <periodOfReport>2020-02-10</periodOfReport>
+
+    <notSubjectToSection16>0</notSubjectToSection16>
+
+    <issuer>
+        <issuerCik>0001283699</issuerCik>
+        <issuerName>T-Mobile US, Inc.</issuerName>
+        <issuerTradingSymbol>TMUS</issuerTradingSymbol>
+    </issuer>
+
+    <reportingOwner>
+        <reportingOwnerId>
+            <rptOwnerCik>0001297461</rptOwnerCik>
+            <rptOwnerName>Carter J Braxton II</rptOwnerName>
+        </reportingOwnerId>
+        <reportingOwnerAddress>
+            <rptOwnerStreet1>C/O T-MOBILE US, INC.</rptOwnerStreet1>
+            <rptOwnerStreet2>12920 SE 38TH STREET</rptOwnerStreet2>
+            <rptOwnerCity>BELLEVUE</rptOwnerCity>
+            <rptOwnerState>WA</rptOwnerState>
+            <rptOwnerZipCode>98006</rptOwnerZipCode>
+            <rptOwnerStateDescription></rptOwnerStateDescription>
+        </reportingOwnerAddress>
+        <reportingOwnerRelationship>
+            <isDirector>0</isDirector>
+            <isOfficer>1</isOfficer>
+            <isTenPercentOwner>0</isTenPercentOwner>
+            <isOther>0</isOther>
+            <officerTitle>EVP &amp; CFO</officerTitle>
+            <otherText></otherText>
+        </reportingOwnerRelationship>
+    </reportingOwner>
+
+    <nonDerivativeTable>
+        <nonDerivativeTransaction>
+            <securityTitle>
+                <value>Common Stock</value>
+            </securityTitle>
+            <transactionDate>
+                <value>2020-02-10</value>
+            </transactionDate>
+            <transactionCoding>
+                <transactionFormType>4</transactionFormType>
+                <transactionCode>D</transactionCode>
+                <equitySwapInvolved>0</equitySwapInvolved>
+            </transactionCoding>
+            <transactionAmounts>
+                <transactionShares>
+                    <value>342000</value>
+                    <footnoteId id="F1"/>
+                </transactionShares>
+                <transactionPricePerShare>
+                    <value>80.8856</value>
+                    <footnoteId id="F2"/>
+                </transactionPricePerShare>
+                <transactionAcquiredDisposedCode>
+                    <value>D</value>
+                </transactionAcquiredDisposedCode>
+            </transactionAmounts>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>25618</value>
+                    <footnoteId id="F3"/>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+            </ownershipNature>
+        </nonDerivativeTransaction>
+    </nonDerivativeTable>
+
+    <derivativeTable></derivativeTable>
+
+    <footnotes>
+        <footnote id="F1">The Reporting Person and the Company entered into an amendment to his employment agreement on November 14, 2019 (the &quot;Amendment&quot;), which was previously disclosed in a Form 8-K filed with the SEC on November 18, 2019.  As previously disclosed, under the terms of the Amendment, the Reporting Person had the right to cause the Company to purchase certain shares of the Company's common stock held by the Reporting Person on the second business day following the filing by the Company of its Form 10-K for the year ended 2019.  The Reporting Person exercised his right to sell these shares to the Company in accordance with the terms of the Amendment.</footnote>
+        <footnote id="F2">As provided for under the terms of the Amendment, the price paid for the shares purchased by the Company from the Reporting Person was calculated at a price per share equal to the volume weighted average price of the Company's common stock over the thirty (30) calendar day period ending upon and including the Company's Form 10-K filing on February 6, 2020.</footnote>
+        <footnote id="F3">Reflects a transfer in 2019 of 3,196 shares to Mr. Carter's former spouse pursuant to a domestic relations order.</footnote>
+    </footnotes>
+
+    <remarks></remarks>
+
+    <ownerSignature>
+        <signatureName>/s/ Frederick Williams, Attorney-in-Fact</signatureName>
+        <signatureDate>2020-02-12</signatureDate>
+    </ownerSignature>
+</ownershipDocument>

@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<ownershipDocument>
+
+    <schemaVersion>X0306</schemaVersion>
+
+    <documentType>4</documentType>
+
+    <periodOfReport>2017-02-14</periodOfReport>
+
+    <issuer>
+        <issuerCik>0000821189</issuerCik>
+        <issuerName>EOG RESOURCES INC</issuerName>
+        <issuerTradingSymbol>EOG</issuerTradingSymbol>
+    </issuer>
+
+    <reportingOwner>
+        <reportingOwnerId>
+            <rptOwnerCik>0001188435</rptOwnerCik>
+            <rptOwnerName>DRIGGERS TIMOTHY K</rptOwnerName>
+        </reportingOwnerId>
+        <reportingOwnerAddress>
+            <rptOwnerStreet1>1111 BAGBY, SKY LOBBY 2</rptOwnerStreet1>
+            <rptOwnerStreet2></rptOwnerStreet2>
+            <rptOwnerCity>HOUSTON</rptOwnerCity>
+            <rptOwnerState>TX</rptOwnerState>
+            <rptOwnerZipCode>77002</rptOwnerZipCode>
+            <rptOwnerStateDescription></rptOwnerStateDescription>
+        </reportingOwnerAddress>
+        <reportingOwnerRelationship>
+            <isOfficer>1</isOfficer>
+            <officerTitle>EVP &amp; Chief Financial Officer</officerTitle>
+        </reportingOwnerRelationship>
+    </reportingOwner>
+
+    <nonDerivativeTable>
+        <nonDerivativeTransaction>
+            <securityTitle>
+                <value>Common Stock</value>
+            </securityTitle>
+            <transactionDate>
+                <value>2017-02-14</value>
+            </transactionDate>
+            <transactionCoding>
+                <transactionFormType>4</transactionFormType>
+                <transactionCode>A</transactionCode>
+                <equitySwapInvolved>0</equitySwapInvolved>
+            </transactionCoding>
+            <transactionTimeliness></transactionTimeliness>
+            <transactionAmounts>
+                <transactionShares>
+                    <value>17372</value>
+                    <footnoteId id="F1"/>
+                </transactionShares>
+                <transactionPricePerShare>
+                    <value>0</value>
+                </transactionPricePerShare>
+                <transactionAcquiredDisposedCode>
+                    <value>A</value>
+                </transactionAcquiredDisposedCode>
+            </transactionAmounts>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>165996</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+            </ownershipNature>
+        </nonDerivativeTransaction>
+    </nonDerivativeTable>
+
+    <footnotes>
+        <footnote id="F1">Effective September 23, 2013, the Reporting Person received an award of 8,686 Performance Units (as adjusted to reflect the Issuer's two-for-one stock split (in the form of a stock dividend) which was effective March 31, 2014).  The performance metric applicable to the award was the Total Shareholder Return of the Issuer over a three-year performance period (January 2014 through December 2016) relative to the Total Shareholder Return of each of the Issuer's Peer Companies.  Pursuant to the terms of the award agreement, between 0% and 200% of the award could be earned based on the Issuer's TSR Rank.  The Issuer's TSR Rank and applicable Performance Multiple (each as certified by the Compensation Committee of the Issuer's Board of Directors, effective February 14, 2017) was 1 and 200%, respectively.  Accordingly, an additional 8,686 Performance Units have been credited to the Reporting Person.  Subject to the terms of the award agreement, (i) the 17,372 aggregate Performance Units will &quot;cliff&quot; vest on September 23, 2018 and (ii) shares of the Issuer's common stock represented by the Performance Units (on a one-for-one basis) will be distributed to the Reporting Person following such vesting date.  Defined terms used herein have the meanings set forth in the form of agreement governing the Performance Units award, which is filed as Exhibit 4.8 to the Issuer's Registration Statement on Form S-8 (SEC File No. 333-188352), filed on May 3, 2013.</footnote>
+    </footnotes>
+
+    <ownerSignature>
+        <signatureName>Vicky Strom, attorney-in-fact for Timothy K. Driggers</signatureName>
+        <signatureDate>2017-02-16</signatureDate>
+    </ownerSignature>
+</ownershipDocument>

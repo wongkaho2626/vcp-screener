@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<ownershipDocument>
+
+    <schemaVersion>X0306</schemaVersion>
+
+    <documentType>4</documentType>
+
+    <periodOfReport>2018-01-02</periodOfReport>
+
+    <issuer>
+        <issuerCik>0000005272</issuerCik>
+        <issuerName>AMERICAN INTERNATIONAL GROUP INC</issuerName>
+        <issuerTradingSymbol>AIG</issuerTradingSymbol>
+    </issuer>
+
+    <reportingOwner>
+        <reportingOwnerId>
+            <rptOwnerCik>0001425725</rptOwnerCik>
+            <rptOwnerName>MILLS LINDA A</rptOwnerName>
+        </reportingOwnerId>
+        <reportingOwnerAddress>
+            <rptOwnerStreet1>AMERICAN INTERNATIONAL GROUP, INC.</rptOwnerStreet1>
+            <rptOwnerStreet2>175 WATER STREET</rptOwnerStreet2>
+            <rptOwnerCity>NEW YORK</rptOwnerCity>
+            <rptOwnerState>NY</rptOwnerState>
+            <rptOwnerZipCode>10038</rptOwnerZipCode>
+            <rptOwnerStateDescription></rptOwnerStateDescription>
+        </reportingOwnerAddress>
+        <reportingOwnerRelationship>
+            <isDirector>1</isDirector>
+        </reportingOwnerRelationship>
+    </reportingOwner>
+
+    <nonDerivativeTable></nonDerivativeTable>
+
+    <derivativeTable>
+        <derivativeTransaction>
+            <securityTitle>
+                <value>Deferred Stock Unit</value>
+            </securityTitle>
+            <conversionOrExercisePrice>
+                <footnoteId id="F1"/>
+            </conversionOrExercisePrice>
+            <transactionDate>
+                <value>2018-01-02</value>
+            </transactionDate>
+            <transactionCoding>
+                <transactionFormType>4</transactionFormType>
+                <transactionCode>A</transactionCode>
+                <equitySwapInvolved>0</equitySwapInvolved>
+            </transactionCoding>
+            <transactionAmounts>
+                <transactionShares>
+                    <value>33.0000</value>
+                    <footnoteId id="F1"/>
+                </transactionShares>
+                <transactionPricePerShare>
+                    <footnoteId id="F1"/>
+                </transactionPricePerShare>
+                <transactionAcquiredDisposedCode>
+                    <value>A</value>
+                </transactionAcquiredDisposedCode>
+            </transactionAmounts>
+            <exerciseDate>
+                <footnoteId id="F1"/>
+            </exerciseDate>
+            <expirationDate>
+                <footnoteId id="F1"/>
+            </expirationDate>
+            <underlyingSecurity>
+                <underlyingSecurityTitle>
+                    <value>Common Stock</value>
+                </underlyingSecurityTitle>
+                <underlyingSecurityShares>
+                    <value>33.0000</value>
+                </underlyingSecurityShares>
+            </underlyingSecurity>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>6230.0000</value>
+                    <footnoteId id="F2"/>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+            </ownershipNature>
+        </derivativeTransaction>
+    </derivativeTable>
+
+    <footnotes>
+        <footnote id="F1">Dividend equivalent in the form of deferred stock units with respect to deferred stock units previously awarded under the American International Group, Inc. (&quot;AIG&quot;) 2013 Omnibus Incentive Plan (the &quot;2013 Plan&quot;). Subject to the terms of the 2013 Plan and the related award agreement, shares of AIG Common Stock underlying the deferred stock units will be deliverable, without any cash consideration or conditions, on the last trading day of the month in which the director ceases to be a director of AIG.</footnote>
+        <footnote id="F2">Reflects deferred stock units previously granted pursuant to the 2013 Plan.</footnote>
+    </footnotes>
+
+    <ownerSignature>
+        <signatureName>Linda A. Mills by Eric N. Litzky, Attorney-in-Fact</signatureName>
+        <signatureDate>2018-01-03</signatureDate>
+    </ownerSignature>
+</ownershipDocument>

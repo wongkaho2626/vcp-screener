@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<ownershipDocument>
+
+    <schemaVersion>X0306</schemaVersion>
+
+    <documentType>4</documentType>
+
+    <periodOfReport>2021-02-09</periodOfReport>
+
+    <issuer>
+        <issuerCik>0000038777</issuerCik>
+        <issuerName>FRANKLIN RESOURCES INC</issuerName>
+        <issuerTradingSymbol>BEN</issuerTradingSymbol>
+    </issuer>
+
+    <reportingOwner>
+        <reportingOwnerId>
+            <rptOwnerCik>0001233561</rptOwnerCik>
+            <rptOwnerName>Byerwalter Mariann H</rptOwnerName>
+        </reportingOwnerId>
+        <reportingOwnerAddress>
+            <rptOwnerStreet1>C/O FRANKLIN RESOURCES, INC.</rptOwnerStreet1>
+            <rptOwnerStreet2>ONE FRANKLIN PARKWAY</rptOwnerStreet2>
+            <rptOwnerCity>SAN MATEO</rptOwnerCity>
+            <rptOwnerState>CA</rptOwnerState>
+            <rptOwnerZipCode>94403</rptOwnerZipCode>
+            <rptOwnerStateDescription></rptOwnerStateDescription>
+        </reportingOwnerAddress>
+        <reportingOwnerRelationship>
+            <isDirector>1</isDirector>
+        </reportingOwnerRelationship>
+    </reportingOwner>
+
+    <nonDerivativeTable>
+        <nonDerivativeTransaction>
+            <securityTitle>
+                <value>Common Stock, par value $.10</value>
+            </securityTitle>
+            <transactionDate>
+                <value>2021-02-09</value>
+            </transactionDate>
+            <transactionCoding>
+                <transactionFormType>4</transactionFormType>
+                <transactionCode>A</transactionCode>
+                <equitySwapInvolved>0</equitySwapInvolved>
+            </transactionCoding>
+            <transactionTimeliness></transactionTimeliness>
+            <transactionAmounts>
+                <transactionShares>
+                    <value>6011</value>
+                    <footnoteId id="F1"/>
+                </transactionShares>
+                <transactionPricePerShare>
+                    <value>26.62</value>
+                </transactionPricePerShare>
+                <transactionAcquiredDisposedCode>
+                    <value>A</value>
+                </transactionAcquiredDisposedCode>
+            </transactionAmounts>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>11546</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>I</value>
+                </directOrIndirectOwnership>
+                <natureOfOwnership>
+                    <value>By Trust</value>
+                    <footnoteId id="F2"/>
+                </natureOfOwnership>
+            </ownershipNature>
+        </nonDerivativeTransaction>
+    </nonDerivativeTable>
+
+    <footnotes>
+        <footnote id="F1">Shares represent a grant of common stock under Franklin Resources, Inc.'s Universal Stock Incentive Plan, as amended and restated.</footnote>
+        <footnote id="F2">Revocable family trust for which Reporting Person is sole trustee with voting and investment power.</footnote>
+    </footnotes>
+
+    <ownerSignature>
+        <signatureName>/s/Mariann Byerwalter</signatureName>
+        <signatureDate>2021-02-10</signatureDate>
+    </ownerSignature>
+</ownershipDocument>

@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<ownershipDocument>
+
+    <schemaVersion>X0306</schemaVersion>
+
+    <documentType>4</documentType>
+
+    <periodOfReport>2017-03-31</periodOfReport>
+
+    <notSubjectToSection16>0</notSubjectToSection16>
+
+    <issuer>
+        <issuerCik>0000046080</issuerCik>
+        <issuerName>HASBRO INC</issuerName>
+        <issuerTradingSymbol>HAS</issuerTradingSymbol>
+    </issuer>
+
+    <reportingOwner>
+        <reportingOwnerId>
+            <rptOwnerCik>0001226263</rptOwnerCik>
+            <rptOwnerName>BRONFIN KENNETH A</rptOwnerName>
+        </reportingOwnerId>
+        <reportingOwnerAddress>
+            <rptOwnerStreet1>C/O HASBRO, INC.</rptOwnerStreet1>
+            <rptOwnerStreet2>1011 NEWPORT AVENUE</rptOwnerStreet2>
+            <rptOwnerCity>PAWTUCKET</rptOwnerCity>
+            <rptOwnerState>RI</rptOwnerState>
+            <rptOwnerZipCode>02861</rptOwnerZipCode>
+            <rptOwnerStateDescription></rptOwnerStateDescription>
+        </reportingOwnerAddress>
+        <reportingOwnerRelationship>
+            <isDirector>1</isDirector>
+            <isOfficer>0</isOfficer>
+            <isTenPercentOwner>0</isTenPercentOwner>
+            <isOther>0</isOther>
+        </reportingOwnerRelationship>
+    </reportingOwner>
+
+    <derivativeTable>
+        <derivativeTransaction>
+            <securityTitle>
+                <value>Phantom Stock Units</value>
+                <footnoteId id="F1"/>
+            </securityTitle>
+            <conversionOrExercisePrice>
+                <value>0</value>
+                <footnoteId id="F2"/>
+            </conversionOrExercisePrice>
+            <transactionDate>
+                <value>2017-03-31</value>
+            </transactionDate>
+            <transactionCoding>
+                <transactionFormType>4</transactionFormType>
+                <transactionCode>A</transactionCode>
+                <equitySwapInvolved>0</equitySwapInvolved>
+            </transactionCoding>
+            <transactionTimeliness>
+                <value></value>
+            </transactionTimeliness>
+            <transactionAmounts>
+                <transactionShares>
+                    <value>22</value>
+                </transactionShares>
+                <transactionPricePerShare>
+                    <value>99.82</value>
+                </transactionPricePerShare>
+                <transactionAcquiredDisposedCode>
+                    <value>A</value>
+                </transactionAcquiredDisposedCode>
+            </transactionAmounts>
+            <exerciseDate>
+                <footnoteId id="F3"/>
+            </exerciseDate>
+            <expirationDate>
+                <footnoteId id="F3"/>
+            </expirationDate>
+            <underlyingSecurity>
+                <underlyingSecurityTitle>
+                    <value>Common Stock</value>
+                </underlyingSecurityTitle>
+                <underlyingSecurityShares>
+                    <value>22</value>
+                </underlyingSecurityShares>
+            </underlyingSecurity>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>4368</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+            </ownershipNature>
+        </derivativeTransaction>
+    </derivativeTable>
+
+    <footnotes>
+        <footnote id="F1">All of the phantom stock units were acquired pursuant to the Hasbro, Inc. Deferred Compensation Plan for Non-Employee Directors in compliance with Rule 16b-3.</footnote>
+        <footnote id="F2">Units correspond 1 for 1 with common stock.</footnote>
+        <footnote id="F3">Units are settled only in cash and are payable after the reporting person ceases to be a director.</footnote>
+    </footnotes>
+
+    <ownerSignature>
+        <signatureName>Tarrant Sibley, P/O/A for Kenneth A. Bronfin</signatureName>
+        <signatureDate>2017-04-04</signatureDate>
+    </ownerSignature>
+</ownershipDocument>

@@ -1,0 +1,146 @@
+<?xml version="1.0"?>
+<ownershipDocument>
+
+    <schemaVersion>X0306</schemaVersion>
+
+    <documentType>4</documentType>
+
+    <periodOfReport>2017-09-14</periodOfReport>
+
+    <notSubjectToSection16>0</notSubjectToSection16>
+
+    <issuer>
+        <issuerCik>0001297996</issuerCik>
+        <issuerName>Digital Realty Trust, Inc.</issuerName>
+        <issuerTradingSymbol>DLR</issuerTradingSymbol>
+    </issuer>
+
+    <reportingOwner>
+        <reportingOwnerId>
+            <rptOwnerCik>0001213051</rptOwnerCik>
+            <rptOwnerName>COKE MICHAEL A</rptOwnerName>
+        </reportingOwnerId>
+        <reportingOwnerAddress>
+            <rptOwnerStreet1>FOUR EMBARCADERO CENTER</rptOwnerStreet1>
+            <rptOwnerStreet2>SUITE 3200</rptOwnerStreet2>
+            <rptOwnerCity>SAN FRANCISCO</rptOwnerCity>
+            <rptOwnerState>CA</rptOwnerState>
+            <rptOwnerZipCode>94111</rptOwnerZipCode>
+            <rptOwnerStateDescription></rptOwnerStateDescription>
+        </reportingOwnerAddress>
+        <reportingOwnerRelationship>
+            <isDirector>1</isDirector>
+            <isOfficer>0</isOfficer>
+            <isTenPercentOwner>0</isTenPercentOwner>
+            <isOther>0</isOther>
+            <officerTitle></officerTitle>
+            <otherText></otherText>
+        </reportingOwnerRelationship>
+    </reportingOwner>
+
+    <nonDerivativeTable>
+        <nonDerivativeTransaction>
+            <securityTitle>
+                <value>Common Stock</value>
+            </securityTitle>
+            <transactionDate>
+                <value>2017-09-14</value>
+            </transactionDate>
+            <transactionCoding>
+                <transactionFormType>4</transactionFormType>
+                <transactionCode>A</transactionCode>
+                <equitySwapInvolved>0</equitySwapInvolved>
+                <footnoteId id="F1"/>
+            </transactionCoding>
+            <transactionAmounts>
+                <transactionShares>
+                    <value>11040</value>
+                </transactionShares>
+                <transactionPricePerShare>
+                    <value>0</value>
+                </transactionPricePerShare>
+                <transactionAcquiredDisposedCode>
+                    <value>A</value>
+                </transactionAcquiredDisposedCode>
+            </transactionAmounts>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>11040</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+            </ownershipNature>
+        </nonDerivativeTransaction>
+    </nonDerivativeTable>
+
+    <derivativeTable>
+        <derivativeTransaction>
+            <securityTitle>
+                <value>Long-Term Incentive Units</value>
+                <footnoteId id="F2"/>
+            </securityTitle>
+            <conversionOrExercisePrice>
+                <footnoteId id="F2"/>
+            </conversionOrExercisePrice>
+            <transactionDate>
+                <value>2017-09-14</value>
+            </transactionDate>
+            <transactionCoding>
+                <transactionFormType>4</transactionFormType>
+                <transactionCode>A</transactionCode>
+                <equitySwapInvolved>0</equitySwapInvolved>
+            </transactionCoding>
+            <transactionAmounts>
+                <transactionShares>
+                    <value>800</value>
+                </transactionShares>
+                <transactionPricePerShare>
+                    <value>0</value>
+                </transactionPricePerShare>
+                <transactionAcquiredDisposedCode>
+                    <value>A</value>
+                </transactionAcquiredDisposedCode>
+            </transactionAmounts>
+            <exerciseDate>
+                <footnoteId id="F2"/>
+            </exerciseDate>
+            <expirationDate>
+                <footnoteId id="F3"/>
+            </expirationDate>
+            <underlyingSecurity>
+                <underlyingSecurityTitle>
+                    <value>Common Stock</value>
+                </underlyingSecurityTitle>
+                <underlyingSecurityShares>
+                    <value>800.0</value>
+                </underlyingSecurityShares>
+            </underlyingSecurity>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>800</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+            </ownershipNature>
+        </derivativeTransaction>
+    </derivativeTable>
+
+    <footnotes>
+        <footnote id="F1">Pursuant to the Agreement and Plan of Merger dated as of June 8, 2017 (the &quot;Merger Agreement&quot;), by and among the Issuer, DuPont Fabros Technology, Inc. (&quot;DFT&quot;) and certain subsidiaries of the Issuer and DFT, DFT was merged with and into the Issuer, with the Issuer surviving as the continuing entity. At the effective time of the merger, each share of DFT common stock issued and outstanding immediately prior to such time was converted into the right to receive 0.545 shares of the Issuer's common stock. On the trading day immediately prior to the effective time, the closing price of the Issuer's common stock was $121.54 per share and the closing price of DFT common stock was $66.31 per share</footnote>
+        <footnote id="F2">Long-Term Incentive Units are profits interest units in Digital Realty Trust, L.P. (&quot;Operating Partnership&quot;), of which the Issuer is the general partner. Profits interest units may initially not have full parity with common limited partnership units of Operating Partnership (&quot;Common Units&quot;) with respect to liquidating distributions; however upon the occurrence of specified events, profits interest units may achieve full parity with Common Units for all purposes. Vested profits interest units that have achieved full parity with Common Units may be converted into an equal number of Common Units on a 1-for-1 basis at any time. Common Units are redeemable for cash based on the FMV of an equivalent number of shares of common stock of the Issuer, or, at the election of the Issuer, for an equal number of shares of the Issuer's common stock, subject to adjustment in the event of stock splits, stock dividends, issuance of stock rights, specified extraordinary distributions or similar events.</footnote>
+        <footnote id="F3">N/A</footnote>
+    </footnotes>
+
+    <remarks>This statement of changes in beneficial ownership of securities (&quot;Form 4&quot;) of the Issuer is filed to report information that is also being reported concurrently on a Form 4 for the Operating Partnership. The information reported on this Form 4 for the Issuer is the same information reported in the Form 4 for the Operating Partnership.</remarks>
+
+    <ownerSignature>
+        <signatureName>/s/ Salini Nandipati, as attorney-in-fact</signatureName>
+        <signatureDate>2017-09-18</signatureDate>
+    </ownerSignature>
+</ownershipDocument>

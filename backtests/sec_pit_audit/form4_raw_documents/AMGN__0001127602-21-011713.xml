@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<ownershipDocument>
+
+    <schemaVersion>X0306</schemaVersion>
+
+    <documentType>4</documentType>
+
+    <periodOfReport>2021-03-19</periodOfReport>
+
+    <issuer>
+        <issuerCik>0000318154</issuerCik>
+        <issuerName>AMGEN INC</issuerName>
+        <issuerTradingSymbol>AMGN</issuerTradingSymbol>
+    </issuer>
+
+    <reportingOwner>
+        <reportingOwnerId>
+            <rptOwnerCik>0001818953</rptOwnerCik>
+            <rptOwnerName>Louie Linda H.</rptOwnerName>
+        </reportingOwnerId>
+        <reportingOwnerAddress>
+            <rptOwnerStreet1>ONE AMGEN CENTER DRIVE</rptOwnerStreet1>
+            <rptOwnerStreet2></rptOwnerStreet2>
+            <rptOwnerCity>THOUSAND OAKS</rptOwnerCity>
+            <rptOwnerState>CA</rptOwnerState>
+            <rptOwnerZipCode>91320</rptOwnerZipCode>
+            <rptOwnerStateDescription></rptOwnerStateDescription>
+        </reportingOwnerAddress>
+        <reportingOwnerRelationship>
+            <isOfficer>1</isOfficer>
+            <officerTitle>VP, Finance &amp; CAO</officerTitle>
+        </reportingOwnerRelationship>
+    </reportingOwner>
+
+    <nonDerivativeTable>
+        <nonDerivativeTransaction>
+            <securityTitle>
+                <value>Common Stock</value>
+            </securityTitle>
+            <transactionDate>
+                <value>2021-03-19</value>
+            </transactionDate>
+            <transactionCoding>
+                <transactionFormType>4</transactionFormType>
+                <transactionCode>F</transactionCode>
+                <equitySwapInvolved>0</equitySwapInvolved>
+            </transactionCoding>
+            <transactionTimeliness></transactionTimeliness>
+            <transactionAmounts>
+                <transactionShares>
+                    <value>115</value>
+                </transactionShares>
+                <transactionPricePerShare>
+                    <value>244.42</value>
+                </transactionPricePerShare>
+                <transactionAcquiredDisposedCode>
+                    <value>D</value>
+                </transactionAcquiredDisposedCode>
+            </transactionAmounts>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>8017</value>
+                    <footnoteId id="F1"/>
+                    <footnoteId id="F2"/>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+            </ownershipNature>
+        </nonDerivativeTransaction>
+    </nonDerivativeTable>
+
+    <footnotes>
+        <footnote id="F1">These shares include the following Restricted Stock Units (RSUs) granted under the Company's equity plans: 63 RSUs which fully vest on 5/1/2021; 114 RSUs which vest in two installments of 56 on 4/27/2021 and 58 on 4/27/2022; 197 RSUs which vest in two installments of 65 on 5/3/2021 and 5/3/2022 and one installment of 67 on 5/3/2023; 169 RSUs which vest in installments of 55 on 5/5/2022, 56 on 5/5/2023 and 58 on 5/5/2024; and 1,453 RSUs which vest in two installments of 479 on 11/2/2022 and 11/2/2023 and one installment 495 on 11/2/2024. Vested RSUs will be paid in shares of the Company's common stock on a one-to-one basis.</footnote>
+        <footnote id="F2">These shares include 56 Dividend Equivalents (DEs) granted pursuant to the Amgen Inc. 2009 Equity Incentive Plan and subject to a qualifying dividend reinvestment plan. DEs are credited on the reporting person's unvested RSUs
+and are paid out in shares of the Company's common stock on a one-to-one basis according to the vesting schedule, along with a cash payment for any remaining fractional share amount.</footnote>
+    </footnotes>
+
+    <ownerSignature>
+        <signatureName>/s/ Linda H. Louie</signatureName>
+        <signatureDate>2021-03-21</signatureDate>
+    </ownerSignature>
+</ownershipDocument>

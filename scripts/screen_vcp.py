@@ -329,6 +329,24 @@ def pre_filter_stock(quote: dict) -> tuple:
     return True, score
 
 
+def _benchmark_on_or_before(
+    history: list[dict], as_of_date: str,
+) -> list[dict]:
+    """Return MRF benchmark bars no later than ``as_of_date``.
+
+    ``history`` is descending by ISO date.  Binary search avoids scanning the
+    full benchmark on every historical cursor while preserving date alignment.
+    """
+    lo, hi = 0, len(history)
+    while lo < hi:
+        mid = (lo + hi) // 2
+        if (history[mid].get("date") or "") > as_of_date:
+            lo = mid + 1
+        else:
+            hi = mid
+    return history[lo:]
+
+
 def analyze_stock(
     symbol: str,
     historical: list[dict],
@@ -365,12 +383,21 @@ def analyze_stock(
             aligned. Bars more recent than ``historical[as_of_offset]`` are
             ignored.
     """
-    # Historical mode: shift the as-of cursor by slicing both arrays so
-    # historical[as_of_offset] becomes index 0 for every downstream calculator.
+    # Historical mode: shift the stock to its as-of bar.  The benchmark must be
+    # aligned by date, not by the stock's integer offset: securities with a
+    # shorter history, halts, or missing sessions do not share SPY's index.
+    # Integer-offset slicing can therefore expose a post-as-of SPY bar and make
+    # relative strength change when later rows are appended to the input.
     if as_of_offset > 0:
+        as_of_date = historical[as_of_offset].get("date")
         historical = historical[as_of_offset:]
         if sp500_history:
-            sp500_history = sp500_history[as_of_offset:]
+            if as_of_date:
+                sp500_history = _benchmark_on_or_before(
+                    sp500_history, as_of_date,
+                )
+            else:
+                sp500_history = sp500_history[as_of_offset:]
 
     price = quote.get("price", 0)
     market_cap = quote.get("marketCap", 0)

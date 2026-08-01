@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<ownershipDocument>
+
+    <schemaVersion>X0306</schemaVersion>
+
+    <documentType>4</documentType>
+
+    <periodOfReport>2020-10-05</periodOfReport>
+
+    <issuer>
+        <issuerCik>0001013871</issuerCik>
+        <issuerName>NRG ENERGY, INC.</issuerName>
+        <issuerTradingSymbol>NRG</issuerTradingSymbol>
+    </issuer>
+
+    <reportingOwner>
+        <reportingOwnerId>
+            <rptOwnerCik>0001707011</rptOwnerCik>
+            <rptOwnerName>Donohue Elisabeth B</rptOwnerName>
+        </reportingOwnerId>
+        <reportingOwnerAddress>
+            <rptOwnerStreet1>C/O SYNACOR, INC.</rptOwnerStreet1>
+            <rptOwnerStreet2>40 LA RIVIERE DRIVE, SUITE 300</rptOwnerStreet2>
+            <rptOwnerCity>BUFFALO</rptOwnerCity>
+            <rptOwnerState>NY</rptOwnerState>
+            <rptOwnerZipCode>14202</rptOwnerZipCode>
+            <rptOwnerStateDescription></rptOwnerStateDescription>
+        </reportingOwnerAddress>
+        <reportingOwnerRelationship>
+            <isDirector>1</isDirector>
+        </reportingOwnerRelationship>
+    </reportingOwner>
+
+    <nonDerivativeTable>
+        <nonDerivativeTransaction>
+            <securityTitle>
+                <value>Common Stock, par value $.01 per share</value>
+            </securityTitle>
+            <transactionDate>
+                <value>2020-10-05</value>
+            </transactionDate>
+            <transactionCoding>
+                <transactionFormType>4</transactionFormType>
+                <transactionCode>A</transactionCode>
+                <equitySwapInvolved>0</equitySwapInvolved>
+            </transactionCoding>
+            <transactionAmounts>
+                <transactionShares>
+                    <value>5341.0000</value>
+                    <footnoteId id="F1"/>
+                </transactionShares>
+                <transactionPricePerShare>
+                    <value>0</value>
+                    <footnoteId id="F2"/>
+                </transactionPricePerShare>
+                <transactionAcquiredDisposedCode>
+                    <value>A</value>
+                </transactionAcquiredDisposedCode>
+            </transactionAmounts>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>5341.0000</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+            </ownershipNature>
+        </nonDerivativeTransaction>
+    </nonDerivativeTable>
+
+    <derivativeTable></derivativeTable>
+
+    <footnotes>
+        <footnote id="F1">Represents 5,341 Deferred Stock Units issued to the Reporting Person by NRG Energy, Inc. under NRG Energy, Inc.'s Amended and Restated Long-Term Incentive Plan.</footnote>
+        <footnote id="F2">Each Deferred Stock Unit is equivalent in value to one share of NRG Energy, Inc.'s Common Stock, par value $.01 per share. The Reporting Person will receive from NRG Energy, Inc. one such share of Common Stock for each Deferred Stock Unit they own upon termination of their service on NRG Energy, Inc.'s Board of Directors.</footnote>
+    </footnotes>
+
+    <ownerSignature>
+        <signatureName>Christine Zoino, by Power of Attorney</signatureName>
+        <signatureDate>2020-10-07</signatureDate>
+    </ownerSignature>
+</ownershipDocument>

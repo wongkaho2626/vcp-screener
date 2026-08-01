@@ -115,3 +115,27 @@ def test_date_range_uses_start_and_end_instead_of_period(tmp_path):
     assert captured["start"] == "2024-01-01"
     assert captured["end"] == "2024-02-01"
     assert "period" not in captured
+
+
+def test_can_skip_individual_retries_for_missing_batch_symbols(tmp_path):
+    frame = _ticker_first_frame().loc[:, ["AAPL"]]
+    calls = []
+
+    def fake_download(symbols, **kwargs):
+        calls.append(symbols)
+        return frame
+
+    count, failed = download_to_csv(
+        ["AAPL", "MSFT"],
+        tmp_path / "prices.csv",
+        batch_size=2,
+        retries=1,
+        retry_delay=0,
+        sleep_secs=0,
+        retry_missing=False,
+        downloader=fake_download,
+    )
+
+    assert count == 2
+    assert failed == ["MSFT"]
+    assert calls == [["AAPL", "MSFT"]]

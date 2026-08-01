@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<ownershipDocument>
+
+    <schemaVersion>X0306</schemaVersion>
+
+    <documentType>4</documentType>
+
+    <periodOfReport>2017-10-05</periodOfReport>
+
+    <issuer>
+        <issuerCik>0000006951</issuerCik>
+        <issuerName>APPLIED MATERIALS INC /DE</issuerName>
+        <issuerTradingSymbol>AMAT</issuerTradingSymbol>
+    </issuer>
+
+    <reportingOwner>
+        <reportingOwnerId>
+            <rptOwnerCik>0001562962</rptOwnerCik>
+            <rptOwnerName>Larkins Thomas F</rptOwnerName>
+        </reportingOwnerId>
+        <reportingOwnerAddress>
+            <rptOwnerStreet1>C/O APPLIED MATERIALS, INC.</rptOwnerStreet1>
+            <rptOwnerStreet2>P.O. BOX 58039, 3050 BOWERS AV, M/S 1268</rptOwnerStreet2>
+            <rptOwnerCity>SANTA CLARA</rptOwnerCity>
+            <rptOwnerState>CA</rptOwnerState>
+            <rptOwnerZipCode>95054</rptOwnerZipCode>
+            <rptOwnerStateDescription></rptOwnerStateDescription>
+        </reportingOwnerAddress>
+        <reportingOwnerRelationship>
+            <isOfficer>1</isOfficer>
+            <officerTitle>Sr. VP, GC &amp; Corp. Secretary</officerTitle>
+        </reportingOwnerRelationship>
+    </reportingOwner>
+
+    <nonDerivativeTable>
+        <nonDerivativeTransaction>
+            <securityTitle>
+                <value>Common Stock</value>
+            </securityTitle>
+            <transactionDate>
+                <value>2017-10-05</value>
+            </transactionDate>
+            <transactionCoding>
+                <transactionFormType>4</transactionFormType>
+                <transactionCode>S</transactionCode>
+                <equitySwapInvolved>0</equitySwapInvolved>
+            </transactionCoding>
+            <transactionTimeliness></transactionTimeliness>
+            <transactionAmounts>
+                <transactionShares>
+                    <value>30000</value>
+                </transactionShares>
+                <transactionPricePerShare>
+                    <value>51.24</value>
+                    <footnoteId id="F1"/>
+                </transactionPricePerShare>
+                <transactionAcquiredDisposedCode>
+                    <value>D</value>
+                </transactionAcquiredDisposedCode>
+            </transactionAmounts>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>427782</value>
+                    <footnoteId id="F2"/>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+            </ownershipNature>
+        </nonDerivativeTransaction>
+    </nonDerivativeTable>
+
+    <footnotes>
+        <footnote id="F1">The price reported in Column 4 is a weighted average price. These shares were sold in multiple transactions at prices ranging from $51.19 to $51.33, inclusive. The reporting person undertakes to provide to Applied Materials, Inc., any security holder of Applied, or the staff of the Securities and Exchange Commission, upon request, full information regarding the number of shares sold at each separate price within the ranges set forth in footnote 1 to this Form 4.</footnote>
+        <footnote id="F2">Number of shares includes 192,357 performance shares and restricted stock units previously reported that in the future will be converted on a one-for-one basis into shares of Applied Materials, Inc. common stock upon vesting, which vesting is scheduled to occur as follows: (a) 54,146 performance shares are scheduled to vest in installments in December of each of 2017 and 2018, (b) 63,459 performance shares are scheduled to vest in installments in December of each of 2017 through 2019, with up to an additional 42,305 shares that may vest, depending on achievement of specified performance goals, (c) 37,376 performance shares are scheduled to vest in December 2019, which number of shares is the target amount, and the actual number of shares that may vest ranges from 0% to 200% of the target amount, depending on achievement of specified performance goals, and (d) 37,376 restricted stock units are scheduled to vest in installments in December of each of 2017 through 2019, depending on achievement of a specified performance goal (all vesting is subject to continued employment through each applicable vest date).</footnote>
+    </footnotes>
+
+    <ownerSignature>
+        <signatureName>/s/ To-Anh Nguyen, Attorney-in-Fact</signatureName>
+        <signatureDate>2017-10-06</signatureDate>
+    </ownerSignature>
+</ownershipDocument>

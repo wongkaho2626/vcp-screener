@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<ownershipDocument>
+
+    <schemaVersion>X0306</schemaVersion>
+
+    <documentType>4</documentType>
+
+    <periodOfReport>2017-01-01</periodOfReport>
+
+    <issuer>
+        <issuerCik>0000866787</issuerCik>
+        <issuerName>AUTOZONE INC</issuerName>
+        <issuerTradingSymbol>AZO</issuerTradingSymbol>
+    </issuer>
+
+    <reportingOwner>
+        <reportingOwnerId>
+            <rptOwnerCik>0001168234</rptOwnerCik>
+            <rptOwnerName>GRAVES EARL G JR</rptOwnerName>
+        </reportingOwnerId>
+        <reportingOwnerAddress>
+            <rptOwnerStreet1>123 SOUTH FRONT STREET</rptOwnerStreet1>
+            <rptOwnerStreet2></rptOwnerStreet2>
+            <rptOwnerCity>MEMPHIS</rptOwnerCity>
+            <rptOwnerState>TN</rptOwnerState>
+            <rptOwnerZipCode>38103</rptOwnerZipCode>
+            <rptOwnerStateDescription></rptOwnerStateDescription>
+        </reportingOwnerAddress>
+        <reportingOwnerRelationship>
+            <isDirector>1</isDirector>
+        </reportingOwnerRelationship>
+    </reportingOwner>
+
+    <nonDerivativeTable>
+        <nonDerivativeTransaction>
+            <securityTitle>
+                <value>Common Stock</value>
+                <footnoteId id="F1"/>
+            </securityTitle>
+            <transactionDate>
+                <value>2017-01-01</value>
+            </transactionDate>
+            <transactionCoding>
+                <transactionFormType>4</transactionFormType>
+                <transactionCode>A</transactionCode>
+                <equitySwapInvolved>0</equitySwapInvolved>
+            </transactionCoding>
+            <transactionAmounts>
+                <transactionShares>
+                    <value>303.8700</value>
+                    <footnoteId id="F2"/>
+                </transactionShares>
+                <transactionPricePerShare>
+                    <value>789.7900</value>
+                    <footnoteId id="F4"/>
+                </transactionPricePerShare>
+                <transactionAcquiredDisposedCode>
+                    <value>A</value>
+                    <footnoteId id="F3"/>
+                </transactionAcquiredDisposedCode>
+            </transactionAmounts>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>3431.0400</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+            </ownershipNature>
+        </nonDerivativeTransaction>
+    </nonDerivativeTable>
+
+    <derivativeTable></derivativeTable>
+
+    <footnotes>
+        <footnote id="F1">Granted in accordance with the Amended and Restated AutoZone, Inc. 2011 Equity Incentive Award Plan (the &quot;Plan&quot;). Pursuant to the AutoZone, Inc. 2016 Director Compensation Program (the &quot;2016 Program&quot;), directors may elect to be paid either (1) 100% of their annual retainer fees and any additional fees in the form of restricted stock units (&quot;RSUs&quot;) or (2) $80,000 of their annual retainer fees and any additional fees in the form of cash, with the remaining portion of the annual retainer fee ($125,000) paid in the form of restricted stock units. All fees taken in the form of RSUs are paid annually and any portion of the fees to be paid in cash are paid on a quarterly basis.</footnote>
+        <footnote id="F2">Restricted stock units (fully vested on the date of grant) issued to the reporting person in accordance with the Plan and the 2016 Program in lieu of the annual retainer fees plus additional fees in an aggregate amount equal to $240,000.  The number of shares of the issuer's common stock underlying the restricted stock unit award is equal to the reporting person's aggregate annual retainer fees plus additional fees, divided by the closing market price of a share of the issuer's common stock on December 30, 2016.</footnote>
+        <footnote id="F3">The shares will be delivered to the reporting person upon the earlier of (a) the date on which the reporting person ceases to be a director for any reason, provided that such reporting person incurs a &quot;separation from service&quot; from the issuer (within the meaning of Section 409A of the Internal Revenue Code and the related Treasury Regulations) (the &quot;Termination Date&quot;) or (b) the fifth anniversary of the grant date, in which event the reporting person will have an opportunity to re-defer the delivery of the shares up to one year prior to the fifth anniversary; unless the reporting person has irrevocably elected in writing by December 31, 2016, to defer the delivery of such shares until the Termination Date.</footnote>
+        <footnote id="F4">The price per share is equal to the closing market price of a share of the issuer's common stock on December 30, 2016.</footnote>
+    </footnotes>
+
+    <ownerSignature>
+        <signatureName>/s/Kristen C. Wright, as attorney-in-fact</signatureName>
+        <signatureDate>2017-01-03</signatureDate>
+    </ownerSignature>
+</ownershipDocument>

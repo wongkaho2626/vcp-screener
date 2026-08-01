@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<ownershipDocument>
+
+    <schemaVersion>X0306</schemaVersion>
+
+    <documentType>4</documentType>
+
+    <periodOfReport>2020-08-26</periodOfReport>
+
+    <notSubjectToSection16>0</notSubjectToSection16>
+
+    <issuer>
+        <issuerCik>0000943452</issuerCik>
+        <issuerName>WESTINGHOUSE AIR BRAKE TECHNOLOGIES CORP</issuerName>
+        <issuerTradingSymbol>WAB</issuerTradingSymbol>
+    </issuer>
+
+    <reportingOwner>
+        <reportingOwnerId>
+            <rptOwnerCik>0001691277</rptOwnerCik>
+            <rptOwnerName>Faiveley Erwan</rptOwnerName>
+        </reportingOwnerId>
+        <reportingOwnerAddress>
+            <rptOwnerStreet1>30 ISABELLA ST.</rptOwnerStreet1>
+            <rptOwnerStreet2></rptOwnerStreet2>
+            <rptOwnerCity>PITTSBURGH</rptOwnerCity>
+            <rptOwnerState>PA</rptOwnerState>
+            <rptOwnerZipCode>15212</rptOwnerZipCode>
+            <rptOwnerStateDescription></rptOwnerStateDescription>
+        </reportingOwnerAddress>
+        <reportingOwnerRelationship>
+            <isDirector>1</isDirector>
+            <isOfficer>0</isOfficer>
+            <isTenPercentOwner>0</isTenPercentOwner>
+            <isOther>0</isOther>
+        </reportingOwnerRelationship>
+    </reportingOwner>
+
+    <nonDerivativeTable>
+        <nonDerivativeTransaction>
+            <securityTitle>
+                <value>Common Stock</value>
+            </securityTitle>
+            <transactionDate>
+                <value>2020-08-26</value>
+            </transactionDate>
+            <deemedExecutionDate></deemedExecutionDate>
+            <transactionCoding>
+                <transactionFormType>4</transactionFormType>
+                <transactionCode>S</transactionCode>
+                <equitySwapInvolved>0</equitySwapInvolved>
+            </transactionCoding>
+            <transactionTimeliness>
+                <value></value>
+            </transactionTimeliness>
+            <transactionAmounts>
+                <transactionShares>
+                    <value>50000</value>
+                </transactionShares>
+                <transactionPricePerShare>
+                    <value>67.233</value>
+                    <footnoteId id="F1"/>
+                </transactionPricePerShare>
+                <transactionAcquiredDisposedCode>
+                    <value>D</value>
+                </transactionAcquiredDisposedCode>
+            </transactionAmounts>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>6146581</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>I</value>
+                </directOrIndirectOwnership>
+                <natureOfOwnership>
+                    <value>Please see footnote</value>
+                </natureOfOwnership>
+            </ownershipNature>
+        </nonDerivativeTransaction>
+        <nonDerivativeHolding>
+            <securityTitle>
+                <value>Common Stock - Direct</value>
+            </securityTitle>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>9026</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+            </ownershipNature>
+        </nonDerivativeHolding>
+    </nonDerivativeTable>
+
+    <footnotes>
+        <footnote id="F1">The price reported in Column 4 is a weighted average price.  These shares were sold in multiple transactions at prices ranging from $67.00 to $67.65 inclusive.  The reporting person undertakes to provide to Westinghouse Air Brake Technologies Corporation (&quot;Wabtec&quot;), any security holder of Wabtec, or the staff of the Securities and Exchange Commission, upon request, full information regarding the number of shares sold at each separate price within the range set forth</footnote>
+    </footnotes>
+
+    <remarks>In connection with the consummation of certain transactions contemplated by that certain Share Purchase Agreement, dated as of October 6, 2015 (as amended, the &quot;Purchase Agreement&quot;), among Financiere Faiveley S.A., a French societe anonyme (&quot;FinF&quot;), Famille Faiveley Participations S.A.S., a French societe par actions simplifee (&quot;FFP&quot;), Mr. Francois Faiveley and Mr. Erwan Faiveley (collectively, the &quot;Sellers&quot;), Wabtec Corporation and FW Acquisition, LLC, on November 30, 2016, the Sellers received shares of common stock of Westinghouse Air Brake Technologies Corporation (&quot;Wabtec&quot;). Issarts Capital S.A., a public limited liability company organized under the laws of Luxembourg (&quot;Issarts&quot;), is the successor by merger to FinF and FFP.  Mr. Erwan Faiveley is the chairman of the board of directors of Issarts and has affiliations with entities that own a majority of the outstanding capital stock of Issarts.  All shares of common stock of Wabtec held by Issarts are indicated as beneficially owned indirectly by Mr. Erwan Faiveley in this report because of his affiliations with Issarts, and Mr. Erwan Faiveley disclaims beneficial ownership of such shares except to the extent of his pecuniary interest therein. Except as expressly indicated herein, Mr. Erwan Faiveley disclaims beneficial ownership of all the shares held by Issarts and this report shall not be deemed an admission that, for purposes of Section 16 of the Exchange Act or otherwise, that Mr. Erwan Faiveley, Issarts or any holder of capital stock of Issarts is the beneficial owner of shares of common stock of Wabtec.</remarks>
+
+    <ownerSignature>
+        <signatureName>David L. DeNinno, POA for Erwan Faiveley</signatureName>
+        <signatureDate>2020-08-27</signatureDate>
+    </ownerSignature>
+</ownershipDocument>

@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<ownershipDocument>
+
+    <schemaVersion>X0306</schemaVersion>
+
+    <documentType>4</documentType>
+
+    <periodOfReport>2019-05-10</periodOfReport>
+
+    <notSubjectToSection16>0</notSubjectToSection16>
+
+    <issuer>
+        <issuerCik>0000912242</issuerCik>
+        <issuerName>MACERICH CO</issuerName>
+        <issuerTradingSymbol>MAC</issuerTradingSymbol>
+    </issuer>
+
+    <reportingOwner>
+        <reportingOwnerId>
+            <rptOwnerCik>0001023135</rptOwnerCik>
+            <rptOwnerName>COPPOLA EDWARD C</rptOwnerName>
+        </reportingOwnerId>
+        <reportingOwnerAddress>
+            <rptOwnerStreet1>401 WILSHIRE BLVD.</rptOwnerStreet1>
+            <rptOwnerStreet2>SUITE 700</rptOwnerStreet2>
+            <rptOwnerCity>SANTA MONICA</rptOwnerCity>
+            <rptOwnerState>CA</rptOwnerState>
+            <rptOwnerZipCode>90401</rptOwnerZipCode>
+            <rptOwnerStateDescription></rptOwnerStateDescription>
+        </reportingOwnerAddress>
+        <reportingOwnerRelationship>
+            <isDirector>1</isDirector>
+            <isOfficer>1</isOfficer>
+            <isTenPercentOwner>0</isTenPercentOwner>
+            <isOther>0</isOther>
+            <officerTitle>President</officerTitle>
+        </reportingOwnerRelationship>
+    </reportingOwner>
+
+    <nonDerivativeTable>
+        <nonDerivativeTransaction>
+            <securityTitle>
+                <value>Common Stock</value>
+            </securityTitle>
+            <transactionDate>
+                <value>2019-05-10</value>
+            </transactionDate>
+            <deemedExecutionDate></deemedExecutionDate>
+            <transactionCoding>
+                <transactionFormType>4</transactionFormType>
+                <transactionCode>P</transactionCode>
+                <equitySwapInvolved>0</equitySwapInvolved>
+            </transactionCoding>
+            <transactionTimeliness>
+                <value></value>
+            </transactionTimeliness>
+            <transactionAmounts>
+                <transactionShares>
+                    <value>5000</value>
+                </transactionShares>
+                <transactionPricePerShare>
+                    <value>40.50</value>
+                </transactionPricePerShare>
+                <transactionAcquiredDisposedCode>
+                    <value>A</value>
+                </transactionAcquiredDisposedCode>
+            </transactionAmounts>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>268095</value>
+                    <footnoteId id="F1"/>
+                    <footnoteId id="F2"/>
+                    <footnoteId id="F3"/>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+            </ownershipNature>
+        </nonDerivativeTransaction>
+    </nonDerivativeTable>
+
+    <footnotes>
+        <footnote id="F1">6,494 shares are also held indirectly by the reporting person through the Company's 401-k Plan.</footnote>
+        <footnote id="F2">39,969 shares are also held by E.C. Coppola Limited Partnership. The reporting person disclaims beneficial ownership of all shares held through this partnership for his wife and children and this report should not be deemed an admission that the reporting person is the beneficial owner of such shares for purposes of Section 16 or otherwise.</footnote>
+        <footnote id="F3">1,800 shares are also held by Mr. Coppola for his children. The reporting person disclaims beneficial ownership of all shares held by his children and this report should not be deemed an admission that the reporting person is the beneficial owner of such shares for purposes of Section 16 or otherwise.</footnote>
+    </footnotes>
+
+    <remarks></remarks>
+
+    <ownerSignature>
+        <signatureName>Lisa R. Pena for Edward C. Coppola</signatureName>
+        <signatureDate>2019-05-13</signatureDate>
+    </ownerSignature>
+</ownershipDocument>

@@ -1,0 +1,130 @@
+<?xml version="1.0"?>
+<ownershipDocument>
+
+    <schemaVersion>X0306</schemaVersion>
+
+    <documentType>4</documentType>
+
+    <periodOfReport>2021-12-12</periodOfReport>
+
+    <notSubjectToSection16>0</notSubjectToSection16>
+
+    <issuer>
+        <issuerCik>0000315189</issuerCik>
+        <issuerName>DEERE &amp; CO</issuerName>
+        <issuerTradingSymbol>DE</issuerTradingSymbol>
+    </issuer>
+
+    <reportingOwner>
+        <reportingOwnerId>
+            <rptOwnerCik>0001411741</rptOwnerCik>
+            <rptOwnerName>von Pentz Markwart</rptOwnerName>
+        </reportingOwnerId>
+        <reportingOwnerAddress>
+            <rptOwnerStreet1>DEERE &amp; COMPANY</rptOwnerStreet1>
+            <rptOwnerStreet2>ONE JOHN DEERE PLACE</rptOwnerStreet2>
+            <rptOwnerCity>MOLINE</rptOwnerCity>
+            <rptOwnerState>IL</rptOwnerState>
+            <rptOwnerZipCode>61265</rptOwnerZipCode>
+            <rptOwnerStateDescription></rptOwnerStateDescription>
+        </reportingOwnerAddress>
+        <reportingOwnerRelationship>
+            <isDirector>0</isDirector>
+            <isOfficer>1</isOfficer>
+            <isTenPercentOwner>0</isTenPercentOwner>
+            <isOther>0</isOther>
+            <officerTitle>Pres Ag &amp; Turf, Sml Ag &amp; Turf</officerTitle>
+        </reportingOwnerRelationship>
+    </reportingOwner>
+
+    <nonDerivativeTable>
+        <nonDerivativeTransaction>
+            <securityTitle>
+                <value>$1 Par Common Stock</value>
+                <footnoteId id="F1"/>
+            </securityTitle>
+            <transactionDate>
+                <value>2021-12-12</value>
+            </transactionDate>
+            <transactionCoding>
+                <transactionFormType>4</transactionFormType>
+                <transactionCode>A</transactionCode>
+                <equitySwapInvolved>0</equitySwapInvolved>
+            </transactionCoding>
+            <transactionTimeliness>
+                <value></value>
+            </transactionTimeliness>
+            <transactionAmounts>
+                <transactionShares>
+                    <value>10108</value>
+                </transactionShares>
+                <transactionPricePerShare>
+                    <value>0</value>
+                </transactionPricePerShare>
+                <transactionAcquiredDisposedCode>
+                    <value>A</value>
+                </transactionAcquiredDisposedCode>
+            </transactionAmounts>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>75061</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+            </ownershipNature>
+        </nonDerivativeTransaction>
+        <nonDerivativeTransaction>
+            <securityTitle>
+                <value>$1 Par Common Stock</value>
+                <footnoteId id="F2"/>
+            </securityTitle>
+            <transactionDate>
+                <value>2021-12-12</value>
+            </transactionDate>
+            <transactionCoding>
+                <transactionFormType>4</transactionFormType>
+                <transactionCode>F</transactionCode>
+                <equitySwapInvolved>0</equitySwapInvolved>
+            </transactionCoding>
+            <transactionTimeliness>
+                <value></value>
+            </transactionTimeliness>
+            <transactionAmounts>
+                <transactionShares>
+                    <value>6900</value>
+                </transactionShares>
+                <transactionPricePerShare>
+                    <value>358.36</value>
+                </transactionPricePerShare>
+                <transactionAcquiredDisposedCode>
+                    <value>D</value>
+                </transactionAcquiredDisposedCode>
+            </transactionAmounts>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>68161</value>
+                    <footnoteId id="F3"/>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+            </ownershipNature>
+        </nonDerivativeTransaction>
+    </nonDerivativeTable>
+
+    <footnotes>
+        <footnote id="F1">Exempt settlement under Rule 16b-3 of performance stock units for stock with vesting based on growth rate of revenues.</footnote>
+        <footnote id="F2">Exempt withholding of shares to satisfy tax withholding obligations upon settlement of performance stock units and restricted stock units for unrestricted shares.</footnote>
+        <footnote id="F3">Includes 4,710 restricted stock units granted under the John Deere Omnibus Equity and Incentive Plan and the John Deere 2020 Equity and Incentive Plan. Units include the ability to have shares withheld to satisfy income tax obligations.</footnote>
+    </footnotes>
+
+    <ownerSignature>
+        <signatureName>/s/ Paul Wilczynski, Assistant Secretary, Deere &amp; Company, Under Power of Attorney</signatureName>
+        <signatureDate>2021-12-14</signatureDate>
+    </ownerSignature>
+</ownershipDocument>

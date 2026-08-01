@@ -1,0 +1,542 @@
+<?xml version="1.0"?>
+<ownershipDocument>
+
+    <schemaVersion>X0306</schemaVersion>
+
+    <documentType>4</documentType>
+
+    <periodOfReport>2021-05-03</periodOfReport>
+
+    <notSubjectToSection16>0</notSubjectToSection16>
+
+    <issuer>
+        <issuerCik>0000814453</issuerCik>
+        <issuerName>NEWELL BRANDS INC.</issuerName>
+        <issuerTradingSymbol>NWL</issuerTradingSymbol>
+    </issuer>
+
+    <reportingOwner>
+        <reportingOwnerId>
+            <rptOwnerCik>0001608717</rptOwnerCik>
+            <rptOwnerName>MATHER COURTNEY</rptOwnerName>
+        </reportingOwnerId>
+        <reportingOwnerAddress>
+            <rptOwnerStreet1>C/O NEWELL BRANDS INC.</rptOwnerStreet1>
+            <rptOwnerStreet2>6655 PEACHTREE DUNWOODY ROAD</rptOwnerStreet2>
+            <rptOwnerCity>ATLANTA</rptOwnerCity>
+            <rptOwnerState>GA</rptOwnerState>
+            <rptOwnerZipCode>30328</rptOwnerZipCode>
+            <rptOwnerStateDescription></rptOwnerStateDescription>
+        </reportingOwnerAddress>
+        <reportingOwnerRelationship>
+            <isDirector>1</isDirector>
+            <isOfficer>0</isOfficer>
+            <isTenPercentOwner>0</isTenPercentOwner>
+            <isOther>0</isOther>
+            <officerTitle></officerTitle>
+            <otherText></otherText>
+        </reportingOwnerRelationship>
+    </reportingOwner>
+
+    <nonDerivativeTable></nonDerivativeTable>
+
+    <derivativeTable>
+        <derivativeTransaction>
+            <securityTitle>
+                <value>Deferred Compensation Phantom Stock</value>
+                <footnoteId id="F1"/>
+                <footnoteId id="F2"/>
+                <footnoteId id="F3"/>
+                <footnoteId id="F4"/>
+            </securityTitle>
+            <conversionOrExercisePrice>
+                <footnoteId id="F5"/>
+            </conversionOrExercisePrice>
+            <transactionDate>
+                <value>2021-05-03</value>
+            </transactionDate>
+            <transactionCoding>
+                <transactionFormType>4</transactionFormType>
+                <transactionCode>A</transactionCode>
+                <equitySwapInvolved>0</equitySwapInvolved>
+            </transactionCoding>
+            <transactionAmounts>
+                <transactionShares>
+                    <value>1169.906</value>
+                </transactionShares>
+                <transactionPricePerShare>
+                    <value>0</value>
+                </transactionPricePerShare>
+                <transactionAcquiredDisposedCode>
+                    <value>A</value>
+                </transactionAcquiredDisposedCode>
+            </transactionAmounts>
+            <exerciseDate>
+                <footnoteId id="F6"/>
+            </exerciseDate>
+            <expirationDate>
+                <footnoteId id="F7"/>
+            </expirationDate>
+            <underlyingSecurity>
+                <underlyingSecurityTitle>
+                    <value>Common Stock</value>
+                </underlyingSecurityTitle>
+                <underlyingSecurityShares>
+                    <value>1169.906</value>
+                </underlyingSecurityShares>
+            </underlyingSecurity>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>1169.906</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+            </ownershipNature>
+        </derivativeTransaction>
+        <derivativeHolding>
+            <securityTitle>
+                <value>Deferred Compensation Phantom Stock</value>
+                <footnoteId id="F1"/>
+                <footnoteId id="F2"/>
+                <footnoteId id="F3"/>
+                <footnoteId id="F8"/>
+            </securityTitle>
+            <conversionOrExercisePrice>
+                <footnoteId id="F5"/>
+            </conversionOrExercisePrice>
+            <exerciseDate>
+                <footnoteId id="F6"/>
+            </exerciseDate>
+            <expirationDate>
+                <footnoteId id="F7"/>
+            </expirationDate>
+            <underlyingSecurity>
+                <underlyingSecurityTitle>
+                    <value>Common Stock</value>
+                </underlyingSecurityTitle>
+                <underlyingSecurityShares>
+                    <value>1344.5319</value>
+                </underlyingSecurityShares>
+            </underlyingSecurity>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>1344.5319</value>
+                    <footnoteId id="F9"/>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+            </ownershipNature>
+        </derivativeHolding>
+        <derivativeHolding>
+            <securityTitle>
+                <value>Deferred Compensation Phantom Stock</value>
+                <footnoteId id="F1"/>
+                <footnoteId id="F2"/>
+                <footnoteId id="F3"/>
+                <footnoteId id="F10"/>
+            </securityTitle>
+            <conversionOrExercisePrice>
+                <footnoteId id="F5"/>
+            </conversionOrExercisePrice>
+            <exerciseDate>
+                <footnoteId id="F6"/>
+            </exerciseDate>
+            <expirationDate>
+                <footnoteId id="F7"/>
+            </expirationDate>
+            <underlyingSecurity>
+                <underlyingSecurityTitle>
+                    <value>Common Stock</value>
+                </underlyingSecurityTitle>
+                <underlyingSecurityShares>
+                    <value>1877.8846</value>
+                </underlyingSecurityShares>
+            </underlyingSecurity>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>1877.8846</value>
+                    <footnoteId id="F11"/>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+            </ownershipNature>
+        </derivativeHolding>
+        <derivativeHolding>
+            <securityTitle>
+                <value>Deferred Compensation Phantom Stock</value>
+                <footnoteId id="F1"/>
+                <footnoteId id="F2"/>
+                <footnoteId id="F3"/>
+                <footnoteId id="F12"/>
+            </securityTitle>
+            <conversionOrExercisePrice>
+                <footnoteId id="F5"/>
+            </conversionOrExercisePrice>
+            <exerciseDate>
+                <footnoteId id="F6"/>
+            </exerciseDate>
+            <expirationDate>
+                <footnoteId id="F7"/>
+            </expirationDate>
+            <underlyingSecurity>
+                <underlyingSecurityTitle>
+                    <value>Common Stock</value>
+                </underlyingSecurityTitle>
+                <underlyingSecurityShares>
+                    <value>2048.4601</value>
+                </underlyingSecurityShares>
+            </underlyingSecurity>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>2048.4601</value>
+                    <footnoteId id="F13"/>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+            </ownershipNature>
+        </derivativeHolding>
+        <derivativeHolding>
+            <securityTitle>
+                <value>Deferred Compensation Phantom Stock</value>
+                <footnoteId id="F1"/>
+                <footnoteId id="F2"/>
+                <footnoteId id="F3"/>
+                <footnoteId id="F14"/>
+            </securityTitle>
+            <conversionOrExercisePrice>
+                <footnoteId id="F5"/>
+            </conversionOrExercisePrice>
+            <exerciseDate>
+                <footnoteId id="F6"/>
+            </exerciseDate>
+            <expirationDate>
+                <footnoteId id="F7"/>
+            </expirationDate>
+            <underlyingSecurity>
+                <underlyingSecurityTitle>
+                    <value>Common Stock</value>
+                </underlyingSecurityTitle>
+                <underlyingSecurityShares>
+                    <value>2777.9295</value>
+                </underlyingSecurityShares>
+            </underlyingSecurity>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>2777.9295</value>
+                    <footnoteId id="F15"/>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+            </ownershipNature>
+        </derivativeHolding>
+        <derivativeHolding>
+            <securityTitle>
+                <value>Deferred Compensation Phantom Stock</value>
+                <footnoteId id="F1"/>
+                <footnoteId id="F2"/>
+                <footnoteId id="F3"/>
+                <footnoteId id="F16"/>
+            </securityTitle>
+            <conversionOrExercisePrice>
+                <footnoteId id="F5"/>
+            </conversionOrExercisePrice>
+            <exerciseDate>
+                <footnoteId id="F6"/>
+            </exerciseDate>
+            <expirationDate>
+                <footnoteId id="F7"/>
+            </expirationDate>
+            <underlyingSecurity>
+                <underlyingSecurityTitle>
+                    <value>Common Stock</value>
+                </underlyingSecurityTitle>
+                <underlyingSecurityShares>
+                    <value>1761.4599</value>
+                </underlyingSecurityShares>
+            </underlyingSecurity>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>1761.4599</value>
+                    <footnoteId id="F17"/>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+            </ownershipNature>
+        </derivativeHolding>
+        <derivativeHolding>
+            <securityTitle>
+                <value>Deferred Compensation Phantom Stock</value>
+                <footnoteId id="F1"/>
+                <footnoteId id="F2"/>
+                <footnoteId id="F3"/>
+                <footnoteId id="F18"/>
+            </securityTitle>
+            <conversionOrExercisePrice>
+                <footnoteId id="F5"/>
+            </conversionOrExercisePrice>
+            <exerciseDate>
+                <footnoteId id="F6"/>
+            </exerciseDate>
+            <expirationDate>
+                <footnoteId id="F7"/>
+            </expirationDate>
+            <underlyingSecurity>
+                <underlyingSecurityTitle>
+                    <value>Common Stock</value>
+                </underlyingSecurityTitle>
+                <underlyingSecurityShares>
+                    <value>1705.5366</value>
+                </underlyingSecurityShares>
+            </underlyingSecurity>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>1705.5366</value>
+                    <footnoteId id="F19"/>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+            </ownershipNature>
+        </derivativeHolding>
+        <derivativeHolding>
+            <securityTitle>
+                <value>Deferred Compensation Phantom Stock</value>
+                <footnoteId id="F1"/>
+                <footnoteId id="F2"/>
+                <footnoteId id="F3"/>
+                <footnoteId id="F20"/>
+            </securityTitle>
+            <conversionOrExercisePrice>
+                <footnoteId id="F5"/>
+            </conversionOrExercisePrice>
+            <exerciseDate>
+                <footnoteId id="F6"/>
+            </exerciseDate>
+            <expirationDate>
+                <footnoteId id="F7"/>
+            </expirationDate>
+            <underlyingSecurity>
+                <underlyingSecurityTitle>
+                    <value>Common Stock</value>
+                </underlyingSecurityTitle>
+                <underlyingSecurityShares>
+                    <value>2648.6822</value>
+                </underlyingSecurityShares>
+            </underlyingSecurity>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>2648.6822</value>
+                    <footnoteId id="F21"/>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+            </ownershipNature>
+        </derivativeHolding>
+        <derivativeHolding>
+            <securityTitle>
+                <value>Deferred Compensation Phantom Stock</value>
+                <footnoteId id="F1"/>
+                <footnoteId id="F2"/>
+                <footnoteId id="F3"/>
+                <footnoteId id="F22"/>
+            </securityTitle>
+            <conversionOrExercisePrice>
+                <footnoteId id="F5"/>
+            </conversionOrExercisePrice>
+            <exerciseDate>
+                <footnoteId id="F6"/>
+            </exerciseDate>
+            <expirationDate>
+                <footnoteId id="F7"/>
+            </expirationDate>
+            <underlyingSecurity>
+                <underlyingSecurityTitle>
+                    <value>Common Stock</value>
+                </underlyingSecurityTitle>
+                <underlyingSecurityShares>
+                    <value>2518.1912</value>
+                </underlyingSecurityShares>
+            </underlyingSecurity>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>2518.1912</value>
+                    <footnoteId id="F23"/>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+            </ownershipNature>
+        </derivativeHolding>
+        <derivativeHolding>
+            <securityTitle>
+                <value>Deferred Compensation Phantom Stock</value>
+                <footnoteId id="F1"/>
+                <footnoteId id="F2"/>
+                <footnoteId id="F3"/>
+                <footnoteId id="F24"/>
+            </securityTitle>
+            <conversionOrExercisePrice>
+                <footnoteId id="F5"/>
+            </conversionOrExercisePrice>
+            <exerciseDate>
+                <footnoteId id="F6"/>
+            </exerciseDate>
+            <expirationDate>
+                <footnoteId id="F7"/>
+            </expirationDate>
+            <underlyingSecurity>
+                <underlyingSecurityTitle>
+                    <value>Common Stock</value>
+                </underlyingSecurityTitle>
+                <underlyingSecurityShares>
+                    <value>1723.223</value>
+                </underlyingSecurityShares>
+            </underlyingSecurity>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>1723.223</value>
+                    <footnoteId id="F25"/>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+            </ownershipNature>
+        </derivativeHolding>
+        <derivativeHolding>
+            <securityTitle>
+                <value>Deferred RSU Phantom Stock</value>
+                <footnoteId id="F26"/>
+            </securityTitle>
+            <conversionOrExercisePrice>
+                <footnoteId id="F27"/>
+            </conversionOrExercisePrice>
+            <exerciseDate>
+                <footnoteId id="F27"/>
+            </exerciseDate>
+            <expirationDate>
+                <footnoteId id="F7"/>
+            </expirationDate>
+            <underlyingSecurity>
+                <underlyingSecurityTitle>
+                    <value>Common Stock</value>
+                </underlyingSecurityTitle>
+                <underlyingSecurityShares>
+                    <value>9535.8882</value>
+                </underlyingSecurityShares>
+            </underlyingSecurity>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>9535.8882</value>
+                    <footnoteId id="F28"/>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+            </ownershipNature>
+        </derivativeHolding>
+        <derivativeHolding>
+            <securityTitle>
+                <value>Deferred RSU Phantom Stock</value>
+                <footnoteId id="F29"/>
+            </securityTitle>
+            <conversionOrExercisePrice>
+                <footnoteId id="F30"/>
+            </conversionOrExercisePrice>
+            <exerciseDate>
+                <footnoteId id="F30"/>
+            </exerciseDate>
+            <expirationDate>
+                <footnoteId id="F7"/>
+            </expirationDate>
+            <underlyingSecurity>
+                <underlyingSecurityTitle>
+                    <value>Common Stock</value>
+                </underlyingSecurityTitle>
+                <underlyingSecurityShares>
+                    <value>7140.482</value>
+                </underlyingSecurityShares>
+            </underlyingSecurity>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>7140.482</value>
+                    <footnoteId id="F31"/>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+            </ownershipNature>
+        </derivativeHolding>
+    </derivativeTable>
+
+    <footnotes>
+        <footnote id="F1">Pursuant to the 2008 Deferred Compensation Plan, as amended (the &quot;DCP&quot;), non-employee directors who earn quarterly cash retainer fees for their services on the Company's Board may elect to defer receipt of their quarterly cash fees until after the end of the director's service on the Board, and to direct the investment of the deferred cash into phantom stock units which track the performance of the Company's Common Stock for the duration of the deferral period.  The number of phantom stock units so acquired is calculated by dividing the deferred cash retainer amount by the closing price for the Company's Common Stock on the date the cash retainer is payable.  Each unit is the economic equivalent of one share of Common Stock of the Company.</footnote>
+        <footnote id="F2">Dividends payable on the Company's Common Stock also accrue with respect to phantom stock units, and phantom stock units are subject to dividend reinvestment during the deferral period.</footnote>
+        <footnote id="F3">The aggregate value of the phantom stock units, including any additional phantom stock units acquired through dividend reinvestment during the deferral period, will be paid out in cash to the reporting person after the end of his service on the Board.  At such time, the cash value of all of the phantom stock units will be calculated based on the closing price for the Company's Common Stock on the payment date, in accordance with the DCP and the reporting person's elections for his director compensation for the year in which the units were earned, which elections are on file with the Company.</footnote>
+        <footnote id="F4">These phantom stock units represent the reporting person's second quarter 2021 director fees issued to the reporting person on May 3, 2021, based on the Company's closing price per share on that date of $27.78</footnote>
+        <footnote id="F5">At the end of the deferral period, the cash value of the phantom stock units will be calculated based on the closing price for the Company's Common Stock on the payment date, in accordance with the DCP and the reporting person's elections for his director compensation for the year in which the units were earned, which elections are on file with the Company.</footnote>
+        <footnote id="F6">The reporting person has elected to defer settlement of the cash value of the phantom stock units until after the end of his service on the Board of the Company, pursuant to the terms of the DCP.</footnote>
+        <footnote id="F7">N/A</footnote>
+        <footnote id="F8">These phantom stock units represent the reporting person's first quarter 2021 director fees issued to the reporting person on February 1, 2021, based on the Company's closing price per share on that date.</footnote>
+        <footnote id="F9">The reported total includes 11.7449 additional phantom stock units acquired by the reporting person since the date of his last report pursuant to a dividend reinvestment feature of the DCP.  The additional phantom stock units acquired pursuant to the dividend reinvestment feature will be settled for cash after the end of the reporting person's service on the Company's Board.</footnote>
+        <footnote id="F10">These phantom stock units represent the reporting person's fourth quarter 2020 director fees issued to the reporting person on October 30, 2020, based on the Company's closing price per share on that date.</footnote>
+        <footnote id="F11">The reported total includes 16.4039 additional phantom stock units acquired by the reporting person since the date of his last report pursuant to a dividend reinvestment feature of the DCP.  The additional phantom stock units acquired pursuant to the dividend reinvestment feature will be settled for cash after the end of the reporting person's service on the Company's Board.</footnote>
+        <footnote id="F12">These phantom stock units represent the reporting person's third quarter 2020 director fees issued to the reporting person on July 31, 2020, based on the Company's closing price per share on that date.</footnote>
+        <footnote id="F13">The reported total includes 17.8939 additional phantom stock units acquired by the reporting person since the date of his last report pursuant to a dividend reinvestment feature of the DCP.  The additional phantom stock units acquired pursuant to the dividend reinvestment feature will be settled for cash after the end of the reporting person's service on the Company's Board.</footnote>
+        <footnote id="F14">These phantom stock units represent the reporting person's second quarter 2020 director fees issued to the reporting person on May 1, 2020, based on the Company's closing price per share on that date.</footnote>
+        <footnote id="F15">The reported total includes 24.2660 additional phantom stock units acquired by the reporting person since the date of his last report pursuant to a dividend reinvestment feature of the DCP.  The additional phantom stock units acquired pursuant to the dividend reinvestment feature will be settled for cash after the end of the reporting person's service on the Company's Board.</footnote>
+        <footnote id="F16">These phantom stock units represent the reporting person's first quarter 2020 director fees issued to the reporting person on February 3, 2020, based on the Company's closing price per share on that date.</footnote>
+        <footnote id="F17">The reported total includes 15.3869 additional phantom stock units acquired by the reporting person since the date of his last report pursuant to a dividend reinvestment feature of the DCP.  The additional phantom stock units acquired pursuant to the dividend reinvestment feature will be settled for cash after the end of the reporting person's service on the Company's Board.</footnote>
+        <footnote id="F18">These phantom stock units represent the reporting person's fourth quarter 2019 director fees issued to the reporting person on November 1, 2019, based on the Company's closing price per share on that date.</footnote>
+        <footnote id="F19">The reported total includes 14.8983 additional phantom stock units acquired by the reporting person since the date of his last report pursuant to a dividend reinvestment feature of the DCP.  The additional phantom stock units acquired pursuant to the dividend reinvestment feature will be settled for cash after the end of the reporting person's service on the Company's Board.</footnote>
+        <footnote id="F20">These phantom stock units represent the reporting person's third quarter 2019 director fees issued to the reporting person on August 1, 2019, based on the Company's closing price per share on that date.</footnote>
+        <footnote id="F21">The reported total includes 23.1370 additional phantom stock units acquired by the reporting person since the date of his last report pursuant to a dividend reinvestment feature of the DCP.  The additional phantom stock units acquired pursuant to the dividend reinvestment feature will be settled for cash after the end of the reporting person's service on the Company's Board.</footnote>
+        <footnote id="F22">These phantom stock units represent the reporting person's second quarter 2019 director fees issued to the reporting person on May 1, 2019, based on the Company's closing price per share on that date.</footnote>
+        <footnote id="F23">The reported total includes 21.9971 additional phantom stock units acquired by the reporting person since the date of his last report pursuant to a dividend reinvestment feature of the DCP.  The additional phantom stock units acquired pursuant to the dividend reinvestment feature will be settled for cash after the end of the reporting person's service on the Company's Board.</footnote>
+        <footnote id="F24">These phantom stock units represent the reporting person's first quarter 2019 director fees issued to the reporting person on February 1, 2019, based on the Company's closing price per share on that date.</footnote>
+        <footnote id="F25">The reported total includes 15.0528 additional phantom stock units acquired by the reporting person since the date of his last report pursuant to a dividend reinvestment feature of the DCP.  The additional phantom stock units acquired pursuant to the dividend reinvestment feature will be settled for cash after the end of the reporting person's service on the Company's Board.</footnote>
+        <footnote id="F26">Represents a vested award of 9,085 restricted stock units (&quot;RSUs&quot;) first granted on May 7, 2019, pursuant to the Newell Rubbermaid Inc. 2013 Incentive Plan.  The reporting person elected to defer settlement on the scheduled vesting date and the RSUs instead converted to an equal number of phantom stock units, in accordance with the DCP.  The 9,085 phantom stock units will settle on a one for one basis for shares of the Company's Common Stock after the end of the reporting person's service on the Company's Board.</footnote>
+        <footnote id="F27">The reporting person's 9,085 phantom stock units will convert to shares of the Company's Common Stock on a one for one basis after the end of the reporting person's service on the Company's Board, in accordance with the DCP.</footnote>
+        <footnote id="F28">The reported total includes 83.2987 additional phantom stock units acquired by the reporting person since the date of his last report pursuant to a dividend reinvestment feature of the DCP.  The additional phantom stock units acquired pursuant to the dividend reinvestment feature will be settled for cash after the end of the reporting person's service on the Company's Board.</footnote>
+        <footnote id="F29">Represents a vested award of 6,422 restricted stock units (&quot;RSUs&quot;) first granted on May 15, 2018, pursuant to the Newell Rubbermaid Inc. 2013 Incentive Plan.  The reporting person elected to defer settlement on the scheduled vesting date and the RSUs instead converted to an equal number of phantom stock units, in accordance with the DCP.  The 6,422 phantom stock units will settle on a one for one basis for shares of the Company's Common Stock after the end of the reporting person's service on the Company's Board.</footnote>
+        <footnote id="F30">The reporting person's 6,422 phantom stock units will convert to shares of the Company's Common Stock on a one for one basis after the end of the reporting person's service on the Company's Board, in accordance with the DCP.</footnote>
+        <footnote id="F31">The reported total includes 62.3741 additional phantom stock units acquired by the reporting person since the date of his last report pursuant to a dividend reinvestment feature of the DCP.  The additional phantom stock units acquired pursuant to the dividend reinvestment feature will be settled for cash after the end of the reporting person's service on the Company's Board.</footnote>
+    </footnotes>
+
+    <remarks></remarks>
+
+    <ownerSignature>
+        <signatureName>/s/ Raj Dave, attorney-in-fact for Courtney Mather</signatureName>
+        <signatureDate>2021-05-05</signatureDate>
+    </ownerSignature>
+</ownershipDocument>

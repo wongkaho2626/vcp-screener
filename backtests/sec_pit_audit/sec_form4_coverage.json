@@ -1,0 +1,32 @@
+{
+  "generated_at": "2026-08-01T15:37:49",
+  "outcomes_accessed": false,
+  "strict_filed_before_signal": true,
+  "window_days": 30,
+  "periods": {
+    "fit": {
+      "active_rows": 4160,
+      "setups": 103,
+      "recent_form4_rows": 3069,
+      "recent_form4_setups": 88,
+      "membership_drops": 16
+    },
+    "calibration": {
+      "active_rows": 811,
+      "setups": 28,
+      "recent_form4_rows": 717,
+      "recent_form4_setups": 27,
+      "membership_drops": 4
+    },
+    "internal_holdout": {
+      "active_rows": 6341,
+      "setups": 190,
+      "recent_form4_rows": 4917,
+      "recent_form4_setups": 168,
+      "membership_drops": 24
+    }
+  },
+  "symbols_with_form4": 523,
+  "form4_filings": 839772,
+  "unique_candidate_filings": 4353
+}

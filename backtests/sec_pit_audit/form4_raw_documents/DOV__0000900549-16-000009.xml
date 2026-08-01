@@ -1,0 +1,192 @@
+<?xml version="1.0"?>
+<ownershipDocument>
+
+    <schemaVersion>X0306</schemaVersion>
+
+    <documentType>4</documentType>
+
+    <periodOfReport>2016-11-10</periodOfReport>
+
+    <issuer>
+        <issuerCik>0000029905</issuerCik>
+        <issuerName>DOVER Corp</issuerName>
+        <issuerTradingSymbol>DOV</issuerTradingSymbol>
+    </issuer>
+
+    <reportingOwner>
+        <reportingOwnerId>
+            <rptOwnerCik>0000900549</rptOwnerCik>
+            <rptOwnerName>STUBBS MICHAEL B</rptOwnerName>
+        </reportingOwnerId>
+        <reportingOwnerAddress>
+            <rptOwnerStreet1>C/O DOVER CORPORATION</rptOwnerStreet1>
+            <rptOwnerStreet2>3005 HIGHLAND PARKWAY</rptOwnerStreet2>
+            <rptOwnerCity>DOWNERS GROVE</rptOwnerCity>
+            <rptOwnerState>IL</rptOwnerState>
+            <rptOwnerZipCode>60515</rptOwnerZipCode>
+            <rptOwnerStateDescription></rptOwnerStateDescription>
+        </reportingOwnerAddress>
+        <reportingOwnerRelationship>
+            <isDirector>1</isDirector>
+            <isOfficer>0</isOfficer>
+            <isTenPercentOwner>0</isTenPercentOwner>
+            <isOther>0</isOther>
+        </reportingOwnerRelationship>
+    </reportingOwner>
+
+    <nonDerivativeTable>
+        <nonDerivativeTransaction>
+            <securityTitle>
+                <value>Common Stock</value>
+            </securityTitle>
+            <transactionDate>
+                <value>2016-11-10</value>
+            </transactionDate>
+            <transactionCoding>
+                <transactionFormType>4</transactionFormType>
+                <transactionCode>S</transactionCode>
+                <equitySwapInvolved>0</equitySwapInvolved>
+            </transactionCoding>
+            <transactionAmounts>
+                <transactionShares>
+                    <value>19000</value>
+                </transactionShares>
+                <transactionPricePerShare>
+                    <value>71.58</value>
+                    <footnoteId id="F1"/>
+                </transactionPricePerShare>
+                <transactionAcquiredDisposedCode>
+                    <value>D</value>
+                </transactionAcquiredDisposedCode>
+            </transactionAmounts>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>110000</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>I</value>
+                </directOrIndirectOwnership>
+                <natureOfOwnership>
+                    <value>By trust</value>
+                    <footnoteId id="F2"/>
+                </natureOfOwnership>
+            </ownershipNature>
+        </nonDerivativeTransaction>
+        <nonDerivativeHolding>
+            <securityTitle>
+                <value>Common Stock</value>
+            </securityTitle>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>275727</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+                <natureOfOwnership>
+                    <value></value>
+                </natureOfOwnership>
+            </ownershipNature>
+        </nonDerivativeHolding>
+        <nonDerivativeHolding>
+            <securityTitle>
+                <value>Common Stock</value>
+            </securityTitle>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>199488</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>I</value>
+                </directOrIndirectOwnership>
+                <natureOfOwnership>
+                    <value>By trust</value>
+                    <footnoteId id="F3"/>
+                    <footnoteId id="F4"/>
+                </natureOfOwnership>
+            </ownershipNature>
+        </nonDerivativeHolding>
+        <nonDerivativeHolding>
+            <securityTitle>
+                <value>Common Stock</value>
+            </securityTitle>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>1000</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>I</value>
+                </directOrIndirectOwnership>
+                <natureOfOwnership>
+                    <value>By spouse</value>
+                    <footnoteId id="F5"/>
+                </natureOfOwnership>
+            </ownershipNature>
+        </nonDerivativeHolding>
+        <nonDerivativeHolding>
+            <securityTitle>
+                <value>Common Stock</value>
+            </securityTitle>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>592390</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>I</value>
+                </directOrIndirectOwnership>
+                <natureOfOwnership>
+                    <value>By trust</value>
+                    <footnoteId id="F6"/>
+                    <footnoteId id="F4"/>
+                </natureOfOwnership>
+            </ownershipNature>
+        </nonDerivativeHolding>
+        <nonDerivativeHolding>
+            <securityTitle>
+                <value>Common Stock</value>
+            </securityTitle>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>20972</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>I</value>
+                </directOrIndirectOwnership>
+                <natureOfOwnership>
+                    <value>By trust</value>
+                    <footnoteId id="F7"/>
+                    <footnoteId id="F4"/>
+                </natureOfOwnership>
+            </ownershipNature>
+        </nonDerivativeHolding>
+    </nonDerivativeTable>
+
+    <footnotes>
+        <footnote id="F1">The price reported in Column 4 is a weighted average price.  These shares were sold in multiple transactions at prices ranging from $71.14 to 72.06, inclusive.  The Reporting Person undertakes to provide to Dover Corporation, any holder of Dover Corporation stock or the staff of the Securities and Exchange Commission, upon request, full information regarding the number of shares sold at each separate price within the ranges forth in footnote (1) to this Form 4.</footnote>
+        <footnote id="F2">Shares held by the Michael B. Stubbs 2010 Grantor Retained Annuity Trust No. 1 over which the Reporting Person has power of substitution of assets.</footnote>
+        <footnote id="F3">Shares held by the 1993 Stubbs Family Trust of which the Reporting Person, his spouse and his descendants are beneficiaries.</footnote>
+        <footnote id="F4">The Reporting Person disclaims beneficial ownership of the reported securities except to the extent of his pecuniary interest therein and this report shall not be deemed an admission that the Reporting Person is the beneficial owner of such securities (except to the extent of his pecuniary interest therein) for purposes of Section 16 or for any other purpose.</footnote>
+        <footnote id="F5">The Reporting Person disclaims beneficial ownership of the reported securities and this report shall not be deemed an admission that the Reporting Person is the beneficial owner of such securities for purposes of Section 16 or any other purpose.</footnote>
+        <footnote id="F6">Shares held by the Gretchen B. Stubbs Residuary Trust of which the Reporting Person, his spouse and his descendants are beneficiaries.</footnote>
+        <footnote id="F7">Shares held by the Trust  f/b/o  Jill S. Bradburn of which a member of the Reporting Person's immediate family is the beneficiary, the Reporting Person is co-trustee and a contingent beneficiary.</footnote>
+    </footnotes>
+
+    <remarks></remarks>
+
+    <ownerSignature>
+        <signatureName>/s/ Michael B. Stubbs</signatureName>
+        <signatureDate>2016-11-14</signatureDate>
+    </ownerSignature>
+</ownershipDocument>

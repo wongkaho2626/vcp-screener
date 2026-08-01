@@ -1,0 +1,337 @@
+{
+  "generated_at": "2026-08-01T18:29:13",
+  "period": [
+    "2000-01-01",
+    "2005-12-31"
+  ],
+  "required_member_day_coverage_pct": 90,
+  "huge_stock_market_archive": {
+    "archive_sha256": "d9317c8fb2d63b9b00db5f933b6c9639d2bf7ea3b918169bb5cec5903dce85a1",
+    "archive_stock_files": 7195,
+    "universe_symbols": 640,
+    "matched_symbols": 404,
+    "calendar_symbol": "AAPL",
+    "calendar_sessions": 1506,
+    "member_days": 744730,
+    "covered_member_days": 434519,
+    "coverage_pct": 58.35,
+    "per_year": {
+      "2000": 51.52,
+      "2001": 55.25,
+      "2002": 57.38,
+      "2003": 59.64,
+      "2004": 60.62,
+      "2005": 65.56
+    },
+    "largest_gaps": [
+      {
+        "symbol": "ABI",
+        "expected": 1506,
+        "covered": 0,
+        "missing": 1506
+      },
+      {
+        "symbol": "ABS",
+        "expected": 1506,
+        "covered": 0,
+        "missing": 1506
+      },
+      {
+        "symbol": "ACV",
+        "expected": 1506,
+        "covered": 0,
+        "missing": 1506
+      },
+      {
+        "symbol": "ADCT",
+        "expected": 1506,
+        "covered": 0,
+        "missing": 1506
+      },
+      {
+        "symbol": "ANDW",
+        "expected": 1506,
+        "covered": 0,
+        "missing": 1506
+      },
+      {
+        "symbol": "ARNC",
+        "expected": 1506,
+        "covered": 0,
+        "missing": 1506
+      },
+      {
+        "symbol": "ASO",
+        "expected": 1506,
+        "covered": 0,
+        "missing": 1506
+      },
+      {
+        "symbol": "AW",
+        "expected": 1506,
+        "covered": 0,
+        "missing": 1506
+      },
+      {
+        "symbol": "BDK",
+        "expected": 1506,
+        "covered": 0,
+        "missing": 1506
+      },
+      {
+        "symbol": "BEAM",
+        "expected": 1506,
+        "covered": 0,
+        "missing": 1506
+      },
+      {
+        "symbol": "BF-B",
+        "expected": 1506,
+        "covered": 0,
+        "missing": 1506
+      },
+      {
+        "symbol": "BHGE",
+        "expected": 1506,
+        "covered": 0,
+        "missing": 1506
+      },
+      {
+        "symbol": "BLS",
+        "expected": 1506,
+        "covered": 0,
+        "missing": 1506
+      },
+      {
+        "symbol": "BMC",
+        "expected": 1506,
+        "covered": 0,
+        "missing": 1506
+      },
+      {
+        "symbol": "BMET",
+        "expected": 1506,
+        "covered": 0,
+        "missing": 1506
+      },
+      {
+        "symbol": "BNI",
+        "expected": 1506,
+        "covered": 0,
+        "missing": 1506
+      },
+      {
+        "symbol": "BOL",
+        "expected": 1506,
+        "covered": 0,
+        "missing": 1506
+      },
+      {
+        "symbol": "BR",
+        "expected": 1506,
+        "covered": 0,
+        "missing": 1506
+      },
+      {
+        "symbol": "BSC",
+        "expected": 1506,
+        "covered": 0,
+        "missing": 1506
+      },
+      {
+        "symbol": "BUD",
+        "expected": 1506,
+        "covered": 0,
+        "missing": 1506
+      },
+      {
+        "symbol": "CBE",
+        "expected": 1506,
+        "covered": 0,
+        "missing": 1506
+      },
+      {
+        "symbol": "CCTYQ",
+        "expected": 1506,
+        "covered": 0,
+        "missing": 1506
+      },
+      {
+        "symbol": "CEG",
+        "expected": 1506,
+        "covered": 0,
+        "missing": 1506
+      },
+      {
+        "symbol": "CFC",
+        "expected": 1506,
+        "covered": 0,
+        "missing": 1506
+      },
+      {
+        "symbol": "CIN",
+        "expected": 1506,
+        "covered": 0,
+        "missing": 1506
+      },
+      {
+        "symbol": "CMVT",
+        "expected": 1506,
+        "covered": 0,
+        "missing": 1506
+      },
+      {
+        "symbol": "CPWR",
+        "expected": 1506,
+        "covered": 0,
+        "missing": 1506
+      },
+      {
+        "symbol": "CTX",
+        "expected": 1506,
+        "covered": 0,
+        "missing": 1506
+      },
+      {
+        "symbol": "DCNAQ",
+        "expected": 1506,
+        "covered": 0,
+        "missing": 1506
+      },
+      {
+        "symbol": "DD",
+        "expected": 1506,
+        "covered": 0,
+        "missing": 1506
+      },
+      {
+        "symbol": "DELL",
+        "expected": 1506,
+        "covered": 0,
+        "missing": 1506
+      },
+      {
+        "symbol": "DG",
+        "expected": 1506,
+        "covered": 0,
+        "missing": 1506
+      },
+      {
+        "symbol": "DJ",
+        "expected": 1506,
+        "covered": 0,
+        "missing": 1506
+      },
+      {
+        "symbol": "DOW",
+        "expected": 1506,
+        "covered": 0,
+        "missing": 1506
+      },
+      {
+        "symbol": "DXC",
+        "expected": 1506,
+        "covered": 0,
+        "missing": 1506
+      },
+      {
+        "symbol": "EC",
+        "expected": 1506,
+        "covered": 0,
+        "missing": 1506
+      },
+      {
+        "symbol": "EDS",
+        "expected": 1506,
+        "covered": 0,
+        "missing": 1506
+      },
+      {
+        "symbol": "EKDKQ",
+        "expected": 1506,
+        "covered": 0,
+        "missing": 1506
+      },
+      {
+        "symbol": "EMC",
+        "expected": 1506,
+        "covered": 0,
+        "missing": 1506
+      },
+      {
+        "symbol": "EP",
+        "expected": 1506,
+        "covered": 0,
+        "missing": 1506
+      },
+      {
+        "symbol": "FDC",
+        "expected": 1506,
+        "covered": 0,
+        "missing": 1506
+      },
+      {
+        "symbol": "FMCC",
+        "expected": 1506,
+        "covered": 0,
+        "missing": 1506
+      },
+      {
+        "symbol": "FNMA",
+        "expected": 1506,
+        "covered": 0,
+        "missing": 1506
+      },
+      {
+        "symbol": "GAS",
+        "expected": 1506,
+        "covered": 0,
+        "missing": 1506
+      },
+      {
+        "symbol": "GDT",
+        "expected": 1506,
+        "covered": 0,
+        "missing": 1506
+      },
+      {
+        "symbol": "GDW",
+        "expected": 1506,
+        "covered": 0,
+        "missing": 1506
+      },
+      {
+        "symbol": "GR",
+        "expected": 1506,
+        "covered": 0,
+        "missing": 1506
+      },
+      {
+        "symbol": "GTW",
+        "expected": 1506,
+        "covered": 0,
+        "missing": 1506
+      },
+      {
+        "symbol": "HCA",
+        "expected": 1506,
+        "covered": 0,
+        "missing": 1506
+      },
+      {
+        "symbol": "HCR",
+        "expected": 1506,
+        "covered": 0,
+        "missing": 1506
+      }
+    ]
+  },
+  "quandl_wiki_ticker_list": {
+    "ticker_count": 3199,
+    "universe_symbols": 640,
+    "matched_symbols": 415,
+    "symbol_coverage_pct": 64.84
+  },
+  "accepted": false,
+  "decision": "reject: member-day coverage below 90%"
+}

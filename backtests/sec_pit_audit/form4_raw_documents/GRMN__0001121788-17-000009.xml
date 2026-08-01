@@ -1,0 +1,138 @@
+<?xml version="1.0"?>
+<ownershipDocument>
+
+    <schemaVersion>X0306</schemaVersion>
+
+    <documentType>4</documentType>
+
+    <periodOfReport>2017-02-27</periodOfReport>
+
+    <issuer>
+        <issuerCik>0001121788</issuerCik>
+        <issuerName>GARMIN LTD</issuerName>
+        <issuerTradingSymbol>GRMN</issuerTradingSymbol>
+    </issuer>
+
+    <reportingOwner>
+        <reportingOwnerId>
+            <rptOwnerCik>0001483374</rptOwnerCik>
+            <rptOwnerName>Biddlecombe Sean</rptOwnerName>
+        </reportingOwnerId>
+        <reportingOwnerAddress>
+            <rptOwnerStreet1>LIBERTY HOUSE</rptOwnerStreet1>
+            <rptOwnerStreet2>HOUNSDOWN BUSINESS PARK</rptOwnerStreet2>
+            <rptOwnerCity>SOUTHAMPTON</rptOwnerCity>
+            <rptOwnerState>X0</rptOwnerState>
+            <rptOwnerZipCode>SO409LR</rptOwnerZipCode>
+            <rptOwnerStateDescription>UNITED KINGDOM</rptOwnerStateDescription>
+        </reportingOwnerAddress>
+        <reportingOwnerRelationship>
+            <isDirector>0</isDirector>
+            <isOfficer>1</isOfficer>
+            <isTenPercentOwner>0</isTenPercentOwner>
+            <isOther>0</isOther>
+            <officerTitle>Managing Director, EMEA</officerTitle>
+        </reportingOwnerRelationship>
+    </reportingOwner>
+
+    <nonDerivativeTable>
+        <nonDerivativeTransaction>
+            <securityTitle>
+                <value>Registered Shares</value>
+            </securityTitle>
+            <transactionDate>
+                <value>2017-02-25</value>
+            </transactionDate>
+            <deemedExecutionDate>
+                <value>2017-02-27</value>
+            </deemedExecutionDate>
+            <transactionCoding>
+                <transactionFormType>4</transactionFormType>
+                <transactionCode>A</transactionCode>
+                <equitySwapInvolved>0</equitySwapInvolved>
+            </transactionCoding>
+            <transactionAmounts>
+                <transactionShares>
+                    <value>1377</value>
+                    <footnoteId id="F1"/>
+                </transactionShares>
+                <transactionPricePerShare>
+                    <value>0</value>
+                </transactionPricePerShare>
+                <transactionAcquiredDisposedCode>
+                    <value>A</value>
+                </transactionAcquiredDisposedCode>
+            </transactionAmounts>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>11711</value>
+                    <footnoteId id="F2"/>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+                <natureOfOwnership>
+                    <value></value>
+                </natureOfOwnership>
+            </ownershipNature>
+        </nonDerivativeTransaction>
+        <nonDerivativeTransaction>
+            <securityTitle>
+                <value>Restricted Shares</value>
+            </securityTitle>
+            <transactionDate>
+                <value>2017-02-25</value>
+            </transactionDate>
+            <deemedExecutionDate>
+                <value>2017-02-27</value>
+            </deemedExecutionDate>
+            <transactionCoding>
+                <transactionFormType>4</transactionFormType>
+                <transactionCode>F</transactionCode>
+                <equitySwapInvolved>0</equitySwapInvolved>
+            </transactionCoding>
+            <transactionAmounts>
+                <transactionShares>
+                    <value>217</value>
+                    <footnoteId id="F3"/>
+                </transactionShares>
+                <transactionPricePerShare>
+                    <value>53.03</value>
+                </transactionPricePerShare>
+                <transactionAcquiredDisposedCode>
+                    <value>D</value>
+                </transactionAcquiredDisposedCode>
+            </transactionAmounts>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>11494</value>
+                    <footnoteId id="F4"/>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+                <natureOfOwnership>
+                    <value></value>
+                </natureOfOwnership>
+            </ownershipNature>
+        </nonDerivativeTransaction>
+    </nonDerivativeTable>
+
+    <footnotes>
+        <footnote id="F1">Shares aquired pursuant to a restricted stock units award granted in February 2016 that had both performance-based and time-based vesting conditions.  The performance-based vesting conditions have been satisfied, and now the award is subject only to time-based vesting conditions.  The award vests in three equal annual installments beginning on February 25, 2017.</footnote>
+        <footnote id="F2">Includes 2,402 unvested shares acquired pursuant to previously granted restricted stock units awards and the 1,377 unvested shares acquired pursuant to the resticted stock units award described in Footnote 1.</footnote>
+        <footnote id="F3">460 shares that were aquired by the reporting person pursuant to the restricted stock units award described in Footnote (1) vested and were paid to the reporting person.  Of those shares, 217 shares were withheld to pay a resulting tax liability.</footnote>
+        <footnote id="F4">Includes 2,402 unvested shares acquired pursuant to previously granted restricted stock units awards and 917 remaining unvested shares acquired pursuant to the resticted stock units award described in Footnote 1.</footnote>
+    </footnotes>
+
+    <remarks></remarks>
+
+    <ownerSignature>
+        <signatureName>By Joshua H Maxfield, Attorney-in-Fact</signatureName>
+        <signatureDate>2017-02-28</signatureDate>
+    </ownerSignature>
+</ownershipDocument>

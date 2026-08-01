@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<ownershipDocument>
+
+    <schemaVersion>X0306</schemaVersion>
+
+    <documentType>4</documentType>
+
+    <periodOfReport>2020-11-24</periodOfReport>
+
+    <notSubjectToSection16>0</notSubjectToSection16>
+
+    <issuer>
+        <issuerCik>0001160951</issuerCik>
+        <issuerName>DUCK CREEK TECHNOLOGIES, INC.</issuerName>
+        <issuerTradingSymbol>DCT</issuerTradingSymbol>
+    </issuer>
+
+    <reportingOwner>
+        <reportingOwnerId>
+            <rptOwnerCik>0001467373</rptOwnerCik>
+            <rptOwnerName>Accenture plc</rptOwnerName>
+        </reportingOwnerId>
+        <reportingOwnerAddress>
+            <rptOwnerStreet1>1 GRAND CANAL SQUARE</rptOwnerStreet1>
+            <rptOwnerStreet2>GRAND CANAL HARBOUR</rptOwnerStreet2>
+            <rptOwnerCity>DUBLIN</rptOwnerCity>
+            <rptOwnerState>L2</rptOwnerState>
+            <rptOwnerZipCode>D2</rptOwnerZipCode>
+            <rptOwnerStateDescription>IRELAND</rptOwnerStateDescription>
+        </reportingOwnerAddress>
+        <reportingOwnerRelationship>
+            <isDirector>1</isDirector>
+            <isOfficer>0</isOfficer>
+            <isTenPercentOwner>1</isTenPercentOwner>
+            <isOther>1</isOther>
+            <officerTitle></officerTitle>
+            <otherText>Director by Deputization</otherText>
+        </reportingOwnerRelationship>
+    </reportingOwner>
+
+    <nonDerivativeTable>
+        <nonDerivativeTransaction>
+            <securityTitle>
+                <value>Common stock</value>
+            </securityTitle>
+            <transactionDate>
+                <value>2020-11-24</value>
+            </transactionDate>
+            <transactionCoding>
+                <transactionFormType>4</transactionFormType>
+                <transactionCode>S</transactionCode>
+                <equitySwapInvolved>0</equitySwapInvolved>
+            </transactionCoding>
+            <transactionAmounts>
+                <transactionShares>
+                    <value>480000</value>
+                    <footnoteId id="F1"/>
+                    <footnoteId id="F2"/>
+                </transactionShares>
+                <transactionPricePerShare>
+                    <value>39.77</value>
+                </transactionPricePerShare>
+                <transactionAcquiredDisposedCode>
+                    <value>D</value>
+                    <footnoteId id="F1"/>
+                    <footnoteId id="F2"/>
+                </transactionAcquiredDisposedCode>
+            </transactionAmounts>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>25175302</value>
+                    <footnoteId id="F1"/>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>I</value>
+                </directOrIndirectOwnership>
+                <natureOfOwnership>
+                    <value>See footnote</value>
+                    <footnoteId id="F1"/>
+                </natureOfOwnership>
+            </ownershipNature>
+        </nonDerivativeTransaction>
+    </nonDerivativeTable>
+
+    <derivativeTable></derivativeTable>
+
+    <footnotes>
+        <footnote id="F1">Consists of 7,036,262 shares of common stock held by Accenture LLP (the &quot;Accenture LLP Shares&quot;) and 18,139,040 shares of common stock held by Accenture Holdings BV (the &quot;Accenture Holdings BV Shares&quot;), each of which is an indirect wholly-owned subsidiary of Accenture plc. As a result of such ownership, Accenture plc may be deemed to beneficially own and have shared voting power and shared dispositive power with respect to all such shares. Accenture LLP expressly disclaims ownership of the Accenture Holdings BV Shares and Accenture Holdings BV expressly disclaims ownership of the Accenture LLP Shares.</footnote>
+        <footnote id="F2">The 480,000 shares of common stock disposed of in the transaction reported in this Form 4 were previously held by Accenture LLP.</footnote>
+    </footnotes>
+
+    <remarks>On the basis of its relationship with Stuart Nicoll, a member of the Issuer's board of directors, the reporting person is deemed a director of the Issuer solely for the purposes of Section 16 of the Securities Exchange Act of 1934, as amended.</remarks>
+
+    <ownerSignature>
+        <signatureName>/s/ Danika Haueisen, Attorney-In-Fact for Accenture plc</signatureName>
+        <signatureDate>2020-11-25</signatureDate>
+    </ownerSignature>
+</ownershipDocument>

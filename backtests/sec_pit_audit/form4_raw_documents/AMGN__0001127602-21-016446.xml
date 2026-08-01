@@ -1,0 +1,196 @@
+<?xml version="1.0"?>
+<ownershipDocument>
+
+    <schemaVersion>X0306</schemaVersion>
+
+    <documentType>4</documentType>
+
+    <periodOfReport>2021-05-11</periodOfReport>
+
+    <issuer>
+        <issuerCik>0000318154</issuerCik>
+        <issuerName>AMGEN INC</issuerName>
+        <issuerTradingSymbol>AMGN</issuerTradingSymbol>
+    </issuer>
+
+    <reportingOwner>
+        <reportingOwnerId>
+            <rptOwnerCik>0001816414</rptOwnerCik>
+            <rptOwnerName>Grygiel Nancy A.</rptOwnerName>
+        </reportingOwnerId>
+        <reportingOwnerAddress>
+            <rptOwnerStreet1>ONE AMGEN CENTER DRIVE</rptOwnerStreet1>
+            <rptOwnerStreet2></rptOwnerStreet2>
+            <rptOwnerCity>THOUSAND OAKS</rptOwnerCity>
+            <rptOwnerState>CA</rptOwnerState>
+            <rptOwnerZipCode>91320</rptOwnerZipCode>
+            <rptOwnerStateDescription></rptOwnerStateDescription>
+        </reportingOwnerAddress>
+        <reportingOwnerRelationship>
+            <isOfficer>1</isOfficer>
+            <officerTitle>SVP &amp; CCO</officerTitle>
+        </reportingOwnerRelationship>
+    </reportingOwner>
+
+    <nonDerivativeTable>
+        <nonDerivativeTransaction>
+            <securityTitle>
+                <value>Common Stock</value>
+            </securityTitle>
+            <transactionDate>
+                <value>2021-05-11</value>
+            </transactionDate>
+            <transactionCoding>
+                <transactionFormType>4</transactionFormType>
+                <transactionCode>M</transactionCode>
+                <equitySwapInvolved>0</equitySwapInvolved>
+            </transactionCoding>
+            <transactionTimeliness></transactionTimeliness>
+            <transactionAmounts>
+                <transactionShares>
+                    <value>2500</value>
+                </transactionShares>
+                <transactionPricePerShare>
+                    <value>162.60</value>
+                </transactionPricePerShare>
+                <transactionAcquiredDisposedCode>
+                    <value>A</value>
+                </transactionAcquiredDisposedCode>
+            </transactionAmounts>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>14961</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+            </ownershipNature>
+        </nonDerivativeTransaction>
+        <nonDerivativeTransaction>
+            <securityTitle>
+                <value>Common Stock</value>
+            </securityTitle>
+            <transactionDate>
+                <value>2021-05-11</value>
+            </transactionDate>
+            <transactionCoding>
+                <transactionFormType>4</transactionFormType>
+                <transactionCode>S</transactionCode>
+                <equitySwapInvolved>0</equitySwapInvolved>
+            </transactionCoding>
+            <transactionTimeliness></transactionTimeliness>
+            <transactionAmounts>
+                <transactionShares>
+                    <value>2500</value>
+                </transactionShares>
+                <transactionPricePerShare>
+                    <value>252.5089</value>
+                    <footnoteId id="F1"/>
+                </transactionPricePerShare>
+                <transactionAcquiredDisposedCode>
+                    <value>D</value>
+                </transactionAcquiredDisposedCode>
+            </transactionAmounts>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>12461</value>
+                    <footnoteId id="F2"/>
+                    <footnoteId id="F3"/>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+            </ownershipNature>
+        </nonDerivativeTransaction>
+        <nonDerivativeHolding>
+            <securityTitle>
+                <value>Common Stock</value>
+            </securityTitle>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>90.6819</value>
+                    <footnoteId id="F4"/>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>I</value>
+                </directOrIndirectOwnership>
+                <natureOfOwnership>
+                    <value>401(k) Plan</value>
+                </natureOfOwnership>
+            </ownershipNature>
+        </nonDerivativeHolding>
+    </nonDerivativeTable>
+
+    <derivativeTable>
+        <derivativeTransaction>
+            <securityTitle>
+                <value>Nqso (Right to Buy)</value>
+            </securityTitle>
+            <conversionOrExercisePrice>
+                <value>162.60</value>
+            </conversionOrExercisePrice>
+            <transactionDate>
+                <value>2021-05-11</value>
+            </transactionDate>
+            <transactionCoding>
+                <transactionFormType>4</transactionFormType>
+                <transactionCode>M</transactionCode>
+                <equitySwapInvolved>0</equitySwapInvolved>
+            </transactionCoding>
+            <transactionTimeliness></transactionTimeliness>
+            <transactionAmounts>
+                <transactionShares>
+                    <value>2500</value>
+                </transactionShares>
+                <transactionPricePerShare>
+                    <value>0</value>
+                </transactionPricePerShare>
+                <transactionAcquiredDisposedCode>
+                    <value>D</value>
+                </transactionAcquiredDisposedCode>
+            </transactionAmounts>
+            <exerciseDate>
+                <value>2019-05-01</value>
+            </exerciseDate>
+            <expirationDate>
+                <value>2027-05-01</value>
+            </expirationDate>
+            <underlyingSecurity>
+                <underlyingSecurityTitle>
+                    <value>Common Stock</value>
+                </underlyingSecurityTitle>
+                <underlyingSecurityShares>
+                    <value>2500</value>
+                </underlyingSecurityShares>
+            </underlyingSecurity>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>1639</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+            </ownershipNature>
+        </derivativeTransaction>
+    </derivativeTable>
+
+    <footnotes>
+        <footnote id="F1">The price reported is an average price. The prices ranged from $252.33 to $252.69 per share for this cashless exercise of 2,500 stock options expiring May 1, 2027. Full information regarding the number of shares sold at each separate price within the range set forth above is available upon request by the SEC staff, the issuer or a security holder of the issuer.</footnote>
+        <footnote id="F2">These shares include the following RSUs granted under the Company's equity plans: 153 RSUs which will vest on 4/27/2022; 303 RSUs which vest in installments of 149 on 5/3/2022 and 154 on 5/3/2023; 423 RSUs which vest in installments of 139 on 5/5/2022, 140 on 5/5/2023 and 144 on 5/5/2024; 8,174 RSUs which will vest in two installments of 2,697 on 7/31/2022 and 7/31/2023 and one installment of 2,780 on 7/31/2024; and 584 RSUs which vest in installments of 192 on 4/30/2023, 193 on 4/30/2024 and 199 on 4/30/2025. Vested RSUs will be paid in shares of the Company's common stock on a one-to-one basis.</footnote>
+        <footnote id="F3">These shares include 221 Dividend Equivalents (DEs) granted pursuant to the Amgen Inc. 2009 Amended and Restated Equity Incentive Plan and subject to a qualifying dividend reinvestment plan. DEs are credited on the reporting person's unvested RSUs and are paid out in shares of the Company's common stock on a one-to-one basis according to the vesting schedule, along with a cash payment for any remaining fractional share amount.</footnote>
+        <footnote id="F4">These are shares acquired under the Company's 401(k) Plan and represent interests in the Company's stock fund as of this filing.</footnote>
+    </footnotes>
+
+    <ownerSignature>
+        <signatureName>/s/ Nancy A. Grygiel</signatureName>
+        <signatureDate>2021-05-11</signatureDate>
+    </ownerSignature>
+</ownershipDocument>

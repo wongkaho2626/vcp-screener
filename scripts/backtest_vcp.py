@@ -26,6 +26,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import multiprocessing as mp
 import os
 import sys
 import time
@@ -35,6 +36,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from backtest_aggregator import build_backtest_summary  # noqa: E402
 from backtest_report import write_backtest_reports  # noqa: E402
+from csv_client import _adjust_bar  # noqa: E402
 from calculators.support_resistance_calculator import (  # noqa: E402
     add_support_resistance_arguments,
     support_resistance_config_from_args,
@@ -44,6 +46,7 @@ from historical_scanner import sanitize_ticker, scan_history  # noqa: E402
 from yf_client import YFClient  # noqa: E402
 
 TRADING_DAYS_PER_YEAR = 252
+_PARALLEL_STATE: dict = {}
 
 
 class CSVHistoricalClient:
@@ -76,15 +79,21 @@ class CSVHistoricalClient:
 
                 for row in reader:
                     symbol = sanitize_ticker(row.get("Ticker", ""))
+                    open_price = _csv_float(row.get("Open"))
+                    high = _csv_float(row.get("High"))
+                    low = _csv_float(row.get("Low"))
                     close = _csv_float(row.get("Close"))
                     adj_close = _csv_float(row.get("Adj Close")) or close
+                    adjusted_open, adjusted_high, adjusted_low, adjusted_close = _adjust_bar(
+                        open_price, high, low, close, adj_close,
+                    )
                     bar = {
                         "date": row.get("Date", ""),
-                        "open": _csv_float(row.get("Open")),
-                        "high": _csv_float(row.get("High")),
-                        "low": _csv_float(row.get("Low")),
-                        "close": close,
-                        "adjClose": adj_close,
+                        "open": adjusted_open,
+                        "high": adjusted_high,
+                        "low": adjusted_low,
+                        "close": adjusted_close,
+                        "adjClose": adjusted_close,
                         "volume": int(_csv_float(row.get("Volume"))),
                     }
                     history_by_symbol.setdefault(symbol, []).append(bar)
@@ -238,6 +247,12 @@ def parse_arguments() -> argparse.Namespace:
         default=0.5,
         help="Pause between ticker fetches to be polite to Yahoo (default: 0.5; ignored for CSV)",
     )
+    parser.add_argument(
+        "--workers",
+        type=int,
+        default=1,
+        help="CSV-only fork workers for ticker scans (default: 1)",
+    )
 
     add_support_resistance_arguments(parser)
 
@@ -250,7 +265,46 @@ def parse_arguments() -> argparse.Namespace:
         parser.error("--outcome-days must be 5-252")
     if not (30 <= args.lookback_days <= 365):
         parser.error("--lookback-days must be 30-365")
+    if not (1 <= args.workers <= 32):
+        parser.error("--workers must be 1-32")
+    if args.workers > 1 and not (args.csv_data or args.price_csv):
+        parser.error("--workers > 1 is supported only for local CSV data")
     return args
+
+
+def _scan_symbol(
+    client, sym: str, fetch_days: int, sp500_history: list[dict], args,
+    analysis_lookback_days: int, analyzer_kwargs: dict,
+) -> tuple[str, list[dict] | None, int, str | None]:
+    """Scan one symbol and return serialisable progress/result fields."""
+    try:
+        data = client.get_historical_prices(sym, days=fetch_days)
+        historical = data.get("historical", []) if data else []
+        if len(historical) < args.lookback_days + 30:
+            return sym, None, len(historical), "insufficient_history"
+        detections = scan_history(
+            sym,
+            historical,
+            sp500_history,
+            stride_days=args.stride_days,
+            outcome_days=args.outcome_days,
+            lookback_days=args.lookback_days,
+            analysis_lookback_days=analysis_lookback_days,
+            require_trend_pass=args.require_trend_pass,
+            analyzer_kwargs=analyzer_kwargs,
+        )
+        return sym, detections, len(historical), None
+    except Exception as exc:  # noqa: BLE001 — one bad ticker must not kill the run
+        return sym, None, 0, f"{type(exc).__name__}: {exc}"
+
+
+def _parallel_scan_symbol(sym: str):
+    """Fork worker wrapper; large immutable CSV state is inherited copy-on-write."""
+    state = _PARALLEL_STATE
+    return _scan_symbol(
+        state["client"], sym, state["fetch_days"], state["sp500_history"],
+        state["args"], state["analysis_lookback_days"], state["analyzer_kwargs"],
+    )
 
 
 def read_universe_file(path: str) -> list[str]:
@@ -358,35 +412,37 @@ def run_backtest(args: argparse.Namespace) -> None:
 
     per_ticker: dict[str, list[dict]] = {}
     failures: list[str] = []
-    for i, sym in enumerate(symbols, 1):
-        print(f"[{i}/{len(symbols)}] {sym}...", end=" ", flush=True)
-        try:
-            data = client.get_historical_prices(sym, days=fetch_days)
-        except Exception as e:  # noqa: BLE001 — one bad ticker must not kill the run
-            print(f"FETCH ERROR ({e})")
-            failures.append(sym)
-            continue
-        historical = data.get("historical", []) if data else []
-        if len(historical) < args.lookback_days + 30:
-            print(f"skipped (only {len(historical)} bars)")
-            failures.append(sym)
-            continue
 
-        detections = scan_history(
-            sym,
-            historical,
-            sp500_history,
-            stride_days=args.stride_days,
-            outcome_days=args.outcome_days,
-            lookback_days=args.lookback_days,
-            analysis_lookback_days=analysis_lookback_days,
-            require_trend_pass=args.require_trend_pass,
-            analyzer_kwargs=analyzer_kwargs,
-        )
-        per_ticker[sym] = detections
-        print(f"{len(detections)} detections ({len(historical)} bars)")
-        if not args.csv_data and args.sleep_secs > 0 and i < len(symbols):
-            time.sleep(args.sleep_secs)
+    def record(i: int, result) -> None:
+        sym, detections, bars, error = result
+        if error:
+            note = f"skipped (only {bars} bars)" if error == "insufficient_history" else f"ERROR ({error})"
+            print(f"[{i}/{len(symbols)}] {sym}... {note}", flush=True)
+            failures.append(sym)
+        else:
+            per_ticker[sym] = detections
+            print(f"[{i}/{len(symbols)}] {sym}... {len(detections)} detections ({bars} bars)", flush=True)
+
+    if args.workers > 1:
+        global _PARALLEL_STATE
+        _PARALLEL_STATE = {
+            "client": client, "fetch_days": fetch_days,
+            "sp500_history": sp500_history, "args": args,
+            "analysis_lookback_days": analysis_lookback_days,
+            "analyzer_kwargs": analyzer_kwargs,
+        }
+        with mp.get_context("fork").Pool(processes=args.workers) as pool:
+            for i, result in enumerate(pool.imap_unordered(_parallel_scan_symbol, symbols), 1):
+                record(i, result)
+        per_ticker = {sym: per_ticker[sym] for sym in symbols if sym in per_ticker}
+    else:
+        for i, sym in enumerate(symbols, 1):
+            record(i, _scan_symbol(
+                client, sym, fetch_days, sp500_history, args,
+                analysis_lookback_days, analyzer_kwargs,
+            ))
+            if not args.csv_data and args.sleep_secs > 0 and i < len(symbols):
+                time.sleep(args.sleep_secs)
 
     if not per_ticker:
         print("ERROR: no ticker produced usable history — nothing to report",

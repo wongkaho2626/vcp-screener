@@ -1,0 +1,427 @@
+<?xml version="1.0"?>
+<ownershipDocument>
+
+    <schemaVersion>X0306</schemaVersion>
+
+    <documentType>4</documentType>
+
+    <periodOfReport>2016-12-15</periodOfReport>
+
+    <issuer>
+        <issuerCik>0000049071</issuerCik>
+        <issuerName>HUMANA INC</issuerName>
+        <issuerTradingSymbol>HUM</issuerTradingSymbol>
+    </issuer>
+
+    <reportingOwner>
+        <reportingOwnerId>
+            <rptOwnerCik>0001528285</rptOwnerCik>
+            <rptOwnerName>LeClaire Brian P.</rptOwnerName>
+        </reportingOwnerId>
+        <reportingOwnerAddress>
+            <rptOwnerStreet1>HUMANA INC.</rptOwnerStreet1>
+            <rptOwnerStreet2>500 WEST MAIN STREET</rptOwnerStreet2>
+            <rptOwnerCity>LOUISVILLE</rptOwnerCity>
+            <rptOwnerState>KY</rptOwnerState>
+            <rptOwnerZipCode>40202</rptOwnerZipCode>
+            <rptOwnerStateDescription></rptOwnerStateDescription>
+        </reportingOwnerAddress>
+        <reportingOwnerRelationship>
+            <isDirector>0</isDirector>
+            <isOfficer>1</isOfficer>
+            <isTenPercentOwner>0</isTenPercentOwner>
+            <isOther>0</isOther>
+            <officerTitle>SVP &amp; Chief Information Off.</officerTitle>
+        </reportingOwnerRelationship>
+    </reportingOwner>
+
+    <nonDerivativeTable>
+        <nonDerivativeTransaction>
+            <securityTitle>
+                <value>Humana Common</value>
+            </securityTitle>
+            <transactionDate>
+                <value>2016-12-15</value>
+            </transactionDate>
+            <transactionCoding>
+                <transactionFormType>4</transactionFormType>
+                <transactionCode>M</transactionCode>
+                <equitySwapInvolved>0</equitySwapInvolved>
+            </transactionCoding>
+            <transactionAmounts>
+                <transactionShares>
+                    <value>1092</value>
+                </transactionShares>
+                <transactionPricePerShare>
+                    <value>0</value>
+                </transactionPricePerShare>
+                <transactionAcquiredDisposedCode>
+                    <value>A</value>
+                </transactionAcquiredDisposedCode>
+            </transactionAmounts>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>18393</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+                <natureOfOwnership>
+                    <value></value>
+                </natureOfOwnership>
+            </ownershipNature>
+        </nonDerivativeTransaction>
+        <nonDerivativeTransaction>
+            <securityTitle>
+                <value>Humana Common</value>
+            </securityTitle>
+            <transactionDate>
+                <value>2016-12-15</value>
+            </transactionDate>
+            <transactionCoding>
+                <transactionFormType>4</transactionFormType>
+                <transactionCode>F</transactionCode>
+                <equitySwapInvolved>0</equitySwapInvolved>
+            </transactionCoding>
+            <transactionAmounts>
+                <transactionShares>
+                    <value>548</value>
+                </transactionShares>
+                <transactionPricePerShare>
+                    <value>206.595</value>
+                </transactionPricePerShare>
+                <transactionAcquiredDisposedCode>
+                    <value>D</value>
+                </transactionAcquiredDisposedCode>
+            </transactionAmounts>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>17845</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+                <natureOfOwnership>
+                    <value></value>
+                </natureOfOwnership>
+            </ownershipNature>
+        </nonDerivativeTransaction>
+        <nonDerivativeHolding>
+            <securityTitle>
+                <value>Humana Common</value>
+            </securityTitle>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>134</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>I</value>
+                </directOrIndirectOwnership>
+                <natureOfOwnership>
+                    <value>See Footnote</value>
+                    <footnoteId id="F1"/>
+                </natureOfOwnership>
+            </ownershipNature>
+        </nonDerivativeHolding>
+    </nonDerivativeTable>
+
+    <derivativeTable>
+        <derivativeHolding>
+            <securityTitle>
+                <value>Options</value>
+                <footnoteId id="F2"/>
+            </securityTitle>
+            <conversionOrExercisePrice>
+                <value>72.84</value>
+            </conversionOrExercisePrice>
+            <exerciseDate>
+                <footnoteId id="F2"/>
+            </exerciseDate>
+            <expirationDate>
+                <value>2020-02-20</value>
+            </expirationDate>
+            <underlyingSecurity>
+                <underlyingSecurityTitle>
+                    <value>Humana Common</value>
+                </underlyingSecurityTitle>
+                <underlyingSecurityShares>
+                    <value>2254</value>
+                </underlyingSecurityShares>
+            </underlyingSecurity>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>2254</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+                <natureOfOwnership>
+                    <value></value>
+                </natureOfOwnership>
+            </ownershipNature>
+        </derivativeHolding>
+        <derivativeHolding>
+            <securityTitle>
+                <value>Options</value>
+                <footnoteId id="F3"/>
+            </securityTitle>
+            <conversionOrExercisePrice>
+                <value>102.155</value>
+            </conversionOrExercisePrice>
+            <exerciseDate>
+                <footnoteId id="F3"/>
+            </exerciseDate>
+            <expirationDate>
+                <value>2021-02-18</value>
+            </expirationDate>
+            <underlyingSecurity>
+                <underlyingSecurityTitle>
+                    <value>Humana Common</value>
+                </underlyingSecurityTitle>
+                <underlyingSecurityShares>
+                    <value>7450</value>
+                </underlyingSecurityShares>
+            </underlyingSecurity>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>7450</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+                <natureOfOwnership>
+                    <value></value>
+                </natureOfOwnership>
+            </ownershipNature>
+        </derivativeHolding>
+        <derivativeHolding>
+            <securityTitle>
+                <value>Options</value>
+                <footnoteId id="F4"/>
+            </securityTitle>
+            <conversionOrExercisePrice>
+                <value>164.645</value>
+            </conversionOrExercisePrice>
+            <exerciseDate>
+                <footnoteId id="F4"/>
+            </exerciseDate>
+            <expirationDate>
+                <value>2022-02-24</value>
+            </expirationDate>
+            <underlyingSecurity>
+                <underlyingSecurityTitle>
+                    <value>Humana Common</value>
+                </underlyingSecurityTitle>
+                <underlyingSecurityShares>
+                    <value>14913</value>
+                </underlyingSecurityShares>
+            </underlyingSecurity>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>14913</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+                <natureOfOwnership>
+                    <value></value>
+                </natureOfOwnership>
+            </ownershipNature>
+        </derivativeHolding>
+        <derivativeHolding>
+            <securityTitle>
+                <value>Options</value>
+                <footnoteId id="F5"/>
+            </securityTitle>
+            <conversionOrExercisePrice>
+                <value>167.805</value>
+            </conversionOrExercisePrice>
+            <exerciseDate>
+                <footnoteId id="F5"/>
+            </exerciseDate>
+            <expirationDate>
+                <value>2023-02-18</value>
+            </expirationDate>
+            <underlyingSecurity>
+                <underlyingSecurityTitle>
+                    <value>Humana Common</value>
+                </underlyingSecurityTitle>
+                <underlyingSecurityShares>
+                    <value>14764</value>
+                </underlyingSecurityShares>
+            </underlyingSecurity>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>14764</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+                <natureOfOwnership>
+                    <value></value>
+                </natureOfOwnership>
+            </ownershipNature>
+        </derivativeHolding>
+        <derivativeHolding>
+            <securityTitle>
+                <value>Restricted Stock Units</value>
+                <footnoteId id="F6"/>
+            </securityTitle>
+            <conversionOrExercisePrice>
+                <footnoteId id="F6"/>
+            </conversionOrExercisePrice>
+            <exerciseDate>
+                <footnoteId id="F7"/>
+            </exerciseDate>
+            <expirationDate>
+                <footnoteId id="F7"/>
+            </expirationDate>
+            <underlyingSecurity>
+                <underlyingSecurityTitle>
+                    <value>Humana Common</value>
+                </underlyingSecurityTitle>
+                <underlyingSecurityShares>
+                    <value>2447</value>
+                </underlyingSecurityShares>
+            </underlyingSecurity>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>2447</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+                <natureOfOwnership>
+                    <value></value>
+                </natureOfOwnership>
+            </ownershipNature>
+        </derivativeHolding>
+        <derivativeTransaction>
+            <securityTitle>
+                <value>Restricted Stock Units</value>
+                <footnoteId id="F6"/>
+            </securityTitle>
+            <conversionOrExercisePrice>
+                <footnoteId id="F6"/>
+            </conversionOrExercisePrice>
+            <transactionDate>
+                <value>2016-12-15</value>
+            </transactionDate>
+            <transactionCoding>
+                <transactionFormType>4</transactionFormType>
+                <transactionCode>M</transactionCode>
+                <equitySwapInvolved>0</equitySwapInvolved>
+            </transactionCoding>
+            <transactionAmounts>
+                <transactionShares>
+                    <value>1092</value>
+                </transactionShares>
+                <transactionPricePerShare>
+                    <value>0</value>
+                </transactionPricePerShare>
+                <transactionAcquiredDisposedCode>
+                    <value>D</value>
+                </transactionAcquiredDisposedCode>
+            </transactionAmounts>
+            <exerciseDate>
+                <footnoteId id="F8"/>
+            </exerciseDate>
+            <expirationDate>
+                <footnoteId id="F8"/>
+            </expirationDate>
+            <underlyingSecurity>
+                <underlyingSecurityTitle>
+                    <value>Humana Common</value>
+                </underlyingSecurityTitle>
+                <underlyingSecurityShares>
+                    <value>1092</value>
+                </underlyingSecurityShares>
+            </underlyingSecurity>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>2186</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+                <natureOfOwnership>
+                    <value></value>
+                </natureOfOwnership>
+            </ownershipNature>
+        </derivativeTransaction>
+        <derivativeHolding>
+            <securityTitle>
+                <value>Phantom Stock Units</value>
+                <footnoteId id="F9"/>
+            </securityTitle>
+            <conversionOrExercisePrice>
+                <footnoteId id="F9"/>
+            </conversionOrExercisePrice>
+            <exerciseDate>
+                <footnoteId id="F9"/>
+            </exerciseDate>
+            <expirationDate>
+                <footnoteId id="F9"/>
+            </expirationDate>
+            <underlyingSecurity>
+                <underlyingSecurityTitle>
+                    <value>Humana Common</value>
+                </underlyingSecurityTitle>
+                <underlyingSecurityShares>
+                    <value>61</value>
+                </underlyingSecurityShares>
+            </underlyingSecurity>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>61</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>I</value>
+                </directOrIndirectOwnership>
+                <natureOfOwnership>
+                    <value>See Footnote</value>
+                    <footnoteId id="F9"/>
+                </natureOfOwnership>
+            </ownershipNature>
+        </derivativeHolding>
+    </derivativeTable>
+
+    <footnotes>
+        <footnote id="F1">Stock units held for the benefit of reporting person as of November 30, 2016 under the Humana Retirement &amp; Savings Plan including a routine disposition of shares to fund an administrative fee assessment under a Tax-Conditioned Plan, both exempt under Rule 16b-3(c).</footnote>
+        <footnote id="F2">Right to buy pursuant to Company's 2003 Stock Incentive Plan. Incentive and Non-Qualified stock options granted to reporting person on 02/20/13, vesting in three increments from 02/20/14 to 02/20/16.</footnote>
+        <footnote id="F3">Right to buy pursuant to Company's 2011 Stock Incentive Plan. Incentive and Non-Qualified stock options granted to reporting person on 02/18/14, vesting in three increments from 02/18/15 to 02/18/17.</footnote>
+        <footnote id="F4">Right to buy pursuant to Company's 2011 Stock Incentive Plan. Incentive and Non-Qualified stock options granted to reporting person on 02/24/15, vesting in three increments from 02/24/16 to 02/24/18.</footnote>
+        <footnote id="F5">Right to buy pursuant to Company's 2011 Stock Incentive Plan. Incentive and Non-Qualified stock options granted to reporting person on 02/18/16, vesting in three increments from 02/18/17 to 02/18/19.</footnote>
+        <footnote id="F6">Right to receive one share per restricted stock unit pursuant to the Company's 2011 Stock Incentive Plan. Each restricted stock unit represents a contingent right to receive one share of Humana Inc. common stock, exempt under Rule 16b-3(d)(1) &amp; (3).</footnote>
+        <footnote id="F7">Restricted stock units granted to reporting person on 2/18/14, 100% of the award is vesting on 2/18/17.</footnote>
+        <footnote id="F8">Restricted stock units granted to reporting person on 02/18/16, 33% of the award is vesting on 12/15/16, 12/15/17, and 12/15/18.</footnote>
+        <footnote id="F9">Phantom Stock Units held for the benefit of reporting person as of November 30, 2016 based on the value of Humana common stock on a 1-for-1 basis, under the Humana Retirement Equalization Plan. The ending number of units reflects normal fluctation due to changes in stock price.</footnote>
+    </footnotes>
+
+    <remarks></remarks>
+
+    <ownerSignature>
+        <signatureName>Brian P. LeClaire</signatureName>
+        <signatureDate>2016-12-16</signatureDate>
+    </ownerSignature>
+</ownershipDocument>

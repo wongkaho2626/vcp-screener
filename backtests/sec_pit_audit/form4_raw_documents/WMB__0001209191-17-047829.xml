@@ -1,0 +1,139 @@
+<?xml version="1.0"?>
+<ownershipDocument>
+
+    <schemaVersion>X0306</schemaVersion>
+
+    <documentType>4</documentType>
+
+    <periodOfReport>2017-08-04</periodOfReport>
+
+    <notSubjectToSection16>0</notSubjectToSection16>
+
+    <issuer>
+        <issuerCik>0001483096</issuerCik>
+        <issuerName>WILLIAMS PARTNERS L.P.</issuerName>
+        <issuerTradingSymbol>WPZ</issuerTradingSymbol>
+    </issuer>
+
+    <reportingOwner>
+        <reportingOwnerId>
+            <rptOwnerCik>0000107263</rptOwnerCik>
+            <rptOwnerName>WILLIAMS COMPANIES INC</rptOwnerName>
+        </reportingOwnerId>
+        <reportingOwnerAddress>
+            <rptOwnerStreet1>ONE WILLIAMS CENTER</rptOwnerStreet1>
+            <rptOwnerStreet2></rptOwnerStreet2>
+            <rptOwnerCity>TULSA</rptOwnerCity>
+            <rptOwnerState>OK</rptOwnerState>
+            <rptOwnerZipCode>74172</rptOwnerZipCode>
+            <rptOwnerStateDescription></rptOwnerStateDescription>
+        </reportingOwnerAddress>
+        <reportingOwnerRelationship>
+            <isDirector>1</isDirector>
+            <isOfficer>0</isOfficer>
+            <isTenPercentOwner>1</isTenPercentOwner>
+            <isOther>0</isOther>
+        </reportingOwnerRelationship>
+    </reportingOwner>
+
+    <reportingOwner>
+        <reportingOwnerId>
+            <rptOwnerCik>0001423889</rptOwnerCik>
+            <rptOwnerName>WILLIAMS GAS PIPELINE CO LLC</rptOwnerName>
+        </reportingOwnerId>
+        <reportingOwnerAddress>
+            <rptOwnerStreet1>ONE WILLIAMS CENTER</rptOwnerStreet1>
+            <rptOwnerStreet2></rptOwnerStreet2>
+            <rptOwnerCity>TULSA</rptOwnerCity>
+            <rptOwnerState>OK</rptOwnerState>
+            <rptOwnerZipCode>74172</rptOwnerZipCode>
+            <rptOwnerStateDescription></rptOwnerStateDescription>
+        </reportingOwnerAddress>
+        <reportingOwnerRelationship>
+            <isDirector>1</isDirector>
+            <isOfficer>0</isOfficer>
+            <isTenPercentOwner>1</isTenPercentOwner>
+            <isOther>0</isOther>
+        </reportingOwnerRelationship>
+    </reportingOwner>
+
+    <derivativeTable>
+        <derivativeTransaction>
+            <securityTitle>
+                <value>Convertible Class B Units</value>
+            </securityTitle>
+            <conversionOrExercisePrice>
+                <value>0.00</value>
+                <footnoteId id="F1"/>
+            </conversionOrExercisePrice>
+            <transactionDate>
+                <value>2017-08-04</value>
+            </transactionDate>
+            <deemedExecutionDate></deemedExecutionDate>
+            <transactionCoding>
+                <transactionFormType>4</transactionFormType>
+                <transactionCode>A</transactionCode>
+                <equitySwapInvolved>0</equitySwapInvolved>
+            </transactionCoding>
+            <transactionTimeliness>
+                <value></value>
+            </transactionTimeliness>
+            <transactionAmounts>
+                <transactionShares>
+                    <value>266078</value>
+                    <footnoteId id="F2"/>
+                </transactionShares>
+                <transactionPricePerShare>
+                    <footnoteId id="F3"/>
+                </transactionPricePerShare>
+                <transactionAcquiredDisposedCode>
+                    <value>A</value>
+                </transactionAcquiredDisposedCode>
+            </transactionAmounts>
+            <exerciseDate>
+                <footnoteId id="F1"/>
+            </exerciseDate>
+            <expirationDate>
+                <footnoteId id="F1"/>
+            </expirationDate>
+            <underlyingSecurity>
+                <underlyingSecurityTitle>
+                    <value>Common Units</value>
+                </underlyingSecurityTitle>
+                <underlyingSecurityShares>
+                    <value>266078</value>
+                </underlyingSecurityShares>
+            </underlyingSecurity>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>17583753</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                    <footnoteId id="F4"/>
+                </directOrIndirectOwnership>
+            </ownershipNature>
+        </derivativeTransaction>
+    </derivativeTable>
+
+    <footnotes>
+        <footnote id="F1">Class B Units are convertible on a one-for-one basis into Common Units at the election of the holder or the Partnership pursuant to the Partnership's First Amended and Restated Agreement of Limited Partnership, as amended (the &quot;Partnership Agreement&quot;).</footnote>
+        <footnote id="F2">Reflects the number of Class B Units issued to WGP as a Class B Unit Distribution (as defined below) on August 11, 2017, the payment date for the Partnership's cash distribution on Common Units with respect to the second quarter of 2017. The record date for the distribution was August 4, 2017.</footnote>
+        <footnote id="F3">Pursuant to the Partnership Agreement, Class B Units receive additional paid-in-kind Class B Units in lieu of cash for each distribution period that distributions are made with respect to the Partnership's Common Units (each a &quot;Class B Unit Distribution&quot;). The number of Class B Units to be issued with respect to each Class B Unit outstanding in connection with a Class B Unit Distribution is the quotient of (i) the amount of the distribution declared for a Common Unit for the applicable distribution period divided by (ii) the volume-weighted average trading price of a Common Unit calculated over the consecutive 30-day trading day period prior to the declaration date for the distribution. The Partnership will round the Class B Units issued down to the next lower whole Class B Unit and pay cash instead of issuing fractional units or round to the next higher whole Class B Unit.</footnote>
+        <footnote id="F4">Giving effect to each of the transactions described herein, Williams indirectly beneficially owns (a) 702,218,502 Common Units held by WGP, a wholly owned subsidiary of Williams, and (b) 17,583,753 Convertible Class B Units (&quot;Class B Units&quot;) representing limited partner interests in the Partnership held by WGP, which is all of the Class B Units outstanding.</footnote>
+    </footnotes>
+
+    <remarks></remarks>
+
+    <ownerSignature>
+        <signatureName>Cher S. Lawrence, Assistant Secretary</signatureName>
+        <signatureDate>2017-08-07</signatureDate>
+    </ownerSignature>
+
+    <ownerSignature>
+        <signatureName>Cher S. Lawrence, Assistant Secretary</signatureName>
+        <signatureDate>2017-08-07</signatureDate>
+    </ownerSignature>
+</ownershipDocument>

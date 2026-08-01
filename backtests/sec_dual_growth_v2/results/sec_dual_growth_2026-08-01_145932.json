@@ -1,0 +1,869 @@
+{
+  "generated_at": "2026-08-01T14:59:32",
+  "family_spec": "backtests/sec_dual_growth_v2/frozen_spec.md",
+  "formal_validation_accessed": false,
+  "untouched_oos_accessed": false,
+  "outcome_uses": "fit labels and one prespecified internal holdout only",
+  "coverage": {
+    "universe": 720,
+    "kept": 599,
+    "benchmark_present": true,
+    "coverage_pct": 91.31,
+    "per_year": {
+      "2016": 82.4,
+      "2017": 84.3,
+      "2018": 85.8,
+      "2019": 87.2,
+      "2020": 90.0,
+      "2021": 91.8,
+      "2022": 93.7,
+      "2023": 95.7,
+      "2024": 96.5,
+      "2025": 97.8,
+      "2026": 98.7
+    },
+    "dropped": [
+      [
+        "AMTM",
+        "only-60-bars-in-membership"
+      ],
+      [
+        "APC",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "BNY",
+        "only-27-bars-in-membership"
+      ],
+      [
+        "CASY",
+        "only-57-bars-in-membership"
+      ],
+      [
+        "CIEN",
+        "only-98-bars-in-membership"
+      ],
+      [
+        "COHR",
+        "only-69-bars-in-membership"
+      ],
+      [
+        "EMC",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "FDXF",
+        "only-21-bars-in-membership"
+      ],
+      [
+        "HOT",
+        "only-57-bars-in-membership"
+      ],
+      [
+        "INFO",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "LB",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "LITE",
+        "only-69-bars-in-membership"
+      ],
+      [
+        "SBNY",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "SE",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "SOLS",
+        "only-37-bars-in-membership"
+      ],
+      [
+        "SPLS",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "STI",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "TE",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "VEEV",
+        "only-37-bars-in-membership"
+      ],
+      [
+        "VRT",
+        "only-69-bars-in-membership"
+      ]
+    ]
+  },
+  "sec_coverage": {
+    "source": "backtests/sec_pit_audit/sec_fundamental_coverage.json",
+    "growth_events_symbols": 349
+  },
+  "trials_before": 295,
+  "new_multiplicity_units": 1,
+  "trials_after": 296,
+  "periods": {
+    "fit": [
+      "2016-07-01",
+      "2018-06-30"
+    ],
+    "calibration": [
+      "2019-01-01",
+      "2019-06-30"
+    ],
+    "holdout": [
+      "2020-01-01",
+      "2021-12-31"
+    ]
+  },
+  "membership_drops": {
+    "fit": 16,
+    "calibration": 4,
+    "holdout": 24
+  },
+  "model": {
+    "model_type": "linear",
+    "feature_names": [
+      "delay_60",
+      "close_pivot",
+      "close_stop",
+      "ret_1",
+      "ret_3",
+      "ret_5",
+      "ret_10",
+      "ret_20",
+      "sma10_dist",
+      "sma20_dist",
+      "drawdown_high10",
+      "clv",
+      "volume_ratio20",
+      "atr20",
+      "edge_rank_100"
+    ],
+    "ridge_lambda": 10.0,
+    "mean": [
+      0.44991437023197817,
+      0.09500305286440926,
+      0.17505222819353272,
+      0.0010155425047662704,
+      0.0036159393106573617,
+      0.0067698347715274,
+      0.01516461983480173,
+      0.03663287888860318,
+      0.005797958510783025,
+      0.014391077309968373,
+      -0.029972936226459957,
+      0.5089660089744459,
+      -0.010600682201409663,
+      0.02197198256364823,
+      0.42271438580101245
+    ],
+    "std": [
+      0.2930558305067747,
+      0.13262445123713562,
+      0.14237070675518113,
+      0.016073635554071798,
+      0.027793804870578486,
+      0.03570041375762462,
+      0.049275288015855324,
+      0.07276983800453383,
+      0.026052267799479552,
+      0.03760958260924665,
+      0.026652995946991012,
+      0.29929637552069593,
+      0.5501602311290585,
+      0.006267744048890497,
+      0.21088087737016928
+    ],
+    "intercept": -0.006645765490127458,
+    "coefficients": [
+      0.004993686242252215,
+      0.0027881539958030796,
+      0.0030965113793852187,
+      0.000437387334314252,
+      0.00023620254512665535,
+      0.00020187336473082877,
+      -0.0007087102193900004,
+      0.006455299403839784,
+      -0.002800428135472142,
+      -0.0010412960203336462,
+      -0.005338242152558479,
+      -0.0003654660621439536,
+      -0.0005710475860659646,
+      -0.005182396853887626,
+      -0.0016808078665756449
+    ],
+    "fit_rows": 4282,
+    "fit_setups": 103
+  },
+  "label_mode": "forward20",
+  "entry": {
+    "score_percentile": 70,
+    "score_threshold": -0.0006904532035594502,
+    "max_filing_age_days": 120,
+    "min_eps_growth": 0.2,
+    "min_revenue_growth": 0.1,
+    "strict_filed_before_signal": true,
+    "same_accession_comparison": true
+  },
+  "exit": {
+    "score_percentile": 50,
+    "score_threshold": -0.006037286236044451,
+    "portfolio_rule": "model_decay_with_hard_stop_and_timeout"
+  },
+  "calibration": {
+    "rows": 1080,
+    "outcomes_used": false
+  },
+  "internal_holdout": {
+    "candidate_rows": 6341,
+    "selected_signals": 24,
+    "signals": [
+      {
+        "symbol": "CCI",
+        "sector": "Unknown",
+        "signal_date": "2020-02-27",
+        "fill_date": "2020-02-28",
+        "fill_idx": 542,
+        "edge_rank": 80.0,
+        "pattern_stop": 97.39,
+        "pivot": 102.96,
+        "fundamental_event": {
+          "filed": "2019-11-04",
+          "accession": "0001051470-19-000179",
+          "form": "10-Q",
+          "eps_growth": 0.7575757575757573,
+          "revenue_growth": 0.32984293193717273,
+          "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "age_days": 115
+        },
+        "model_exit_idx": 546
+      },
+      {
+        "symbol": "CLX",
+        "sector": "Unknown",
+        "signal_date": "2020-05-05",
+        "fill_date": "2020-05-06",
+        "fill_idx": 589,
+        "edge_rank": 46.7,
+        "pattern_stop": 117.72,
+        "pivot": 125.17,
+        "fundamental_event": {
+          "filed": "2020-05-01",
+          "accession": "0000021076-20-000008",
+          "form": "10-Q",
+          "eps_growth": 0.3125,
+          "revenue_growth": 0.14958091553836228,
+          "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "age_days": 4
+        }
+      },
+      {
+        "symbol": "CLX",
+        "sector": "Unknown",
+        "signal_date": "2020-05-06",
+        "fill_date": "2020-05-07",
+        "fill_idx": 590,
+        "edge_rank": 70.0,
+        "pattern_stop": 117.72,
+        "pivot": 125.17,
+        "fundamental_event": {
+          "filed": "2020-05-01",
+          "accession": "0000021076-20-000008",
+          "form": "10-Q",
+          "eps_growth": 0.3125,
+          "revenue_growth": 0.14958091553836228,
+          "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "age_days": 5
+        }
+      },
+      {
+        "symbol": "CRM",
+        "sector": "Unknown",
+        "signal_date": "2020-09-14",
+        "fill_date": "2020-09-15",
+        "fill_idx": 680,
+        "edge_rank": 70.0,
+        "pattern_stop": 188.46,
+        "pivot": 193.16,
+        "fundamental_event": {
+          "filed": "2020-08-28",
+          "accession": "0001108524-20-000041",
+          "form": "10-Q",
+          "eps_growth": 24.90909090909091,
+          "revenue_growth": 0.28871653740305225,
+          "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "age_days": 17
+        },
+        "model_exit_idx": 684
+      },
+      {
+        "symbol": "ALGN",
+        "sector": "Unknown",
+        "signal_date": "2020-11-02",
+        "fill_date": "2020-11-03",
+        "fill_idx": 715,
+        "edge_rank": 85.0,
+        "pattern_stop": 289.52,
+        "pivot": 316.28,
+        "fundamental_event": {
+          "filed": "2020-10-30",
+          "accession": "0001097149-20-000052",
+          "form": "10-Q",
+          "eps_growth": 0.375,
+          "revenue_growth": 0.20878386277231398,
+          "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "age_days": 3
+        }
+      },
+      {
+        "symbol": "INTU",
+        "sector": "Unknown",
+        "signal_date": "2020-11-20",
+        "fill_date": "2020-11-23",
+        "fill_idx": 729,
+        "edge_rank": 35.0,
+        "pattern_stop": 286.06,
+        "pivot": 300.41,
+        "fundamental_event": {
+          "filed": "2020-11-19",
+          "accession": "0000896878-20-000223",
+          "form": "10-Q",
+          "eps_growth": 2.409090909090909,
+          "revenue_growth": 0.1356223175965665,
+          "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "age_days": 1
+        }
+      },
+      {
+        "symbol": "TER",
+        "sector": "Unknown",
+        "signal_date": "2020-12-01",
+        "fill_date": "2020-12-02",
+        "fill_idx": 552,
+        "edge_rank": 70.0,
+        "pattern_stop": 83.16,
+        "pivot": 91.15,
+        "fundamental_event": {
+          "filed": "2020-11-02",
+          "accession": "0001193125-20-283796",
+          "form": "10-Q",
+          "eps_growth": 0.6133333333333333,
+          "revenue_growth": 0.4079561815551562,
+          "revenue_tag": "Revenues",
+          "age_days": 29
+        },
+        "model_exit_idx": 556
+      },
+      {
+        "symbol": "QRVO",
+        "sector": "Unknown",
+        "signal_date": "2020-12-09",
+        "fill_date": "2020-12-10",
+        "fill_idx": 741,
+        "edge_rank": 30.0,
+        "pattern_stop": 124.56,
+        "pivot": 140.69,
+        "fundamental_event": {
+          "filed": "2020-11-05",
+          "accession": "0001604778-20-000086",
+          "form": "10-Q",
+          "eps_growth": 0.6857142857142857,
+          "revenue_growth": 0.3143605165749761,
+          "revenue_tag": "Revenues",
+          "age_days": 34
+        },
+        "model_exit_idx": 751
+      },
+      {
+        "symbol": "LRCX",
+        "sector": "Unknown",
+        "signal_date": "2021-01-20",
+        "fill_date": "2021-01-21",
+        "fill_idx": 768,
+        "edge_rank": 30.0,
+        "pattern_stop": 31.42,
+        "pivot": 36.01,
+        "fundamental_event": {
+          "filed": "2020-10-27",
+          "accession": "0000707549-20-000173",
+          "form": "10-Q",
+          "eps_growth": 0.8090614886731391,
+          "revenue_growth": 0.46696796392559414,
+          "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "age_days": 85
+        },
+        "model_exit_idx": 782
+      },
+      {
+        "symbol": "LRCX",
+        "sector": "Unknown",
+        "signal_date": "2021-01-25",
+        "fill_date": "2021-01-26",
+        "fill_idx": 771,
+        "edge_rank": 30.0,
+        "pattern_stop": 31.42,
+        "pivot": 36.01,
+        "fundamental_event": {
+          "filed": "2020-10-27",
+          "accession": "0000707549-20-000173",
+          "form": "10-Q",
+          "eps_growth": 0.8090614886731391,
+          "revenue_growth": 0.46696796392559414,
+          "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "age_days": 90
+        },
+        "model_exit_idx": 782
+      },
+      {
+        "symbol": "LRCX",
+        "sector": "Unknown",
+        "signal_date": "2021-01-27",
+        "fill_date": "2021-01-28",
+        "fill_idx": 773,
+        "edge_rank": 30.0,
+        "pattern_stop": 31.42,
+        "pivot": 36.01,
+        "fundamental_event": {
+          "filed": "2020-10-27",
+          "accession": "0000707549-20-000173",
+          "form": "10-Q",
+          "eps_growth": 0.8090614886731391,
+          "revenue_growth": 0.46696796392559414,
+          "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "age_days": 92
+        },
+        "model_exit_idx": 782
+      },
+      {
+        "symbol": "INTU",
+        "sector": "Unknown",
+        "signal_date": "2021-01-29",
+        "fill_date": "2021-02-01",
+        "fill_idx": 775,
+        "edge_rank": 90.0,
+        "pattern_stop": 299.6,
+        "pivot": 339.86,
+        "fundamental_event": {
+          "filed": "2020-11-19",
+          "accession": "0000896878-20-000223",
+          "form": "10-Q",
+          "eps_growth": 2.409090909090909,
+          "revenue_growth": 0.1356223175965665,
+          "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "age_days": 71
+        },
+        "model_exit_idx": 777
+      },
+      {
+        "symbol": "AMAT",
+        "sector": "Unknown",
+        "signal_date": "2021-02-05",
+        "fill_date": "2021-02-08",
+        "fill_idx": 780,
+        "edge_rank": 70.0,
+        "pattern_stop": 54.17,
+        "pivot": 62.31,
+        "fundamental_event": {
+          "filed": "2020-12-11",
+          "accession": "0000006951-20-000048",
+          "form": "10-K",
+          "eps_growth": 0.3706293706293706,
+          "revenue_growth": 0.17757393209200445,
+          "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "age_days": 56
+        },
+        "model_exit_idx": 782
+      },
+      {
+        "symbol": "AMAT",
+        "sector": "Unknown",
+        "signal_date": "2021-02-16",
+        "fill_date": "2021-02-17",
+        "fill_idx": 786,
+        "edge_rank": 30.0,
+        "pattern_stop": 54.17,
+        "pivot": 62.31,
+        "fundamental_event": {
+          "filed": "2020-12-11",
+          "accession": "0000006951-20-000048",
+          "form": "10-K",
+          "eps_growth": 0.3706293706293706,
+          "revenue_growth": 0.17757393209200445,
+          "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "age_days": 67
+        }
+      },
+      {
+        "symbol": "ALGN",
+        "sector": "Unknown",
+        "signal_date": "2021-02-25",
+        "fill_date": "2021-02-26",
+        "fill_idx": 793,
+        "edge_rank": 85.0,
+        "pattern_stop": 498.26,
+        "pivot": 524.88,
+        "fundamental_event": {
+          "filed": "2020-10-30",
+          "accession": "0001097149-20-000052",
+          "form": "10-Q",
+          "eps_growth": 0.375,
+          "revenue_growth": 0.20878386277231398,
+          "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "age_days": 118
+        },
+        "model_exit_idx": 799
+      },
+      {
+        "symbol": "LRCX",
+        "sector": "Unknown",
+        "signal_date": "2021-02-25",
+        "fill_date": "2021-02-26",
+        "fill_idx": 793,
+        "edge_rank": 30.0,
+        "pattern_stop": 31.42,
+        "pivot": 36.01,
+        "fundamental_event": {
+          "filed": "2021-02-02",
+          "accession": "0000707549-21-000017",
+          "form": "10-Q",
+          "eps_growth": 0.7376093294460639,
+          "revenue_growth": 0.3378113652752601,
+          "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "age_days": 23
+        },
+        "model_exit_idx": 804
+      },
+      {
+        "symbol": "IQV",
+        "sector": "Unknown",
+        "signal_date": "2021-04-26",
+        "fill_date": "2021-04-27",
+        "fill_idx": 834,
+        "edge_rank": 30.0,
+        "pattern_stop": 185.38,
+        "pivot": 199.99,
+        "fundamental_event": {
+          "filed": "2021-04-23",
+          "accession": "0001478242-21-000043",
+          "form": "10-Q",
+          "eps_growth": 1.5952380952380953,
+          "revenue_growth": 0.23783587509077697,
+          "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "age_days": 3
+        }
+      },
+      {
+        "symbol": "EFX",
+        "sector": "Unknown",
+        "signal_date": "2021-05-04",
+        "fill_date": "2021-05-05",
+        "fill_idx": 840,
+        "edge_rank": 30.0,
+        "pattern_stop": 162.83,
+        "pivot": 171.07,
+        "fundamental_event": {
+          "filed": "2021-04-22",
+          "accession": "0000033185-21-000032",
+          "form": "10-Q",
+          "eps_growth": 0.7263157894736842,
+          "revenue_growth": 0.26631172356195854,
+          "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "age_days": 12
+        }
+      },
+      {
+        "symbol": "REGN",
+        "sector": "Unknown",
+        "signal_date": "2021-07-12",
+        "fill_date": "2021-07-13",
+        "fill_idx": 887,
+        "edge_rank": 30.0,
+        "pattern_stop": 466.92,
+        "pivot": 502.84,
+        "fundamental_event": {
+          "filed": "2021-05-06",
+          "accession": "0001804220-21-000017",
+          "form": "10-Q",
+          "eps_growth": 0.858195211786372,
+          "revenue_growth": 0.3831637676403019,
+          "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "age_days": 67
+        }
+      },
+      {
+        "symbol": "PWR",
+        "sector": "Unknown",
+        "signal_date": "2021-09-13",
+        "fill_date": "2021-09-14",
+        "fill_idx": 931,
+        "edge_rank": 100.0,
+        "pattern_stop": 84.39,
+        "pivot": 92.35,
+        "fundamental_event": {
+          "filed": "2021-08-06",
+          "accession": "0001050915-21-000103",
+          "form": "10-Q",
+          "eps_growth": 0.5576923076923077,
+          "revenue_growth": 0.19694313892055448,
+          "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "age_days": 38
+        }
+      },
+      {
+        "symbol": "URI",
+        "sector": "Unknown",
+        "signal_date": "2021-10-12",
+        "fill_date": "2021-10-13",
+        "fill_idx": 952,
+        "edge_rank": 30.0,
+        "pattern_stop": 289.37,
+        "pivot": 314.21,
+        "fundamental_event": {
+          "filed": "2021-07-28",
+          "accession": "0001067701-21-000028",
+          "form": "10-Q",
+          "eps_growth": 0.37201365187713287,
+          "revenue_growth": 0.1794739556472409,
+          "revenue_tag": "Revenues",
+          "age_days": 76
+        },
+        "model_exit_idx": 954
+      },
+      {
+        "symbol": "MTCH",
+        "sector": "Unknown",
+        "signal_date": "2021-10-29",
+        "fill_date": "2021-11-01",
+        "fill_idx": 532,
+        "edge_rank": 70.0,
+        "pattern_stop": 142.25,
+        "pivot": 164.68,
+        "fundamental_event": {
+          "filed": "2021-08-06",
+          "accession": "0000891103-21-000074",
+          "form": "10-Q",
+          "eps_growth": 0.2777777777777779,
+          "revenue_growth": 0.2742100999189847,
+          "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "age_days": 84
+        },
+        "model_exit_idx": 536
+      },
+      {
+        "symbol": "MPC",
+        "sector": "Unknown",
+        "signal_date": "2021-11-03",
+        "fill_date": "2021-11-04",
+        "fill_idx": 968,
+        "edge_rank": 30.0,
+        "pattern_stop": 50.69,
+        "pivot": 54.3,
+        "fundamental_event": {
+          "filed": "2021-08-04",
+          "accession": "0001510295-21-000114",
+          "form": "10-Q",
+          "eps_growth": 1299.0,
+          "revenue_growth": 1.4284542845428456,
+          "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "age_days": 91
+        },
+        "model_exit_idx": 970
+      },
+      {
+        "symbol": "NVDA",
+        "sector": "Unknown",
+        "signal_date": "2021-11-04",
+        "fill_date": "2021-11-05",
+        "fill_idx": 969,
+        "edge_rank": 30.0,
+        "pattern_stop": 18.7,
+        "pivot": 20.66,
+        "fundamental_event": {
+          "filed": "2021-08-20",
+          "accession": "0001045810-21-000131",
+          "form": "10-Q",
+          "eps_growth": 2.76,
+          "revenue_growth": 0.6831350232798759,
+          "revenue_tag": "Revenues",
+          "age_days": 76
+        },
+        "model_exit_idx": 991
+      }
+    ],
+    "cell": {
+      "summary": {
+        "signals": 24,
+        "trades": 21,
+        "end_value": 103288.27,
+        "total_return_pct": 3.29,
+        "cagr_pct": 1.76,
+        "max_drawdown_pct": -2.0,
+        "rejected": {
+          "duplicate_or_position_limit": 3
+        }
+      },
+      "trade_stats": {
+        "trades": 21,
+        "profit_factor": 1.8756209400076425,
+        "expectancy_pct": 2.182380952380952,
+        "win_rate": 0.6190476190476191,
+        "average_win_pct": 7.5515384615384615,
+        "average_loss_pct": -6.5424999999999995,
+        "payoff_ratio": 1.1542282707739338
+      },
+      "drop_top_5": {
+        "trades": 16,
+        "profit_factor": 0.550248376003057,
+        "expectancy_pct": -1.47125,
+        "win_rate": 0.5,
+        "average_win_pct": 3.6,
+        "average_loss_pct": -6.5424999999999995,
+        "payoff_ratio": 0.550248376003057
+      },
+      "drop_top_10": {
+        "trades": 11,
+        "profit_factor": 0.11291555215896065,
+        "expectancy_pct": -4.220909090909091,
+        "win_rate": 0.2727272727272727,
+        "average_win_pct": 1.97,
+        "average_loss_pct": -6.5424999999999995,
+        "payoff_ratio": 0.3011081390905617
+      },
+      "robustness": {
+        "sample": {
+          "observations": 466,
+          "start": "2020-02-28",
+          "end": "2021-12-31",
+          "trials_declared": 296
+        },
+        "performance": {
+          "total_return": 0.03288264588415912,
+          "cagr": 0.017649876838482514,
+          "annual_volatility": 0.02584483156252885
+        },
+        "distribution": {
+          "skewness": -0.2764977476703526,
+          "excess_kurtosis": 7.616863562473139,
+          "jarque_bera": {
+            "statistic": 1132.4268824580965,
+            "p_value": 1.249185385769863e-246
+          }
+        },
+        "risk_adjusted": {
+          "sharpe": 0.6898816890473688,
+          "sortino": 0.9904443697303635,
+          "calmar": 0.8822606473603432,
+          "omega_zero": 1.1747804279499452
+        },
+        "risk": {
+          "max_drawdown": -0.020005286296390534,
+          "max_drawdown_duration_days": 240,
+          "ulcer_index": 0.010565704890090512,
+          "lake_ratio": 0.8648068669527897,
+          "var_95": -0.0023112825,
+          "cvar_95": -0.004141355416666667
+        },
+        "significance": {
+          "t_statistic": 0.938139248969986,
+          "effective_sample_size": 466.0,
+          "autocorrelations": [
+            -0.0699084942242028,
+            0.043493658601293436,
+            -0.006043880318257655,
+            -0.10417133978360878,
+            0.062124092718113276,
+            0.06878239577873607,
+            -0.1452406558564938,
+            0.0033324505077300813,
+            -0.03574460664949062,
+            0.02945558839197691,
+            6.66134328256577e-05,
+            -0.05800896428127652,
+            -0.01910837693721486,
+            -0.04311378417973379,
+            0.0014093372738400842,
+            -0.002811110542792704,
+            -0.03385988563204589,
+            0.05803989606091781,
+            -0.04228368621086697,
+            0.031360014781799575,
+            0.10077935051762373
+          ],
+          "psr_vs_zero": 0.8236770007811701,
+          "approximate_dsr": {
+            "benchmark_sharpe": 2.128450734097703,
+            "probability": 0.026301457141519324
+          }
+        },
+        "stability": {
+          "is_sharpe": 0.8129071225061825,
+          "oos_sharpe": 0.44925092168668807,
+          "wfa_efficiency": 0.5526472941972179,
+          "positive_months": 0.6086956521739131,
+          "positive_quarters": 0.75
+        },
+        "optional_tests": {
+          "ljung_box": {
+            "available": false
+          },
+          "adf": {
+            "available": false
+          },
+          "reason": "No module named 'statsmodels'"
+        },
+        "block_bootstrap": {
+          "cagr": {
+            "p05": -0.010650236152635023,
+            "median": 0.016292377828759586,
+            "p95": 0.04730368006124915
+          },
+          "sharpe": {
+            "p05": -0.3920159644350822,
+            "median": 0.6653429121544482,
+            "p95": 1.8551466048693186
+          },
+          "max_drawdown": {
+            "p05": -0.05112813338965414,
+            "median": -0.0261127534940514,
+            "p95": -0.014339368903380717
+          }
+        },
+        "monte_carlo": {
+          "max_drawdown": {
+            "p05": -0.053344236140261334,
+            "median": -0.027660542694790846,
+            "p95": -0.014569988642490449
+          },
+          "final_equity": {
+            "p05": 0.9768823251867728,
+            "median": 1.0341649418464107,
+            "p95": 1.0954527761058737
+          }
+        }
+      }
+    },
+    "gate": {
+      "passed": false,
+      "checks": {
+        "trades>=25": false,
+        "cagr>=15pct": false,
+        "sharpe>=0.75": false,
+        "pf>1.20": true,
+        "mdd>-15pct": true,
+        "drop_top_5_expectancy>0": false
+      }
+    }
+  },
+  "open_formal_validation": false
+}

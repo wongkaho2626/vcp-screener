@@ -1,0 +1,116 @@
+<?xml version="1.0"?>
+<ownershipDocument>
+
+    <schemaVersion>X0306</schemaVersion>
+
+    <documentType>4</documentType>
+
+    <periodOfReport>2019-05-28</periodOfReport>
+
+    <notSubjectToSection16>0</notSubjectToSection16>
+
+    <issuer>
+        <issuerCik>0000023217</issuerCik>
+        <issuerName>CONAGRA BRANDS INC.</issuerName>
+        <issuerTradingSymbol>CAG</issuerTradingSymbol>
+    </issuer>
+
+    <reportingOwner>
+        <reportingOwnerId>
+            <rptOwnerCik>0001159159</rptOwnerCik>
+            <rptOwnerName>JANA PARTNERS LLC</rptOwnerName>
+        </reportingOwnerId>
+        <reportingOwnerAddress>
+            <rptOwnerStreet1>767 FIFTH AVENUE, 8TH FLOOR</rptOwnerStreet1>
+            <rptOwnerStreet2></rptOwnerStreet2>
+            <rptOwnerCity>NEW YORK</rptOwnerCity>
+            <rptOwnerState>NY</rptOwnerState>
+            <rptOwnerZipCode>10153</rptOwnerZipCode>
+            <rptOwnerStateDescription></rptOwnerStateDescription>
+        </reportingOwnerAddress>
+        <reportingOwnerRelationship>
+            <isDirector>1</isDirector>
+            <isOfficer>0</isOfficer>
+            <isTenPercentOwner>0</isTenPercentOwner>
+            <isOther>1</isOther>
+            <officerTitle></officerTitle>
+            <otherText>See Remarks</otherText>
+        </reportingOwnerRelationship>
+    </reportingOwner>
+
+    <derivativeTable>
+        <derivativeTransaction>
+            <securityTitle>
+                <value>Restricted Stock Units</value>
+                <footnoteId id="F1"/>
+            </securityTitle>
+            <conversionOrExercisePrice>
+                <value>0.00</value>
+                <footnoteId id="F2"/>
+            </conversionOrExercisePrice>
+            <transactionDate>
+                <value>2019-05-28</value>
+            </transactionDate>
+            <deemedExecutionDate></deemedExecutionDate>
+            <transactionCoding>
+                <transactionFormType>4</transactionFormType>
+                <transactionCode>A</transactionCode>
+                <equitySwapInvolved>0</equitySwapInvolved>
+            </transactionCoding>
+            <transactionTimeliness></transactionTimeliness>
+            <transactionAmounts>
+                <transactionShares>
+                    <value>5054</value>
+                </transactionShares>
+                <transactionPricePerShare>
+                    <value>0.00</value>
+                </transactionPricePerShare>
+                <transactionAcquiredDisposedCode>
+                    <value>A</value>
+                </transactionAcquiredDisposedCode>
+            </transactionAmounts>
+            <exerciseDate>
+                <footnoteId id="F3"/>
+            </exerciseDate>
+            <expirationDate>
+                <footnoteId id="F3"/>
+            </expirationDate>
+            <underlyingSecurity>
+                <underlyingSecurityTitle>
+                    <value>Common Stock</value>
+                </underlyingSecurityTitle>
+                <underlyingSecurityShares>
+                    <value>5054</value>
+                </underlyingSecurityShares>
+            </underlyingSecurity>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>5054</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>I</value>
+                </directOrIndirectOwnership>
+                <natureOfOwnership>
+                    <value>See footnote</value>
+                    <footnoteId id="F4"/>
+                </natureOfOwnership>
+            </ownershipNature>
+        </derivativeTransaction>
+    </derivativeTable>
+
+    <footnotes>
+        <footnote id="F1">Restricted stock units (&quot;RSUs&quot;) issued to Scott Ostfeld, a partner of JANA Partners LLC (&quot;JANA&quot;), who currently serves on the board of directors of the Issuer. Mr. Ostfeld has assigned the RSUs and all other compensation he will receive as a director of the Issuer to JANA and such RSUs and compensation has been, or will be, transferred directly to JANA.</footnote>
+        <footnote id="F2">Each RSU represents a contingent right to receive one share of the Issuer's common stock on the vesting date.</footnote>
+        <footnote id="F3">RSUs vest on May 28, 2020 or earlier upon certain events.</footnote>
+        <footnote id="F4">JANA is a private money management firm which beneficially owns the securities reported herein through various accounts under its management and control. Barry Rosenstein is the Managing Partner of JANA. JANA and Barry Rosenstein disclaim any beneficial ownership of any of the Issuer's securities reported herein except to the extent of their pecuniary interest therein.</footnote>
+    </footnotes>
+
+    <remarks>JANA may be deemed to be a director by deputization for purposes of Section 16 under the Securities Exchange Act of 1934 by virtue of the fact that Mr. Ostfeld currently serves on the board of directors of the Issuer.</remarks>
+
+    <ownerSignature>
+        <signatureName>s/ JANA Partners LLC, by Jennifer Fanjiang, Chief Legal Officer and Chief Compliance Officer</signatureName>
+        <signatureDate>2019-05-30</signatureDate>
+    </ownerSignature>
+</ownershipDocument>

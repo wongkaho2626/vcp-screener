@@ -1,0 +1,66 @@
+{
+  "generated_at": "2026-08-01T16:10:44",
+  "source": "SEC Company Facts cached from data.sec.gov",
+  "causality": "latest comparable 10-Q/10-K event with filed < signal_date",
+  "same_accession_comparison": true,
+  "freshness_days": 120,
+  "outcomes_accessed": false,
+  "formal_validation_accessed": false,
+  "untouched_oos_accessed": false,
+  "symbols": {
+    "symbols_with_comparable_events": 349,
+    "comparable_events": 16473,
+    "symbols_with_detections": 379
+  },
+  "invalid_files": [],
+  "periods": {
+    "fit": {
+      "detections": 185,
+      "pit_detections": 169,
+      "facts_cached": 163,
+      "comparable_event": 138,
+      "fresh_120d": 106,
+      "facts_cache_coverage_pct": 96.45,
+      "comparable_event_coverage_pct": 81.66,
+      "fresh_120d_coverage_pct": 62.72,
+      "dual_growth_eps20_rev10": 17,
+      "positive_eps10_nonnegative_revenue": 47
+    },
+    "calibration": {
+      "detections": 56,
+      "pit_detections": 52,
+      "facts_cached": 52,
+      "comparable_event": 49,
+      "fresh_120d": 41,
+      "facts_cache_coverage_pct": 100.0,
+      "comparable_event_coverage_pct": 94.23,
+      "fresh_120d_coverage_pct": 78.85,
+      "dual_growth_eps20_rev10": 3,
+      "positive_eps10_nonnegative_revenue": 17
+    },
+    "internal_holdout": {
+      "detections": 308,
+      "pit_detections": 284,
+      "facts_cached": 274,
+      "comparable_event": 253,
+      "fresh_120d": 182,
+      "facts_cache_coverage_pct": 96.48,
+      "comparable_event_coverage_pct": 89.08,
+      "fresh_120d_coverage_pct": 64.08,
+      "dual_growth_eps20_rev10": 49,
+      "positive_eps10_nonnegative_revenue": 90
+    },
+    "all_2016_2021": {
+      "detections": 806,
+      "pit_detections": 738,
+      "facts_cached": 713,
+      "comparable_event": 645,
+      "fresh_120d": 501,
+      "facts_cache_coverage_pct": 96.61,
+      "comparable_event_coverage_pct": 87.4,
+      "fresh_120d_coverage_pct": 67.89,
+      "dual_growth_eps20_rev10": 103,
+      "positive_eps10_nonnegative_revenue": 226
+    }
+  }
+}

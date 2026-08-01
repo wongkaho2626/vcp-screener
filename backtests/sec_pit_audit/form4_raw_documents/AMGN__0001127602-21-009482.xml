@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<ownershipDocument>
+
+    <schemaVersion>X0306</schemaVersion>
+
+    <documentType>4</documentType>
+
+    <periodOfReport>2021-03-02</periodOfReport>
+
+    <issuer>
+        <issuerCik>0000318154</issuerCik>
+        <issuerName>AMGEN INC</issuerName>
+        <issuerTradingSymbol>AMGN</issuerTradingSymbol>
+    </issuer>
+
+    <reportingOwner>
+        <reportingOwnerId>
+            <rptOwnerCik>0001602343</rptOwnerCik>
+            <rptOwnerName>Piacquad David</rptOwnerName>
+        </reportingOwnerId>
+        <reportingOwnerAddress>
+            <rptOwnerStreet1>ONE AMGEN CENTER DRIVE</rptOwnerStreet1>
+            <rptOwnerStreet2></rptOwnerStreet2>
+            <rptOwnerCity>THOUSAND OAKS</rptOwnerCity>
+            <rptOwnerState>CA</rptOwnerState>
+            <rptOwnerZipCode>91320-1799</rptOwnerZipCode>
+            <rptOwnerStateDescription></rptOwnerStateDescription>
+        </reportingOwnerAddress>
+        <reportingOwnerRelationship>
+            <isOfficer>1</isOfficer>
+            <officerTitle>SVP, Business Development</officerTitle>
+        </reportingOwnerRelationship>
+    </reportingOwner>
+
+    <nonDerivativeTable>
+        <nonDerivativeTransaction>
+            <securityTitle>
+                <value>Common Stock</value>
+            </securityTitle>
+            <transactionDate>
+                <value>2021-03-02</value>
+            </transactionDate>
+            <transactionCoding>
+                <transactionFormType>4</transactionFormType>
+                <transactionCode>A</transactionCode>
+                <equitySwapInvolved>0</equitySwapInvolved>
+            </transactionCoding>
+            <transactionTimeliness></transactionTimeliness>
+            <transactionAmounts>
+                <transactionShares>
+                    <value>2648</value>
+                </transactionShares>
+                <transactionPricePerShare>
+                    <value>0</value>
+                </transactionPricePerShare>
+                <transactionAcquiredDisposedCode>
+                    <value>A</value>
+                </transactionAcquiredDisposedCode>
+            </transactionAmounts>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>45504</value>
+                    <footnoteId id="F1"/>
+                    <footnoteId id="F2"/>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+            </ownershipNature>
+        </nonDerivativeTransaction>
+    </nonDerivativeTable>
+
+    <footnotes>
+        <footnote id="F1">These shares include the following Restricted Stock Units (RSUs) granted under the Company's equity plans: 335 RSUs which vest on 5/1/2021; 642 RSUs which vest in installments of 316 on 4/27/2021 and 326 on 4/27/2022; 1,691 RSUs which will vest in two installments of 558 on 5/3/2021 and 5/3/2022 and one installment of 575 on 5/3/2023; and 1,269 RSUs which vest in installments of 418 on 5/5/2022, 419 on 5/5/2023 and 432 on 5/5/2024. Vested RSUs will be paid in shares of the Company's common stock on a one-to-one basis.</footnote>
+        <footnote id="F2">These shares include 202 Dividend Equivalents (DEs) granted pursuant to the Amgen Inc. 2009 Amended and Restated Equity Incentive Plan and subject to a qualifying dividend reinvestment plan.  DEs are credited on the reporting person's unvested RSUs and are paid out in shares of the Company's common stock on a one-to-one basis according to the vesting schedule, along with a cash payment for any remaining fractional amount.</footnote>
+    </footnotes>
+
+    <ownerSignature>
+        <signatureName>/s/ David A. Piacquad</signatureName>
+        <signatureDate>2021-03-04</signatureDate>
+    </ownerSignature>
+</ownershipDocument>
