@@ -3,14 +3,14 @@
 Research repo: Minervini VCP screener + 10-year backtests. Python-only, no
 framework, no build step. **There is no qualifying deployable strategy in the
 repository.** Read "Current v2 checkpoint" and "Established results" before
-proposing an experiment: more than 300 declared variants have already consumed
-most obvious VCP entry/exit directions, and the latest existing-data replay is
-a reject rather than untouched OOS.
+proposing an experiment: 504 declared multiplicity units have already consumed
+most obvious VCP entry/exit directions, and neither the latest existing-data
+replay nor the latest train-only exit audit qualifies as OOS evidence.
 
 ## Commands
 
 ```bash
-.venv/bin/python -m pytest tests/ -q          # full suite, must stay green
+.venv/bin/python -m pytest tests/ -q          # full suite; 524 passed after Trial 504
 .venv/bin/python scripts/screen_vcp.py        # live screen (yfinance)
 .venv/bin/python scripts/backtest_vcp.py --csv-data SP500_Historical_Data.csv --limit 0 --years 10
 .venv/bin/python scripts/trade_simulator.py <backtest.json> --price-csv SP500_Historical_Data.csv
@@ -80,7 +80,7 @@ fixed; signal research may change only entry/exit behavior.
 - Commits: conventional format (`feat:`/`fix:`/`chore:`), body records the
   experimental result so `git log` doubles as a lab notebook.
 
-## Current v2 checkpoint (2026-08-01)
+## Current v2 checkpoint (2026-08-02)
 
 - The frozen Trial 288 existing-data replay covers signals from 2022-01-01
   through 2026-03-31 and is exploratory, not untouched OOS. Existing PIT
@@ -96,6 +96,14 @@ fixed; signal research may change only entry/exit behavior.
   unresolved-survivorship cap makes the rubric result 20/100. Drop-top-five
   expectancy is -1.71%, 5x-cost CAGR is -1.18%, DSR probability is 0.22%, and
   the 2024–2026 fold is negative.
+- Latest attempted family, Trial 496–504, translated a supplied exit checklist
+  into one frozen causal state machine: persistent SMA10/SMA20 support, then
+  an abnormal down day or dual-MA damage followed by a failed recovery into
+  the frozen MA cluster / pre-damage swing-low break. It activated on 58/103
+  baseline paths, but 88 train trades produced 0.50% CAGR, 0.228 Sharpe, PF
+  0.982 and -0.87% trim-five expectancy. A/B/C/D = 7/7/4/0, normalized raw
+  score 22, unresolved-survivorship cap 20, no-OOS/WFA cap 55, final score
+  20/100 (Reject). Validation and best-available OOS stayed sealed.
 - Therefore the hard goal is **not complete**. Never describe this replay as a
   pass. The amended completion rule accepts a score capped at or below 80 but
   still requires the same frozen S&P 500 stocks-only strategy to deliver at
@@ -106,6 +114,8 @@ fixed; signal research may change only entry/exit behavior.
   `backtests/exploratory_existing_data_replay/frozen_spec.md`,
   `backtests/exploratory_existing_data_replay/results/verification_report.md`,
   `backtests/exploratory_existing_data_replay/results/verification_metrics.json`,
+  `backtests/character_change_exit_v2/frozen_spec.md`,
+  `backtests/character_change_exit_v2/results/character_change_exit_2026-08-02_002548.md`,
   and `backtests/v2_research_commands.md`.
 
 ## Established results (do not re-litigate without new data)
@@ -114,8 +124,9 @@ fixed; signal research may change only entry/exit behavior.
   negative after costs. Failed rescues: detection gates, 108-combo grid,
   trend-template prerequisite, Russell 2000 universe, M.E.T.A. edges.
 - **Exit rules: baseline (stop + 60-bar timeout) is optimal.** Trails, ATR,
-  profit targets, MA-breaks, scale-outs, cull/ride — all ≈ 0 or worse; the
-  60d timeout is load-bearing (removing it creates a survivorship lottery).
+  profit targets, MA-breaks, scale-outs, cull/ride and the later strong-stock
+  character-change state machine — all ≈ 0 or worse; the 60d timeout is
+  load-bearing (removing it creates a survivorship lottery).
 - **Validated and shipped**: MA20 pullback entry (+1.36 pp paired, t 3.13,
   replicates on R2K, smooth parameter surface) and Edge Rank sizing
   (+1.01%/trade, PIT-only — did not replicate on the CSV dataset).
@@ -399,6 +410,15 @@ fixed; signal research may change only entry/exit behavior.
   covered 78/79 train symbols and emitted 114 signals. One hundred trades
   returned 0.69% CAGR, 0.291 Sharpe, PF 1.025 and -0.57% trim-five expectancy.
   A/B/C/D = 7/7/4/6, raw 29, final 20; no external data or later partition.
+- **Strong-stock character-change exit: train reject (Trial 496–504, 20/100
+  capped).** The outcome-free activation gate passed at 58/103 unchanged
+  detection-entry paths, but 88 train trades returned 0.50% CAGR, 0.228
+  Sharpe, PF 0.982 and -0.87% trim-five expectancy. Only one activation was an
+  abnormal down day and ten were failed-MA recoveries; 47 were frozen
+  swing-low breaks, so the distinctive mechanism mostly collapsed into
+  another weak swing-low exit. A/B/C/D = 7/7/4/0, raw 22, final 20. Do not
+  retune its 10/8 strength persistence, SMA10/20 pair, 6%/16% abnormal-day
+  thresholds, ten-session recovery window or five-session swing window.
 - **Data caveats**: legacy CSV and R2K pattern-level universes are
   survivorship-biased (R2K lost 26% of names), with close-based fills and no
   costs. Newer portfolio reports include costs and next-session execution but
