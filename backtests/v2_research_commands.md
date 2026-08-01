@@ -359,6 +359,54 @@ curl -L https://www.sec.gov/files/company_tickers.json \
   --coverage-json backtests/pivot_retest_v2/coverage_2016_2026.json \
   --output-dir backtests/sma20_open_recovery_v2/results --iterations 1000
 
+# Trial 328-333: same-date active-VCP 5d/20d cross-sectional leadership lifecycle
+.venv/bin/python scripts/cross_sectional_leadership_discovery.py \
+  backtests/daily_rescreen_v2/detections/vcp_backtest_2026-08-01_141348.json \
+  --price-csv backtests/daily_rescreen_v2/SP500_PIT_through_2021.csv \
+  --membership-csv scripts/data/sp500_membership.csv \
+  --coverage-json backtests/pivot_retest_v2/coverage_2016_2026.json \
+  --output-dir backtests/cross_sectional_leadership_v2/results --iterations 1000
+
+# Trial 334-339: signed 10-session path-efficiency crossover lifecycle
+.venv/bin/python scripts/path_efficiency_lifecycle_discovery.py \
+  backtests/daily_rescreen_v2/detections/vcp_backtest_2026-08-01_141348.json \
+  --price-csv backtests/daily_rescreen_v2/SP500_PIT_through_2021.csv \
+  --membership-csv scripts/data/sp500_membership.csv \
+  --coverage-json backtests/pivot_retest_v2/coverage_2016_2026.json \
+  --output-dir backtests/path_efficiency_lifecycle_v2/results --iterations 1000
+
+# Trial 340-344: causal 63-session stock/SPY relative-strength-line highs
+.venv/bin/python scripts/rs_line_leadership_discovery.py \
+  backtests/daily_rescreen_v2/detections/vcp_backtest_2026-08-01_141348.json \
+  --price-csv backtests/daily_rescreen_v2/SP500_PIT_through_2021.csv \
+  --membership-csv scripts/data/sp500_membership.csv \
+  --coverage-json backtests/pivot_retest_v2/coverage_2016_2026.json \
+  --output-dir backtests/rs_line_leadership_v2/results --iterations 1000
+
+# Trial 345-351: 20d/126d Bollinger bandwidth squeeze-release lifecycle
+.venv/bin/python scripts/squeeze_release_lifecycle_discovery.py \
+  backtests/daily_rescreen_v2/detections/vcp_backtest_2026-08-01_141348.json \
+  --price-csv backtests/daily_rescreen_v2/SP500_PIT_through_2021.csv \
+  --membership-csv scripts/data/sp500_membership.csv \
+  --coverage-json backtests/pivot_retest_v2/coverage_2016_2026.json \
+  --output-dir backtests/squeeze_release_lifecycle_v2/results --iterations 1000
+
+# Trial 352-357: detection-anchored typical-price/volume VWAP reclaim lifecycle
+.venv/bin/python scripts/anchored_vwap_reclaim_discovery.py \
+  backtests/daily_rescreen_v2/detections/vcp_backtest_2026-08-01_141348.json \
+  --price-csv backtests/daily_rescreen_v2/SP500_PIT_through_2021.csv \
+  --membership-csv scripts/data/sp500_membership.csv \
+  --coverage-json backtests/pivot_retest_v2/coverage_2016_2026.json \
+  --output-dir backtests/anchored_vwap_reclaim_v2/results --iterations 1000
+
+# Trial 358-362: 20-session Chaikin Money Flow zero-cross lifecycle
+.venv/bin/python scripts/chaikin_money_flow_discovery.py \
+  backtests/daily_rescreen_v2/detections/vcp_backtest_2026-08-01_141348.json \
+  --price-csv backtests/daily_rescreen_v2/SP500_PIT_through_2021.csv \
+  --membership-csv scripts/data/sp500_membership.csv \
+  --coverage-json backtests/pivot_retest_v2/coverage_2016_2026.json \
+  --output-dir backtests/chaikin_money_flow_v2/results --iterations 1000
+
 # Outcome-free public 2000-2005 data-source audit. The downloaded archives
 # are temporary inputs and are not committed.
 audit_dir=$(mktemp -d)

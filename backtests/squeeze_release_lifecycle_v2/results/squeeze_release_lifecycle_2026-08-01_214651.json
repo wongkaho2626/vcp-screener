@@ -1,0 +1,1346 @@
+{
+  "generated_at": "2026-08-01T21:46:51",
+  "backtest_score": {
+    "classification": "discovery_train_only",
+    "components": {
+      "A_statistical_validity": {
+        "score": 7,
+        "max": 30
+      },
+      "B_risk_adjusted_performance": {
+        "score": 7,
+        "max": 25
+      },
+      "C_robustness_computable": {
+        "score": 0,
+        "max": 8
+      },
+      "D_trade_quality_consistency": {
+        "score": 0,
+        "max": 20
+      }
+    },
+    "unavailable": {
+      "walk_forward_efficiency": 10,
+      "parameter_sensitivity": 7
+    },
+    "measured_total": 14,
+    "measured_denominator": 83,
+    "reduced_denominator_normalized_raw_score": 17,
+    "caps_applied": [
+      {
+        "reason": "unresolved survivorship bias / incomplete delisted coverage",
+        "cap": 20
+      },
+      {
+        "reason": "no formal out-of-sample or walk-forward segment",
+        "cap": 55
+      }
+    ],
+    "final_score": 17,
+    "band": "Reject",
+    "note": "The lowest applicable cap is applied after reduced-denominator normalization. This discovery-only score cannot qualify the strategy."
+  },
+  "family_spec": "backtests/squeeze_release_lifecycle_v2/frozen_spec.md",
+  "formal_validation_accessed": false,
+  "untouched_oos_accessed": false,
+  "internal_holdout_accessed": false,
+  "coverage": {
+    "universe": 720,
+    "kept": 599,
+    "benchmark_present": true,
+    "coverage_pct": 91.31,
+    "per_year": {
+      "2016": 82.4,
+      "2017": 84.3,
+      "2018": 85.8,
+      "2019": 87.2,
+      "2020": 90.0,
+      "2021": 91.8,
+      "2022": 93.7,
+      "2023": 95.7,
+      "2024": 96.5,
+      "2025": 97.8,
+      "2026": 98.7
+    },
+    "dropped": [
+      [
+        "AMTM",
+        "only-60-bars-in-membership"
+      ],
+      [
+        "APC",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "BNY",
+        "only-27-bars-in-membership"
+      ],
+      [
+        "CASY",
+        "only-57-bars-in-membership"
+      ],
+      [
+        "CIEN",
+        "only-98-bars-in-membership"
+      ],
+      [
+        "COHR",
+        "only-69-bars-in-membership"
+      ],
+      [
+        "EMC",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "FDXF",
+        "only-21-bars-in-membership"
+      ],
+      [
+        "HOT",
+        "only-57-bars-in-membership"
+      ],
+      [
+        "INFO",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "LB",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "LITE",
+        "only-69-bars-in-membership"
+      ],
+      [
+        "SBNY",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "SE",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "SOLS",
+        "only-37-bars-in-membership"
+      ],
+      [
+        "SPLS",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "STI",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "TE",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "VEEV",
+        "only-37-bars-in-membership"
+      ],
+      [
+        "VRT",
+        "only-69-bars-in-membership"
+      ]
+    ]
+  },
+  "trials_before": 344,
+  "new_multiplicity_units": 7,
+  "trials_after": 351,
+  "parameters": {
+    "band_period": 20,
+    "reference_lookback_sessions": 126,
+    "squeeze_percentile": 20,
+    "entry_requires_bandwidth_expansion": true,
+    "entry_requires_up_close_above_pivot": true,
+    "exit_below_sma20": true,
+    "max_attempts": 3,
+    "max_hold_sessions": 60
+  },
+  "membership_drops": {
+    "train": 16,
+    "holdout": null
+  },
+  "train": {
+    "candidate_rows": 4165,
+    "squeeze_states": 4165,
+    "signals": [
+      {
+        "symbol": "LRCX",
+        "sector": "Unknown",
+        "signal_date": "2016-07-08",
+        "fill_date": "2016-07-11",
+        "fill_idx": 509,
+        "edge_rank": 30.0,
+        "pattern_stop": 7.09,
+        "pivot": 7.34,
+        "attempt": 1,
+        "model_exit_idx": 532
+      },
+      {
+        "symbol": "CAT",
+        "sector": "Unknown",
+        "signal_date": "2016-07-12",
+        "fill_date": "2016-07-13",
+        "fill_idx": 511,
+        "edge_rank": 30.0,
+        "pattern_stop": 58.34,
+        "pivot": 62.59,
+        "attempt": 1,
+        "model_exit_idx": 543
+      },
+      {
+        "symbol": "LRCX",
+        "sector": "Unknown",
+        "signal_date": "2016-08-17",
+        "fill_date": "2016-08-18",
+        "fill_idx": 537,
+        "edge_rank": 30.0,
+        "pattern_stop": 7.09,
+        "pivot": 7.34,
+        "attempt": 2,
+        "model_exit_idx": 553
+      },
+      {
+        "symbol": "CAT",
+        "sector": "Unknown",
+        "signal_date": "2016-09-02",
+        "fill_date": "2016-09-06",
+        "fill_idx": 549,
+        "edge_rank": 30.0,
+        "pattern_stop": 58.34,
+        "pivot": 62.59,
+        "attempt": 2,
+        "model_exit_idx": 550
+      },
+      {
+        "symbol": "CAT",
+        "sector": "Unknown",
+        "signal_date": "2016-09-07",
+        "fill_date": "2016-09-08",
+        "fill_idx": 551,
+        "edge_rank": 30.0,
+        "pattern_stop": 58.34,
+        "pivot": 62.59,
+        "attempt": 3,
+        "model_exit_idx": 553
+      },
+      {
+        "symbol": "KMI",
+        "sector": "Unknown",
+        "signal_date": "2016-09-30",
+        "fill_date": "2016-10-03",
+        "fill_idx": 568,
+        "edge_rank": 30.0,
+        "pattern_stop": 12.86,
+        "pivot": 13.81,
+        "attempt": 1,
+        "model_exit_idx": 572
+      },
+      {
+        "symbol": "AVGO",
+        "sector": "Unknown",
+        "signal_date": "2016-10-06",
+        "fill_date": "2016-10-07",
+        "fill_idx": 572,
+        "edge_rank": 30.0,
+        "pattern_stop": 12.51,
+        "pivot": 13.35,
+        "attempt": 1,
+        "model_exit_idx": 576
+      },
+      {
+        "symbol": "SWKS",
+        "sector": "Unknown",
+        "signal_date": "2016-10-19",
+        "fill_date": "2016-10-20",
+        "fill_idx": 581,
+        "edge_rank": 30.0,
+        "pattern_stop": 58.04,
+        "pivot": 62.73,
+        "attempt": 1,
+        "model_exit_idx": 586
+      },
+      {
+        "symbol": "SWKS",
+        "sector": "Unknown",
+        "signal_date": "2016-10-19",
+        "fill_date": "2016-10-20",
+        "fill_idx": 581,
+        "edge_rank": 30.0,
+        "pattern_stop": 58.27,
+        "pivot": 62.73,
+        "attempt": 1,
+        "model_exit_idx": 586
+      },
+      {
+        "symbol": "HRL",
+        "sector": "Unknown",
+        "signal_date": "2016-10-31",
+        "fill_date": "2016-11-01",
+        "fill_idx": 589,
+        "edge_rank": 30.0,
+        "pattern_stop": 28.0,
+        "pivot": 29.34,
+        "attempt": 1,
+        "model_exit_idx": 591
+      },
+      {
+        "symbol": "AVGO",
+        "sector": "Unknown",
+        "signal_date": "2016-11-07",
+        "fill_date": "2016-11-08",
+        "fill_idx": 594,
+        "edge_rank": 30.0,
+        "pattern_stop": 12.51,
+        "pivot": 13.35,
+        "attempt": 2,
+        "model_exit_idx": 597
+      },
+      {
+        "symbol": "SWKS",
+        "sector": "Unknown",
+        "signal_date": "2016-11-17",
+        "fill_date": "2016-11-18",
+        "fill_idx": 602,
+        "edge_rank": 30.0,
+        "pattern_stop": 58.04,
+        "pivot": 62.73,
+        "attempt": 2
+      },
+      {
+        "symbol": "SWKS",
+        "sector": "Unknown",
+        "signal_date": "2016-11-17",
+        "fill_date": "2016-11-18",
+        "fill_idx": 602,
+        "edge_rank": 30.0,
+        "pattern_stop": 58.27,
+        "pivot": 62.73,
+        "attempt": 2
+      },
+      {
+        "symbol": "EMN",
+        "sector": "Unknown",
+        "signal_date": "2016-12-15",
+        "fill_date": "2016-12-16",
+        "fill_idx": 621,
+        "edge_rank": 30.0,
+        "pattern_stop": 45.47,
+        "pivot": 49.68,
+        "attempt": 1,
+        "model_exit_idx": 629
+      },
+      {
+        "symbol": "RF",
+        "sector": "Unknown",
+        "signal_date": "2017-01-06",
+        "fill_date": "2017-01-09",
+        "fill_idx": 635,
+        "edge_rank": 70.0,
+        "pattern_stop": 6.56,
+        "pivot": 7.06,
+        "attempt": 1,
+        "model_exit_idx": 636
+      },
+      {
+        "symbol": "AXP",
+        "sector": "Unknown",
+        "signal_date": "2017-01-06",
+        "fill_date": "2017-01-09",
+        "fill_idx": 635,
+        "edge_rank": 30.0,
+        "pattern_stop": 56.96,
+        "pivot": 59.5,
+        "attempt": 1,
+        "model_exit_idx": 651
+      },
+      {
+        "symbol": "DOV",
+        "sector": "Unknown",
+        "signal_date": "2017-01-06",
+        "fill_date": "2017-01-09",
+        "fill_idx": 635,
+        "edge_rank": 30.0,
+        "pattern_stop": 48.0,
+        "pivot": 49.88,
+        "attempt": 1,
+        "model_exit_idx": 651
+      },
+      {
+        "symbol": "EMN",
+        "sector": "Unknown",
+        "signal_date": "2017-01-06",
+        "fill_date": "2017-01-09",
+        "fill_idx": 635,
+        "edge_rank": 30.0,
+        "pattern_stop": 45.47,
+        "pivot": 49.68,
+        "attempt": 2,
+        "model_exit_idx": 643
+      },
+      {
+        "symbol": "HRB",
+        "sector": "Unknown",
+        "signal_date": "2017-01-06",
+        "fill_date": "2017-01-09",
+        "fill_idx": 635,
+        "edge_rank": 30.0,
+        "pattern_stop": 14.3,
+        "pivot": 16.23,
+        "attempt": 1,
+        "model_exit_idx": 643
+      },
+      {
+        "symbol": "RF",
+        "sector": "Unknown",
+        "signal_date": "2017-01-06",
+        "fill_date": "2017-01-09",
+        "fill_idx": 635,
+        "edge_rank": 30.0,
+        "pattern_stop": 6.56,
+        "pivot": 7.06,
+        "attempt": 1,
+        "model_exit_idx": 636
+      },
+      {
+        "symbol": "KEY",
+        "sector": "Unknown",
+        "signal_date": "2017-01-10",
+        "fill_date": "2017-01-11",
+        "fill_idx": 637,
+        "edge_rank": 70.0,
+        "pattern_stop": 7.9,
+        "pivot": 8.4,
+        "attempt": 1,
+        "model_exit_idx": 639
+      },
+      {
+        "symbol": "KEY",
+        "sector": "Unknown",
+        "signal_date": "2017-01-10",
+        "fill_date": "2017-01-11",
+        "fill_idx": 637,
+        "edge_rank": 30.0,
+        "pattern_stop": 7.9,
+        "pivot": 8.4,
+        "attempt": 1,
+        "model_exit_idx": 639
+      },
+      {
+        "symbol": "KEY",
+        "sector": "Unknown",
+        "signal_date": "2017-01-10",
+        "fill_date": "2017-01-11",
+        "fill_idx": 637,
+        "edge_rank": 30.0,
+        "pattern_stop": 7.9,
+        "pivot": 8.4,
+        "attempt": 1,
+        "model_exit_idx": 639
+      },
+      {
+        "symbol": "VLO",
+        "sector": "Unknown",
+        "signal_date": "2017-01-10",
+        "fill_date": "2017-01-11",
+        "fill_idx": 637,
+        "edge_rank": 30.0,
+        "pattern_stop": 35.89,
+        "pivot": 37.76,
+        "attempt": 1,
+        "model_exit_idx": 638
+      },
+      {
+        "symbol": "KEY",
+        "sector": "Unknown",
+        "signal_date": "2017-01-13",
+        "fill_date": "2017-01-17",
+        "fill_idx": 640,
+        "edge_rank": 70.0,
+        "pattern_stop": 7.9,
+        "pivot": 8.4,
+        "attempt": 2,
+        "model_exit_idx": 641
+      },
+      {
+        "symbol": "RF",
+        "sector": "Unknown",
+        "signal_date": "2017-01-13",
+        "fill_date": "2017-01-17",
+        "fill_idx": 640,
+        "edge_rank": 70.0,
+        "pattern_stop": 6.56,
+        "pivot": 7.06,
+        "attempt": 2,
+        "model_exit_idx": 641
+      },
+      {
+        "symbol": "KEY",
+        "sector": "Unknown",
+        "signal_date": "2017-01-13",
+        "fill_date": "2017-01-17",
+        "fill_idx": 640,
+        "edge_rank": 30.0,
+        "pattern_stop": 7.9,
+        "pivot": 8.4,
+        "attempt": 2,
+        "model_exit_idx": 641
+      },
+      {
+        "symbol": "KEY",
+        "sector": "Unknown",
+        "signal_date": "2017-01-13",
+        "fill_date": "2017-01-17",
+        "fill_idx": 640,
+        "edge_rank": 30.0,
+        "pattern_stop": 7.9,
+        "pivot": 8.4,
+        "attempt": 2,
+        "model_exit_idx": 641
+      },
+      {
+        "symbol": "RF",
+        "sector": "Unknown",
+        "signal_date": "2017-01-13",
+        "fill_date": "2017-01-17",
+        "fill_idx": 640,
+        "edge_rank": 30.0,
+        "pattern_stop": 6.56,
+        "pivot": 7.06,
+        "attempt": 2,
+        "model_exit_idx": 641
+      },
+      {
+        "symbol": "KEY",
+        "sector": "Unknown",
+        "signal_date": "2017-01-18",
+        "fill_date": "2017-01-19",
+        "fill_idx": 642,
+        "edge_rank": 70.0,
+        "pattern_stop": 7.9,
+        "pivot": 8.4,
+        "attempt": 3,
+        "model_exit_idx": 643
+      },
+      {
+        "symbol": "RF",
+        "sector": "Unknown",
+        "signal_date": "2017-01-18",
+        "fill_date": "2017-01-19",
+        "fill_idx": 642,
+        "edge_rank": 70.0,
+        "pattern_stop": 6.56,
+        "pivot": 7.06,
+        "attempt": 3,
+        "model_exit_idx": 643
+      },
+      {
+        "symbol": "KEY",
+        "sector": "Unknown",
+        "signal_date": "2017-01-18",
+        "fill_date": "2017-01-19",
+        "fill_idx": 642,
+        "edge_rank": 30.0,
+        "pattern_stop": 7.9,
+        "pivot": 8.4,
+        "attempt": 3,
+        "model_exit_idx": 643
+      },
+      {
+        "symbol": "KEY",
+        "sector": "Unknown",
+        "signal_date": "2017-01-18",
+        "fill_date": "2017-01-19",
+        "fill_idx": 642,
+        "edge_rank": 30.0,
+        "pattern_stop": 7.9,
+        "pivot": 8.4,
+        "attempt": 3,
+        "model_exit_idx": 643
+      },
+      {
+        "symbol": "RF",
+        "sector": "Unknown",
+        "signal_date": "2017-01-18",
+        "fill_date": "2017-01-19",
+        "fill_idx": 642,
+        "edge_rank": 30.0,
+        "pattern_stop": 6.56,
+        "pivot": 7.06,
+        "attempt": 3,
+        "model_exit_idx": 643
+      },
+      {
+        "symbol": "MAR",
+        "sector": "Unknown",
+        "signal_date": "2017-01-24",
+        "fill_date": "2017-01-25",
+        "fill_idx": 646,
+        "edge_rank": 33.3,
+        "pattern_stop": 60.42,
+        "pivot": 64.84,
+        "attempt": 1
+      },
+      {
+        "symbol": "EMN",
+        "sector": "Unknown",
+        "signal_date": "2017-01-24",
+        "fill_date": "2017-01-25",
+        "fill_idx": 646,
+        "edge_rank": 30.0,
+        "pattern_stop": 45.47,
+        "pivot": 49.68,
+        "attempt": 3,
+        "model_exit_idx": 651
+      },
+      {
+        "symbol": "VRSN",
+        "sector": "Unknown",
+        "signal_date": "2017-02-10",
+        "fill_date": "2017-02-13",
+        "fill_idx": 659,
+        "edge_rank": 70.0,
+        "pattern_stop": 73.49,
+        "pivot": 81.64,
+        "attempt": 1
+      },
+      {
+        "symbol": "DOV",
+        "sector": "Unknown",
+        "signal_date": "2017-02-10",
+        "fill_date": "2017-02-13",
+        "fill_idx": 659,
+        "edge_rank": 30.0,
+        "pattern_stop": 48.0,
+        "pivot": 49.88,
+        "attempt": 2
+      },
+      {
+        "symbol": "ULTA",
+        "sector": "Unknown",
+        "signal_date": "2017-02-24",
+        "fill_date": "2017-02-27",
+        "fill_idx": 668,
+        "edge_rank": 30.0,
+        "pattern_stop": 248.55,
+        "pivot": 273.99,
+        "attempt": 1,
+        "model_exit_idx": 675
+      },
+      {
+        "symbol": "HAS",
+        "sector": "Unknown",
+        "signal_date": "2017-03-10",
+        "fill_date": "2017-03-13",
+        "fill_idx": 678,
+        "edge_rank": 30.0,
+        "pattern_stop": 58.81,
+        "pivot": 60.89,
+        "attempt": 1,
+        "model_exit_idx": 679
+      },
+      {
+        "symbol": "ULTA",
+        "sector": "Unknown",
+        "signal_date": "2017-03-10",
+        "fill_date": "2017-03-13",
+        "fill_idx": 678,
+        "edge_rank": 30.0,
+        "pattern_stop": 248.55,
+        "pivot": 273.99,
+        "attempt": 2
+      },
+      {
+        "symbol": "QRVO",
+        "sector": "Unknown",
+        "signal_date": "2017-03-13",
+        "fill_date": "2017-03-14",
+        "fill_idx": 552,
+        "edge_rank": 30.0,
+        "pattern_stop": 52.82,
+        "pivot": 56.97,
+        "attempt": 1,
+        "model_exit_idx": 558
+      },
+      {
+        "symbol": "HAS",
+        "sector": "Unknown",
+        "signal_date": "2017-03-14",
+        "fill_date": "2017-03-15",
+        "fill_idx": 680,
+        "edge_rank": 30.0,
+        "pattern_stop": 58.81,
+        "pivot": 60.89,
+        "attempt": 2,
+        "model_exit_idx": 695
+      },
+      {
+        "symbol": "QRVO",
+        "sector": "Unknown",
+        "signal_date": "2017-03-22",
+        "fill_date": "2017-03-23",
+        "fill_idx": 559,
+        "edge_rank": 30.0,
+        "pattern_stop": 52.82,
+        "pivot": 56.97,
+        "attempt": 2,
+        "model_exit_idx": 560
+      },
+      {
+        "symbol": "QRVO",
+        "sector": "Unknown",
+        "signal_date": "2017-03-27",
+        "fill_date": "2017-03-28",
+        "fill_idx": 562,
+        "edge_rank": 30.0,
+        "pattern_stop": 52.82,
+        "pivot": 56.97,
+        "attempt": 3,
+        "model_exit_idx": 585
+      },
+      {
+        "symbol": "TDC",
+        "sector": "Unknown",
+        "signal_date": "2017-03-30",
+        "fill_date": "2017-03-31",
+        "fill_idx": 692,
+        "edge_rank": 30.0,
+        "pattern_stop": 28.9,
+        "pivot": 31.13,
+        "attempt": 1,
+        "model_exit_idx": 694
+      },
+      {
+        "symbol": "NTAP",
+        "sector": "Unknown",
+        "signal_date": "2017-04-11",
+        "fill_date": "2017-04-12",
+        "fill_idx": 700,
+        "edge_rank": 30.0,
+        "pattern_stop": 27.58,
+        "pivot": 29.32,
+        "attempt": 1,
+        "model_exit_idx": 701
+      },
+      {
+        "symbol": "TDC",
+        "sector": "Unknown",
+        "signal_date": "2017-04-19",
+        "fill_date": "2017-04-20",
+        "fill_idx": 705,
+        "edge_rank": 30.0,
+        "pattern_stop": 28.9,
+        "pivot": 31.13,
+        "attempt": 2,
+        "model_exit_idx": 711
+      },
+      {
+        "symbol": "IVZ",
+        "sector": "Unknown",
+        "signal_date": "2017-04-24",
+        "fill_date": "2017-04-25",
+        "fill_idx": 708,
+        "edge_rank": 30.0,
+        "pattern_stop": 19.53,
+        "pivot": 20.63,
+        "attempt": 1
+      },
+      {
+        "symbol": "REGN",
+        "sector": "Unknown",
+        "signal_date": "2017-05-02",
+        "fill_date": "2017-05-03",
+        "fill_idx": 714,
+        "edge_rank": 30.0,
+        "pattern_stop": 358.99,
+        "pivot": 393.43,
+        "attempt": 1,
+        "model_exit_idx": 746
+      },
+      {
+        "symbol": "REGN",
+        "sector": "Unknown",
+        "signal_date": "2017-05-02",
+        "fill_date": "2017-05-03",
+        "fill_idx": 714,
+        "edge_rank": 30.0,
+        "pattern_stop": 358.99,
+        "pivot": 393.43,
+        "attempt": 1,
+        "model_exit_idx": 746
+      },
+      {
+        "symbol": "VRTX",
+        "sector": "Unknown",
+        "signal_date": "2017-05-08",
+        "fill_date": "2017-05-09",
+        "fill_idx": 718,
+        "edge_rank": 30.0,
+        "pattern_stop": 88.9,
+        "pivot": 95.0,
+        "attempt": 1,
+        "model_exit_idx": 720
+      },
+      {
+        "symbol": "VRTX",
+        "sector": "Unknown",
+        "signal_date": "2017-05-18",
+        "fill_date": "2017-05-19",
+        "fill_idx": 726,
+        "edge_rank": 30.0,
+        "pattern_stop": 88.9,
+        "pivot": 95.0,
+        "attempt": 2,
+        "model_exit_idx": 729
+      },
+      {
+        "symbol": "EW",
+        "sector": "Unknown",
+        "signal_date": "2017-05-24",
+        "fill_date": "2017-05-25",
+        "fill_idx": 730,
+        "edge_rank": 30.0,
+        "pattern_stop": 30.81,
+        "pivot": 32.16,
+        "attempt": 1,
+        "model_exit_idx": 742
+      },
+      {
+        "symbol": "VRTX",
+        "sector": "Unknown",
+        "signal_date": "2017-05-24",
+        "fill_date": "2017-05-25",
+        "fill_idx": 730,
+        "edge_rank": 30.0,
+        "pattern_stop": 88.9,
+        "pivot": 95.0,
+        "attempt": 3
+      },
+      {
+        "symbol": "EW",
+        "sector": "Unknown",
+        "signal_date": "2017-06-19",
+        "fill_date": "2017-06-20",
+        "fill_idx": 747,
+        "edge_rank": 30.0,
+        "pattern_stop": 30.81,
+        "pivot": 32.16,
+        "attempt": 2,
+        "model_exit_idx": 759
+      },
+      {
+        "symbol": "TROW",
+        "sector": "Unknown",
+        "signal_date": "2017-07-10",
+        "fill_date": "2017-07-11",
+        "fill_idx": 761,
+        "edge_rank": 30.0,
+        "pattern_stop": 47.04,
+        "pivot": 51.07,
+        "attempt": 1,
+        "model_exit_idx": 789
+      },
+      {
+        "symbol": "EW",
+        "sector": "Unknown",
+        "signal_date": "2017-07-18",
+        "fill_date": "2017-07-19",
+        "fill_idx": 767,
+        "edge_rank": 30.0,
+        "pattern_stop": 30.81,
+        "pivot": 32.16,
+        "attempt": 3
+      },
+      {
+        "symbol": "REGN",
+        "sector": "Unknown",
+        "signal_date": "2017-07-24",
+        "fill_date": "2017-07-25",
+        "fill_idx": 771,
+        "edge_rank": 70.0,
+        "pattern_stop": 358.99,
+        "pivot": 393.43,
+        "attempt": 1,
+        "model_exit_idx": 776
+      },
+      {
+        "symbol": "REGN",
+        "sector": "Unknown",
+        "signal_date": "2017-07-24",
+        "fill_date": "2017-07-25",
+        "fill_idx": 771,
+        "edge_rank": 70.0,
+        "pattern_stop": 358.99,
+        "pivot": 393.43,
+        "attempt": 1,
+        "model_exit_idx": 776
+      },
+      {
+        "symbol": "REGN",
+        "sector": "Unknown",
+        "signal_date": "2017-07-24",
+        "fill_date": "2017-07-25",
+        "fill_idx": 771,
+        "edge_rank": 30.0,
+        "pattern_stop": 358.99,
+        "pivot": 393.43,
+        "attempt": 1,
+        "model_exit_idx": 776
+      },
+      {
+        "symbol": "TROW",
+        "sector": "Unknown",
+        "signal_date": "2017-08-25",
+        "fill_date": "2017-08-28",
+        "fill_idx": 795,
+        "edge_rank": 30.0,
+        "pattern_stop": 47.04,
+        "pivot": 51.07,
+        "attempt": 2
+      },
+      {
+        "symbol": "CHTR",
+        "sector": "Unknown",
+        "signal_date": "2017-09-06",
+        "fill_date": "2017-09-07",
+        "fill_idx": 755,
+        "edge_rank": 30.0,
+        "pattern_stop": 329.04,
+        "pivot": 355.0,
+        "attempt": 1,
+        "model_exit_idx": 757
+      },
+      {
+        "symbol": "TJX",
+        "sector": "Unknown",
+        "signal_date": "2017-09-06",
+        "fill_date": "2017-09-07",
+        "fill_idx": 802,
+        "edge_rank": 30.0,
+        "pattern_stop": 30.14,
+        "pivot": 32.28,
+        "attempt": 1,
+        "model_exit_idx": 812
+      },
+      {
+        "symbol": "TJX",
+        "sector": "Unknown",
+        "signal_date": "2017-09-25",
+        "fill_date": "2017-09-26",
+        "fill_idx": 815,
+        "edge_rank": 30.0,
+        "pattern_stop": 30.14,
+        "pivot": 32.28,
+        "attempt": 2,
+        "model_exit_idx": 825
+      },
+      {
+        "symbol": "CHTR",
+        "sector": "Unknown",
+        "signal_date": "2017-10-13",
+        "fill_date": "2017-10-16",
+        "fill_idx": 782,
+        "edge_rank": 30.0,
+        "pattern_stop": 329.04,
+        "pivot": 355.0,
+        "attempt": 2,
+        "model_exit_idx": 783
+      },
+      {
+        "symbol": "PRGO",
+        "sector": "Unknown",
+        "signal_date": "2017-10-13",
+        "fill_date": "2017-10-16",
+        "fill_idx": 829,
+        "edge_rank": 30.0,
+        "pattern_stop": 59.17,
+        "pivot": 62.07,
+        "attempt": 1,
+        "model_exit_idx": 835
+      },
+      {
+        "symbol": "QRVO",
+        "sector": "Unknown",
+        "signal_date": "2017-10-27",
+        "fill_date": "2017-10-30",
+        "fill_idx": 712,
+        "edge_rank": 30.0,
+        "pattern_stop": 64.7,
+        "pivot": 70.27,
+        "attempt": 1
+      },
+      {
+        "symbol": "PRGO",
+        "sector": "Unknown",
+        "signal_date": "2017-10-30",
+        "fill_date": "2017-10-31",
+        "fill_idx": 840,
+        "edge_rank": 30.0,
+        "pattern_stop": 59.17,
+        "pivot": 62.07,
+        "attempt": 2,
+        "model_exit_idx": 841
+      },
+      {
+        "symbol": "SO",
+        "sector": "Unknown",
+        "signal_date": "2017-11-16",
+        "fill_date": "2017-11-17",
+        "fill_idx": 853,
+        "edge_rank": 70.0,
+        "pattern_stop": 33.4,
+        "pivot": 34.66,
+        "attempt": 1,
+        "model_exit_idx": 854
+      },
+      {
+        "symbol": "AMAT",
+        "sector": "Unknown",
+        "signal_date": "2017-11-16",
+        "fill_date": "2017-11-17",
+        "fill_idx": 853,
+        "edge_rank": 30.0,
+        "pattern_stop": 41.45,
+        "pivot": 44.13,
+        "attempt": 1,
+        "model_exit_idx": 861
+      },
+      {
+        "symbol": "SO",
+        "sector": "Unknown",
+        "signal_date": "2017-11-20",
+        "fill_date": "2017-11-21",
+        "fill_idx": 855,
+        "edge_rank": 70.0,
+        "pattern_stop": 33.4,
+        "pivot": 34.66,
+        "attempt": 2,
+        "model_exit_idx": 856
+      },
+      {
+        "symbol": "SO",
+        "sector": "Unknown",
+        "signal_date": "2017-11-27",
+        "fill_date": "2017-11-28",
+        "fill_idx": 859,
+        "edge_rank": 70.0,
+        "pattern_stop": 33.4,
+        "pivot": 34.66,
+        "attempt": 3,
+        "model_exit_idx": 861
+      },
+      {
+        "symbol": "CB",
+        "sector": "Unknown",
+        "signal_date": "2017-11-29",
+        "fill_date": "2017-11-30",
+        "fill_idx": 861,
+        "edge_rank": 30.0,
+        "pattern_stop": 120.78,
+        "pivot": 126.06,
+        "attempt": 1,
+        "model_exit_idx": 865
+      },
+      {
+        "symbol": "PRU",
+        "sector": "Unknown",
+        "signal_date": "2018-01-04",
+        "fill_date": "2018-01-05",
+        "fill_idx": 885,
+        "edge_rank": 100.0,
+        "pattern_stop": 71.19,
+        "pivot": 75.1,
+        "attempt": 1,
+        "model_exit_idx": 902
+      },
+      {
+        "symbol": "SYY",
+        "sector": "Unknown",
+        "signal_date": "2018-01-08",
+        "fill_date": "2018-01-09",
+        "fill_idx": 887,
+        "edge_rank": 70.0,
+        "pattern_stop": 39.67,
+        "pivot": 42.03,
+        "attempt": 1,
+        "model_exit_idx": 904
+      },
+      {
+        "symbol": "CB",
+        "sector": "Unknown",
+        "signal_date": "2018-01-16",
+        "fill_date": "2018-01-17",
+        "fill_idx": 892,
+        "edge_rank": 30.0,
+        "pattern_stop": 120.78,
+        "pivot": 126.06,
+        "attempt": 2
+      },
+      {
+        "symbol": "HUM",
+        "sector": "Unknown",
+        "signal_date": "2018-03-06",
+        "fill_date": "2018-03-07",
+        "fill_idx": 926,
+        "edge_rank": 70.0,
+        "pattern_stop": 224.22,
+        "pivot": 243.22,
+        "attempt": 1,
+        "model_exit_idx": 930
+      },
+      {
+        "symbol": "HUM",
+        "sector": "Unknown",
+        "signal_date": "2018-03-28",
+        "fill_date": "2018-03-29",
+        "fill_idx": 942,
+        "edge_rank": 70.0,
+        "pattern_stop": 224.22,
+        "pivot": 243.22,
+        "attempt": 2,
+        "model_exit_idx": 943
+      },
+      {
+        "symbol": "HUM",
+        "sector": "Unknown",
+        "signal_date": "2018-04-02",
+        "fill_date": "2018-04-03",
+        "fill_idx": 944,
+        "edge_rank": 70.0,
+        "pattern_stop": 224.22,
+        "pivot": 243.22,
+        "attempt": 3
+      },
+      {
+        "symbol": "ESRX",
+        "sector": "Unknown",
+        "signal_date": "2018-04-18",
+        "fill_date": "2018-04-19",
+        "fill_idx": 955,
+        "edge_rank": 70.0,
+        "pattern_stop": 59.17,
+        "pivot": 62.76,
+        "attempt": 1
+      },
+      {
+        "symbol": "TRIP",
+        "sector": "Unknown",
+        "signal_date": "2018-04-18",
+        "fill_date": "2018-04-19",
+        "fill_idx": 956,
+        "edge_rank": 35.0,
+        "pattern_stop": 30.31,
+        "pivot": 33.94,
+        "attempt": 1,
+        "model_exit_idx": 961
+      },
+      {
+        "symbol": "CTAS",
+        "sector": "Unknown",
+        "signal_date": "2018-05-09",
+        "fill_date": "2018-05-10",
+        "fill_idx": 971,
+        "edge_rank": 100.0,
+        "pattern_stop": 37.32,
+        "pivot": 41.06,
+        "attempt": 1,
+        "model_exit_idx": 1003
+      },
+      {
+        "symbol": "CMG",
+        "sector": "Unknown",
+        "signal_date": "2018-05-30",
+        "fill_date": "2018-05-31",
+        "fill_idx": 985,
+        "edge_rank": 30.0,
+        "pattern_stop": 6.15,
+        "pivot": 6.89,
+        "attempt": 1,
+        "model_exit_idx": 1003
+      },
+      {
+        "symbol": "VRSK",
+        "sector": "Unknown",
+        "signal_date": "2018-06-05",
+        "fill_date": "2018-06-06",
+        "fill_idx": 989,
+        "edge_rank": 30.0,
+        "pattern_stop": 99.0,
+        "pivot": 101.35,
+        "attempt": 1,
+        "model_exit_idx": 1001
+      }
+    ],
+    "cell": {
+      "summary": {
+        "signals": 85,
+        "trades": 71,
+        "end_value": 99880.13,
+        "total_return_pct": -0.12,
+        "cagr_pct": -0.05,
+        "max_drawdown_pct": -2.61,
+        "rejected": {
+          "duplicate_or_position_limit": 14
+        }
+      },
+      "trade_stats": {
+        "trades": 71,
+        "profit_factor": 0.9953186892329852,
+        "expectancy_pct": -0.009154929577464773,
+        "win_rate": 0.36619718309859156,
+        "average_win_pct": 5.315384615384615,
+        "average_loss_pct": -3.0855555555555556,
+        "payoff_ratio": 1.7226669621340127
+      },
+      "drop_top_5": {
+        "trades": 66,
+        "profit_factor": 0.4288800864241988,
+        "expectancy_pct": -1.2015151515151514,
+        "win_rate": 0.3181818181818182,
+        "average_win_pct": 2.8357142857142854,
+        "average_loss_pct": -3.0855555555555556,
+        "payoff_ratio": 0.919028756623283
+      },
+      "drop_top_10": {
+        "trades": 61,
+        "profit_factor": 0.18710839034929783,
+        "expectancy_pct": -1.8503278688524591,
+        "win_rate": 0.26229508196721313,
+        "average_win_pct": 1.62375,
+        "average_loss_pct": -3.0855555555555556,
+        "payoff_ratio": 0.5262423478574001
+      },
+      "robustness": {
+        "sample": {
+          "observations": 624,
+          "start": "2016-07-11",
+          "end": "2018-12-31",
+          "trials_declared": 351
+        },
+        "performance": {
+          "total_return": -0.0011986534222825362,
+          "cagr": -0.00048424463915008875,
+          "annual_volatility": 0.017934722902332296
+        },
+        "distribution": {
+          "skewness": 0.2789060594859616,
+          "excess_kurtosis": 13.032027561387277,
+          "jarque_bera": {
+            "statistic": 4423.76731474157,
+            "p_value": 0.0
+          }
+        },
+        "risk_adjusted": {
+          "sharpe": -0.018055703465562165,
+          "sortino": -0.025583030110449524,
+          "calmar": -0.01855678779736054,
+          "omega_zero": 0.9958873961527139
+        },
+        "risk": {
+          "max_drawdown": -0.026095283539264602,
+          "max_drawdown_duration_days": 362,
+          "ulcer_index": 0.013625353632362058,
+          "lake_ratio": 0.9775641025641025,
+          "var_95": -0.0018895045,
+          "cvar_95": -0.00279033
+        },
+        "significance": {
+          "t_statistic": -0.02841230303356051,
+          "effective_sample_size": 624.0,
+          "autocorrelations": [
+            -0.01736195509474079,
+            0.1224338215847551,
+            -0.0014640534273559623,
+            0.013777344787334448,
+            0.04080732857735677,
+            -0.08778416794381384,
+            -0.03528783105653349,
+            -0.04086061733311363,
+            -0.04396694226711147,
+            0.09426687681247026,
+            -0.09023881669331735,
+            -0.034991622845306325,
+            0.04398067971882905,
+            -0.05464486927792062,
+            -0.017583832788264257,
+            -0.026255303103386217,
+            0.04402124073112758,
+            -0.007166250797988362,
+            0.05149554498879465,
+            -0.034649700554307765,
+            -0.05263431481999388,
+            -0.0388187408162367,
+            -0.056226700692139905,
+            -0.05230397163263798
+          ],
+          "psr_vs_zero": 0.48867756107201005,
+          "approximate_dsr": {
+            "benchmark_sharpe": 1.8727129237669866,
+            "probability": 0.0014772439307173535
+          }
+        },
+        "stability": {
+          "is_sharpe": 0.03388048519530512,
+          "oos_sharpe": -0.17053568348320544,
+          "wfa_efficiency": -5.033448679974538,
+          "positive_months": 0.3333333333333333,
+          "positive_quarters": 0.5
+        },
+        "optional_tests": {
+          "ljung_box": {
+            "available": false
+          },
+          "adf": {
+            "available": false
+          },
+          "reason": "No module named 'statsmodels'"
+        },
+        "block_bootstrap": {
+          "cagr": {
+            "p05": -0.02069440628248432,
+            "median": -0.0006270683547763278,
+            "p95": 0.01829431256718218
+          },
+          "sharpe": {
+            "p05": -1.1331784974452994,
+            "median": -0.02821710284837156,
+            "p95": 1.0552970996544062
+          },
+          "max_drawdown": {
+            "p05": -0.06539566987848193,
+            "median": -0.032125838877302526,
+            "p95": -0.015986188745972074
+          }
+        },
+        "monte_carlo": {
+          "max_drawdown": {
+            "p05": -0.06173961737913754,
+            "median": -0.03101475500848533,
+            "p95": -0.015023714413594954
+          },
+          "final_equity": {
+            "p05": 0.952984421886935,
+            "median": 0.996902146830424,
+            "p95": 1.0458277941148109
+          }
+        }
+      }
+    },
+    "gate": {
+      "passed": false,
+      "checks": {
+        "trades>=60": true,
+        "cagr>=10pct": false,
+        "sharpe>=0.75": false,
+        "pf>1.20": false,
+        "mdd>-15pct": true,
+        "drop_top_5_expectancy>0": false
+      }
+    }
+  },
+  "internal_holdout": null,
+  "open_formal_validation": false
+}
