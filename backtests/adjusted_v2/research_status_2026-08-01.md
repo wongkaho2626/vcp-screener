@@ -88,6 +88,7 @@ slippage on each side. Formal validation and untouched OOS were not accessed.
 | 478–482 | First-session-of-month flow, three-session exit | 99 train | -0.32% train | -0.220 | 0.750 | -2.90% | -0.56% | train fail; validation/OOS sealed |
 | 483–488 | 20-return lag-1 autocorrelation zero-cross lifecycle | 103 train | 1.29% train | 0.499 | 1.515 | -4.32% | -0.47% | train fail; validation/OOS sealed |
 | 489–495 | SEC weighted-average-share contraction, fixed-20 exit | 100 train | 0.69% train | 0.291 | 1.025 | -3.30% | -0.57% | train fail; validation/OOS sealed |
+| 496–504 | Strong trend -> character damage -> resistance-flip/swing-low exit | 88 train | 0.50% train | 0.228 | 0.982 | -3.26% | -0.87% | train fail; validation/OOS sealed |
 
 Trial 303–304 is an explicit discovery-collapse check: its fit sample had only
 13 setups, 12 positive, with mean fixed-20 label +4.54%; the untouched internal
@@ -257,6 +258,16 @@ evidence of a durable edge.
   trim-five PF/expectancy fell to 0.759/-0.57%. A/B/C/D were 7/7/4/6,
   normalized raw 29 and final survivorship-capped score 20/100 (Reject).
   Coverage was adequate; the economic rule failed before validation.
+- A supplied strong-stock exit checklist was translated before outcomes into
+  a reproducible state machine: arm only after persistent SMA10/SMA20 support,
+  then exit next open on a 6% gap-down / 16% close loss, a frozen five-session
+  swing-low break, or a failed recovery into the frozen MA cluster after dual-
+  MA damage. Fifty-eight of 103 baseline paths activated, but only one was an
+  abnormal day and ten were failed-MA recoveries; 47 were swing-low breaks.
+  The 88 trades returned 0.50% CAGR, 0.228 Sharpe, PF 0.982 and -0.87%
+  trim-five expectancy. A/B/C/D were 7/7/4/0, normalized raw 22 and final 20
+  after the survivorship cap. The ordered character-change claim failed train
+  and is closed without relaxing its thresholds or opening later partitions.
 - Additional fit/coverage audits rejected initial SC 13D/13G ownership events,
   non-earnings 8-K catalysts, cash-conversion quality, and the full Stage-2
   trend template. Either independent-event density was below 30 or fixed-20
@@ -270,8 +281,8 @@ evidence of a durable edge.
   equity CSV outputs.
 - SEC-derived events preserve filing/accession dates and require
   `filed < signal_date`; same-day filings cannot trigger an entry.
-- Full test suite after Trial 489–495 and the 2006+ inventory repair:
-  **517 passed**.
+- Full test suite after Trial 496–504 and the 2006+ inventory repair:
+  **524 passed**.
   `git diff --check`: clean.
 
 No current rule meets the research gate. Missing 2000–2005 data is explicitly

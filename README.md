@@ -180,6 +180,17 @@ produced 0.69% CAGR, 0.291 Sharpe, PF 1.025 and -0.57% trim-five expectancy.
 A/B/C/D were 7/7/4/6, normalized raw 29 and final survivorship-capped score
 20/100 (Reject). No external data, validation or OOS was accessed.
 
+Trial 496–504 translated the supplied strong-stock exit checklist into one
+causal state machine: persistent SMA10/SMA20 support, then an abnormal down day
+or dual-MA damage followed by a frozen-MA rejection / pre-damage swing-low
+break. The outcome-free gate passed with 58 custom exits among 103 unchanged
+detection-entry signals, but 88 train trades produced only 0.50% CAGR, 0.228
+Sharpe, PF 0.982 and -0.87% trim-five expectancy. Only one activation was an
+abnormal day and ten were failed-MA recoveries; 47 were swing-low breaks, so
+the proposed character-change mechanism mostly collapsed into another weak
+swing-low exit. A/B/C/D were 7/7/4/0, normalized raw 22 and final
+survivorship-capped score 20/100 (Reject). Validation and OOS stayed sealed.
+
 The replay also found and fixed a historical benchmark-alignment defect.
 Stocks with short or gapped histories had previously selected SPY by the
 stock's integer bar offset, which could use a benchmark observation after the

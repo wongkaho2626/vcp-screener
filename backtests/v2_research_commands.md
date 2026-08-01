@@ -593,6 +593,16 @@ curl -L https://www.sec.gov/files/company_tickers.json \
   --companyfacts-dir backtests/sec_pit_audit/companyfacts \
   --output-dir backtests/share_supply_contraction_v2/results --iterations 1000
 
+# Trial 496-504: supplied strong-stock character-change checklist translated
+# into one causal close-confirmed, next-open exit state machine. The script
+# opens train returns only if at least 30 baseline paths activate the overlay.
+.venv/bin/python scripts/character_change_exit_discovery.py \
+  backtests/daily_rescreen_v2/detections/vcp_backtest_2026-08-01_141348.json \
+  --price-csv backtests/daily_rescreen_v2/SP500_PIT_through_2021.csv \
+  --membership-csv scripts/data/sp500_membership.csv \
+  --coverage-json backtests/pivot_retest_v2/coverage_2016_2026.json \
+  --output-dir backtests/character_change_exit_v2/results --iterations 1000
+
 # Historical provenance only: this superseded 2000-2005 audit command is
 # retained to reproduce prior work. Do not rerun it under the current 2006+
 # goal; it is not a current research dependency or completion blocker.

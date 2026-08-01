@@ -136,6 +136,14 @@ test same-accession weighted-average-share contraction. Cache coverage was
 were 7/7/4/6, normalized raw 29 and final 20/100 after the survivorship cap;
 the no-OOS/WFA cap was 55. No external data, validation or OOS was accessed.
 
+Trial 496–504 translated a supplied strong-stock character-change checklist
+into a close-confirmed, next-open exit overlay on the unchanged detection
+entry. Outcome-free activation density passed at 58/103 paths, but 88 train
+trades produced only 0.50% CAGR, 0.228 Sharpe, PF 0.982 and -0.87% trim-five
+expectancy. A/B/C/D were 7/7/4/0, normalized raw 22 and final 20/100 after the
+survivorship cap; the separate no-OOS/WFA cap was 55. The train gate failed,
+so validation and best-available OOS remained sealed.
+
 ## Continue contract
 
 Continue only with genuinely new, outcome-free-predeclared buy/sell

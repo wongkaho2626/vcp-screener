@@ -1,0 +1,379 @@
+{
+  "generated_at": "2026-08-02T00:25:48",
+  "family_spec": "backtests/character_change_exit_v2/frozen_spec.md",
+  "hypothesis_classification": "user_supplied_mechanism_causal_translation",
+  "data_inventory": "backtests/current_2006_plus_data_audit/inventory.json",
+  "coverage": {
+    "universe": 720,
+    "kept": 599,
+    "benchmark_present": true,
+    "coverage_pct": 91.31,
+    "per_year": {
+      "2016": 82.4,
+      "2017": 84.3,
+      "2018": 85.8,
+      "2019": 87.2,
+      "2020": 90.0,
+      "2021": 91.8,
+      "2022": 93.7,
+      "2023": 95.7,
+      "2024": 96.5,
+      "2025": 97.8,
+      "2026": 98.7
+    },
+    "dropped": [
+      [
+        "AMTM",
+        "only-60-bars-in-membership"
+      ],
+      [
+        "APC",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "BNY",
+        "only-27-bars-in-membership"
+      ],
+      [
+        "CASY",
+        "only-57-bars-in-membership"
+      ],
+      [
+        "CIEN",
+        "only-98-bars-in-membership"
+      ],
+      [
+        "COHR",
+        "only-69-bars-in-membership"
+      ],
+      [
+        "EMC",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "FDXF",
+        "only-21-bars-in-membership"
+      ],
+      [
+        "HOT",
+        "only-57-bars-in-membership"
+      ],
+      [
+        "INFO",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "LB",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "LITE",
+        "only-69-bars-in-membership"
+      ],
+      [
+        "SBNY",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "SE",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "SOLS",
+        "only-37-bars-in-membership"
+      ],
+      [
+        "SPLS",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "STI",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "TE",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "VEEV",
+        "only-37-bars-in-membership"
+      ],
+      [
+        "VRT",
+        "only-69-bars-in-membership"
+      ]
+    ]
+  },
+  "trials_before": 495,
+  "new_multiplicity_units": 9,
+  "trials_after": 504,
+  "parameters": {
+    "entry": "unchanged detection_entry next open",
+    "strength_window": 10,
+    "strength_required": 8,
+    "moving_averages": [
+      10,
+      20
+    ],
+    "abnormal_gap_pct": -6.0,
+    "abnormal_close_return_pct": -16.0,
+    "damage": "first strict close below SMA10 and SMA20",
+    "recovery_window_sessions": 10,
+    "swing_low_sessions": 5,
+    "execution": "full exit at next open",
+    "max_hold_sessions": 60
+  },
+  "chronology": {
+    "train": [
+      "2016-07-01",
+      "2018-06-30"
+    ],
+    "embargo": [
+      "2018-07-01",
+      "2018-12-31"
+    ],
+    "validation": [
+      "2019-01-01",
+      "2021-12-31"
+    ],
+    "best_available_frozen_oos": [
+      "2022-01-01",
+      "2026-03-31"
+    ]
+  },
+  "density": {
+    "baseline_signals": 103,
+    "custom_exit_activations": 58,
+    "activation_rate": 0.5631067961165048,
+    "symbols_activated": 47,
+    "activation_reasons": {
+      "abnormal_down_day": 1,
+      "failed_ma_cluster_recovery": 10,
+      "frozen_swing_low_break": 47
+    },
+    "minimum": 30,
+    "maximum": 103,
+    "passed": true
+  },
+  "membership_drops": {
+    "train_detection_date": 16,
+    "validation_detection_date": null
+  },
+  "classification": "train_return_evaluation",
+  "return_evaluation_accessed": true,
+  "validation_accessed": false,
+  "best_available_oos_accessed": false,
+  "backtest_score": {
+    "classification": "discovery_train_only",
+    "components": {
+      "A_statistical_validity": {
+        "score": 7,
+        "max": 30
+      },
+      "B_risk_adjusted_performance": {
+        "score": 7,
+        "max": 25
+      },
+      "C_robustness_computable": {
+        "score": 4,
+        "max": 8
+      },
+      "D_trade_quality_consistency": {
+        "score": 0,
+        "max": 20
+      }
+    },
+    "unavailable": {
+      "walk_forward_efficiency": 10,
+      "parameter_sensitivity": 7
+    },
+    "measured_total": 18,
+    "measured_denominator": 83,
+    "reduced_denominator_normalized_raw_score": 22,
+    "caps_applied": [
+      {
+        "reason": "unresolved survivorship bias / incomplete delisted coverage",
+        "cap": 20
+      },
+      {
+        "reason": "no formal out-of-sample or walk-forward segment",
+        "cap": 55
+      }
+    ],
+    "final_score": 20,
+    "band": "Reject",
+    "note": "The lowest applicable cap is applied after reduced-denominator normalization. This discovery-only score cannot qualify the strategy."
+  },
+  "train": {
+    "cell": {
+      "summary": {
+        "signals": 103,
+        "trades": 88,
+        "end_value": 101241.91,
+        "total_return_pct": 1.24,
+        "cagr_pct": 0.5,
+        "max_drawdown_pct": -3.26,
+        "rejected": {
+          "duplicate_or_position_limit": 11,
+          "cash_sector_or_liquidity": 4
+        }
+      },
+      "trade_stats": {
+        "trades": 88,
+        "profit_factor": 0.9821639778587311,
+        "expectancy_pct": -0.04284090909090907,
+        "win_rate": 0.36363636363636365,
+        "average_win_pct": 6.4875,
+        "average_loss_pct": -3.7744642857142856,
+        "payoff_ratio": 1.7187869612527795
+      },
+      "drop_top_5": {
+        "trades": 83,
+        "profit_factor": 0.6580877134881961,
+        "expectancy_pct": -0.870722891566265,
+        "win_rate": 0.3253012048192771,
+        "average_win_pct": 5.151851851851852,
+        "average_loss_pct": -3.7744642857142856,
+        "payoff_ratio": 1.3649226650125548
+      },
+      "drop_top_10": {
+        "trades": 78,
+        "profit_factor": 0.4199271419785211,
+        "expectancy_pct": -1.571923076923077,
+        "win_rate": 0.28205128205128205,
+        "average_win_pct": 4.034545454545455,
+        "average_loss_pct": -3.7744642857142856,
+        "payoff_ratio": 1.068905452308963
+      },
+      "robustness": {
+        "sample": {
+          "observations": 628,
+          "start": "2016-07-05",
+          "end": "2018-12-31",
+          "trials_declared": 504
+        },
+        "performance": {
+          "total_return": 0.012419101442558533,
+          "cagr": 0.0049650551159505785,
+          "annual_volatility": 0.022878075393476603
+        },
+        "distribution": {
+          "skewness": -0.2185009255260997,
+          "excess_kurtosis": 6.166403204341934,
+          "jarque_bera": {
+            "statistic": 999.9722263542699,
+            "p_value": 7.224204293652315e-218
+          }
+        },
+        "risk_adjusted": {
+          "sharpe": 0.22791064323827007,
+          "sortino": 0.3198465559133664,
+          "calmar": 0.15221581054917344,
+          "omega_zero": 1.0497004131472754
+        },
+        "risk": {
+          "max_drawdown": -0.032618524304652396,
+          "max_drawdown_duration_days": 233,
+          "ulcer_index": 0.017986353493364415,
+          "lake_ratio": 0.945859872611465,
+          "var_95": -0.0021598785000000002,
+          "cvar_95": -0.0037092821875
+        },
+        "significance": {
+          "t_statistic": 0.35978591571605373,
+          "effective_sample_size": 579.2891529511575,
+          "autocorrelations": [
+            0.04204363813881878,
+            -0.03023343169320082,
+            0.08660983257366092,
+            0.057407227057424584,
+            0.003133417112777738,
+            0.008636620342515153,
+            -0.010680262037730865,
+            -0.0555445548505995,
+            -0.0951558097547581,
+            0.0702967763031632,
+            0.04272979806596113,
+            -0.08574155763741342,
+            -0.0852746948712137,
+            -0.06621102385735626,
+            0.05299790231588819,
+            -0.056630172401930884,
+            -0.05605360116000123,
+            -0.020719530284871994,
+            0.020509133457115684,
+            -0.07948105673274418,
+            0.0029678302694494266,
+            0.029269484713443972,
+            -0.14623159756858756,
+            -0.09776227913247441,
+            0.10509467718860893
+          ],
+          "psr_vs_zero": 0.640150659208064,
+          "approximate_dsr": {
+            "benchmark_sharpe": 2.0166377717692034,
+            "probability": 0.002427667168765524
+          }
+        },
+        "stability": {
+          "is_sharpe": 0.32144544033982647,
+          "oos_sharpe": -0.16545359506911264,
+          "wfa_efficiency": -0.5147175050739498,
+          "positive_months": 0.43333333333333335,
+          "positive_quarters": 0.5
+        },
+        "optional_tests": {
+          "ljung_box": {
+            "available": false
+          },
+          "adf": {
+            "available": false
+          },
+          "reason": "No module named 'statsmodels'"
+        },
+        "block_bootstrap": {
+          "cagr": {
+            "p05": -0.019904592318189918,
+            "median": 0.004516498419324,
+            "p95": 0.02907876412904743
+          },
+          "sharpe": {
+            "p05": -0.8549211965108616,
+            "median": 0.21428334500509988,
+            "p95": 1.3118286986542387
+          },
+          "max_drawdown": {
+            "p05": -0.07391219745001953,
+            "median": -0.03717448481882357,
+            "p95": -0.018400202725331497
+          }
+        },
+        "monte_carlo": {
+          "max_drawdown": {
+            "p05": -0.06744176845766511,
+            "median": -0.03425398685087988,
+            "p95": -0.01835657942045007
+          },
+          "final_equity": {
+            "p05": 0.9571619172264889,
+            "median": 1.013272506641238,
+            "p95": 1.0723837878211875
+          }
+        }
+      }
+    },
+    "gate": {
+      "passed": false,
+      "checks": {
+        "trades>=60": true,
+        "cagr>=10pct": false,
+        "sharpe>=0.75": false,
+        "pf>1.20": false,
+        "mdd>-15pct": true,
+        "drop_top_5_expectancy>0": false
+      }
+    }
+  },
+  "validation": null,
+  "open_best_available_oos": false
+}

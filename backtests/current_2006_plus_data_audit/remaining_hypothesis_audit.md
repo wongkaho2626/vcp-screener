@@ -70,11 +70,19 @@ it is an outcome ledger, not part of the original outcome-free selection.
   repository-cached same-accession weighted-average shares. Coverage and
   density passed, but 100 train trades returned only 0.69% CAGR, PF 1.025 and
   -0.57% trim-five expectancy; the supply-contraction lifecycle is closed.
+- Trial 496–504 translated a supplied character-change exit checklist into a
+  causal strong-support arm, abnormal-day exit and dual-MA damage followed by
+  frozen-resistance rejection / swing-low failure. It activated on 58/103
+  paths, but 88 train trades returned only 0.50% CAGR, PF 0.982 and -0.87%
+  trim-five expectancy. Forty-seven activations were ordinary swing-low
+  breaks versus only one abnormal day and ten failed recoveries, so this
+  ordered exit mechanism is closed without threshold variants.
 
-All three failed their unchanged train gates without opening validation or
-best-available OOS. No canonical residual direction in this audit remains
-unresolved. Membership tenure, gap-rejection reclaim, month-start flow and
-serial dependence are now closed too. The SEC share-supply mechanism is also
-closed despite adequate cached coverage.
+Every return-evaluated family above failed its unchanged train gate without
+opening validation or best-available OOS. No canonical residual direction in
+this audit remains unresolved. Membership tenure, gap-rejection reclaim,
+month-start flow and serial dependence are closed too. The SEC share-supply
+mechanism is closed despite adequate cached coverage, and the later
+character-change exit translation failed its frozen train gate.
 Further work must begin with another genuinely new economic mechanism or a
 formal train-only residual analysis; it must not tune these closed indicators.
