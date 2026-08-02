@@ -1,0 +1,29 @@
+{
+  "generated_at": "2026-08-02T11:03:58",
+  "family_spec": "backtests/relative_divergence_v2/frozen_spec.md",
+  "classification": "outcome_free_density_only",
+  "trials_before": 504,
+  "trials_after": 518,
+  "return_evaluation_accessed": false,
+  "validation_accessed": false,
+  "best_available_oos_accessed": false,
+  "density": {
+    "baseline_signals": 34,
+    "primary_activations": 24,
+    "minimum": 30,
+    "passed": false,
+    "missing_history": {
+      "available": 34,
+      "negative_control": 10,
+      "positive": 24
+    },
+    "membership_drops": {
+      "detection_date": 16,
+      "signal_date": 0,
+      "fill_date": 0,
+      "outside_signal_partition": 0
+    }
+  },
+  "verdict": "INCONCLUSIVE",
+  "reproduction_command": ".venv/bin/python scripts/relative_divergence_experiment.py backtests/exploratory_existing_data_replay/detections_date_aligned/vcp_backtest_2026-08-01_202358.json --price-csv SP500_PIT_2016_2026.csv --membership-csv scripts/data/sp500_membership.csv --coverage-json backtests/pivot_retest_v2/coverage_2016_2026.json --breadth-csv scripts/data/sp500_breadth_daily.csv --output-dir backtests/relative_divergence_v2/results --iterations 1000"
+}

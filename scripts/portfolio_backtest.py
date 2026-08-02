@@ -44,6 +44,41 @@ STOP_REENTRY_WINDOW = 20
 CLOSING_LOW_LOOKBACK = 5
 
 
+def _normalise_holding_windows(
+    value: object,
+) -> tuple[tuple[str, str | None], ...] | None:
+    """Validate optional inclusive ISO-date windows used for forced exits."""
+    if value is None:
+        return None
+    if not isinstance(value, (list, tuple)) or not value:
+        raise ValueError("holding_windows must be a non-empty list or tuple")
+    windows: list[tuple[str, str | None]] = []
+    for item in value:
+        if not isinstance(item, (list, tuple)) or len(item) != 2:
+            raise ValueError("each holding window must contain start and end")
+        start, end = item
+        if not isinstance(start, str) or (end is not None and not isinstance(end, str)):
+            raise ValueError("holding-window dates must be ISO strings or a None end")
+        try:
+            datetime.strptime(start, "%Y-%m-%d")
+            if end is not None:
+                datetime.strptime(end, "%Y-%m-%d")
+        except ValueError as exc:
+            raise ValueError("holding-window dates must use YYYY-MM-DD") from exc
+        if end is not None and end < start:
+            raise ValueError("holding-window end cannot precede its start")
+        windows.append((start, end))
+    return tuple(windows)
+
+
+def _in_holding_window(
+    date: str, windows: tuple[tuple[str, str | None], ...],
+) -> bool:
+    """Return whether ``date`` lies in any inclusive holding window."""
+    return any(start <= date and (end is None or date <= end)
+               for start, end in windows)
+
+
 def _plan_frozen_pullback(bars: list[dict], breakout_idx: int, stop: float) -> int | None:
     """MA20 touch-and-hold within 15 bars; matches pullback_experiment's rule."""
     for i in range(breakout_idx + 1, min(breakout_idx + 1 + LIVE_WINDOW, len(bars))):
@@ -741,6 +776,7 @@ def run_portfolio(
     detections: dict, prices: dict[str, list[dict]], cfg: Config = Config(),
     entry_rule: str = "pullback", entry_params: dict | None = None,
     exit_rule: str = "baseline", exit_params: dict | None = None,
+    simulation_start_date: str | None = None,
 ) -> dict:
     """Run the portfolio. ``prices`` bars must be oldest-first."""
     if exit_rule not in (
@@ -750,8 +786,34 @@ def run_portfolio(
         "model_decay",
         "fixed_time",
         "diagnostic_oracle",
+        "trailing_stop",
+        "armed_trailing_stop",
     ):
         raise ValueError(f"unknown exit rule: {exit_rule}")
+    trailing_pct = None
+    if exit_rule == "trailing_stop":
+        trailing_pct = float((exit_params or {}).get("trailing_pct", 8.0))
+        if not 0 < trailing_pct < 100:
+            raise ValueError("trailing stop percentage must be between 0 and 100")
+    armed_trigger_r = None
+    armed_trailing_pct = None
+    if exit_rule == "armed_trailing_stop":
+        armed_trigger_r = float((exit_params or {}).get("trigger_r", 3.0))
+        armed_trailing_pct = float((exit_params or {}).get("trailing_pct", 24.0))
+        if armed_trigger_r <= 0:
+            raise ValueError("armed trailing trigger R must be positive")
+        if not 0 < armed_trailing_pct < 100:
+            raise ValueError("armed trailing percentage must be between 0 and 100")
+    holding_windows = _normalise_holding_windows(
+        (exit_params or {}).get("holding_windows"))
+    holding_window_exit_timing = str(
+        (exit_params or {}).get(
+            "holding_window_exit_timing", "first_outside_open"))
+    if holding_window_exit_timing not in (
+        "first_outside_open", "window_end_open",
+    ):
+        raise ValueError(
+            "holding_window_exit_timing must be first_outside_open or window_end_open")
     signals = _candidate_signals(
         detections, prices, cfg, entry_rule=entry_rule, entry_params=entry_params,
     )
@@ -763,7 +825,7 @@ def run_portfolio(
                 "end_value": cfg.initial_cash, "total_return_pct": 0.0,
                 "cagr_pct": 0.0, "max_drawdown_pct": 0.0, "rejected": {}},
                 "trades": [], "equity_curve": []}
-    first_signal_date = min(s["fill_date"] for s in signals)
+    first_signal_date = simulation_start_date or min(s["fill_date"] for s in signals)
     dates = sorted({b["date"] for bars in prices.values() for b in bars
                     if b["date"] >= first_signal_date})
     index = {s: {b["date"]: i for i, b in enumerate(bars)} for s, bars in prices.items()}
@@ -790,7 +852,19 @@ def run_portfolio(
             bar = prices[sym][i]
             reason = None
             raw_exit = None
-            if (exit_rule == "diagnostic_oracle"
+            # The finite endpoint is inclusive. On the first subsequent
+            # ticker session outside every allowed window, liquidate at its
+            # open before evaluating that session's intraday stop.
+            at_finite_window_end = bool(
+                holding_windows is not None
+                and holding_window_exit_timing == "window_end_open"
+                and any(end == date for _, end in holding_windows if end is not None)
+            )
+            if (holding_windows is not None
+                    and (not _in_holding_window(date, holding_windows)
+                         or at_finite_window_end)):
+                reason, raw_exit = "period_exit", bar["open"]
+            elif (exit_rule == "diagnostic_oracle"
                     and i == pos.get("diagnostic_exit_idx")):
                 reason, raw_exit = "diagnostic_oracle", bar["open"]
             elif (exit_rule == "model_decay"
@@ -808,9 +882,17 @@ def run_portfolio(
                 reason = pos.get("managed_exit_reason", "followthrough_sma")
                 raw_exit = bar["open"]
             elif bar["low"] <= pos["stop"]:
-                reason = "breakeven_stop" if pos.get("breakeven_armed_date") else "stop"
+                reason = (
+                    "trailing_stop" if exit_rule == "trailing_stop"
+                    else "armed_trailing_stop"
+                    if (exit_rule == "armed_trailing_stop"
+                        and pos.get("trailing_armed_date"))
+                    else "breakeven_stop" if pos.get("breakeven_armed_date")
+                    else "stop"
+                )
                 raw_exit = min(bar["open"], pos["stop"])
-            elif i - pos["entry_idx"] >= cfg.max_hold_bars:
+            elif (exit_rule not in ("trailing_stop", "armed_trailing_stop")
+                  and i - pos["entry_idx"] >= cfg.max_hold_bars):
                 # The timeout is known only after the prior bar completes;
                 # execute conservatively at this session's open.
                 reason, raw_exit = "timeout", bar["open"]
@@ -842,7 +924,40 @@ def run_portfolio(
 
         # A close-confirmed ratchet becomes active only after today's stop
         # evaluation, so it cannot use the same bar's low retroactively.
-        if exit_rule == "breakeven_r":
+        if exit_rule == "trailing_stop":
+            assert trailing_pct is not None
+            for sym, pos in positions.items():
+                i = index[sym].get(date)
+                if i is None or i <= pos["entry_idx"]:
+                    continue
+                close = float(prices[sym][i].get("close") or 0)
+                prior_high = float(pos.get("highest_close") or pos["entry_price"])
+                highest_close = max(prior_high, close)
+                pos["highest_close"] = highest_close
+                pos["stop"] = max(
+                    float(pos["stop"]),
+                    highest_close * (1 - trailing_pct / 100),
+                )
+        elif exit_rule == "armed_trailing_stop":
+            assert armed_trigger_r is not None and armed_trailing_pct is not None
+            for sym, pos in positions.items():
+                i = index[sym].get(date)
+                if i is None or i <= pos["entry_idx"]:
+                    continue
+                close = float(prices[sym][i].get("close") or 0)
+                prior_high = float(pos.get("highest_close") or pos["entry_price"])
+                highest_close = max(prior_high, close)
+                pos["highest_close"] = highest_close
+                risk = float(pos["entry_price"]) - float(pos["initial_stop"])
+                if (not pos.get("trailing_armed_date") and risk > 0
+                        and close >= float(pos["entry_price"]) + armed_trigger_r * risk):
+                    pos["trailing_armed_date"] = date
+                if pos.get("trailing_armed_date"):
+                    pos["stop"] = max(
+                        float(pos["stop"]),
+                        highest_close * (1 - armed_trailing_pct / 100),
+                    )
+        elif exit_rule == "breakeven_r":
             trigger_r = float((exit_params or {}).get("trigger_r", 1.0))
             if trigger_r <= 0:
                 raise ValueError("breakeven trigger_r must be positive")
@@ -974,6 +1089,18 @@ def run_portfolio(
                 "signal_date": sig["signal_date"], "entry_adv_dollars": round(_adv_dollars(prices[sym], i), 2),
                 "highest_close": round(float(bar.get("close") or fill_price), 4),
             }
+            if exit_rule == "armed_trailing_stop":
+                assert armed_trigger_r is not None and armed_trailing_pct is not None
+                pos = positions[sym]
+                risk = float(pos["entry_price"]) - float(pos["initial_stop"])
+                entry_close = float(bar.get("close") or fill_price)
+                if (risk > 0 and entry_close
+                        >= float(pos["entry_price"]) + armed_trigger_r * risk):
+                    pos["trailing_armed_date"] = date
+                    pos["stop"] = max(
+                        float(pos["stop"]),
+                        entry_close * (1 - armed_trailing_pct / 100),
+                    )
 
         # Resting opening-limit entries can hit their hard stop later in the
         # entry session. Process this only after all opening orders so proceeds

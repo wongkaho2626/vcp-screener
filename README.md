@@ -194,6 +194,145 @@ The frozen rule, causal implementation, tests and complete signal/trade/equity
 artifacts are under
 [`backtests/character_change_exit_v2/`](backtests/character_change_exit_v2/).
 
+Trial 505–518 then tested the prespecified per-ticker 20-session positive
+stock-minus-SPY divergence gate on the unchanged pullback strategy. The
+outcome-free train audit found only 24 qualifying signals out of 34, below the
+frozen minimum of 30, so the confirmatory family stopped before reading any
+returns. Trial 519 subsequently opened every fold and sensitivity cell as an
+explicitly post-density descriptive audit that cannot support `IMPROVES`.
+Train performance worsened (CAGR 1.60% → 0.75%; qualifying-minus-rejected
+matched excess -3.10 pp). Validation improved, but best-available OOS remained
+economically negative: baseline CAGR -3.22% versus challenger -2.16%, while
+qualifying baseline trades had -3.39% mean matched excess versus -1.45% for
+rejected trades. OOS divergence/excess Spearman was -0.079, both strategies
+lost more at stressed costs, and the capped diagnostic score was 14/100. Final
+verdict: **INCONCLUSIVE**. See
+[`backtests/relative_divergence_v2/results/relative_divergence_2026-08-02_111455.md`](backtests/relative_divergence_v2/results/relative_divergence_2026-08-02_111455.md).
+
+Trial 520 tested one fixed medium-term trend gate: signal-date close strictly
+above SMA50 and SMA50 strictly above its value 20 stock sessions earlier. It
+retained 86.1% of best-available OOS signals and reduced the frozen baseline's
+loss from -3.22% to -2.81% CAGR, but did not create a positive strategy. Train
+CAGR fell from 1.60% to 1.36%, validation remained 1.14%, OOS Sharpe was
+-0.725, PF 0.621 and drop-best-five expectancy -3.22%. OOS CAGR remained
+negative at 2x/5x/10x costs, and the 2024 result worsened materially. Final
+verdict: **INCONCLUSIVE / practical reject**, Backtest Score 14/100. See
+[`backtests/ma50_slope_v2/results/ma50_slope_2026-08-02_125453.md`](backtests/ma50_slope_v2/results/ma50_slope_2026-08-02_125453.md).
+
+Trial 521 then tested the intended market-relative version: stock and SPY
+MA50 percentage slopes over 20 aligned common sessions, requiring positive
+stock slope, stock slope above SPY slope and stock close above SMA50. It
+retained 71.1% of OOS signals and reduced CAGR loss from -3.22% to -2.89%, but
+qualifying baseline trades underperformed rejected trades by 1.24 points of
+matched-SPY excess. OOS Sharpe was -0.787, PF 0.541, mean excess -3.44% with
+95% CI [-4.99%, -1.78%], and drop-best-five expectancy -3.92%. All cost-stress
+cells and displayed OOS years remained negative. Verdict: **INCONCLUSIVE /
+practical reject**, score 14/100. See
+[`backtests/relative_ma50_slope_v2/results/relative_ma50_slope_2026-08-02_132450.md`](backtests/relative_ma50_slope_v2/results/relative_ma50_slope_2026-08-02_132450.md).
+
+Trial 522–541 exhaustively displayed the requested MA10–MA200 grid in steps of
+10 while keeping the relative-slope window fixed at 20. No cell passed all
+five frozen train gates, so validation and OOS remained sealed. MA60 had the
+highest raw train CAGR at 1.95%, but only 17 trades and -0.45% drop-best-five
+expectancy; adjacent cells were materially weaker. Among cells with at least
+20 trades, MA20 led exposure-excess but returned only 1.13% CAGR versus 1.60%
+baseline, had -1.34 pp pass-minus-fail matched excess and -2.12% trimmed
+expectancy. Family verdict: **NO_QUALIFYING_WINNER**; diagnostic score 45/100
+raw and 20/100 capped. See
+[`backtests/relative_ma_grid_v2/results/relative_ma_grid_2026-08-02_133338.md`](backtests/relative_ma_grid_v2/results/relative_ma_grid_2026-08-02_133338.md).
+
+Trial 542 removed VCP detection, breakout and the MA20 pullback entirely, then
+used the requested relative-MA60 condition as a standalone false-to-true entry.
+The apparent 21.17% train CAGR collapsed to 6.27% in validation and 4.88% in
+best-available OOS, versus 22.87% and 12.05% for SPY. Full CAGR was 7.59%
+versus 15.51% for SPY, with -5.99% exposure-matched excess CAGR. The latest
+305 trades had PF 1.222, -0.03% drop-best-five expectancy and lost money at
+5x costs. Verdict: **WORSENS**, raw score 55/100 and final survivorship-capped
+score 20/100. See
+[`backtests/ma60_only_v2/results/ma60_only_2026-08-02_161116.md`](backtests/ma60_only_v2/results/ma60_only_2026-08-02_161116.md).
+
+Trial 543 removed that standalone strategy's 60-session timeout and replaced
+it with a causal 8% completed-close trailing stop. It sharply worsened the
+latest result: CAGR fell 4.88% → -6.37%, MDD widened -25.52% → -35.39%, PF
+fell 1.222 → 0.797 and drop-best-five expectancy fell to -1.55%. The trail
+reduced average loss but cut average winners 16.12% → 9.80%, lowered win rate
+37.7% → 31.1%, and generated more whipsaw trades. Full CAGR fell 7.59% →
+-0.66%. Verdict: **WORSENS**, Backtest Score 19/100. See
+[`backtests/ma60_trailing_v2/results/ma60_trailing_2026-08-02_163423.md`](backtests/ma60_trailing_v2/results/ma60_trailing_2026-08-02_163423.md).
+
+Trial 544 kept the same standalone entry and 8% initial hard stop, but removed
+the timeout and switched to a causal 24% completed-close trailing stop only
+after a close reached +3R. Best-available OOS CAGR improved 4.88% → 6.22%, MDD
+improved -25.52% → -23.12%, and 5x-cost CAGR remained +3.63%. However, only
+31/99 OOS trades armed the trail, average holding time rose to 112 sessions,
+and removing the best five trades changed expectancy to -1.61%. The portfolio
+still trailed SPY by 5.57 points of exposure-matched CAGR. Verdict:
+**INCONCLUSIVE**, score 20/100. See
+[`backtests/ma60_3r_trailing_v2/verification_report.md`](backtests/ma60_3r_trailing_v2/verification_report.md).
+
+Trial 545–550 kept that exit frozen and searched standalone MA10/20/30/40/50/60
+entries on train only. MA40, MA50 and MA60 passed the six train gates; MA60
+retained the highest exposure-matched excess CAGR (+2.48%) and was selected.
+It then failed validation: CAGR was 6.72% versus SPY 22.87%, exposure-matched
+excess CAGR was -11.04%, and MDD was -32.96%. Best-available OOS therefore
+remained sealed. Family verdict: **VALIDATION_FAIL**, score 20/100. See
+[`backtests/ma10_60_3r_trailing_grid_v2/verification_report.md`](backtests/ma10_60_3r_trailing_grid_v2/verification_report.md).
+
+Trial 551–568 applied 18 user-supplied entry-date windows to the unchanged
+MA60/+3R exit strategy. Only seven windows overlap executable 2016+ periods.
+On best-available OOS, raw CAGR rose 6.22% → 10.08% and MDD improved -23.12%
+→ -14.17%, but exposure-matched excess CAGR worsened -5.57% → -7.32% and
+mean matched-SPY trade excess was -10.13% (95% CI [-18.29%, -1.64%]). Full
+CAGR was effectively unchanged, 9.71% → 9.76%. Because the dates' causal
+provenance is unknown, verdict: **DESCRIPTIVE_ONLY / diagnostic INCONCLUSIVE**,
+score 20/100. See
+[`backtests/ma60_period_gate_v2/verification_report.md`](backtests/ma60_period_gate_v2/verification_report.md).
+
+Trial 569–572 kept MA60, those calendar windows and the current exit fixed,
+then tested 10/20/30/40-session slope windows sequentially. The 10-session
+cell led train at 19.21% CAGR and +7.44% exposure-matched excess CAGR, but only
+18 trades made the estimate thin. In validation it returned 13.53% CAGR while
+exposure-matched excess CAGR fell to -6.93% and drop-best-five expectancy to
+-1.08%. It failed two frozen gates, so OOS stayed sealed. Outcome:
+**VALIDATION_FAIL / DESCRIPTIVE_ONLY**, score 20/100. See
+[`backtests/ma60_slope_grid_period_gate_v2/verification_report.md`](backtests/ma60_slope_grid_period_gate_v2/verification_report.md).
+
+At the user's explicit direction after that validation failure, the **current
+research candidate** now uses a 10-session MA60 slope window. Frozen Trial
+542/544/551 code remains at 20 sessions for reproducibility. The override is
+implemented in [`scripts/current_ma60_candidate.py`](scripts/current_ma60_candidate.py)
+and documented in [`docs/current_ma60_candidate.md`](docs/current_ma60_candidate.md).
+It also forces existing positions out at the first ticker open outside all
+supplied calendar windows; finite endpoints remain inclusive and the final
+2025-04-07 window remains open-ended. It remains experimental and must not be
+described as validated or deployable.
+
+The regenerated Trial 573 descriptive report returned 19.71% train CAGR,
+16.61% validation CAGR, 15.34% contaminated best-available OOS CAGR and 16.39%
+full CAGR. Full exposure-matched excess CAGR was -2.96%, while validation was
+-9.24% and contaminated OOS was -3.70%. The normalized raw score was 82, but
+incomplete survivorship coverage and the absence of untouched OOS hard-capped
+the final score at **20/100 (Reject)**. See
+[`backtests/current_ma60_candidate_v2/results/current_ma60_candidate_2026-08-02_192559.md`](backtests/current_ma60_candidate_v2/results/current_ma60_candidate_2026-08-02_192559.md).
+
+Trial 574 removed only the forced `period_exit`. Contaminated OOS CAGR fell
+15.34% → 12.27%, MDD worsened -10.81% → -14.60%, and Sharpe fell 1.124 →
+0.869. Full CAGR fell 16.39% → 15.16% and MDD worsened -18.80% → -27.24%.
+Positions stayed open much longer and occupied scarce portfolio slots; the
+ablation therefore supports retaining `period_exit` as a portfolio-risk and
+capital-recycling rule, but remains post-hoc and non-validating. See
+[`backtests/current_ma60_candidate_no_period_exit_v2/comparison_with_period_exit_2026-08-02.md`](backtests/current_ma60_candidate_no_period_exit_v2/comparison_with_period_exit_2026-08-02.md).
+
+Source audit then confirmed that the periods are the actual next-open IN/OUT
+states from the independently maintained `qqq_backtest.py` breadth strategy.
+Trial 575 synchronized stock exits with each QQQ exit-date open instead of
+waiting one extra session. Against a no-QQQ-regime control, synchronized CAGR
+improved 17.76% → 20.08% train, 12.22% → 18.97% validation, 11.01% → 15.66%
+contaminated OOS and 14.46% → 17.33% full; MDD improved in all four partitions.
+Exposure-matched excess remained negative outside train, so this is a useful
+market-timing/risk overlay, not evidence of stock-selection alpha. See
+[`backtests/qqq_synchronized_regime_v2/source_and_overlay_report.md`](backtests/qqq_synchronized_regime_v2/source_and_overlay_report.md).
+
 The replay also found and fixed a historical benchmark-alignment defect.
 Stocks with short or gapped histories had previously selected SPY by the
 stock's integer bar offset, which could use a benchmark observation after the
@@ -784,6 +923,18 @@ report excess-vs-SPY with t-stats and bootstrap CIs:
 | [`industry_momentum_vcp_experiment.py`](scripts/industry_momentum_vcp_experiment.py) | Does a frozen 6-1 GICS industry-momentum gate rescue support-qualified VCPs? *(No — fewer trades, still negative OOS)* |
 | [`daily_score_decay_discovery.py`](scripts/daily_score_decay_discovery.py) | Purged daily causal entry/exit research with fixed fit, calibration and later evaluation windows |
 | [`character_change_exit_discovery.py`](scripts/character_change_exit_discovery.py) | Does a strong-trend → damage → failed-recovery/swing-low exit improve the unchanged detection entry? *(No — Trial 496–504 train reject)* |
+| [`relative_divergence_experiment.py`](scripts/relative_divergence_experiment.py) | Does a strict positive 20-session stock-minus-SPY gate improve the frozen pullback strategy? *(Inconclusive — Trial 505–518 density reject; Trial 519 descriptive audit)* |
+| [`ma50_slope_experiment.py`](scripts/ma50_slope_experiment.py) | Does close above a strictly rising SMA50 improve the frozen pullback strategy? *(Inconclusive / practical reject — Trial 520)* |
+| [`relative_ma50_slope_experiment.py`](scripts/relative_ma50_slope_experiment.py) | Does a positive stock MA50 percentage slope above SPY's aligned MA50 slope improve the frozen pullback strategy? *(Inconclusive / practical reject — Trial 521)* |
+| [`relative_ma_grid_experiment.py`](scripts/relative_ma_grid_experiment.py) | Train-only MA10–MA200 grid with fixed 20-session stock-versus-SPY slope logic and frozen sequential gates *(No qualifying winner — Trial 522–541)* |
+| [`ma60_only_experiment.py`](scripts/ma60_only_experiment.py) | Standalone false-to-true relative-MA60 entry with no VCP/MA20/Edge Rank *(Worsens — Trial 542)* |
+| [`ma60_trailing_experiment.py`](scripts/ma60_trailing_experiment.py) | Standalone relative-MA60 entry with timeout removed and causal 8% close-watermark trail *(Worsens — Trial 543)* |
+| [`ma60_3r_trailing_experiment.py`](scripts/ma60_3r_trailing_experiment.py) | Standalone relative-MA60 entry with 8% hard stop until +3R, then causal 24% close-watermark trail and no timeout *(Inconclusive — Trial 544)* |
+| [`ma10_60_3r_trailing_grid_experiment.py`](scripts/ma10_60_3r_trailing_grid_experiment.py) | Train-first standalone MA10–60 buy grid with the Trial 544 exit unchanged *(Validation fail — Trial 545–550)* |
+| [`ma60_period_gate_experiment.py`](scripts/ma60_period_gate_experiment.py) | User-supplied fill-date windows on unchanged MA60/+3R strategy, with equal-clock comparison *(Descriptive only — Trial 551–568)* |
+| [`ma60_slope_grid_period_gate_experiment.py`](scripts/ma60_slope_grid_period_gate_experiment.py) | Train-first 10/20/30/40-session MA60 slope grid inside the supplied calendar *(Validation fail / descriptive only — Trial 569–572)* |
+| [`current_ma60_candidate.py`](scripts/current_ma60_candidate.py) | Canonical user-directed MA60/slope10 research override; preserves frozen 20-session trial implementations *(Validation failed; not deployable)* |
+| [`current_ma60_candidate_backtest.py`](scripts/current_ma60_candidate_backtest.py) | Regenerates the current slope10 plus forced-period-exit report, cost stress, trade logs and equity curves *(Trial 573; descriptive only)* |
 | [`exploratory_existing_data_verification.py`](scripts/exploratory_existing_data_verification.py) | Full Trial 288 replay audit: score, costs, folds, sensitivity, trims, bootstrap, PSR/DSR and causality |
 | [`train_feasibility_audit.py`](scripts/train_feasibility_audit.py) | Determines whether a declared signal family clears its training gate before validation may be opened |
 | [`fetch_r2k_membership.py`](scripts/fetch_r2k_membership.py) | Rebuild R2K PIT membership intervals from quarterly IWM holdings snapshots |
@@ -812,7 +963,7 @@ python3 -m pytest \
 python3 -m pytest tests/ -v
 ```
 
-Latest verified baseline after Trial 496–504: **524 passed**.
+Latest verified suite after the QQQ regime execution audit: **617 passed**.
 
 ## Docs
 
@@ -823,6 +974,23 @@ Latest verified baseline after Trial 496–504: **524 passed**.
 - `backtests/exploratory_existing_data_replay/results/verification_report.md` — latest corrected replay verdict
 - `backtests/character_change_exit_v2/frozen_spec.md` — latest frozen exit-family specification
 - `backtests/character_change_exit_v2/results/character_change_exit_2026-08-02_002548.md` — Trial 496–504 verification report
+- `backtests/relative_divergence_v2/results/relative_divergence_2026-08-02_111455.md` — Trial 505–519 verification report
+- `backtests/ma50_slope_v2/results/ma50_slope_2026-08-02_125453.md` — Trial 520 verification report
+- `backtests/relative_ma50_slope_v2/results/relative_ma50_slope_2026-08-02_132450.md` — Trial 521 verification report
+- `backtests/relative_ma_grid_v2/results/relative_ma_grid_2026-08-02_133338.md` — Trial 522–541 grid report
+- `backtests/ma60_only_v2/results/ma60_only_2026-08-02_161116.md` — Trial 542 standalone MA60-only report
+- `backtests/ma60_trailing_v2/results/ma60_trailing_2026-08-02_163423.md` — Trial 543 standalone MA60 trailing-stop report
+- `backtests/ma60_3r_trailing_v2/verification_report.md` — Trial 544 3R-armed 24% trailing-stop verification
+- `backtests/ma10_60_3r_trailing_grid_v2/verification_report.md` — Trial 545–550 buy-period grid verification
+- `backtests/ma60_period_gate_v2/verification_report.md` — Trial 551–568 calendar-gate verification
+- `backtests/ma60_slope_grid_period_gate_v2/verification_report.md` — Trial 569–572 slope-window grid verification
+- `docs/current_ma60_candidate.md` — current user-directed MA60/slope10 research configuration
+- `backtests/current_ma60_candidate_v2/results/current_ma60_candidate_2026-08-02_192559.md` — Trial 573 regenerated current-candidate performance report
+- `backtests/current_ma60_candidate_v2/results/current_ma60_candidate_2026-08-02_192559_zh-HK.md` — Trial 573 廣東話／繁體中文報告
+- `backtests/current_ma60_candidate_no_period_exit_v2/results/current_ma60_candidate_no_period_exit_2026-08-02_202140.md` — Trial 574 no-period-exit ablation report
+- `backtests/current_ma60_candidate_no_period_exit_v2/comparison_with_period_exit_2026-08-02.md` — with/without period-exit comparison
+- `backtests/qqq_synchronized_regime_v2/source_and_overlay_report.md` — QQQ period provenance, execution audit and four-way overlay comparison
+- `backtests/qqq_synchronized_regime_v2/results/current_ma60_candidate_qqq_synchronized_2026-08-02_203323.md` — Trial 575 synchronized QQQ overlay report
 
 ## Disclaimer
 
