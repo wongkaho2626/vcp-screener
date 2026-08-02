@@ -653,6 +653,222 @@ curl -L --fail --silent --show-error --max-time 30 \
 git diff --check
 ```
 
+## Trial 505–519: positive stock/SPY relative divergence
+
+```bash
+# Confirmatory density/sequential run. It stopped outcome-free at 24/34 train
+# activations, below the frozen minimum 30.
+.venv/bin/python scripts/relative_divergence_experiment.py \
+  backtests/exploratory_existing_data_replay/detections_date_aligned/vcp_backtest_2026-08-01_202358.json \
+  --price-csv SP500_PIT_2016_2026.csv \
+  --coverage-json backtests/pivot_retest_v2/coverage_2016_2026.json \
+  --membership-csv scripts/data/sp500_membership.csv \
+  --breadth-csv scripts/data/sp500_breadth_daily.csv \
+  --output-dir backtests/relative_divergence_v2/results \
+  --iterations 1000
+
+# Separately frozen post-density diagnostic. This opens every chronological
+# fold and sensitivity cell but cannot support an IMPROVES verdict.
+.venv/bin/python scripts/relative_divergence_experiment.py \
+  backtests/exploratory_existing_data_replay/detections_date_aligned/vcp_backtest_2026-08-01_202358.json \
+  --price-csv SP500_PIT_2016_2026.csv \
+  --coverage-json backtests/pivot_retest_v2/coverage_2016_2026.json \
+  --membership-csv scripts/data/sp500_membership.csv \
+  --breadth-csv scripts/data/sp500_breadth_daily.csv \
+  --output-dir backtests/relative_divergence_v2/results \
+  --iterations 1000 \
+  --descriptive-full-audit
+
+.venv/bin/python -m pytest tests/test_relative_divergence_experiment.py -q
+.venv/bin/python -m pytest tests/ -q
+.venv/bin/python -m py_compile scripts/relative_divergence_experiment.py
+git diff --check
+```
+
+## Trial 520: positive MA50 slope confirmation
+
+```bash
+.venv/bin/python scripts/ma50_slope_experiment.py \
+  backtests/exploratory_existing_data_replay/detections_date_aligned/vcp_backtest_2026-08-01_202358.json \
+  --price-csv SP500_PIT_2016_2026.csv \
+  --coverage-json backtests/pivot_retest_v2/coverage_2016_2026.json \
+  --membership-csv scripts/data/sp500_membership.csv \
+  --breadth-csv scripts/data/sp500_breadth_daily.csv \
+  --output-dir backtests/ma50_slope_v2/results \
+  --iterations 1000
+
+.venv/bin/python -m pytest tests/test_ma50_slope_experiment.py -q
+.venv/bin/python -m pytest tests/ -q
+.venv/bin/python -m py_compile scripts/ma50_slope_experiment.py
+git diff --check
+```
+
+## Trial 521: stock MA50 slope versus SPY MA50 slope
+
+```bash
+.venv/bin/python scripts/relative_ma50_slope_experiment.py \
+  backtests/exploratory_existing_data_replay/detections_date_aligned/vcp_backtest_2026-08-01_202358.json \
+  --price-csv SP500_PIT_2016_2026.csv \
+  --coverage-json backtests/pivot_retest_v2/coverage_2016_2026.json \
+  --membership-csv scripts/data/sp500_membership.csv \
+  --breadth-csv scripts/data/sp500_breadth_daily.csv \
+  --output-dir backtests/relative_ma50_slope_v2/results \
+  --iterations 1000
+
+.venv/bin/python -m pytest tests/test_relative_ma50_slope_experiment.py -q
+.venv/bin/python -m pytest tests/ -q
+.venv/bin/python -m py_compile scripts/relative_ma50_slope_experiment.py
+git diff --check
+```
+
+## Trial 522–541: relative-MA period grid
+
+```bash
+.venv/bin/python scripts/relative_ma_grid_experiment.py \
+  backtests/exploratory_existing_data_replay/detections_date_aligned/vcp_backtest_2026-08-01_202358.json \
+  --price-csv SP500_PIT_2016_2026.csv \
+  --coverage-json backtests/pivot_retest_v2/coverage_2016_2026.json \
+  --membership-csv scripts/data/sp500_membership.csv \
+  --output-dir backtests/relative_ma_grid_v2/results \
+  --iterations 1000
+
+.venv/bin/python -m pytest tests/test_relative_ma_grid_experiment.py -q
+.venv/bin/python -m pytest tests/ -q
+.venv/bin/python -m py_compile scripts/relative_ma_grid_experiment.py
+git diff --check
+```
+
+## Trial 542: standalone relative-MA60 entry
+
+```bash
+.venv/bin/python scripts/ma60_only_experiment.py \
+  --price-csv SP500_PIT_2016_2026.csv \
+  --coverage-json backtests/pivot_retest_v2/coverage_2016_2026.json \
+  --membership-csv scripts/data/sp500_membership.csv \
+  --sector-json scripts/data/sp500_constituents.json \
+  --output-dir backtests/ma60_only_v2/results \
+  --iterations 1000
+
+.venv/bin/python -m pytest tests/test_ma60_only_experiment.py -q
+.venv/bin/python -m pytest tests/ -q
+.venv/bin/python -m py_compile scripts/ma60_only_experiment.py
+git diff --check
+```
+
+## Trial 543: standalone MA60 with no timeout and 8% trailing stop
+
+```bash
+.venv/bin/python scripts/ma60_trailing_experiment.py \
+  --price-csv SP500_PIT_2016_2026.csv \
+  --coverage-json backtests/pivot_retest_v2/coverage_2016_2026.json \
+  --membership-csv scripts/data/sp500_membership.csv \
+  --sector-json scripts/data/sp500_constituents.json \
+  --baseline-json backtests/ma60_only_v2/results/ma60_only_2026-08-02_161116.json \
+  --output-dir backtests/ma60_trailing_v2/results \
+  --iterations 1000
+
+.venv/bin/python -m pytest \
+  tests/test_portfolio_backtest.py \
+  tests/test_ma60_trailing_experiment.py -q
+.venv/bin/python -m pytest tests/ -q
+.venv/bin/python -m py_compile \
+  scripts/portfolio_backtest.py \
+  scripts/ma60_trailing_experiment.py
+git diff --check
+```
+
+## Trial 544: 8% hard stop until 3R, then 24% trailing stop
+
+```bash
+.venv/bin/python scripts/ma60_3r_trailing_experiment.py \
+  --price-csv SP500_PIT_2016_2026.csv \
+  --coverage-json backtests/pivot_retest_v2/coverage_2016_2026.json \
+  --membership-csv scripts/data/sp500_membership.csv \
+  --sector-json scripts/data/sp500_constituents.json \
+  --timeout-json backtests/ma60_only_v2/results/ma60_only_2026-08-02_161116.json \
+  --immediate-trail-json backtests/ma60_trailing_v2/results/ma60_trailing_2026-08-02_163423.json \
+  --output-dir backtests/ma60_3r_trailing_v2/results \
+  --iterations 1000
+
+.venv/bin/python -m pytest \
+  tests/test_portfolio_backtest.py \
+  tests/test_ma60_3r_trailing_experiment.py -q
+.venv/bin/python -m pytest tests/ -q
+.venv/bin/python -m py_compile \
+  scripts/portfolio_backtest.py \
+  scripts/ma60_3r_trailing_experiment.py
+git diff --check
+```
+
+## Trial 545–550: MA10–60 buy grid with Trial 544 exit frozen
+
+```bash
+.venv/bin/python scripts/ma10_60_3r_trailing_grid_experiment.py \
+  --price-csv SP500_PIT_2016_2026.csv \
+  --coverage-json backtests/pivot_retest_v2/coverage_2016_2026.json \
+  --membership-csv scripts/data/sp500_membership.csv \
+  --sector-json scripts/data/sp500_constituents.json \
+  --incumbent-json backtests/ma60_3r_trailing_v2/results/ma60_3r_trailing_2026-08-02_165231.json \
+  --output-dir backtests/ma10_60_3r_trailing_grid_v2/results \
+  --iterations 1000
+
+.venv/bin/python -m pytest \
+  tests/test_ma60_only_experiment.py \
+  tests/test_ma10_60_3r_trailing_grid_experiment.py \
+  tests/test_portfolio_backtest.py -q
+.venv/bin/python -m pytest tests/ -q
+.venv/bin/python -m py_compile \
+  scripts/ma60_only_experiment.py \
+  scripts/ma10_60_3r_trailing_grid_experiment.py
+git diff --check
+```
+
+## Trial 551–568: user-supplied MA60 entry-date windows
+
+```bash
+.venv/bin/python scripts/ma60_period_gate_experiment.py \
+  --price-csv SP500_PIT_2016_2026.csv \
+  --coverage-json backtests/pivot_retest_v2/coverage_2016_2026.json \
+  --membership-csv scripts/data/sp500_membership.csv \
+  --sector-json scripts/data/sp500_constituents.json \
+  --baseline-json backtests/ma60_3r_trailing_v2/results/ma60_3r_trailing_2026-08-02_165231.json \
+  --output-dir backtests/ma60_period_gate_v2/results \
+  --iterations 1000
+
+.venv/bin/python -m pytest \
+  tests/test_ma60_period_gate_experiment.py \
+  tests/test_portfolio_backtest.py \
+  tests/test_ma60_only_experiment.py -q
+.venv/bin/python -m pytest tests/ -q
+.venv/bin/python -m py_compile \
+  scripts/portfolio_backtest.py \
+  scripts/ma60_only_experiment.py \
+  scripts/ma60_period_gate_experiment.py
+git diff --check
+```
+
+## Trial 569–572: MA60 slope-window grid inside supplied calendar
+
+```bash
+.venv/bin/python scripts/ma60_slope_grid_period_gate_experiment.py \
+  --price-csv SP500_PIT_2016_2026.csv \
+  --coverage-json backtests/pivot_retest_v2/coverage_2016_2026.json \
+  --membership-csv scripts/data/sp500_membership.csv \
+  --sector-json scripts/data/sp500_constituents.json \
+  --incumbent-json backtests/ma60_period_gate_v2/results/ma60_period_gate_2026-08-02_172922.json \
+  --output-dir backtests/ma60_slope_grid_period_gate_v2/results \
+  --iterations 1000
+
+.venv/bin/python -m pytest \
+  tests/test_ma60_slope_grid_period_gate_experiment.py \
+  tests/test_ma60_period_gate_experiment.py \
+  tests/test_portfolio_backtest.py -q
+.venv/bin/python -m pytest tests/ -q
+.venv/bin/python -m py_compile \
+  scripts/ma60_slope_grid_period_gate_experiment.py
+git diff --check
+```
+
 `--no-support-resistance` is reproducibility-safe here because the support /
 resistance overlay is additive and no S/R entry filter is enabled. It changes
 runtime, not VCP detection decisions.
@@ -663,3 +879,61 @@ completed, rejected audit and must not be rerun as part of the 2006+ workflow.
 Current evidence boundaries and limitations are recorded in
 `backtests/current_2006_plus_data_audit/inventory.md` and
 `backtests/adjusted_v2/completion_blocker_audit.md`.
+
+## Trial 573: current slope10 candidate with forced period exit
+
+```bash
+.venv/bin/python scripts/current_ma60_candidate_backtest.py \
+  --price-csv SP500_PIT_2016_2026.csv \
+  --coverage-json backtests/pivot_retest_v2/coverage_2016_2026.json \
+  --membership-csv scripts/data/sp500_membership.csv \
+  --sector-json scripts/data/sp500_constituents.json \
+  --output-dir backtests/current_ma60_candidate_v2/results \
+  --iterations 1000
+
+.venv/bin/python -m pytest tests/ -q
+.venv/bin/python -m py_compile \
+  scripts/current_ma60_candidate.py \
+  scripts/current_ma60_candidate_backtest.py \
+  scripts/portfolio_backtest.py
+git diff --check
+```
+
+This report is descriptive only. Slope10 failed its prior validation gate, the
+calendar endpoints may be post-hoc, and the forced period exit was specified
+after all available chronological partitions had already been inspected.
+
+## Trial 574: no-period-exit ablation
+
+```bash
+.venv/bin/python scripts/current_ma60_candidate_backtest.py \
+  --price-csv SP500_PIT_2016_2026.csv \
+  --coverage-json backtests/pivot_retest_v2/coverage_2016_2026.json \
+  --membership-csv scripts/data/sp500_membership.csv \
+  --sector-json scripts/data/sp500_constituents.json \
+  --output-dir backtests/current_ma60_candidate_no_period_exit_v2/results \
+  --iterations 1000 \
+  --disable-period-exit
+```
+
+## Trial 575–576: QQQ-synchronized overlay and no-regime control
+
+```bash
+.venv/bin/python scripts/current_ma60_candidate_backtest.py \
+  --price-csv SP500_PIT_2016_2026.csv \
+  --coverage-json backtests/pivot_retest_v2/coverage_2016_2026.json \
+  --membership-csv scripts/data/sp500_membership.csv \
+  --sector-json scripts/data/sp500_constituents.json \
+  --output-dir backtests/qqq_synchronized_regime_v2/results \
+  --iterations 1000 \
+  --qqq-synchronized-exit
+
+.venv/bin/python scripts/current_ma60_candidate_backtest.py \
+  --price-csv SP500_PIT_2016_2026.csv \
+  --coverage-json backtests/pivot_retest_v2/coverage_2016_2026.json \
+  --membership-csv scripts/data/sp500_membership.csv \
+  --sector-json scripts/data/sp500_constituents.json \
+  --output-dir backtests/ma60_slope10_no_qqq_regime_v2/results \
+  --iterations 1000 \
+  --disable-calendar-overlay
+```

@@ -698,6 +698,242 @@ class PortfolioBacktestTests(unittest.TestCase):
         assert trade["exit_reason"] == "breakeven_stop"
         assert trade["breakeven_armed_date"] == "d02"
 
+    def test_trailing_stop_ratchet_is_not_retroactive_to_same_day_low(self):
+        bars = [
+            {"date": "d00", "open": 100, "high": 101, "low": 99,
+             "close": 100, "volume": 1_000_000},
+            {"date": "d01", "open": 100, "high": 101, "low": 99,
+             "close": 100, "volume": 1_000_000},
+            # Close raises tomorrow's stop to 101.20, but today's earlier low
+            # cannot trigger that newly confirmed level.
+            {"date": "d02", "open": 101, "high": 111, "low": 95,
+             "close": 110, "volume": 1_000_000},
+            {"date": "d03", "open": 105, "high": 106, "low": 100,
+             "close": 101, "volume": 1_000_000},
+        ]
+        signal = {
+            "symbol": "AAA", "sector": "Tech", "signal_date": "d00",
+            "fill_date": "d01", "fill_idx": 1, "edge_rank": 82.5,
+            "pattern_stop": 92,
+        }
+        with patch("portfolio_backtest._candidate_signals", return_value=[signal]):
+            out = run_portfolio(
+                {}, {"AAA": bars}, Config(commission_bps=0, slippage_bps=0),
+                exit_rule="trailing_stop", exit_params={"trailing_pct": 8},
+            )
+        trade = out["trades"][0]
+        assert trade["exit_date"] == "d03"
+        assert trade["exit_price"] == 101.2
+        assert trade["exit_reason"] == "trailing_stop"
+
+    def test_trailing_stop_removes_timeout(self):
+        bars = [
+            {"date": f"d{i:02}", "open": 100, "high": 101, "low": 99,
+             "close": 100, "volume": 1_000_000}
+            for i in range(8)
+        ]
+        signal = {
+            "symbol": "AAA", "sector": "Tech", "signal_date": "d00",
+            "fill_date": "d01", "fill_idx": 1, "edge_rank": 82.5,
+            "pattern_stop": 92,
+        }
+        with patch("portfolio_backtest._candidate_signals", return_value=[signal]):
+            out = run_portfolio(
+                {}, {"AAA": bars},
+                Config(max_hold_bars=2, commission_bps=0, slippage_bps=0),
+                exit_rule="trailing_stop", exit_params={"trailing_pct": 8},
+            )
+        assert out["trades"][0]["exit_reason"] == "end_of_data"
+        assert out["trades"][0]["exit_date"] == "d07"
+
+    def test_trailing_stop_rejects_invalid_percentage(self):
+        with self.assertRaises(ValueError):
+            run_portfolio(
+                {}, {}, Config(), exit_rule="trailing_stop",
+                exit_params={"trailing_pct": 0},
+            )
+
+    def test_three_r_arm_switches_from_hard_stop_to_wide_trail_next_day(self):
+        bars = [
+            {"date": "d00", "open": 100, "high": 101, "low": 99,
+             "close": 100, "volume": 1_000_000},
+            # Entry at 100, R=8, and the entry close reaches +3R at 124.
+            {"date": "d01", "open": 100, "high": 125, "low": 99,
+             "close": 124, "volume": 1_000_000},
+            # Armed trail is 124 * .76 = 94.24 and is active today.
+            {"date": "d02", "open": 100, "high": 101, "low": 94,
+             "close": 95, "volume": 1_000_000},
+        ]
+        signal = {
+            "symbol": "AAA", "sector": "Tech", "signal_date": "d00",
+            "fill_date": "d01", "fill_idx": 1, "edge_rank": 82.5,
+            "pattern_stop": 92,
+        }
+        with patch("portfolio_backtest._candidate_signals", return_value=[signal]):
+            out = run_portfolio(
+                {}, {"AAA": bars}, Config(commission_bps=0, slippage_bps=0),
+                exit_rule="armed_trailing_stop",
+                exit_params={"trigger_r": 3, "trailing_pct": 24},
+            )
+        trade = out["trades"][0]
+        assert trade["trailing_armed_date"] == "d01"
+        assert trade["exit_date"] == "d02"
+        assert trade["exit_price"] == 94.24
+        assert trade["exit_reason"] == "armed_trailing_stop"
+
+    def test_three_r_trail_keeps_hard_stop_and_has_no_timeout_before_arm(self):
+        bars = [
+            {"date": f"d{i:02}", "open": 100, "high": 105, "low": 93,
+             "close": 105, "volume": 1_000_000}
+            for i in range(8)
+        ]
+        signal = {
+            "symbol": "AAA", "sector": "Tech", "signal_date": "d00",
+            "fill_date": "d01", "fill_idx": 1, "edge_rank": 82.5,
+            "pattern_stop": 92,
+        }
+        with patch("portfolio_backtest._candidate_signals", return_value=[signal]):
+            out = run_portfolio(
+                {}, {"AAA": bars},
+                Config(max_hold_bars=2, commission_bps=0, slippage_bps=0),
+                exit_rule="armed_trailing_stop",
+                exit_params={"trigger_r": 3, "trailing_pct": 24},
+            )
+        trade = out["trades"][0]
+        assert trade["exit_reason"] == "end_of_data"
+        assert "trailing_armed_date" not in trade
+
+    def test_holding_window_exit_uses_first_outside_session_open(self):
+        bars = [
+            {"date": date, "open": open_, "high": 110, "low": low,
+             "close": 105, "volume": 1_000_000}
+            for date, open_, low in (
+                ("2024-01-02", 100, 99),
+                ("2024-01-03", 101, 99),
+                ("2024-01-04", 102, 99),
+                # Outside the inclusive window; even though the low also
+                # breaches the hard stop, the opening liquidation comes first.
+                ("2024-01-05", 103, 80),
+            )
+        ]
+        signal = {
+            "symbol": "AAA", "sector": "Tech", "signal_date": "2024-01-02",
+            "fill_date": "2024-01-03", "fill_idx": 1, "edge_rank": 82.5,
+            "pattern_stop": 92,
+        }
+        with patch("portfolio_backtest._candidate_signals", return_value=[signal]):
+            out = run_portfolio(
+                {}, {"AAA": bars}, Config(commission_bps=0, slippage_bps=0),
+                exit_rule="armed_trailing_stop",
+                exit_params={
+                    "trigger_r": 3, "trailing_pct": 24,
+                    "holding_windows": (("2024-01-02", "2024-01-04"),),
+                },
+            )
+        trade = out["trades"][0]
+        assert trade["exit_date"] == "2024-01-05"
+        assert trade["exit_price"] == 103
+        assert trade["exit_reason"] == "period_exit"
+
+    def test_open_ended_holding_window_does_not_force_exit(self):
+        bars = [
+            {"date": date, "open": 100, "high": 106, "low": 93,
+             "close": 105, "volume": 1_000_000}
+            for date in ("2025-04-07", "2025-04-08", "2025-04-09")
+        ]
+        signal = {
+            "symbol": "AAA", "sector": "Tech", "signal_date": "2025-04-07",
+            "fill_date": "2025-04-08", "fill_idx": 1, "edge_rank": 82.5,
+            "pattern_stop": 92,
+        }
+        with patch("portfolio_backtest._candidate_signals", return_value=[signal]):
+            out = run_portfolio(
+                {}, {"AAA": bars}, Config(commission_bps=0, slippage_bps=0),
+                exit_rule="armed_trailing_stop",
+                exit_params={
+                    "trigger_r": 3, "trailing_pct": 24,
+                    "holding_windows": (("2025-04-07", None),),
+                },
+            )
+        assert out["trades"][0]["exit_reason"] == "end_of_data"
+
+    def test_qqq_synchronized_exit_uses_finite_end_open(self):
+        bars = [
+            {"date": date, "open": open_, "high": 110, "low": 99,
+             "close": 105, "volume": 1_000_000}
+            for date, open_ in (
+                ("2024-12-17", 100),
+                ("2024-12-18", 101),
+                ("2024-12-19", 102),
+                ("2024-12-20", 103),
+            )
+        ]
+        signal = {
+            "symbol": "AAA", "sector": "Tech", "signal_date": "2024-12-17",
+            "fill_date": "2024-12-18", "fill_idx": 1, "edge_rank": 82.5,
+            "pattern_stop": 92,
+        }
+        with patch("portfolio_backtest._candidate_signals", return_value=[signal]):
+            out = run_portfolio(
+                {}, {"AAA": bars}, Config(commission_bps=0, slippage_bps=0),
+                exit_rule="armed_trailing_stop",
+                exit_params={
+                    "trigger_r": 3, "trailing_pct": 24,
+                    "holding_windows": (("2023-10-30", "2024-12-19"),),
+                    "holding_window_exit_timing": "window_end_open",
+                },
+            )
+        trade = out["trades"][0]
+        assert trade["exit_date"] == "2024-12-19"
+        assert trade["exit_price"] == 102
+        assert trade["exit_reason"] == "period_exit"
+
+    def test_holding_window_exit_timing_rejects_unknown_mode(self):
+        with self.assertRaisesRegex(ValueError, "holding_window_exit_timing"):
+            run_portfolio(
+                {}, {}, Config(), exit_rule="armed_trailing_stop",
+                exit_params={
+                    "trigger_r": 3, "trailing_pct": 24,
+                    "holding_window_exit_timing": "same_close",
+                },
+            )
+
+    def test_holding_windows_reject_invalid_dates(self):
+        with self.assertRaisesRegex(ValueError, "YYYY-MM-DD"):
+            run_portfolio(
+                {}, {}, Config(), exit_rule="armed_trailing_stop",
+                exit_params={
+                    "trigger_r": 3, "trailing_pct": 24,
+                    "holding_windows": (("not-a-date", None),),
+                },
+            )
+
+    def test_three_r_trail_rejects_invalid_parameters(self):
+        with self.assertRaises(ValueError):
+            run_portfolio(
+                {}, {}, Config(), exit_rule="armed_trailing_stop",
+                exit_params={"trigger_r": 0, "trailing_pct": 24},
+            )
+
+    def test_explicit_simulation_start_preserves_pre_signal_cash_dates(self):
+        bars = [
+            {"date": f"d{i:02}", "open": 100, "high": 101, "low": 99,
+             "close": 100, "volume": 1_000_000}
+            for i in range(5)
+        ]
+        signal = {
+            "symbol": "AAA", "sector": "Tech", "signal_date": "d02",
+            "fill_date": "d03", "fill_idx": 3, "edge_rank": 82.5,
+            "pattern_stop": 92,
+        }
+        with patch("portfolio_backtest._candidate_signals", return_value=[signal]):
+            out = run_portfolio(
+                {}, {"AAA": bars}, Config(commission_bps=0, slippage_bps=0),
+                simulation_start_date="d00",
+            )
+        assert out["equity_curve"][0]["date"] == "d00"
+        assert out["equity_curve"][0]["positions"] == 0
+
     def test_pivot_failure_close_exits_at_following_open(self):
         bars = [
             {"date": "d00", "open": 101, "high": 102, "low": 100, "close": 101, "volume": 1_000_000},

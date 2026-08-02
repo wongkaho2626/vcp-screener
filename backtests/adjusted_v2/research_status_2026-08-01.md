@@ -89,6 +89,20 @@ slippage on each side. Formal validation and untouched OOS were not accessed.
 | 483–488 | 20-return lag-1 autocorrelation zero-cross lifecycle | 103 train | 1.29% train | 0.499 | 1.515 | -4.32% | -0.47% | train fail; validation/OOS sealed |
 | 489–495 | SEC weighted-average-share contraction, fixed-20 exit | 100 train | 0.69% train | 0.291 | 1.025 | -3.30% | -0.57% | train fail; validation/OOS sealed |
 | 496–504 | Strong trend -> character damage -> resistance-flip/swing-low exit | 88 train | 0.50% train | 0.228 | 0.982 | -3.26% | -0.87% | train fail; validation/OOS sealed |
+| 505–519 | Positive 20d stock-minus-SPY confirmation gate | 23 train / 64 validation / 101 best-available OOS | 0.75% / 2.52% / -2.16% | 0.439 / 0.602 / -0.566 | 1.330 / 1.743 / 0.586 | -2.05% / -7.74% / -12.03% | -3.27% / 0.54% / -3.49% | confirmatory density fail; later cells descriptive only; INCONCLUSIVE |
+| 520 | Close above SMA50 + positive 20-session SMA50 slope | 26 train / 78 validation / 111 best-available OOS | 1.36% / 1.14% / -2.81% | 0.574 / 0.292 / -0.725 | 1.498 / 1.313 / 0.621 | -3.91% / -8.65% / -14.25% | -1.97% / -0.77% / -3.22% | fixed three-fold test; INCONCLUSIVE / practical reject |
+| 521 | Positive stock MA50 slope above aligned SPY MA50 slope | 20 train / 60 validation / 94 best-available OOS | 0.84% / 1.28% / -2.89% | 0.383 / 0.363 / -0.787 | 1.368 / 1.526 / 0.541 | -3.94% / -7.16% / -14.46% | -2.95% / -0.50% / -3.92% | stock-selection excess worsened OOS; INCONCLUSIVE / practical reject |
+| 522–541 | MA10–200 relative-slope train grid, step 10 | best raw MA60: 17 train; >=20-trade leader MA20: 23 | 1.95% MA60 / 1.13% MA20 | 0.873 / 0.593 | 2.910 / 1.478 | -1.17% / -3.06% | -0.45% / -2.12% | zero all-gates winners; validation/OOS sealed |
+| 542 | Standalone relative-MA60 rising-edge entry; no VCP/MA20/Edge Rank | 108 train / 218 validation / 305 best-available OOS | 21.17% / 6.27% / 4.88% | 1.643 / 0.411 / 0.357 | 2.874 / 1.312 / 1.222 | -10.81% / -35.61% / -25.52% | 3.24% / 0.37% / -0.03% | train collapse; materially trails SPY; WORSENS |
+| 543 | Same standalone MA60 entry; remove timeout, 8% close-watermark trail | 112 train / 235 validation / 411 best-available OOS | 8.66% / 7.38% / -6.37% | 0.775 / 0.502 / -0.333 | 1.671 / 1.415 / 0.797 | -19.45% / -27.03% / -35.39% | -0.20% / 0.51% / -1.55% | latest CAGR/excess/MDD/cost all worsen; WORSENS |
+| 544 | Same standalone MA60 entry; 8% hard stop until +3R, then 24% close trail; no timeout | 18 train / 48 validation / 99 best-available OOS | 13.40% / 6.72% / 6.22% | 1.049 / 0.437 / 0.442 | 7.692 / 2.271 / 1.605 | -13.75% / -32.96% / -23.12% | 3.51% / 0.00% / -1.61% | improves latest CAGR/MDD/cost but fails trim-five; INCONCLUSIVE |
+| 545–550 | Standalone MA10–60 buy grid; Trial 544 exit frozen | MA40/50/60 train pass; MA60 selected, 18 train / 48 validation | 13.40% / 6.72% | 1.049 / 0.437 | 7.692 / 2.271 | -13.75% / -32.96% | 3.51% / 0.00% | validation excess CAGR -11.04% and MDD fail; OOS sealed; VALIDATION_FAIL |
+| 551–568 | 18 user-supplied MA60 fill-date windows; exit unchanged | 16 train / 47 validation / 49 descriptive OOS | 13.56% / 8.34% / 10.08% | 1.078 / 0.506 / 0.743 | 8.704 / 2.598 / 2.972 | -12.54% / -31.59% / -14.17% | 4.44% / 0.34% / 2.22% | OOS excess CAGR worsens to -7.32%; 11/18 windows untestable; DESCRIPTIVE_ONLY |
+| 569–572 | MA60 slope-window grid 10/20/30/40 inside supplied calendar | slope10 selected; 18 train / 44 validation | 19.21% / 13.53% | 1.362 / 0.768 | 8.679 / 3.715 | -9.35% / -28.86% | 4.70% / -1.08% | validation excess CAGR -6.93% and trim fail; OOS sealed; VALIDATION_FAIL |
+| 573 | Current slope10 plus forced opening exit outside calendar | 18 train / 46 validation / 92 contaminated OOS | 19.71% / 16.61% / 15.34% | 1.554 / 1.023 / 1.124 | 10.052 / 4.354 / 2.885 | -8.89% / -16.73% / -10.81% | 8.45% / 3.84% / 3.49% | full CAGR 16.39%, full excess CAGR -2.96%; post-hoc and no untouched OOS; score 20/100; DESCRIPTIVE_ONLY |
+| 574 | Remove only forced period exit; calendar gates entries only | 18 train / 44 validation / 51 contaminated OOS | 19.21% / 13.53% / 12.27% | 1.362 / 0.768 / 0.869 | 8.679 / 3.715 / 3.424 | -9.35% / -28.86% / -14.60% | 4.70% / -1.08% / 2.18% | full CAGR 15.16%, MDD -27.24%; worse portfolio performance; score 20/100; DESCRIPTIVE_ONLY |
+| 575 | QQQ-synchronized regime: end date is exit open and entry-ineligible | 18 train / 46 validation / 91 contaminated OOS | 20.08% / 18.97% / 15.66% | 1.598 / 1.149 / 1.147 | 10.098 / 4.988 / 2.962 | -8.89% / -16.73% / -10.81% | 8.38% / 5.06% / 3.56% | full CAGR 17.33%, MDD -18.16%; improves absolute/risk metrics, excess remains negative; score 20/100; DESCRIPTIVE_ONLY |
+| 576 | MA60/slope10 no-QQQ-regime control | 24 train / 45 validation / 95 contaminated OOS | 17.76% / 12.22% / 11.01% | 1.208 / 0.695 / 0.727 | 5.624 / 3.392 / 2.076 | -12.83% / -30.67% / -19.89% | 1.45% / -1.35% / 0.01% | full CAGR 14.46%, MDD -29.84%; confirms QQQ overlay is market-timing/risk improvement; score 20/100 |
 
 Trial 303–304 is an explicit discovery-collapse check: its fit sample had only
 13 setups, 12 positive, with mean fixed-20 label +4.54%; the untouched internal
@@ -281,8 +295,9 @@ evidence of a durable edge.
   equity CSV outputs.
 - SEC-derived events preserve filing/accession dates and require
   `filed < signal_date`; same-day filings cannot trigger an entry.
-- Full test suite after Trial 496–504 and the 2006+ inventory repair:
-  **524 passed**.
+- Full test suite after Trial 572 and the 2006+ inventory repair:
+  **617 passed** after the QQQ regime provenance and synchronized-execution
+  audit.
   `git diff --check`: clean.
 
 No current rule meets the research gate. Missing 2000–2005 data is explicitly

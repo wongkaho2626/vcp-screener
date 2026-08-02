@@ -1,0 +1,1417 @@
+{
+  "backtest_score": {
+    "band": "Reject",
+    "caps_applied": [
+      {
+        "cap": 20,
+        "reason": "unresolved survivorship bias / incomplete delisted coverage"
+      },
+      {
+        "cap": 55,
+        "reason": "no formal out-of-sample or walk-forward segment"
+      }
+    ],
+    "classification": "discovery_train_only",
+    "components": {
+      "A_statistical_validity": {
+        "max": 30,
+        "score": 20
+      },
+      "B_risk_adjusted_performance": {
+        "max": 25,
+        "score": 10
+      },
+      "C_robustness_computable": {
+        "max": 8,
+        "score": 8
+      },
+      "D_trade_quality_consistency": {
+        "max": 20,
+        "score": 18
+      }
+    },
+    "final_score": 20,
+    "measured_denominator": 83,
+    "measured_total": 56,
+    "note": "The lowest applicable cap is applied after reduced-denominator normalization. This discovery-only score cannot qualify the strategy.",
+    "reduced_denominator_normalized_raw_score": 67,
+    "unavailable": {
+      "parameter_sensitivity": 7,
+      "walk_forward_efficiency": 10
+    }
+  },
+  "baseline_json": "backtests/ma60_3r_trailing_v2/results/ma60_3r_trailing_2026-08-02_165231.json",
+  "baseline_partitions": {
+    "best_available_oos": {
+      "exit_states": {
+        "armed_trades": 31,
+        "armed_trailing_stop": 27,
+        "end_of_data": 6,
+        "stop": 66,
+        "unarmed_trades": 68
+      },
+      "metrics": {
+        "annual_volatility_pct": 16.95147676145651,
+        "average_exposure_pct": 97.50263262222222,
+        "average_positions": 9.883555555555555,
+        "calendar_years": {
+          "2022": {
+            "average_exposure_pct": 98.4697556,
+            "exposure_matched_excess_return_pct": 36.19554284339665,
+            "portfolio_return_pct": 12.902439371700215,
+            "spy_return_pct": -18.619145985674702
+          },
+          "2023": {
+            "average_exposure_pct": 98.0096764,
+            "exposure_matched_excess_return_pct": -13.641560362769823,
+            "portfolio_return_pct": 8.234714895652973,
+            "spy_return_pct": 26.17578178609834
+          },
+          "2024": {
+            "average_exposure_pct": 97.88074563492063,
+            "exposure_matched_excess_return_pct": -14.789372090194474,
+            "portfolio_return_pct": 5.938336566694313,
+            "spy_return_pct": 24.886471095785325
+          },
+          "2025": {
+            "average_exposure_pct": 99.6436492,
+            "exposure_matched_excess_return_pct": -18.89354700714071,
+            "portfolio_return_pct": -2.431747083612956,
+            "spy_return_pct": 17.719065750190776
+          },
+          "2026": {
+            "average_exposure_pct": 89.38002845528456,
+            "exposure_matched_excess_return_pct": -4.749978803148491,
+            "portfolio_return_pct": 3.70667224747252,
+            "spy_return_pct": 10.091879785384815
+          }
+        },
+        "calmar": 0.2695790410102043,
+        "estimated_transaction_costs": 1939.9378036059038,
+        "exposure_matched_excess_cagr_pct": -5.57009474476573,
+        "exposure_matched_excess_sharpe": -0.3465130783824398,
+        "exposure_matched_excess_total_return_pct": -22.574871065866365,
+        "portfolio_utilization": 0.9883555555555557,
+        "sharpe": 0.44188510118668795,
+        "sortino": 0.606960469732543,
+        "spy_cagr_pct": 12.051564509799784,
+        "spy_total_return_pct": 66.1941510237339,
+        "summary": {
+          "cagr_pct": 6.22,
+          "end_value": 130909.82,
+          "max_drawdown_pct": -23.12,
+          "rejected": {
+            "duplicate_or_position_limit": 8053
+          },
+          "signals": 8152,
+          "total_return_pct": 30.91,
+          "trades": 99
+        },
+        "trade_metrics": {
+          "average_holding_sessions": 112.25252525252525,
+          "drop_best_five_net_expectancy_pct": -1.6138297872340424,
+          "drop_worst_five_net_expectancy_pct": 4.569468085106383,
+          "entry_month_clustered_se_pct": 3.916885442120119,
+          "entry_month_clustered_t": -0.8069746710307457,
+          "estimated_mean_cost_drag_pct": 0.20512479557692279,
+          "excess_bootstrap_95ci_pct": [
+            -8.09,
+            1.76
+          ],
+          "excess_standard_error_pct": 2.5751509799874612,
+          "excess_t_statistic": -1.23,
+          "excess_win_rate": 0.25252525252525254,
+          "gross_profit_factor": 1.6526998975024858,
+          "gross_win_rate": 0.31313131313131315,
+          "mean_gross_return_pct": 3.823104593556721,
+          "mean_matched_spy_return_pct": 6.778807139099799,
+          "mean_net_excess_pct": -3.16082734112,
+          "mean_net_return_pct": 3.617979797979798,
+          "median_gross_return_pct": -7.999985800044717,
+          "median_net_excess_pct": -6.0957065057323465,
+          "median_net_return_pct": -8.18,
+          "net_profit_factor": 1.6049315993919946,
+          "net_win_rate": 0.31313131313131315,
+          "trades": 99,
+          "winsorized_net_expectancy_pct": 0.4722222222222223,
+          "worst_net_trade_pct": -17.38
+        },
+        "turnover_multiple": 15.920886293643822
+      },
+      "period": [
+        "2022-01-01",
+        "2026-03-31"
+      ],
+      "price_end": "2026-06-30",
+      "signal_counts": {
+        "emitted_signals": 8152,
+        "evaluated_stock_sessions": 541833,
+        "insufficient_common_history_tickers": 5,
+        "not_member_on_signal": 550,
+        "rising_edge_events": 8702,
+        "true_stock_sessions": 175663,
+        "unknown_sector_signals": 416
+      }
+    },
+    "full": {
+      "exit_states": {
+        "armed_trades": 45,
+        "armed_trailing_stop": 42,
+        "end_of_data": 6,
+        "stop": 87,
+        "unarmed_trades": 90
+      },
+      "metrics": {
+        "annual_volatility_pct": 15.41662399698408,
+        "average_exposure_pct": 95.94202688172042,
+        "average_positions": 9.942254082039028,
+        "calendar_years": {
+          "2016": {
+            "average_exposure_pct": 96.32603095238096,
+            "exposure_matched_excess_return_pct": 1.3312997775164703,
+            "portfolio_return_pct": 9.185768770032965,
+            "spy_return_pct": 8.43209809643799
+          },
+          "2017": {
+            "average_exposure_pct": 94.23850517928287,
+            "exposure_matched_excess_return_pct": 7.225642567776203,
+            "portfolio_return_pct": 28.9786829716687,
+            "spy_return_pct": 21.70537803189445
+          },
+          "2018": {
+            "average_exposure_pct": 98.47891513944222,
+            "exposure_matched_excess_return_pct": -2.8243006797957326,
+            "portfolio_return_pct": -7.649338195386757,
+            "spy_return_pct": -4.568980730412053
+          },
+          "2019": {
+            "average_exposure_pct": 99.97707182539682,
+            "exposure_matched_excess_return_pct": -6.034385175059098,
+            "portfolio_return_pct": 23.89944121729799,
+            "spy_return_pct": 31.223834881994648
+          },
+          "2020": {
+            "average_exposure_pct": 98.80939169960475,
+            "exposure_matched_excess_return_pct": -18.122910684722772,
+            "portfolio_return_pct": -2.330593738604747,
+            "spy_return_pct": 18.331616569497754
+          },
+          "2021": {
+            "average_exposure_pct": 99.96656785714286,
+            "exposure_matched_excess_return_pct": -10.253108738166594,
+            "portfolio_return_pct": 16.06661769933817,
+            "spy_return_pct": 28.728794524838143
+          },
+          "2022": {
+            "average_exposure_pct": 99.54809282868526,
+            "exposure_matched_excess_return_pct": 20.192275154990803,
+            "portfolio_return_pct": 0.6653622068299336,
+            "spy_return_pct": -18.175383395705445
+          },
+          "2023": {
+            "average_exposure_pct": 99.49684359999999,
+            "exposure_matched_excess_return_pct": -4.006069462053241,
+            "portfolio_return_pct": 21.722740605038492,
+            "spy_return_pct": 26.17578178609834
+          },
+          "2024": {
+            "average_exposure_pct": 96.47568452380953,
+            "exposure_matched_excess_return_pct": -15.035626575762572,
+            "portfolio_return_pct": 6.502367445062296,
+            "spy_return_pct": 24.886471095785325
+          },
+          "2025": {
+            "average_exposure_pct": 84.29735000000001,
+            "exposure_matched_excess_return_pct": -11.159485702792615,
+            "portfolio_return_pct": 3.9298486869427274,
+            "spy_return_pct": 17.719065750190776
+          },
+          "2026": {
+            "average_exposure_pct": 79.42854959349594,
+            "exposure_matched_excess_return_pct": -5.598397941403077,
+            "portfolio_return_pct": 1.6689660531887807,
+            "spy_return_pct": 10.091879785384815
+          }
+        },
+        "calmar": 0.35830263152222425,
+        "estimated_transaction_costs": 3957.6870764392766,
+        "exposure_matched_excess_cagr_pct": -5.0073167594606005,
+        "exposure_matched_excess_sharpe": -0.36036289472320193,
+        "exposure_matched_excess_total_return_pct": -40.06254023362491,
+        "portfolio_utilization": 0.9942254082039028,
+        "sharpe": 0.6787334008052353,
+        "sortino": 0.9448115926469127,
+        "spy_cagr_pct": 15.509051489985204,
+        "spy_total_return_pct": 320.652902583379,
+        "summary": {
+          "cagr_pct": 9.71,
+          "end_value": 251752.99,
+          "max_drawdown_pct": -27.11,
+          "rejected": {
+            "cash_sector_or_liquidity": 35,
+            "duplicate_or_position_limit": 17888
+          },
+          "signals": 18058,
+          "total_return_pct": 151.75,
+          "trades": 135
+        },
+        "trade_metrics": {
+          "average_holding_sessions": 169.92592592592592,
+          "drop_best_five_net_expectancy_pct": 1.4336923076923078,
+          "drop_worst_five_net_expectancy_pct": 10.54376923076923,
+          "entry_month_clustered_se_pct": 5.167450983436456,
+          "entry_month_clustered_t": -0.513426331045175,
+          "estimated_mean_cost_drag_pct": 0.21758953140335446,
+          "excess_bootstrap_95ci_pct": [
+            -9.7,
+            7.08
+          ],
+          "excess_standard_error_pct": 4.367876775848582,
+          "excess_t_statistic": -0.61,
+          "excess_win_rate": 0.24444444444444444,
+          "gross_profit_factor": 2.7575290816536087,
+          "gross_win_rate": 0.3037037037037037,
+          "mean_gross_return_pct": 9.919885827699652,
+          "mean_matched_spy_return_pct": 12.355401695577857,
+          "mean_net_excess_pct": -2.653105399281561,
+          "mean_net_return_pct": 9.702296296296296,
+          "median_gross_return_pct": -7.999965169732937,
+          "median_net_excess_pct": -7.292401250409309,
+          "median_net_return_pct": -8.18,
+          "net_profit_factor": 2.6815503318655076,
+          "net_win_rate": 0.3037037037037037,
+          "trades": 135,
+          "winsorized_net_expectancy_pct": 4.145777777777778,
+          "worst_net_trade_pct": -15.95
+        },
+        "turnover_multiple": 22.09564007071016
+      },
+      "period": [
+        "2016-07-01",
+        "2026-03-31"
+      ],
+      "price_end": "2026-06-30",
+      "signal_counts": {
+        "emitted_signals": 18058,
+        "evaluated_stock_sessions": 1201306,
+        "not_member_on_signal": 1423,
+        "rising_edge_events": 19481,
+        "true_stock_sessions": 436316,
+        "unknown_sector_signals": 1827
+      }
+    },
+    "train": {
+      "exit_states": {
+        "armed_trades": 9,
+        "armed_trailing_stop": 5,
+        "end_of_data": 5,
+        "stop": 8,
+        "unarmed_trades": 9
+      },
+      "metrics": {
+        "annual_volatility_pct": 12.789743298279053,
+        "average_exposure_pct": 92.70014617834396,
+        "average_positions": 9.555732484076433,
+        "calendar_years": {
+          "2016": {
+            "average_exposure_pct": 96.32603095238096,
+            "exposure_matched_excess_return_pct": 1.3312997775164703,
+            "portfolio_return_pct": 9.185768770032965,
+            "spy_return_pct": 8.43209809643799
+          },
+          "2017": {
+            "average_exposure_pct": 94.23850517928287,
+            "exposure_matched_excess_return_pct": 7.225642567776203,
+            "portfolio_return_pct": 28.9786829716687,
+            "spy_return_pct": 21.70537803189445
+          },
+          "2018": {
+            "average_exposure_pct": 89.3416219123506,
+            "exposure_matched_excess_return_pct": -2.158638624590825,
+            "portfolio_return_pct": -2.7944065125744433,
+            "spy_return_pct": -4.568980730412053
+          }
+        },
+        "calmar": 0.9763624870659647,
+        "estimated_transaction_costs": 398.4228256623257,
+        "exposure_matched_excess_cagr_pct": 2.4848674066286325,
+        "exposure_matched_excess_sharpe": 0.39486872067814344,
+        "exposure_matched_excess_total_return_pct": 6.307708719945637,
+        "portfolio_utilization": 0.9555732484076433,
+        "sharpe": 1.0494995438859134,
+        "sortino": 1.4719800207176186,
+        "spy_cagr_pct": 9.695917789458598,
+        "spy_total_return_pct": 25.938116346008556,
+        "summary": {
+          "cagr_pct": 13.4,
+          "end_value": 136812.03,
+          "max_drawdown_pct": -13.75,
+          "rejected": {
+            "duplicate_or_position_limit": 3457
+          },
+          "signals": 3475,
+          "total_return_pct": 36.81,
+          "trades": 18
+        },
+        "trade_metrics": {
+          "average_holding_sessions": 325.55555555555554,
+          "drop_best_five_net_expectancy_pct": 3.506923076923077,
+          "drop_worst_five_net_expectancy_pct": 36.832307692307694,
+          "entry_month_clustered_se_pct": 5.593365932243613,
+          "entry_month_clustered_t": 1.1394150878197216,
+          "estimated_mean_cost_drag_pct": 0.24738117489331074,
+          "excess_bootstrap_95ci_pct": [
+            -7.67,
+            24.95
+          ],
+          "excess_standard_error_pct": 8.508177393398745,
+          "excess_t_statistic": 0.75,
+          "excess_win_rate": 0.3333333333333333,
+          "gross_profit_factor": 7.912079794663194,
+          "gross_win_rate": 0.5555555555555556,
+          "mean_gross_return_pct": 24.576270063782196,
+          "mean_matched_spy_return_pct": 17.95572335399369,
+          "mean_net_excess_pct": 6.373165534895196,
+          "mean_net_return_pct": 24.328888888888887,
+          "median_gross_return_pct": 3.2677362100506313,
+          "median_net_excess_pct": -9.562290749794093,
+          "median_net_return_pct": 3.06,
+          "net_profit_factor": 7.691931540342298,
+          "net_win_rate": 0.5555555555555556,
+          "trades": 18,
+          "winsorized_net_expectancy_pct": 20.903888888888886,
+          "worst_net_trade_pct": -8.18
+        },
+        "turnover_multiple": 3.0907839551603624
+      },
+      "period": [
+        "2016-07-01",
+        "2018-06-30"
+      ],
+      "price_end": "2018-12-31",
+      "signal_counts": {
+        "emitted_signals": 3475,
+        "evaluated_stock_sessions": 230180,
+        "insufficient_common_history_tickers": 6,
+        "not_member_on_signal": 298,
+        "rising_edge_events": 3773,
+        "true_stock_sessions": 95604,
+        "unknown_sector_signals": 585
+      }
+    },
+    "validation": {
+      "exit_states": {
+        "armed_trades": 23,
+        "armed_trailing_stop": 21,
+        "end_of_data": 3,
+        "stop": 24,
+        "unarmed_trades": 25
+      },
+      "metrics": {
+        "annual_volatility_pct": 19.149772893774372,
+        "average_exposure_pct": 95.97905623471883,
+        "average_positions": 9.5880195599022,
+        "calendar_years": {
+          "2019": {
+            "average_exposure_pct": 99.31584501992032,
+            "exposure_matched_excess_return_pct": -6.17031681600122,
+            "portfolio_return_pct": 22.552798326289825,
+            "spy_return_pct": 34.292076521437956
+          },
+          "2020": {
+            "average_exposure_pct": 98.21920750988143,
+            "exposure_matched_excess_return_pct": -10.470543899455198,
+            "portfolio_return_pct": 2.616782562266251,
+            "spy_return_pct": 18.331616569497754
+          },
+          "2021": {
+            "average_exposure_pct": 99.85754404761904,
+            "exposure_matched_excess_return_pct": -14.85278155268558,
+            "portfolio_return_pct": 9.73195315462403,
+            "spy_return_pct": 28.728794524838143
+          },
+          "2022": {
+            "average_exposure_pct": 57.565004838709676,
+            "exposure_matched_excess_return_pct": -4.352045936744942,
+            "portfolio_return_pct": -10.468768671968009,
+            "spy_return_pct": -4.614487760631903
+          }
+        },
+        "calmar": 0.20425495359763687,
+        "estimated_transaction_costs": 972.0200477023478,
+        "exposure_matched_excess_cagr_pct": -11.035726378602817,
+        "exposure_matched_excess_sharpe": -0.7986043937180308,
+        "exposure_matched_excess_total_return_pct": -31.584840148768667,
+        "portfolio_utilization": 0.95880195599022,
+        "sharpe": 0.4366073759353925,
+        "sortino": 0.585689664398723,
+        "spy_cagr_pct": 22.86696779863395,
+        "spy_total_return_pct": 95.1233778035143,
+        "summary": {
+          "cagr_pct": 6.72,
+          "end_value": 123510.65,
+          "max_drawdown_pct": -32.96,
+          "rejected": {
+            "duplicate_or_position_limit": 5551
+          },
+          "signals": 5599,
+          "total_return_pct": 23.51,
+          "trades": 48
+        },
+        "trade_metrics": {
+          "average_holding_sessions": 163.33333333333334,
+          "drop_best_five_net_expectancy_pct": 0.0039534883720930515,
+          "drop_worst_five_net_expectancy_pct": 7.6725581395348845,
+          "entry_month_clustered_se_pct": 6.100797013577691,
+          "entry_month_clustered_t": -1.6252106713616026,
+          "estimated_mean_cost_drag_pct": 0.21058820267362852,
+          "excess_bootstrap_95ci_pct": [
+            -16.62,
+            -3.66
+          ],
+          "excess_standard_error_pct": 3.3797309207371646,
+          "excess_t_statistic": -2.93,
+          "excess_win_rate": 0.2708333333333333,
+          "gross_profit_factor": 2.347900849024836,
+          "gross_win_rate": 0.4166666666666667,
+          "mean_gross_return_pct": 6.085588202673628,
+          "mean_matched_spy_return_pct": 15.79008041027746,
+          "mean_net_excess_pct": -9.91508041027746,
+          "mean_net_return_pct": 5.875,
+          "median_gross_return_pct": -7.999857168406193,
+          "median_net_excess_pct": -5.427943486458844,
+          "median_net_return_pct": -8.18,
+          "net_profit_factor": 2.2714730150142026,
+          "net_win_rate": 0.4166666666666667,
+          "trades": 48,
+          "winsorized_net_expectancy_pct": 4.8475,
+          "worst_net_trade_pct": -11.92
+        },
+        "turnover_multiple": 8.00804447270792
+      },
+      "period": [
+        "2019-01-01",
+        "2021-12-31"
+      ],
+      "price_end": "2022-03-31",
+      "signal_counts": {
+        "emitted_signals": 5599,
+        "evaluated_stock_sessions": 369387,
+        "insufficient_common_history_tickers": 6,
+        "not_member_on_signal": 488,
+        "rising_edge_events": 6087,
+        "true_stock_sessions": 145797,
+        "unknown_sector_signals": 719
+      }
+    }
+  },
+  "classification": "DESCRIPTIVE_ONLY",
+  "comparisons": {
+    "best_available_oos": {
+      "average_hold_change": 87.76788291074006,
+      "cagr_lift_pct_points": 3.8600000000000003,
+      "exposure_matched_excess_cagr_lift_pct_points": -1.7452160405163282,
+      "mdd_change_pct_points": 8.950000000000001,
+      "sharpe_change": 0.3008199487903321,
+      "total_return_lift_pct_points": 22.639999999999997,
+      "trade_change": -50
+    },
+    "full": {
+      "average_hold_change": 44.14614614614615,
+      "cagr_lift_pct_points": 0.049999999999998934,
+      "exposure_matched_excess_cagr_lift_pct_points": -1.3304760197202503,
+      "mdd_change_pct_points": 0.0,
+      "sharpe_change": -0.0016954388106081852,
+      "total_return_lift_pct_points": 1.0999999999999943,
+      "trade_change": -24
+    },
+    "train": {
+      "average_hold_change": 32.13194444444446,
+      "cagr_lift_pct_points": 0.16000000000000014,
+      "exposure_matched_excess_cagr_lift_pct_points": 0.17903620976382761,
+      "mdd_change_pct_points": 1.2100000000000009,
+      "sharpe_change": 0.0286579652171417,
+      "total_return_lift_pct_points": 0.4799999999999969,
+      "trade_change": -2
+    },
+    "validation": {
+      "average_hold_change": 2.049645390070907,
+      "cagr_lift_pct_points": 1.62,
+      "exposure_matched_excess_cagr_lift_pct_points": 0.6488462776599313,
+      "mdd_change_pct_points": 1.370000000000001,
+      "sharpe_change": 0.06931085429256961,
+      "total_return_lift_pct_points": 6.18,
+      "trade_change": -1
+    }
+  },
+  "cost_stress": {
+    "best_available_oos": {
+      "1": {
+        "cagr_pct": 10.08,
+        "estimated_transaction_costs": 1045.6811722133723,
+        "max_drawdown_pct": -14.17,
+        "mean_net_return_pct": 9.272448979591838,
+        "profit_factor": 2.9718340421838385,
+        "sharpe": 0.74270504997702,
+        "total_return_pct": 53.55
+      },
+      "10": {
+        "cagr_pct": 7.87,
+        "estimated_transaction_costs": 9637.623808170818,
+        "max_drawdown_pct": -14.77,
+        "mean_net_return_pct": 7.043125,
+        "profit_factor": 2.2291666666666665,
+        "sharpe": 0.6069794802100732,
+        "total_return_pct": 40.25
+      },
+      "2": {
+        "cagr_pct": 9.87,
+        "estimated_transaction_costs": 2074.8573423533694,
+        "max_drawdown_pct": -14.21,
+        "mean_net_return_pct": 9.051836734693879,
+        "profit_factor": 2.8867619533775737,
+        "sharpe": 0.7304472368371937,
+        "total_return_pct": 52.2
+      },
+      "5": {
+        "cagr_pct": 8.85,
+        "estimated_transaction_costs": 4967.993203410086,
+        "max_drawdown_pct": -14.42,
+        "mean_net_return_pct": 8.115833333333333,
+        "profit_factor": 2.5456276781463263,
+        "sharpe": 0.666543962219967,
+        "total_return_pct": 46.01
+      }
+    },
+    "full": {
+      "1": {
+        "cagr_pct": 9.76,
+        "estimated_transaction_costs": 3166.4630660762664,
+        "max_drawdown_pct": -27.11,
+        "mean_net_return_pct": 10.691171171171172,
+        "profit_factor": 3.2751097563313585,
+        "sharpe": 0.6770379619946271,
+        "total_return_pct": 152.85
+      },
+      "10": {
+        "cagr_pct": 7.34,
+        "estimated_transaction_costs": 27782.122903270327,
+        "max_drawdown_pct": -29.5,
+        "mean_net_return_pct": 7.914247787610619,
+        "profit_factor": 2.3114395905738125,
+        "sharpe": 0.5352619559035525,
+        "total_return_pct": 102.63
+      },
+      "2": {
+        "cagr_pct": 9.56,
+        "estimated_transaction_costs": 6256.135277267909,
+        "max_drawdown_pct": -27.36,
+        "mean_net_return_pct": 10.467297297297298,
+        "profit_factor": 3.178111467296553,
+        "sharpe": 0.6655472995361648,
+        "total_return_pct": 148.37
+      },
+      "5": {
+        "cagr_pct": 8.76,
+        "estimated_transaction_costs": 14922.067399722495,
+        "max_drawdown_pct": -28.16,
+        "mean_net_return_pct": 9.663454545454545,
+        "profit_factor": 2.8477610902517037,
+        "sharpe": 0.6179505627341559,
+        "total_return_pct": 130.97
+      }
+    },
+    "train": {
+      "1": {
+        "cagr_pct": 13.56,
+        "estimated_transaction_costs": 343.3174583283583,
+        "max_drawdown_pct": -12.54,
+        "mean_net_return_pct": 27.57,
+        "profit_factor": 8.703807195249738,
+        "sharpe": 1.078157509103055,
+        "total_return_pct": 37.29
+      },
+      "10": {
+        "cagr_pct": 12.29,
+        "estimated_transaction_costs": 3369.762389878988,
+        "max_drawdown_pct": -12.73,
+        "mean_net_return_pct": 25.29375,
+        "profit_factor": 6.830571963693993,
+        "sharpe": 1.0015025758624012,
+        "total_return_pct": 33.48
+      },
+      "2": {
+        "cagr_pct": 13.43,
+        "estimated_transaction_costs": 684.8393584142336,
+        "max_drawdown_pct": -12.56,
+        "mean_net_return_pct": 27.311875,
+        "profit_factor": 8.458440006827104,
+        "sharpe": 1.0703412781242412,
+        "total_return_pct": 36.89
+      },
+      "5": {
+        "cagr_pct": 13.01,
+        "estimated_transaction_costs": 1702.4564974649368,
+        "max_drawdown_pct": -12.64,
+        "mean_net_return_pct": 26.550625,
+        "profit_factor": 7.80349135169763,
+        "sharpe": 1.0449627338875755,
+        "total_return_pct": 35.63
+      }
+    },
+    "validation": {
+      "1": {
+        "cagr_pct": 8.34,
+        "estimated_transaction_costs": 975.8031880246881,
+        "max_drawdown_pct": -31.59,
+        "mean_net_return_pct": 7.062127659574468,
+        "profit_factor": 2.5979972076452746,
+        "sharpe": 0.5059182302279621,
+        "total_return_pct": 29.69
+      },
+      "10": {
+        "cagr_pct": 6.18,
+        "estimated_transaction_costs": 8991.150213741374,
+        "max_drawdown_pct": -32.8,
+        "mean_net_return_pct": 5.638222222222222,
+        "profit_factor": 2.0470020220360663,
+        "sharpe": 0.4034248408694071,
+        "total_return_pct": 21.48
+      },
+      "2": {
+        "cagr_pct": 8.05,
+        "estimated_transaction_costs": 1941.2122980407921,
+        "max_drawdown_pct": -31.85,
+        "mean_net_return_pct": 6.845106382978724,
+        "profit_factor": 2.510564372241525,
+        "sharpe": 0.49210850111365567,
+        "total_return_pct": 28.56
+      },
+      "5": {
+        "cagr_pct": 7.09,
+        "estimated_transaction_costs": 4769.442691747294,
+        "max_drawdown_pct": -32.58,
+        "mean_net_return_pct": 6.131276595744681,
+        "profit_factor": 2.242219156823864,
+        "sharpe": 0.44716523942183356,
+        "total_return_pct": 24.91
+      }
+    }
+  },
+  "coverage": {
+    "benchmark_present": true,
+    "coverage_pct": 91.31,
+    "dropped": [
+      [
+        "AMTM",
+        "only-60-bars-in-membership"
+      ],
+      [
+        "APC",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "BNY",
+        "only-27-bars-in-membership"
+      ],
+      [
+        "CASY",
+        "only-57-bars-in-membership"
+      ],
+      [
+        "CIEN",
+        "only-98-bars-in-membership"
+      ],
+      [
+        "COHR",
+        "only-69-bars-in-membership"
+      ],
+      [
+        "EMC",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "FDXF",
+        "only-21-bars-in-membership"
+      ],
+      [
+        "HOT",
+        "only-57-bars-in-membership"
+      ],
+      [
+        "INFO",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "LB",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "LITE",
+        "only-69-bars-in-membership"
+      ],
+      [
+        "SBNY",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "SE",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "SOLS",
+        "only-37-bars-in-membership"
+      ],
+      [
+        "SPLS",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "STI",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "TE",
+        "only-0-bars-in-membership"
+      ],
+      [
+        "VEEV",
+        "only-37-bars-in-membership"
+      ],
+      [
+        "VRT",
+        "only-69-bars-in-membership"
+      ]
+    ],
+    "kept": 599,
+    "per_year": {
+      "2016": 82.4,
+      "2017": 84.3,
+      "2018": 85.8,
+      "2019": 87.2,
+      "2020": 90.0,
+      "2021": 91.8,
+      "2022": 93.7,
+      "2023": 95.7,
+      "2024": 96.5,
+      "2025": 97.8,
+      "2026": 98.7
+    },
+    "universe": 720
+  },
+  "coverage_of_windows": {
+    "executable_overlap_count": 7,
+    "executable_windows": [
+      [
+        "2015-08-25",
+        "2018-03-23"
+      ],
+      [
+        "2018-10-15",
+        "2020-02-26"
+      ],
+      [
+        "2020-03-16",
+        "2021-12-01"
+      ],
+      [
+        "2022-06-14",
+        "2022-11-14"
+      ],
+      [
+        "2023-01-27",
+        "2023-05-02"
+      ],
+      [
+        "2023-10-30",
+        "2024-12-19"
+      ],
+      [
+        "2025-04-07",
+        null
+      ]
+    ],
+    "reason": "repository-local raw execution data is absent before the current 2016+ strategy period",
+    "supplied_count": 18,
+    "untested_count": 11
+  },
+  "diagnostic_decision": {
+    "checks": {
+      "latest_5x_cagr>0": true,
+      "latest_cagr_improves": true,
+      "latest_drop_best_five_expectancy>0": true,
+      "latest_exposure_matched_excess_cagr_improves": false,
+      "latest_mdd_not_worse_by_more_than_2pp": true,
+      "latest_trades>=30": true
+    },
+    "verdict": "INCONCLUSIVE"
+  },
+  "family_spec": "backtests/ma60_period_gate_v2/frozen_spec.md",
+  "generated_at": "2026-08-02T17:29:22",
+  "interpretation": "The supplied calendar gate changes historical performance, but unknown date provenance and incomplete early coverage prevent a causal or out-of-sample improvement claim.",
+  "new_multiplicity_units": 18,
+  "parameters": {
+    "eligibility_date": "fill_date",
+    "finite_endpoints_inclusive": true,
+    "force_exit_at_window_end": false,
+    "initial_stop_pct": 8.0,
+    "ma_period": 60,
+    "slope_sessions": 20,
+    "timeout": null,
+    "trailing_pct": 24.0,
+    "trigger_r": 3.0,
+    "windows": [
+      [
+        "2002-07-24",
+        "2002-08-15"
+      ],
+      [
+        "2002-10-10",
+        "2002-11-12"
+      ],
+      [
+        "2003-01-10",
+        "2003-03-18"
+      ],
+      [
+        "2004-03-25",
+        "2004-06-14"
+      ],
+      [
+        "2005-03-31",
+        "2007-07-27"
+      ],
+      [
+        "2008-01-23",
+        "2008-09-30"
+      ],
+      [
+        "2008-10-17",
+        "2008-11-05"
+      ],
+      [
+        "2008-11-24",
+        "2009-01-14"
+      ],
+      [
+        "2009-02-02",
+        "2009-02-18"
+      ],
+      [
+        "2009-03-09",
+        "2011-09-19"
+      ],
+      [
+        "2011-10-06",
+        "2014-08-08"
+      ],
+      [
+        "2015-08-25",
+        "2018-03-23"
+      ],
+      [
+        "2018-10-15",
+        "2020-02-26"
+      ],
+      [
+        "2020-03-16",
+        "2021-12-01"
+      ],
+      [
+        "2022-06-14",
+        "2022-11-14"
+      ],
+      [
+        "2023-01-27",
+        "2023-05-02"
+      ],
+      [
+        "2023-10-30",
+        "2024-12-19"
+      ],
+      [
+        "2025-04-07",
+        null
+      ]
+    ]
+  },
+  "partitions": {
+    "best_available_oos": {
+      "exit_states": {
+        "armed_trades": 24,
+        "armed_trailing_stop": 18,
+        "end_of_data": 8,
+        "stop": 23,
+        "unarmed_trades": 25
+      },
+      "metrics": {
+        "annual_volatility_pct": 14.341233910190276,
+        "average_exposure_pct": 85.21351057777778,
+        "average_positions": 8.719111111111111,
+        "calendar_years": {
+          "2022": {
+            "average_exposure_pct": 53.152670400000005,
+            "exposure_matched_excess_return_pct": 5.110488713237582,
+            "portfolio_return_pct": 9.724353522521678,
+            "spy_return_pct": -18.619145985674702
+          },
+          "2023": {
+            "average_exposure_pct": 92.32525,
+            "exposure_matched_excess_return_pct": -13.028492212196408,
+            "portfolio_return_pct": 10.513892380046563,
+            "spy_return_pct": 26.17578178609834
+          },
+          "2024": {
+            "average_exposure_pct": 98.38436468253968,
+            "exposure_matched_excess_return_pct": -12.245048538821857,
+            "portfolio_return_pct": 9.248079711652114,
+            "spy_return_pct": 24.886471095785325
+          },
+          "2025": {
+            "average_exposure_pct": 93.4694932,
+            "exposure_matched_excess_return_pct": -9.998570560290776,
+            "portfolio_return_pct": 8.02210625533153,
+            "spy_return_pct": 17.719065750190776
+          },
+          "2026": {
+            "average_exposure_pct": 92.15842357723578,
+            "exposure_matched_excess_return_pct": -1.3333950407545592,
+            "portfolio_return_pct": 7.37708290986081,
+            "spy_return_pct": 10.091879785384815
+          }
+        },
+        "calmar": 0.7129058387700594,
+        "estimated_transaction_costs": 1045.6811722133723,
+        "exposure_matched_excess_cagr_pct": -7.315310785282058,
+        "exposure_matched_excess_sharpe": -0.6202383890999061,
+        "exposure_matched_excess_total_return_pct": -28.76158029314381,
+        "portfolio_utilization": 0.8719111111111111,
+        "sharpe": 0.74270504997702,
+        "sortino": 1.0872950095038894,
+        "spy_cagr_pct": 12.051564509799784,
+        "spy_total_return_pct": 66.1941510237339,
+        "summary": {
+          "cagr_pct": 10.08,
+          "end_value": 153547.75,
+          "max_drawdown_pct": -14.17,
+          "rejected": {
+            "duplicate_or_position_limit": 5220
+          },
+          "signals": 5269,
+          "total_return_pct": 53.55,
+          "trades": 49
+        },
+        "trade_metrics": {
+          "average_holding_sessions": 200.0204081632653,
+          "drop_best_five_net_expectancy_pct": 2.223409090909091,
+          "drop_worst_five_net_expectancy_pct": 11.905909090909091,
+          "entry_month_clustered_se_pct": 4.64926466989506,
+          "entry_month_clustered_t": -2.1794608233683164,
+          "estimated_mean_cost_drag_pct": 0.21761416882957946,
+          "excess_bootstrap_95ci_pct": [
+            -18.29,
+            -1.64
+          ],
+          "excess_standard_error_pct": 4.293129426767565,
+          "excess_t_statistic": -2.36,
+          "excess_win_rate": 0.20408163265306123,
+          "gross_profit_factor": 3.0580930609226193,
+          "gross_win_rate": 0.4897959183673469,
+          "mean_gross_return_pct": 9.490063148421415,
+          "mean_matched_spy_return_pct": 19.405339185098544,
+          "mean_net_excess_pct": -10.13289020550671,
+          "mean_net_return_pct": 9.272448979591838,
+          "median_gross_return_pct": -4.57921898373791,
+          "median_net_excess_pct": -9.451903509062298,
+          "median_net_return_pct": -4.77,
+          "net_profit_factor": 2.9718340421838385,
+          "net_win_rate": 0.4897959183673469,
+          "trades": 49,
+          "winsorized_net_expectancy_pct": 7.671020408163265,
+          "worst_net_trade_pct": -17.38
+        },
+        "turnover_multiple": 8.443915536824779
+      },
+      "period": [
+        "2022-01-01",
+        "2026-03-31"
+      ],
+      "price_end": "2026-06-30",
+      "retained_signal_pct": 64.63444553483808,
+      "retained_signals": 5269,
+      "ungated_signal_counts": {
+        "emitted_signals": 8152,
+        "evaluated_stock_sessions": 541833,
+        "insufficient_common_history_tickers": 5,
+        "not_member_on_signal": 550,
+        "rising_edge_events": 8702,
+        "true_stock_sessions": 175663,
+        "unknown_sector_signals": 416
+      },
+      "ungated_signals": 8152
+    },
+    "full": {
+      "exit_states": {
+        "armed_trades": 52,
+        "armed_trailing_stop": 47,
+        "end_of_data": 7,
+        "stop": 57,
+        "unarmed_trades": 59
+      },
+      "metrics": {
+        "annual_volatility_pct": 15.550592152351935,
+        "average_exposure_pct": 92.87649123855037,
+        "average_positions": 9.46594982078853,
+        "calendar_years": {
+          "2016": {
+            "average_exposure_pct": 96.32603095238096,
+            "exposure_matched_excess_return_pct": 1.3312997775164703,
+            "portfolio_return_pct": 9.185768770032965,
+            "spy_return_pct": 8.43209809643799
+          },
+          "2017": {
+            "average_exposure_pct": 94.23850517928287,
+            "exposure_matched_excess_return_pct": 7.225642567776203,
+            "portfolio_return_pct": 28.9786829716687,
+            "spy_return_pct": 21.70537803189445
+          },
+          "2018": {
+            "average_exposure_pct": 89.14778406374502,
+            "exposure_matched_excess_return_pct": -1.9744456618727924,
+            "portfolio_return_pct": -7.349535363538074,
+            "spy_return_pct": -4.568980730412053
+          },
+          "2019": {
+            "average_exposure_pct": 99.97068015873016,
+            "exposure_matched_excess_return_pct": -8.026029839890258,
+            "portfolio_return_pct": 21.244533895910457,
+            "spy_return_pct": 31.223834881994648
+          },
+          "2020": {
+            "average_exposure_pct": 97.62276837944664,
+            "exposure_matched_excess_return_pct": -12.244056021257277,
+            "portfolio_return_pct": 7.272467637411206,
+            "spy_return_pct": 18.331616569497754
+          },
+          "2021": {
+            "average_exposure_pct": 99.87606507936508,
+            "exposure_matched_excess_return_pct": -15.35142031808714,
+            "portfolio_return_pct": 9.031233586839127,
+            "spy_return_pct": 28.728794524838143
+          },
+          "2022": {
+            "average_exposure_pct": 75.75520119521912,
+            "exposure_matched_excess_return_pct": 9.072162904410463,
+            "portfolio_return_pct": 0.05897668187777594,
+            "spy_return_pct": -18.175383395705445
+          },
+          "2023": {
+            "average_exposure_pct": 90.1965672,
+            "exposure_matched_excess_return_pct": -12.941597840802322,
+            "portfolio_return_pct": 11.558877627560737,
+            "spy_return_pct": 26.17578178609834
+          },
+          "2024": {
+            "average_exposure_pct": 98.77811785714286,
+            "exposure_matched_excess_return_pct": -13.19000768936881,
+            "portfolio_return_pct": 8.206836331806677,
+            "spy_return_pct": 24.886471095785325
+          },
+          "2025": {
+            "average_exposure_pct": 92.4381684,
+            "exposure_matched_excess_return_pct": -11.608491772758335,
+            "portfolio_return_pct": 6.417240582563721,
+            "spy_return_pct": 17.719065750190776
+          },
+          "2026": {
+            "average_exposure_pct": 84.7200463414634,
+            "exposure_matched_excess_return_pct": -1.777308749602735,
+            "portfolio_return_pct": 6.383083483534024,
+            "spy_return_pct": 10.091879785384815
+          }
+        },
+        "calmar": 0.36008954622024403,
+        "estimated_transaction_costs": 3166.4630660762664,
+        "exposure_matched_excess_cagr_pct": -6.337792779180851,
+        "exposure_matched_excess_sharpe": -0.5431456000239478,
+        "exposure_matched_excess_total_return_pct": -47.921383547790064,
+        "portfolio_utilization": 0.9465949820788531,
+        "sharpe": 0.6770379619946271,
+        "sortino": 0.9520895738131047,
+        "spy_cagr_pct": 15.509051489985204,
+        "spy_total_return_pct": 320.652902583379,
+        "summary": {
+          "cagr_pct": 9.76,
+          "end_value": 252852.12,
+          "max_drawdown_pct": -27.11,
+          "rejected": {
+            "duplicate_or_position_limit": 13667
+          },
+          "signals": 13778,
+          "total_return_pct": 152.85,
+          "trades": 111
+        },
+        "trade_metrics": {
+          "average_holding_sessions": 214.07207207207207,
+          "drop_best_five_net_expectancy_pct": 6.3142452830188684,
+          "drop_worst_five_net_expectancy_pct": 11.867924528301886,
+          "entry_month_clustered_se_pct": 4.058209416176864,
+          "entry_month_clustered_t": -1.8188176842214299,
+          "estimated_mean_cost_drag_pct": 0.22016162797942326,
+          "excess_bootstrap_95ci_pct": [
+            -12.56,
+            -2.06
+          ],
+          "excess_standard_error_pct": 2.711603304552543,
+          "excess_t_statistic": -2.72,
+          "excess_win_rate": 0.24324324324324326,
+          "gross_profit_factor": 3.372793076729054,
+          "gross_win_rate": 0.44144144144144143,
+          "mean_gross_return_pct": 10.911332799150596,
+          "mean_matched_spy_return_pct": 18.072314223587576,
+          "mean_net_excess_pct": -7.381143052416405,
+          "mean_net_return_pct": 10.691171171171172,
+          "median_gross_return_pct": -7.999914718963441,
+          "median_net_excess_pct": -7.5513860450742945,
+          "median_net_return_pct": -8.18,
+          "net_profit_factor": 3.2751097563313585,
+          "net_win_rate": 0.44144144144144143,
+          "trades": 111,
+          "winsorized_net_expectancy_pct": 9.865945945945947,
+          "worst_net_trade_pct": -17.38
+        },
+        "turnover_multiple": 18.30623489688664
+      },
+      "period": [
+        "2016-07-01",
+        "2026-03-31"
+      ],
+      "price_end": "2026-06-30",
+      "retained_signal_pct": 76.29859342119836,
+      "retained_signals": 13778,
+      "ungated_signal_counts": {
+        "emitted_signals": 18058,
+        "evaluated_stock_sessions": 1201306,
+        "not_member_on_signal": 1423,
+        "rising_edge_events": 19481,
+        "true_stock_sessions": 436316,
+        "unknown_sector_signals": 1827
+      },
+      "ungated_signals": 18058
+    },
+    "train": {
+      "exit_states": {
+        "armed_trades": 9,
+        "armed_trailing_stop": 5,
+        "end_of_data": 4,
+        "stop": 7,
+        "unarmed_trades": 7
+      },
+      "metrics": {
+        "annual_volatility_pct": 12.547599803204164,
+        "average_exposure_pct": 88.53752595541401,
+        "average_positions": 9.119426751592357,
+        "calendar_years": {
+          "2016": {
+            "average_exposure_pct": 96.32603095238096,
+            "exposure_matched_excess_return_pct": 1.3312997775164703,
+            "portfolio_return_pct": 9.185768770032965,
+            "spy_return_pct": 8.43209809643799
+          },
+          "2017": {
+            "average_exposure_pct": 94.23850517928287,
+            "exposure_matched_excess_return_pct": 7.225642567776203,
+            "portfolio_return_pct": 28.9786829716687,
+            "spy_return_pct": 21.70537803189445
+          },
+          "2018": {
+            "average_exposure_pct": 78.92677928286852,
+            "exposure_matched_excess_return_pct": -1.7321293071623889,
+            "portfolio_return_pct": -2.463751924714952,
+            "spy_return_pct": -4.568980730412053
+          }
+        },
+        "calmar": 1.0830742597197427,
+        "estimated_transaction_costs": 343.3174583283583,
+        "exposure_matched_excess_cagr_pct": 2.66390361639246,
+        "exposure_matched_excess_sharpe": 0.4359512348150161,
+        "exposure_matched_excess_total_return_pct": 6.771124474245904,
+        "portfolio_utilization": 0.9119426751592358,
+        "sharpe": 1.078157509103055,
+        "sortino": 1.518883887991451,
+        "spy_cagr_pct": 9.695917789458598,
+        "spy_total_return_pct": 25.938116346008556,
+        "summary": {
+          "cagr_pct": 13.56,
+          "end_value": 137291.99,
+          "max_drawdown_pct": -12.54,
+          "rejected": {
+            "duplicate_or_position_limit": 2836
+          },
+          "signals": 2852,
+          "total_return_pct": 37.29,
+          "trades": 16
+        },
+        "trade_metrics": {
+          "average_holding_sessions": 357.6875,
+          "drop_best_five_net_expectancy_pct": 4.4354545454545455,
+          "drop_worst_five_net_expectancy_pct": 43.82,
+          "entry_month_clustered_se_pct": 5.814455061919039,
+          "entry_month_clustered_t": 1.3700000103192764,
+          "estimated_mean_cost_drag_pct": 0.2536538819637381,
+          "excess_bootstrap_95ci_pct": [
+            -7.8,
+            28.14
+          ],
+          "excess_standard_error_pct": 9.519791384361778,
+          "excess_t_statistic": 0.84,
+          "excess_win_rate": 0.375,
+          "gross_profit_factor": 8.949635680375224,
+          "gross_win_rate": 0.5625,
+          "mean_gross_return_pct": 27.823653881963736,
+          "mean_matched_spy_return_pct": 19.604196505169945,
+          "mean_net_excess_pct": 7.965803494830053,
+          "mean_net_return_pct": 27.57,
+          "median_gross_return_pct": 12.135762714619968,
+          "median_net_excess_pct": -9.562290749794093,
+          "median_net_return_pct": 11.91,
+          "net_profit_factor": 8.703807195249738,
+          "net_win_rate": 0.5625,
+          "trades": 16,
+          "winsorized_net_expectancy_pct": 23.716874999999998,
+          "worst_net_trade_pct": -8.18
+        },
+        "turnover_multiple": 2.665874874961216
+      },
+      "period": [
+        "2016-07-01",
+        "2018-06-30"
+      ],
+      "price_end": "2018-12-31",
+      "retained_signal_pct": 82.07194244604317,
+      "retained_signals": 2852,
+      "ungated_signal_counts": {
+        "emitted_signals": 3475,
+        "evaluated_stock_sessions": 230180,
+        "insufficient_common_history_tickers": 6,
+        "not_member_on_signal": 298,
+        "rising_edge_events": 3773,
+        "true_stock_sessions": 95604,
+        "unknown_sector_signals": 585
+      },
+      "ungated_signals": 3475
+    },
+    "validation": {
+      "exit_states": {
+        "armed_trades": 23,
+        "armed_trailing_stop": 22,
+        "end_of_data": 2,
+        "stop": 23,
+        "unarmed_trades": 24
+      },
+      "metrics": {
+        "annual_volatility_pct": 19.69170654454261,
+        "average_exposure_pct": 94.77147811735941,
+        "average_positions": 9.504889975550123,
+        "calendar_years": {
+          "2019": {
+            "average_exposure_pct": 99.31584501992032,
+            "exposure_matched_excess_return_pct": -6.17031681600122,
+            "portfolio_return_pct": 22.552798326289825,
+            "spy_return_pct": 34.292076521437956
+          },
+          "2020": {
+            "average_exposure_pct": 97.50787747035572,
+            "exposure_matched_excess_return_pct": -8.319519209254167,
+            "portfolio_return_pct": 8.255701926638581,
+            "spy_return_pct": 18.331616569497754
+          },
+          "2021": {
+            "average_exposure_pct": 99.27364682539682,
+            "exposure_matched_excess_return_pct": -12.844785550902726,
+            "portfolio_return_pct": 11.831618848947056,
+            "spy_return_pct": 28.728794524838143
+          },
+          "2022": {
+            "average_exposure_pct": 46.90870967741936,
+            "exposure_matched_excess_return_pct": -6.570035032345234,
+            "portfolio_return_pct": -12.568778233341614,
+            "spy_return_pct": -4.614487760631903
+          }
+        },
+        "calmar": 0.2642088233761839,
+        "estimated_transaction_costs": 975.8031880246881,
+        "exposure_matched_excess_cagr_pct": -10.386880100942886,
+        "exposure_matched_excess_sharpe": -0.7458391118815636,
+        "exposure_matched_excess_total_return_pct": -29.951846122533965,
+        "portfolio_utilization": 0.9504889975550123,
+        "sharpe": 0.5059182302279621,
+        "sortino": 0.6881933599042407,
+        "spy_cagr_pct": 22.86696779863395,
+        "spy_total_return_pct": 95.1233778035143,
+        "summary": {
+          "cagr_pct": 8.34,
+          "end_value": 129692.72,
+          "max_drawdown_pct": -31.59,
+          "rejected": {
+            "duplicate_or_position_limit": 5187
+          },
+          "signals": 5234,
+          "total_return_pct": 29.69,
+          "trades": 47
+        },
+        "trade_metrics": {
+          "average_holding_sessions": 165.38297872340425,
+          "drop_best_five_net_expectancy_pct": 0.3392857142857143,
+          "drop_worst_five_net_expectancy_pct": 8.903333333333332,
+          "entry_month_clustered_se_pct": 6.134294336996678,
+          "entry_month_clustered_t": -1.5897008069526442,
+          "estimated_mean_cost_drag_pct": 0.212704053403916,
+          "excess_bootstrap_95ci_pct": [
+            -16.49,
+            -3.37
+          ],
+          "excess_standard_error_pct": 3.357636309187767,
+          "excess_t_statistic": -2.9,
+          "excess_win_rate": 0.23404255319148937,
+          "gross_profit_factor": 2.6858660578923157,
+          "gross_win_rate": 0.425531914893617,
+          "mean_gross_return_pct": 7.274831712978385,
+          "mean_matched_spy_return_pct": 16.813820317183122,
+          "mean_net_excess_pct": -9.751692657608654,
+          "mean_net_return_pct": 7.062127659574468,
+          "median_gross_return_pct": -7.999842644242705,
+          "median_net_excess_pct": -5.61072667118429,
+          "median_net_return_pct": -8.18,
+          "net_profit_factor": 2.5979972076452746,
+          "net_win_rate": 0.425531914893617,
+          "trades": 47,
+          "winsorized_net_expectancy_pct": 5.196170212765957,
+          "worst_net_trade_pct": -9.3
+        },
+        "turnover_multiple": 7.777167417357184
+      },
+      "period": [
+        "2019-01-01",
+        "2021-12-31"
+      ],
+      "price_end": "2022-03-31",
+      "retained_signal_pct": 93.48097874620468,
+      "retained_signals": 5234,
+      "ungated_signal_counts": {
+        "emitted_signals": 5599,
+        "evaluated_stock_sessions": 369387,
+        "insufficient_common_history_tickers": 6,
+        "not_member_on_signal": 488,
+        "rising_edge_events": 6087,
+        "true_stock_sessions": 145797,
+        "unknown_sector_signals": 719
+      },
+      "ungated_signals": 5599
+    }
+  },
+  "reproduction_command": ".venv/bin/python scripts/ma60_period_gate_experiment.py --price-csv SP500_PIT_2016_2026.csv --coverage-json backtests/pivot_retest_v2/coverage_2016_2026.json --membership-csv scripts/data/sp500_membership.csv --sector-json scripts/data/sp500_constituents.json --baseline-json backtests/ma60_3r_trailing_v2/results/ma60_3r_trailing_2026-08-02_165231.json --output-dir backtests/ma60_period_gate_v2/results --iterations 1000",
+  "trials_after": 567,
+  "trials_before": 549,
+  "verdict": "DESCRIPTIVE_ONLY"
+}
