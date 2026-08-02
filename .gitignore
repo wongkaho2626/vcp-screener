@@ -21,6 +21,7 @@ backtests/**/*.log
 backtests/*.pkl
 
 # Large local price data (offline --price-csv source; not committed)
+daily_data/
 SP500_Historical_Data.csv
 *_Historical_Data.csv
 SP500_Pre2016_Data.csv
