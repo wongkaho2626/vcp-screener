@@ -361,6 +361,41 @@ score threshold, but a cap may not be hidden, waived or bypassed. The data
 inventory and frozen chronology are in
 [`backtests/current_2006_plus_data_audit/inventory.md`](backtests/current_2006_plus_data_audit/inventory.md).
 
+### Daily MA60 strategy dashboard
+
+`scripts/run_daily_ma60_strategy.py` is the daily research runner for the
+current MA60/Slope10 plus synchronized QQQ regime candidate. On its first run
+it copies the local PIT seed into ignored `daily_data/`; subsequent runs
+refresh the latest current-S&P-500 and real-SPY OHLCV tail from Yahoo Finance,
+write `latest_prices.csv` plus a dated snapshot, query the sibling
+`spy500-breadth-backtest/qqq_backtest.py` state machine, and print metrics,
+recent trades, open positions and causal next-open candidates.
+
+```bash
+.venv/bin/python scripts/run_daily_ma60_strategy.py
+```
+
+Useful diagnostics:
+
+```bash
+# Reuse saved prices without contacting Yahoo
+.venv/bin/python scripts/run_daily_ma60_strategy.py --no-fetch
+
+# Print every completed trade instead of the latest 20
+.venv/bin/python scripts/run_daily_ma60_strategy.py --no-fetch --all-trades
+
+# Override QQQ only when debugging an unavailable sibling repository
+.venv/bin/python scripts/run_daily_ma60_strategy.py --no-fetch --force-qqq-state in
+```
+
+The script never treats an unfinished US daily bar as a signal bar; a close
+confirmed on day *t* is labelled only for the next eligible open. It is a
+paper/research dashboard, not broker execution. New buys are blocked whenever
+the QQQ breadth date lags the stock-price date, and the QQQ bridge is truncated
+to the last completed stock session before its state is evaluated. The
+underlying candidate remains validation-failed with a Backtest Score of 20/100
+(Reject).
+
 Roughly 1,500 simulated trades across S&P 500 and Russell 2000, 2016–2026,
 with fold splits, outlier trims, cost sweeps and cross-universe replication.
 The honest summary:
